@@ -3,7 +3,7 @@
 -- *--------------------------------------------
 -- * DB-MAIN version: 11.0.2              
 -- * Generator date: Sep 14 2021              
--- * Generation date: Wed Dec 18 18:27:12 2024 
+-- * Generation date: Wed Dec 18 21:08:33 2024 
 -- * LUN file: C:\Users\Lorenzo\Documents\UNIVERSITA\Tecnologie Web\MindBazaar\MindBazaar\MindBazaar.lun 
 -- * Schema: MindBazaar 
 -- ********************************************* 
@@ -38,9 +38,8 @@ create table ARTICOLO_IN_CARRELLO (
 
 create table CATEGORIA (
      nome varchar(20) not null,
-     id int not null auto_increment,
      immagine varchar(20) not null,
-     constraint ID_CATEGORIA_ID primary key (id));
+     constraint ID_CATEGORIA_ID primary key (nome));
 
 create table NOTIFICA_ARTICOLO (
      username varchar(20) not null,
@@ -56,7 +55,7 @@ create table NOTIFICA_ORDINE (
      lettoYN char not null,
      data date not null,
      tipologia int not null,
-     id_ordine int not null,
+     id int not null,
      constraint ID_NOTIFICA_ORDINE_ID primary key (username, data));
 
 create table ORDINE (
@@ -72,9 +71,8 @@ create table PRODOTTO (
      nome varchar(20) not null,
      descrizione varchar(200) not null,
      eta_minima int not null,
-     categoria varchar(20) not null,
      immagine varchar(25) not null,
-     id_categoria int not null,
+     nome_categoria varchar(20) not null,
      constraint ID_PRODOTTO_ID primary key (id));
 
 create table RICHIESTA (
@@ -122,7 +120,7 @@ alter table NOTIFICA_ORDINE add constraint FKricevimento_notifica_ordine
      references UTENTE (username);
 
 alter table NOTIFICA_ORDINE add constraint FKnotifica_ordine_FK
-     foreign key (id_ordine)
+     foreign key (id)
      references ORDINE (id);
 
 -- Not implemented
@@ -135,8 +133,8 @@ alter table ORDINE add constraint FKeffettuazione_FK
      references UTENTE (username);
 
 alter table PRODOTTO add constraint FKappartiene_a_FK
-     foreign key (id_categoria)
-     references CATEGORIA (id);
+     foreign key (nome_categoria)
+     references CATEGORIA (nome);
 
 alter table RICHIESTA add constraint FKriferimento_FK
      foreign key (id_prodotto, versione_articolo)
@@ -160,7 +158,7 @@ create index FKpossiede_IND
      on ARTICOLO_IN_CARRELLO (username);
 
 create unique index ID_CATEGORIA_IND
-     on CATEGORIA (id);
+     on CATEGORIA (nome);
 
 create unique index ID_NOTIFICA_ARTICOLO_IND
      on NOTIFICA_ARTICOLO (username, data);
@@ -172,7 +170,7 @@ create unique index ID_NOTIFICA_ORDINE_IND
      on NOTIFICA_ORDINE (username, data);
 
 create index FKnotifica_ordine_IND
-     on NOTIFICA_ORDINE (id_ordine);
+     on NOTIFICA_ORDINE (id);
 
 create unique index ID_ORDINE_IND
      on ORDINE (id);
@@ -184,7 +182,7 @@ create unique index ID_PRODOTTO_IND
      on PRODOTTO (id);
 
 create index FKappartiene_a_IND
-     on PRODOTTO (id_categoria);
+     on PRODOTTO (nome_categoria);
 
 create unique index ID_RICHIESTA_IND
      on RICHIESTA (id_ordine, id_prodotto, versione_articolo);
