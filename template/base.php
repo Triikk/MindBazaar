@@ -1,20 +1,36 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><?php echo $templateParams["titolo"]; ?></title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="./css/style.css" />
+    
+    <title><?php echo $templateParams["titolo"]; ?></title>
 </head>
 <body>
     <header>
-        <nav></nav>
+        <nav>
+            <ul>
+                <li><a href="#">ILM</a></li>
+                <li><a href="#"><h1>Titolo: MindBazaar</h1></a></li>
+                <li><a href="#">ISM</a></li>
+                <li><a href="#">ICM</a></li>
+                <li><a href="#">INM</a></li>
+            </ul>
+        </nav>
     </header>
-    <nav>
-    </nav>
     <main>
-    </main><aside>
-    </aside>
+        <?php if(isset($templateParams["nome"])){
+            require($templateParams["nome"]);
+        };?>
+    </main>
     <footer>
+        <p>Contattaci: +39 686730535</p>
+        <p>Indirizzo: Via dell'Università 50, Cesena</p>
+        <p>&copy 2024 MindBazaar S.p.A.</p>
     </footer>
 </body>
 </html>

@@ -1,0 +1,7 @@
+nav > ul {
+    list-style: none;
+}
+
+header > nav > ul > li, header > nav > ul > li > a > h1{
+    display:inline;
+}

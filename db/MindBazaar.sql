@@ -19,7 +19,7 @@ use MindBazaar;
 -- Tables Section
 -- _____________ 
 
-create table ARTICOLO (
+create table ARTICOLI (
      id_prodotto int not null,
      formato varchar(20) not null,
      durata varchar(15) not null,
@@ -29,7 +29,7 @@ create table ARTICOLO (
      versione int not null,
      constraint ID_ARTICOLO_ID primary key (id_prodotto, versione));
 
-create table ARTICOLO_IN_CARRELLO (
+create table ARTICOLI_IN_CARRELLO (
      id_prodotto int not null,
      versione_articolo int not null,
      username varchar(20) not null,
@@ -41,7 +41,7 @@ create table CATEGORIA (
      immagine varchar(20) not null,
      constraint ID_CATEGORIA_ID primary key (nome));
 
-create table NOTIFICA_ARTICOLO (
+create table NOTIFICHE_ARTICOLI (
      username varchar(20) not null,
      lettoYN char not null,
      data date not null,
@@ -50,7 +50,7 @@ create table NOTIFICA_ARTICOLO (
      versione_articolo int not null,
      constraint ID_NOTIFICA_ARTICOLO_ID primary key (username, data));
 
-create table NOTIFICA_ORDINE (
+create table NOTIFICHE_ORDINI (
      username varchar(20) not null,
      lettoYN char not null,
      data date not null,
@@ -58,7 +58,7 @@ create table NOTIFICA_ORDINE (
      id int not null,
      constraint ID_NOTIFICA_ORDINE_ID primary key (username, data));
 
-create table ORDINE (
+create table ORDINI (
      tempo_ordinazione date not null,
      tempo_spedizione date not null,
      tempo_consegna date not null,
@@ -66,23 +66,23 @@ create table ORDINE (
      username varchar(20) not null,
      constraint ID_ORDINE_ID primary key (id));
 
-create table PRODOTTO (
+create table PRODOTTI (
      id int not null auto_increment,
-     nome varchar(20) not null,
+     nome varchar(50) not null,
      descrizione varchar(200) not null,
      eta_minima int not null,
-     immagine varchar(25) not null,
+     immagine varchar(50) not null,
      nome_categoria varchar(20) not null,
      constraint ID_PRODOTTO_ID primary key (id));
 
-create table RICHIESTA (
+create table RICHIESTE (
      id_ordine int not null,
      id_prodotto int not null,
      versione_articolo int not null,
      quantita int not null,
      constraint ID_RICHIESTA_ID primary key (id_ordine, id_prodotto, versione_articolo));
 
-create table UTENTE (
+create table UTENTI (
      username varchar(20) not null,
      nome varchar(20) not null,
      cognome varchar(20) not null,
@@ -95,101 +95,101 @@ create table UTENTE (
 -- Constraints Section
 -- ___________________ 
 
-alter table ARTICOLO add constraint FKscaffale
+alter table ARTICOLI add constraint FKscaffale
      foreign key (id_prodotto)
-     references PRODOTTO (id);
+     references PRODOTTI (id);
 
-alter table ARTICOLO_IN_CARRELLO add constraint FKpossiede_FK
+alter table ARTICOLI_IN_CARRELLO add constraint FKpossiede_FK
      foreign key (username)
-     references UTENTE (username);
+     references UTENTI (username);
 
-alter table ARTICOLO_IN_CARRELLO add constraint FKdesiderato
+alter table ARTICOLI_IN_CARRELLO add constraint FKdesiderato
      foreign key (id_prodotto, versione_articolo)
-     references ARTICOLO (id_prodotto, versione);
+     references ARTICOLI (id_prodotto, versione);
 
-alter table NOTIFICA_ARTICOLO add constraint FKricevimento_notifica_articolo
+alter table NOTIFICHE_ARTICOLI add constraint FKricevimento_notifica_articolo
      foreign key (username)
-     references UTENTE (username);
+     references UTENTI (username);
 
-alter table NOTIFICA_ARTICOLO add constraint FKnotifica_articolo_FK
+alter table NOTIFICHE_ARTICOLI add constraint FKnotifica_articolo_FK
      foreign key (id_prodotto, versione_articolo)
-     references ARTICOLO (id_prodotto, versione);
+     references ARTICOLI (id_prodotto, versione);
 
-alter table NOTIFICA_ORDINE add constraint FKricevimento_notifica_ordine
+alter table NOTIFICHE_ORDINI add constraint FKricevimento_notifica_ordine
      foreign key (username)
-     references UTENTE (username);
+     references UTENTI (username);
 
-alter table NOTIFICA_ORDINE add constraint FKnotifica_ordine_FK
+alter table NOTIFICHE_ORDINI add constraint FKnotifica_ordine_FK
      foreign key (id)
-     references ORDINE (id);
+     references ORDINI (id);
 
 -- Not implemented
--- alter table ORDINE add constraint ID_ORDINE_CHK
---     check(exists(select * from RICHIESTA
---                  where RICHIESTA.id_ordine = id)); 
+-- alter table ORDINI add constraint ID_ORDINE_CHK
+--     check(exists(select * from RICHIESTE
+--                  where RICHIESTE.id_ordine = id)); 
 
-alter table ORDINE add constraint FKeffettuazione_FK
+alter table ORDINI add constraint FKeffettuazione_FK
      foreign key (username)
-     references UTENTE (username);
+     references UTENTI (username);
 
-alter table PRODOTTO add constraint FKappartiene_a_FK
+alter table PRODOTTI add constraint FKappartiene_a_FK
      foreign key (nome_categoria)
      references CATEGORIA (nome);
 
-alter table RICHIESTA add constraint FKriferimento_FK
+alter table RICHIESTE add constraint FKriferimento_FK
      foreign key (id_prodotto, versione_articolo)
-     references ARTICOLO (id_prodotto, versione);
+     references ARTICOLI (id_prodotto, versione);
 
-alter table RICHIESTA add constraint FKcontenimento
+alter table RICHIESTE add constraint FKcontenimento
      foreign key (id_ordine)
-     references ORDINE (id);
+     references ORDINI (id);
 
 
 -- Index Section
 -- _____________ 
 
 create unique index ID_ARTICOLO_IND
-     on ARTICOLO (id_prodotto, versione);
+     on ARTICOLI (id_prodotto, versione);
 
 create unique index ID_ARTICOLO_IN_CARRELLO_IND
-     on ARTICOLO_IN_CARRELLO (id_prodotto, versione_articolo, username);
+     on ARTICOLI_IN_CARRELLO (id_prodotto, versione_articolo, username);
 
 create index FKpossiede_IND
-     on ARTICOLO_IN_CARRELLO (username);
+     on ARTICOLI_IN_CARRELLO (username);
 
 create unique index ID_CATEGORIA_IND
      on CATEGORIA (nome);
 
 create unique index ID_NOTIFICA_ARTICOLO_IND
-     on NOTIFICA_ARTICOLO (username, data);
+     on NOTIFICHE_ARTICOLI (username, data);
 
 create index FKnotifica_articolo_IND
-     on NOTIFICA_ARTICOLO (id_prodotto, versione_articolo);
+     on NOTIFICHE_ARTICOLI (id_prodotto, versione_articolo);
 
 create unique index ID_NOTIFICA_ORDINE_IND
-     on NOTIFICA_ORDINE (username, data);
+     on NOTIFICHE_ORDINI (username, data);
 
 create index FKnotifica_ordine_IND
-     on NOTIFICA_ORDINE (id);
+     on NOTIFICHE_ORDINI (id);
 
 create unique index ID_ORDINE_IND
-     on ORDINE (id);
+     on ORDINI (id);
 
 create index FKeffettuazione_IND
-     on ORDINE (username);
+     on ORDINI (username);
 
 create unique index ID_PRODOTTO_IND
-     on PRODOTTO (id);
+     on PRODOTTI (id);
 
 create index FKappartiene_a_IND
-     on PRODOTTO (nome_categoria);
+     on PRODOTTI (nome_categoria);
 
 create unique index ID_RICHIESTA_IND
-     on RICHIESTA (id_ordine, id_prodotto, versione_articolo);
+     on RICHIESTE (id_ordine, id_prodotto, versione_articolo);
 
 create index FKriferimento_IND
-     on RICHIESTA (id_prodotto, versione_articolo);
+     on RICHIESTE (id_prodotto, versione_articolo);
 
 create unique index ID_UTENTE_IND
-     on UTENTE (username);
+     on UTENTI (username);
 

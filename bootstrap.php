@@ -11,5 +11,5 @@ define("EMOTIONS_DIR", PRODUCTS_DIR . "emozioni/");
 
 // require_once("utils/functions.php");
 require_once("db/database.php");
-$dbh = new DatabaseHelper("localhost", "root", "", "mindbazaar", 3306);
+$dbh = new DatabaseHelper("localhost", "root", "", "MindBazaar", 3306);
 ?>
