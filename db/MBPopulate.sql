@@ -1,6 +1,6 @@
 use MindBazaar;
 
-INSERT INTO UTENTE (username, nome, cognome, data_nascita, password, amministratore) VALUES
+INSERT INTO UTENTI (username, nome, cognome, data_nascita, password, amministratore) VALUES
 ('MATT DESTROYER', 'Mattia', 'Ronchi', '2003-11-14', 'ARDUINO', 'Y'), -- Amministratore
 ('BEG IL SUPREMO', 'Lorenzo', 'Bergami', '2003-08-24', ':D:D:D', 'Y'),
 ('MEGA FRANCI', 'Francesco', 'Bittasi', '2003-12-05', 'bittone', 'Y'),
@@ -9,13 +9,13 @@ INSERT INTO UTENTE (username, nome, cognome, data_nascita, password, amministrat
 ('alexBan', 'Alex', 'Guerrini', '1988-01-25', 'elenaPass99', 'N'),
 ('bigDave', 'Davide', 'Bartoli', '1985-06-30', 'googleSlave', 'N');
 
-INSERT INTO CATEGORIA (nome, immagine) VALUES
+INSERT INTO CATEGORIE (nome, immagine) VALUES
 ('Sogno','sogno.png'),
 ('Ispirazione','ispirazione.png'),
 ('Emozione','emozione.png'),
 ('Nozione','nozione.png');
 
-INSERT INTO PRODOTTO (nome, descrizione, eta_minima, immagine, nome_categoria) VALUES
+INSERT INTO PRODOTTI (nome, descrizione, eta_minima, immagine, nome_categoria) VALUES
 ("Avventura Galattica", "Un sogno epico in cui esplorerai galassie sconosciute e combatterai alieni ostili.", 18, ".png", "Sogno"),
 ("Viaggio nella Preistoria", "Rivivi la preistoria tra dinosauri, vulcani e paesaggi primordiali.", 18, ".png", "Sogno"),
 ("Caccia al Tesoro", "Un'avventura piratesca alla ricerca di un antico tesoro nascosto.", 18, ".png", "Sogno"),

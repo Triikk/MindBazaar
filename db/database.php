@@ -105,7 +105,11 @@ class DatabaseHelper{
     }
 
     public function getArticles(){
-        $stmt = $this->db->prepare("SELECT * FROM ARTICOLI");
+        $stmt = $this->db->prepare("SELECT A.*, P.categoria, SUM(R.quantita) as vendite
+                                    FROM ARTICOLI as A, PRODOTTI as P, RICHIESTE as R
+                                    WHERE A.id_prodotto = P.id
+                                        AND A.id_richiesta = R.id
+                                    GROUP BY A.id_prodotto, A.versione");
 
         $stmt->execute();
         $result = $stmt->get_result();

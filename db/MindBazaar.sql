@@ -36,7 +36,7 @@ create table ARTICOLI_IN_CARRELLO (
      quantita int not null,
      constraint ID_ARTICOLO_IN_CARRELLO_ID primary key (id_prodotto, versione_articolo, username));
 
-create table CATEGORIA (
+create table CATEGORIE (
      nome varchar(20) not null,
      immagine varchar(20) not null,
      constraint ID_CATEGORIA_ID primary key (nome));
@@ -134,7 +134,7 @@ alter table ORDINI add constraint FKeffettuazione_FK
 
 alter table PRODOTTI add constraint FKappartiene_a_FK
      foreign key (nome_categoria)
-     references CATEGORIA (nome);
+     references CATEGORIE (nome);
 
 alter table RICHIESTE add constraint FKriferimento_FK
      foreign key (id_prodotto, versione_articolo)
@@ -158,7 +158,7 @@ create index FKpossiede_IND
      on ARTICOLI_IN_CARRELLO (username);
 
 create unique index ID_CATEGORIA_IND
-     on CATEGORIA (nome);
+     on CATEGORIE (nome);
 
 create unique index ID_NOTIFICA_ARTICOLO_IND
      on NOTIFICHE_ARTICOLI (username, data);
