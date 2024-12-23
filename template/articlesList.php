@@ -1,19 +1,25 @@
 <form action="/articles.php" method="get">
-    <label for="vendite"><b>Piu venduto</b></label>
+    <label for="vendite">Piu venduto</label>
     <input type="radio" name="ordinamento" value="vendite">
-    <label for="prezzo-desc"><b>Prezzo (decrescente)</b></label>
-    <input type="radio" name="ordinamento" value="prezzo-desc">
-    <label for="prezzo-asc"><b>Prezzo (crescente)</b></label>
-    <input type="radio" name="ordinamento" value="prezzo-asc">
-    <label for="prezzo"><b>Prezzo:</b></label>
-    <input type="">
-    <label for="eta"><b>Età:</b></label>
-    <input type="">
-    <label for="categorie"><b>Categorie:</b></label>
-    <input type="">
-    <label for="formati"><b>Prezzo:</b></label>
-    <input type="">
-    <button type="submit">APPLICA</button>
+    <label for="prezzoDesc">Prezzo (decrescente)</label>
+    <input type="radio" name="ordinamento" value="prezzoDesc">
+    <label for="prezzoAsc">Prezzo (crescente)</label>
+    <input type="radio" name="ordinamento" value="prezzoAsc">
+    <label for="prezzoMin">Prezzo minimo:</label>
+    <input type="range" name="prezzoMin" min="0" max="1000">
+    <label for="prezzoMax">Prezzo massimo:</label>
+    <input type="range" name="prezzoMax" min="0" max="1000">
+    <label for="etaMinima">Età:</label>
+    <input type="range" name="etaMinima" min="14" max="99">
+    <?php foreach ($templateParams["categorie"] as $categoria): ?>
+        <label for="<?php echo $categoria["nome"]; ?>"><?php echo $categoria["nome"]; ?></label>
+        <input type="checkbox" name="categorie[]" value="<?php echo $categoria["nome"]; ?>">
+    <?php endforeach; ?>
+    <?php foreach ($templateParams["formati"] as $formato): ?>
+        <label for="<?php echo $formato["formato"]; ?>"><?php echo $formato["formato"]; ?></label>
+        <input type="checkbox" name="formati[]" value="<?php echo $formato["formato"]; ?>">
+    <?php endforeach; ?>
+    <button type="submit" value="submit">Applica</button>
 </form>
 <nav>
     <ul>
@@ -24,17 +30,14 @@
 </nav>
 <section>
     <ul>
-        <?php foreach ($templateParams["articoli"] as $articolo): ?>
+        <?php foreach ($templateParams["articoliVisualizzati"] as $articolo): ?>
             <li>
-                <h2><?php echo $articolo["nome"]; ?></h2>
-                <p><?php echo $articolo["descrizione"]; ?></p>
-                <p><?php echo $articolo["formato"]; ?></p>
+                <a href="/product.php?id_prodotto=<?php echo $articolo["id_prodotto"]; ?>&versione=<?php echo $articolo["versione"]; ?>">
+                    <h2><?php echo $articolo["nome"]; ?></h2>
+                    <p><?php echo $articolo["descrizione"]; ?></p>
+                    <p><?php echo $articolo["formato"]; ?></p>
+                </a>
             </li>
         <?php endforeach; ?>
-        <?php
-        var_dump($filterCategories);
-        var_dump($filterMinPrice);
-        var_dump($filterOrdinamento);
-        ?>
     </ul>
 </section>

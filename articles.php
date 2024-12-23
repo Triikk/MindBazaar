@@ -5,9 +5,6 @@ require_once 'bootstrap.php';
 $templateParams["titolo"] = "MindBazaar - Articoli";
 //Home Template
 $templateParams["nome"] = "articlesList.php";
-$templateParams["articoli"] = $dbh->getArticles();
-$templateParams["categorie"] = $dbh->getCategories();
-$templateParams["formati"] = $dbh->getFormats();
 // $templateParams["bestSeller"] = $dbh->getBestSeller();
 
 $filterCategories = [];
@@ -41,6 +38,7 @@ if (isset($_GET["etaMinima"])) {
 }
 if (isset($_GET["categorie"])) {
     echo "categorie was set";
+    var_dump($_GET["categorie"]);
     $filterCategories = $_GET["categorie"];
 }
 if (isset($_GET["formati"])) {
@@ -48,9 +46,6 @@ if (isset($_GET["formati"])) {
     $filterFormats = $_GET["formati"];
 }
 
-// var_dump($filterCategories);
-// var_dump($filterFormats);
-
-$templateParams["articoli"] = getFilteredArticles($templateParams["articoli"], $filterCategories, $filterMinPrice, $filterMaxPrice, $filterFormats, $filterOrdinamento);
+$templateParams["articoliVisualizzati"] = getFilteredArticles($templateParams["articoli"], $filterCategories, $filterMinPrice, $filterMaxPrice, $filterFormats, $filterOrdinamento);
 
 require 'template/base.php';

@@ -17,7 +17,7 @@
         <nav>
             <ul>
                 <li><a href="#">ILM</a></li>
-                <li><a href="#">
+                <li><a href="index.php">
                         <h1>Titolo: MindBazaar</h1>
                     </a></li>
                 <li><a href="#">ISM</a></li>
