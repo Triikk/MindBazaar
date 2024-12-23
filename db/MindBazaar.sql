@@ -24,7 +24,7 @@ create table ARTICOLI (
      formato varchar(20) not null,
      durata varchar(15) not null,
      intensita int not null,
-     prezzo decimal(3,2) not null,
+     prezzo decimal(5,2) not null,
      disponibilita int not null,
      versione int not null,
      constraint ID_ARTICOLO_ID primary key (id_prodotto, versione));
