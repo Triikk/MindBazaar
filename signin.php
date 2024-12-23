@@ -8,7 +8,7 @@ if (isset($_POST["submit"])) {
     $username = $_POST["username"];
     $nome = $_POST["nome"];
     $cognome = $_POST["cognome"];
-    $dataNascita = date($_POST["dataNascita"]);
+    $dataNascita = $_POST["dataNascita"];
     $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
 
     if ($dbh->checkUsername($username)) {

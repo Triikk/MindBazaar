@@ -180,8 +180,9 @@ class DatabaseHelper {
     }
 
     public function registerUser($username, $nome, $cognome, $data_nascita, $password) {
+        $admin = 0;
         $stmt = $this->db->prepare("INSERT INTO UTENTI (username, nome, cognome, data_nascita, password, amministratore) VALUES (?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("sssisi", $username, $nome, $cognome, $data_nascita, $password, 0);
+        $stmt->bind_param("sssssi", $username, $nome, $cognome, $data_nascita, $password, $admin);
         $result = $stmt->execute();
 
         return $result;
