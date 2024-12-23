@@ -2,8 +2,8 @@
 -- * SQL MySQL generation                      
 -- *--------------------------------------------
 -- * DB-MAIN version: 11.0.2              
--- * Generator date: Sep 14 2021              
--- * Generation date: Wed Dec 18 21:08:33 2024 
+-- * Generator datetime: Sep 14 2021              
+-- * Generation datetime: Wed Dec 18 21:08:33 2024 
 -- * LUN file: C:\Users\Lorenzo\Documents\UNIVERSITA\Tecnologie Web\MindBazaar\MindBazaar\MindBazaar.lun 
 -- * Schema: MindBazaar 
 -- ********************************************* 
@@ -44,7 +44,7 @@ create table CATEGORIE (
 create table NOTIFICHE_ARTICOLI (
      username varchar(20) not null,
      lettoYN char not null,
-     data date not null,
+     data datetime not null,
      tipologia int not null,
      id_prodotto int not null,
      versione_articolo int not null,
@@ -53,15 +53,15 @@ create table NOTIFICHE_ARTICOLI (
 create table NOTIFICHE_ORDINI (
      username varchar(20) not null,
      lettoYN char not null,
-     data date not null,
+     data datetime not null,
      tipologia int not null,
      id int not null,
      constraint ID_NOTIFICA_ORDINE_ID primary key (username, data));
 
 create table ORDINI (
-     tempo_ordinazione date not null,
-     tempo_spedizione date not null,
-     tempo_consegna date not null,
+     tempo_ordinazione datetime not null,
+     tempo_spedizione datetime not null,
+     tempo_consegna datetime not null,
      id int not null auto_increment,
      username varchar(20) not null,
      constraint ID_ORDINE_ID primary key (id));
@@ -86,7 +86,7 @@ create table UTENTI (
      username varchar(20) not null,
      nome varchar(20) not null,
      cognome varchar(20) not null,
-     data_nascita date not null,
+     data_nascita datetime not null,
      password varchar(255) not null,
      amministratore char not null,
      constraint ID_UTENTE_ID primary key (username));
