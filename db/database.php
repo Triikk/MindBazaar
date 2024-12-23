@@ -20,12 +20,11 @@ class DatabaseHelper {
     // bestseller viene inteso come il prodotto più venduto, senza considerare 
     // differenze di versioni. Si potrebbe considerare il bestseller come 
     // l'articolo più venduto
-    public function getBestSeller($numBS) {
+    public function getBestSellers($numBS) {
         $stmt = $this->db->prepare(
-            "SELECT nome, descrizione, eta_minima, immagine, nome_categoria, id, numVendite 
-                    FROM PRODOTTI, RICHIESTE ON id_prodotto = id 
+            "SELECT nome, descrizione, eta_minima, immagine, nome_categoria, id, SUM(quantita) AS numVendite
+                    FROM PRODOTTI JOIN RICHIESTE ON id_prodotto = id 
                     GROUP BY id 
-                    HAVING SUM(quantita) AS numVendite
                     ORDER BY numVendite 
                     LIMIT ? "
         );
@@ -125,11 +124,12 @@ class DatabaseHelper {
     }
 
     public function getArticles() {
-        $stmt = $this->db->prepare("SELECT A.*, P.nome_categoria, (SELECT IFNULL(SUM(R.quantita), 0)
-                                FROM ARTICOLI A, RICHIESTE R
-                                WHERE A.versione = R.versione_articolo 
-                                    AND P.id = R.id_prodotto
-                                GROUP BY A.id_prodotto, A.versione) as vendite, P.nome, P.descrizione, P.eta_minima, P.immagine 
+        $stmt = $this->db->prepare("SELECT A.*, P.nome_categoria, IFNULL((SELECT SUM(RI.quantita)
+                                FROM ARTICOLI AI, RICHIESTE RI
+                                WHERE AI.versione = RI.versione_articolo 
+                                    AND AI.id_prodotto = RI.id_prodotto
+                                    AND AI.id_prodotto = P.id 
+                                GROUP BY AI.id_prodotto, AI.versione), 0) as vendite, P.nome, P.descrizione, P.eta_minima, P.immagine 
                 FROM ARTICOLI A, PRODOTTI P
                 WHERE A.id_prodotto = P.id
                 GROUP BY A.id_prodotto, A.versione");

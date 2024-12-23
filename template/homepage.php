@@ -1,10 +1,12 @@
 <!--bestseller-->
 <section>
     <h2>Best seller:</h2>
-    <img src="<?php $bestSeller["img"]; ?>" alt="<?php $bestSeller["descrizione"]; ?>" />
-    <?php
-    $bestSeller = $templateParams["bestSeller"];
-    ?>
+    <?php $bestSellers = $templateParams["bestSellers"]; ?>
+    <?php foreach ($bestSellers as $bestSeller): ?>
+        <img src="<?php echo $bestSeller["immagine"]; ?>"" />
+        <h3><?php echo $bestSeller["nome"]; ?></h3>
+        <p><?php echo $bestSeller["descrizione"]; ?></p>
+    <?php endforeach; ?>
 </section>
 <!--categories-->
 <section>
@@ -13,12 +15,12 @@
         <ul>
             <?php foreach ($templateParams["categorie"] as $categoria): ?>
                 <li>
-                    <a href="articles.php?category=<?php echo $categoria["nome"]; ?>">
-                        <?php echo $categoria["nome"]; ?>
-                    </a>
-                </li>
-            <?php endforeach; ?>
-        </ul>
+                    <a href=" articles.php?category=<?php echo $categoria["nome"]; ?>">
+        <?php echo $categoria["nome"]; ?>
+        </a>
+        </li>
+    <?php endforeach; ?>
+    </ul>
     </nav>
 </section>
 <!--about us-->

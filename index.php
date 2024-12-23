@@ -5,7 +5,7 @@ require_once 'bootstrap.php';
 $templateParams["titolo"] = "MindBazaar";
 //Home Template
 $templateParams["nome"] = "homepage.php";
-// $templateParams["bestSeller"] = $dbh->getBestSeller();
+$templateParams["bestSellers"] = $dbh->getBestSellers(1);
 
 $_SESSION["username"] = "MATT DESTROYER";
 

@@ -196,3 +196,15 @@ INSERT INTO ARTICOLI (id_prodotto, formato, durata, intensita, prezzo, disponibi
 (51,"marmellata", "1 settimana", 3, 399.99, 0, 2),
 (51,"caramella", "1 giorno", 1, 119.99, 0, 3),
 (51,"incenso", "5 ore", 2, 89.99, 0, 4);
+
+INSERT INTO ORDINI (tempo_ordinazione, tempo_spedizione, tempo_consegna, username) VALUES
+("2024-12-23","2024-12-23","2024-12-23",'MATT DESTROYER'),
+("2024-12-23","2024-12-23","2024-12-23",'BEG IL SUPREMO'),
+("2024-12-23","2024-12-23","2024-12-23",'MEGA FRANCI'),
+("2024-12-23","2024-12-23","2024-12-23",'sbaracchino'),
+("2024-12-23","2024-12-23","2024-12-23",'monkey03'),
+("2024-12-23","2024-12-23","2024-12-23",'alexBan'),
+("2024-12-23","2024-12-23","2024-12-23",'bigDave');
+
+INSERT INTO RICHIESTE (id_ordine, id_prodotto, versione_articolo, quantita) VALUES
+(1,1,1,1);
