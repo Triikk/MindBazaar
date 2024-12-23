@@ -9,10 +9,10 @@ $templateParams["articoli"] = $dbh->getArticles();
 $templateParams["categorie"] = $dbh->getCategories();
 // $templateParams["bestSeller"] = $dbh->getBestSeller();
 
-$filterCategories = [];
+$filterCategories = $templateParams["categorie"];
 $filterMinPrice = 0;
 $filterMaxPrice = 1000;
-$filterFormats = [];
+$filterFormats = $dbh->getFormats();
 $filterOrdinamento = "";
 $filterMinAge = 0;
 
@@ -35,7 +35,7 @@ if (isset($_GET["formati"])) {
     $filterFormats = $_GET["formati"];
 }
 
+
 $templateParams["articoli"] = getFilteredArticles($templateParams["articoli"], $filterCategories, $filterMinPrice, $filterMaxPrice, $filterFormats, $filterOrdinamento);
 
 require 'template/base.php';
-?>

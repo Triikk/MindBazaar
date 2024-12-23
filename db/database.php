@@ -125,14 +125,22 @@ class DatabaseHelper {
     }
 
     public function getArticles() {
-        $stmt = $this->db->prepare("SELECT A.*, P.nome_categoria, SUM(R.quantita) as vendite, 
-                                    P.nome, P.descrizione, P.eta_minima, P.immagine 
-                                    FROM ARTICOLI A, PRODOTTI P, RICHIESTE R 
-                                    WHERE A.id_prodotto = P.id 
-                                        AND A.versione = R.versione_articolo 
-                                        AND P.id = R.id_prodotto 
-                                    GROUP BY A.id_prodotto, A.versione");
+        $stmt = $this->db->prepare("SELECT A.*, P.nome_categoria, (SELECT IFNULL(SUM(R.quantita), 0)
+                                FROM ARTICOLI A, RICHIESTE R
+                                WHERE A.versione = R.versione_articolo 
+                                    AND P.id = R.id_prodotto
+                                GROUP BY A.id_prodotto, A.versione) as vendite, P.nome, P.descrizione, P.eta_minima, P.immagine 
+                FROM ARTICOLI A, PRODOTTI P
+                WHERE A.id_prodotto = P.id
+                GROUP BY A.id_prodotto, A.versione");
+        $stmt->execute();
+        $result = $stmt->get_result();
 
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getFormats() {
+        $stmt = $this->db->prepare("SELECT DISTINCT formato FROM ARTICOLI");
         $stmt->execute();
         $result = $stmt->get_result();
 

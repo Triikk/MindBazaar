@@ -26,9 +26,15 @@
     <ul>
         <?php foreach ($templateParams["articoli"] as $articolo): ?>
             <li>
-                <h2><?php echo $articolo["titolo"]; ?></h2>
-                <p><?php echo $articolo["testo"]; ?></p>
+                <h2><?php echo $articolo["nome"]; ?></h2>
+                <p><?php echo $articolo["descrizione"]; ?></p>
+                <p><?php echo $articolo["formato"]; ?></p>
             </li>
         <?php endforeach; ?>
+        <?php
+        var_dump($filterCategories);
+        var_dump($filterMinPrice);
+        var_dump($filterOrdinamento);
+        ?>
     </ul>
 </section>
