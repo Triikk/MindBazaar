@@ -37,3 +37,11 @@ function getFilteredArticles($articlesList, $categories, $minPrice, $maxPrice, $
 
     return $filteredArticles;
 }
+
+function logInUser($username) {
+    $_SESSION["username"] = $username;
+}
+
+function logOutUser() {
+    unset($_SESSION["username"]);
+}

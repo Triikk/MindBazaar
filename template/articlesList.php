@@ -1,4 +1,4 @@
-<form action="articles.php" method="get">
+<form action="articles.php" method="GET">
     <label for="vendite">Piu venduto</label>
     <input type="radio" name="ordinamento" value="vendite">
     <label for="prezzoDesc">Prezzo (decrescente)</label>

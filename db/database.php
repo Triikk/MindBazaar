@@ -133,6 +133,7 @@ class DatabaseHelper {
                 FROM ARTICOLI A, PRODOTTI P
                 WHERE A.id_prodotto = P.id
                 GROUP BY A.id_prodotto, A.versione");
+
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -145,5 +146,20 @@ class DatabaseHelper {
         $result = $stmt->get_result();
 
         return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function checkLogin($username, $password) {
+        $stmt = $this->db->prepare("SELECT * FROM UTENTI WHERE username = ? AND password = ?");
+        $stmt->bind_param("ss", $username, $password);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function registerUser($username, $nome, $cognome, $data_nascita, $password) {
+        $stmt = $this->db->prepare("INSERT INTO UTENTI (username, nome, cognome, data_nascita, password) VALUES (?, ?, ?, ?, ?)");
+        $stmt->bind_param("sssdsi", $username, $nome, $cognome, $data_nascita, $password, false);
+        $stmt->execute();
     }
 }

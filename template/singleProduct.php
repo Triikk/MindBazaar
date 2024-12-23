@@ -4,7 +4,7 @@
 <p><?php echo $articolo["formato"]; ?></p>
 <p><?php echo "Prezzo: " . $articolo["prezzo"]; ?></p>
 
-<form action="/product.php" method="get">
+<form action="/product.php" method="GET">
     <?php foreach ($formatiProdotto as $formato): ?>
         <label for="<?php echo $formato; ?>"><?php echo $formato; ?></label>
         <input type="radio" name="formato" value="<?php echo $formato; ?>">
