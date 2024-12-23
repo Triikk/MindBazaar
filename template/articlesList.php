@@ -1,4 +1,4 @@
-<form action="/articles.php" method="get">
+<form action="articles.php" method="get">
     <label for="vendite">Piu venduto</label>
     <input type="radio" name="ordinamento" value="vendite">
     <label for="prezzoDesc">Prezzo (decrescente)</label>
@@ -32,7 +32,7 @@
     <ul>
         <?php foreach ($templateParams["articoliVisualizzati"] as $articolo): ?>
             <li>
-                <a href="/product.php?id_prodotto=<?php echo $articolo["id_prodotto"]; ?>&versione=<?php echo $articolo["versione"]; ?>">
+                <a href="product.php?id_prodotto=<?php echo $articolo["id_prodotto"]; ?>&versione=<?php echo $articolo["versione"]; ?>">
                     <h2><?php echo $articolo["nome"]; ?></h2>
                     <p><?php echo $articolo["descrizione"]; ?></p>
                     <p><?php echo $articolo["formato"]; ?></p>

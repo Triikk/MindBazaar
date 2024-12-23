@@ -69,7 +69,7 @@ class DatabaseHelper {
     public function getOrdersById($userId) {
         $stmt = $this->db->prepare("SELECT * FROM ORDINI WHERE username = ?");
 
-        $stmt->bind_param("ii", $userId, $userId);
+        $stmt->bind_param("i", $userId);
         $stmt->execute();
         $result = $stmt->get_result();
 
