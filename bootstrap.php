@@ -12,4 +12,9 @@ define("EMOTIONS_DIR", PRODUCTS_DIR . "emozioni/");
 require_once("utils/functions.php");
 require_once("db/database.php");
 $dbh = new DatabaseHelper("localhost", "root", "", "MindBazaar", 3306);
+
+$templateParams["prodotti"] = $dbh->getProducts();
+$templateParams["articoli"] = $dbh->getArticles();
+$templateParams["categorie"] = $dbh->getCategories();
+$templateParams["formati"] = $dbh->getFormats();
 ?>
