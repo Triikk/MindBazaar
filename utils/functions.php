@@ -57,3 +57,11 @@ function calculateTotal($articles) {
     }
     return ($total);
 }
+
+function logInUser($username) {
+    $_SESSION["username"] = $username;
+}
+
+function logOutUser() {
+    unset($_SESSION["username"]);
+}
