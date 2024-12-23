@@ -16,13 +16,13 @@
     <header>
         <nav>
             <ul>
-                <li><a href="#">ILM</a></li>
+                <li><a href="lateralMenu.php">ILM</a></li>
                 <li><a href="index.php">
                         <h1>Titolo: MindBazaar</h1>
                     </a></li>
-                <li><a href="#">ISM</a></li>
-                <li><a href="#">ICM</a></li>
-                <li><a href="#">INM</a></li>
+                <li><a href="searchMenu.php">ISM</a></li>
+                <li><a href="cart.php">ICM</a></li>
+                <li><a href="notifications.php">INM</a></li>
             </ul>
         </nav>
         <nav>

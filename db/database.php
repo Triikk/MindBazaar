@@ -146,4 +146,16 @@ class DatabaseHelper {
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function getCartArticles($userId) {
+        $stmt = $this->db->prepare("SELECT A.*, AC.*, P.nome_categoria, P.nome, P.descrizione, P.eta_minima, P.immagine 
+                FROM ARTICOLI_IN_CARRELLO AC, PRODOTTI P, ARTICOLI A
+                WHERE AC.id_prodotto = P.id AND AC.username = ?
+                AND A.id_prodotto = P.id AND A.versione = AC.versione_articolo");
+        $stmt->bind_param("i", $userId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 }

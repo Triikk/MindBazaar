@@ -37,3 +37,23 @@ function getFilteredArticles($articlesList, $categories, $minPrice, $maxPrice, $
 
     return $filteredArticles;
 }
+
+function showAvailability($nItems) {
+    if ($nItems > 20) {
+        return "Disponibile";
+    } else if ($nItems > 10) {
+        return "Ultimi pezzi";
+    } else if ($nItems > 0) {
+        return "Sta per terminare";
+    } else {
+        return "Non disponibile";
+    }
+}
+
+function calculateTotal($articles) {
+    $total = 0;
+    foreach ($articles as $article) {
+        $total += $article["prezzo"];
+    }
+    return ($total);
+}

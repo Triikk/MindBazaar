@@ -5,7 +5,6 @@ require_once 'bootstrap.php';
 $templateParams["titolo"] = "MindBazaar - Articoli";
 //Home Template
 $templateParams["nome"] = "articlesList.php";
-// $templateParams["bestSeller"] = $dbh->getBestSellper();
 
 $filterCategories = [];
 foreach ($templateParams["categorie"] as $categoria) {
