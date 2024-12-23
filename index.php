@@ -9,4 +9,6 @@ $templateParams["articoli"] = $dbh->getArticles();
 $templateParams["categorie"] = $dbh->getCategories();
 // $templateParams["bestSeller"] = $dbh->getBestSeller();
 
+$_SESSION["username"] = "MATT DESTROYER";
+
 require 'template/base.php';

@@ -76,6 +76,24 @@ class DatabaseHelper {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getDetailedOrdersById($userId) {
+        $stmt = $this->db->prepare("SELECT O.id, O.quantita, A.id_prodotto, A.versione 
+                    FROM ORDINI O, RICHIESTE R, ARTICOLO A
+                    WHERE username = ?
+                    AND O.id = R.id_ordine
+                    AND A.id_prodotto = R.id_prodotto
+                    AND A.versione = R.versione_articolo
+                    GROUP BY O.id
+                    ORDER BY O.tempo_ordinazione DESC
+        ");
+
+        $stmt->bind_param("i", $userId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function getArticlesInBasketById($userId) {
         $stmt = $this->db->prepare("SELECT * FROM ARTICOLI_IN_CARRELLO WHERE username = ?");
 

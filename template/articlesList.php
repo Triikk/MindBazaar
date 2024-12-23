@@ -1,6 +1,10 @@
 <form action="/articles.php" method="get">
-    <label for="ordinamento"><b>Ordina per:</b></label>
-    <input type="radio" name="ordinamento">
+    <label for="vendite"><b>Piu venduto</b></label>
+    <input type="radio" name="ordinamento" value="vendite">
+    <label for="prezzo-desc"><b>Prezzo (decrescente)</b></label>
+    <input type="radio" name="ordinamento" value="prezzo-desc">
+    <label for="prezzo-asc"><b>Prezzo (crescente)</b></label>
+    <input type="radio" name="ordinamento" value="prezzo-asc">
     <label for="prezzo"><b>Prezzo:</b></label>
     <input type="">
     <label for="eta"><b>Età:</b></label>

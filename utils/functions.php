@@ -1,5 +1,5 @@
 <?php
-function getFilteredArticles($articlesList, $categories, $minPrice, $maxPrice, $formats, $ordine) {
+function getFilteredArticles($articlesList, $categories, $minPrice, $maxPrice, $formats, $ordinamento) {
     $filteredArticles = [];
     
     
@@ -9,7 +9,7 @@ function getFilteredArticles($articlesList, $categories, $minPrice, $maxPrice, $
         }
     }
     
-    switch ($ordine) {
+    switch ($ordinamento) {
         case 'venduti':
             usort($filteredArticles, function($a, $b) {
                 return $b['vendite'] - $a['vendite'];
