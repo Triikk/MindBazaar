@@ -29,4 +29,4 @@
         </li>
     </ul>
 </form>
-<p>Ti sei già registrato? <a href="../login.php">Login</a>.</p>
+<p>Ti sei già registrato? <a href="login.php">Login</a>.</p>

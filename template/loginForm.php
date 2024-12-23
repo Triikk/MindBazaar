@@ -17,4 +17,4 @@
         </li>
     </ul>
 </form>
-<p>Non hai un account? <a href="../signin.php">Registrati</a>.</p>
+<p>Non hai un account? <a href="signin.php">Registrati</a>.</p>
