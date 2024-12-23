@@ -128,7 +128,8 @@ class DatabaseHelper {
                                 FROM ARTICOLI AI, RICHIESTE RI
                                 WHERE AI.versione = RI.versione_articolo 
                                     AND AI.id_prodotto = RI.id_prodotto
-                                    AND AI.id_prodotto = P.id 
+                                    AND AI.id_prodotto = A.id_prodotto
+                                    AND AI.versione = A.versione 
                                 GROUP BY AI.id_prodotto, AI.versione), 0) as vendite, P.nome, P.descrizione, P.eta_minima, P.immagine 
                 FROM ARTICOLI A, PRODOTTI P
                 WHERE A.id_prodotto = P.id
