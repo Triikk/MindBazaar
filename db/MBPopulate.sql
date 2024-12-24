@@ -244,3 +244,9 @@ INSERT INTO RICHIESTE (id_ordine, id_prodotto, versione_articolo, quantita) VALU
 (14, 35, 3, 9),
 (14, 32, 4, 9),
 (14, 18, 1, 10);
+
+INSERT INTO ARTICOLI_IN_CARRELLO (id_prodotto, versione_articolo, username, quantita) VALUES
+(1, 1,  'MATT DESTROYER', 5),
+(4, 1,  'MATT DESTROYER', 5),
+(16, 1,  'MATT DESTROYER', 5),
+(47, 1,  'MATT DESTROYER', 5);

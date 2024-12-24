@@ -175,4 +175,20 @@ class DatabaseHelper {
         $stmt->bind_param("sssdsi", $username, $nome, $cognome, $data_nascita, $password, false);
         $stmt->execute();
     }
+
+    public function modifyAmount($id_prod, $quantita, $username, $versione_articolo) {
+        $id_prod = (int)$id_prod;
+        $quantita = (int)$quantita;
+        $versione_articolo = (int)$versione_articolo;
+
+        $stmt = $this->db->prepare("
+            UPDATE ARTICOLI_IN_CARRELLO
+            SET quantita = ?
+            WHERE id_prodotto = ?
+            AND versione_articolo = ?
+            AND username = ?
+        ");
+        $stmt->bind_param("iiis", $quantita, $id_prod, $versione_articolo, $username);
+        $stmt->execute();
+    }
 }
