@@ -17,4 +17,3 @@ $templateParams["prodotti"] = $dbh->getProducts();
 $templateParams["articoli"] = $dbh->getArticles();
 $templateParams["categorie"] = $dbh->getCategories();
 $templateParams["formati"] = $dbh->getFormats();
-?>

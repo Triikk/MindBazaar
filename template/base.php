@@ -28,9 +28,7 @@
         <nav>
             <ul>
                 <li><a href="articles.php">ARTICLES</a></li>
-                <li><a href="orders.php">ORDERS</a></li>
                 <li><a href="personalArea.php">PERSONALAREA</a></li>
-                <li><a href="notifications.php">NOTIFICHE</a></li>
                 <li><a href="login.php">LOGIN</a></li>
             </ul>
         </nav>

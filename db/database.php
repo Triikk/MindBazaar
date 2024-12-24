@@ -46,27 +46,28 @@ class DatabaseHelper {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getNotificationsByUserId($userId) {
+    public function getProductNotificationsByUserId($userId) {
         $stmt = $this->db->prepare(
-            "(SELECT NA.lettoYN, NA.data AS data, NA.tipologia, NA.id 
-                    FROM NOTIFICHE_ARTICOLI NA, UTENTI U ON NA.username = U.username 
-                    WHERE U.username = ?) 
-                    UNION 
-                    (SELECT NU.lettoYN, NU.data AS data, NU.tipologia, NU.id 
-                    FROM NOTIFICHE_UTENTI NU, UTENTI U ON NU.username = U.username 
-                    WHERE U.username = ?) 
-                    ORDER BY data DESC "
+            "SELECT NA.* 
+            FROM NOTIFICHE_ARTICOLI NA, UTENTI U ON NA.username = U.username 
+            WHERE U.username = ?
+            ORDER BY data DESC "
         );
 
-        $stmt->bind_param("ii", $userId, $userId);
+        $stmt->bind_param("i", $userId);
         $stmt->execute();
         $result = $stmt->get_result();
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getOrdersById($userId) {
-        $stmt = $this->db->prepare("SELECT * FROM ORDINI WHERE username = ?");
+    public function getArticleNotificationsByUserId($userId) {
+        $stmt = $this->db->prepare(
+            "SELECT NU.* 
+            FROM NOTIFICHE_UTENTI NU, UTENTI U ON NU.username = U.username 
+            WHERE U.username = ?
+            ORDER BY data DESC "
+        );
 
         $stmt->bind_param("i", $userId);
         $stmt->execute();
@@ -75,33 +76,63 @@ class DatabaseHelper {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getDetailedOrdersById($userId) {
-        $stmt = $this->db->prepare("SELECT O.id, O.quantita, A.id_prodotto, A.versione 
-                    FROM ORDINI O, RICHIESTE R, ARTICOLO A
-                    WHERE username = ?
-                    AND O.id = R.id_ordine
-                    AND A.id_prodotto = R.id_prodotto
-                    AND A.versione = R.versione_articolo
-                    GROUP BY O.id
-                    ORDER BY O.tempo_ordinazione DESC
-        ");
+    public function getOrdersByUsername($username) {
+        $stmt = $this->db->prepare(
+            "SELECT O.*
+            FROM ORDINI O
+            WHERE O.username = ?"
+        );
 
-        $stmt->bind_param("i", $userId);
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+    public function getArticlesByOrderId($orderId) {
+        $stmt = $this->db->prepare(
+            "SELECT A.*, P.*, R.*, O.*
+            FROM ARTICOLI A JOIN RICHIESTE R
+            ON R.id_prodotto = A.id_prodotto
+            JOIN PRODOTTI P ON P.id = A.id_prodotto
+            JOIN ORDINI O ON O.id = R.id_ordine
+            WHERE R.versione_articolo = A.versione
+            AND R.id_ordine = ?"
+        );
+        $stmt->bind_param("s", $orderId);
         $stmt->execute();
         $result = $stmt->get_result();
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getArticlesInBasketById($userId) {
-        $stmt = $this->db->prepare("SELECT * FROM ARTICOLI_IN_CARRELLO WHERE username = ?");
+    // public function getDetailedOrdersById($userId) {
+    //     $stmt = $this->db->prepare("SELECT O.id, O.quantita, A.id_prodotto, A.versione 
+    //                 FROM ORDINI O, RICHIESTE R, ARTICOLO A
+    //                 WHERE username = ?
+    //                 AND O.id = R.id_ordine
+    //                 AND A.id_prodotto = R.id_prodotto
+    //                 AND A.versione = R.versione_articolo
+    //                 GROUP BY O.id
+    //                 ORDER BY O.tempo_ordinazione DESC
+    //     ");
 
-        $stmt->bind_param("i", $userId);
-        $stmt->execute();
-        $result = $stmt->get_result();
+    //     $stmt->bind_param("i", $userId);
+    //     $stmt->execute();
+    //     $result = $stmt->get_result();
 
-        return $result->fetch_all(MYSQLI_ASSOC);
-    }
+    //     return $result->fetch_all(MYSQLI_ASSOC);
+    // }
+
+    // public function getArticlesInBasketById($userId) {
+    //     $stmt = $this->db->prepare("SELECT * FROM ARTICOLI_IN_CARRELLO WHERE username = ?");
+
+    //     $stmt->bind_param("i", $userId);
+    //     $stmt->execute();
+    //     $result = $stmt->get_result();
+
+    //     return $result->fetch_all(MYSQLI_ASSOC);
+    // }
 
     public function getArticlesByProductId($productId) {
         $stmt = $this->db->prepare("SELECT * FROM ARTICOLI WHERE id_prodotto = ?");
@@ -202,5 +233,14 @@ class DatabaseHelper {
         ");
         $stmt->bind_param("iiis", $quantita, $id_prod, $versione_articolo, $username);
         $stmt->execute();
+    }
+
+    public function getUserDataByUsername($username) {
+        $stmt = $this->db->prepare("SELECT * FROM UTENTI WHERE username = ?");
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
     }
 }

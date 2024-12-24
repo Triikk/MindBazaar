@@ -55,7 +55,7 @@ create table NOTIFICHE_ORDINI (
      lettoYN char not null,
      data datetime not null,
      tipologia int not null,
-     id int not null,
+     id_ordine int not null,
      constraint ID_NOTIFICA_ORDINE_ID primary key (username, data));
 
 create table ORDINI (
@@ -120,7 +120,7 @@ alter table NOTIFICHE_ORDINI add constraint FKricevimento_notifica_ordine
      references UTENTI (username);
 
 alter table NOTIFICHE_ORDINI add constraint FKnotifica_ordine_FK
-     foreign key (id)
+     foreign key (id_ordine)
      references ORDINI (id);
 
 -- Not implemented
@@ -170,7 +170,7 @@ create unique index ID_NOTIFICA_ORDINE_IND
      on NOTIFICHE_ORDINI (username, data);
 
 create index FKnotifica_ordine_IND
-     on NOTIFICHE_ORDINI (id);
+     on NOTIFICHE_ORDINI (id_ordine);
 
 create unique index ID_ORDINE_IND
      on ORDINI (id);

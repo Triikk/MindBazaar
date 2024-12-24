@@ -7,6 +7,6 @@ $templateParams["titolo"] = "MindBazaar";
 $templateParams["nome"] = "homepage.php";
 $templateParams["bestSellers"] = $dbh->getBestSellers(1);
 
-session_destroy();
+$_SESSION["username"] = "alexBan";
 
 require 'template/base.php';

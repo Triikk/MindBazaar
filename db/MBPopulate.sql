@@ -250,3 +250,11 @@ INSERT INTO ARTICOLI_IN_CARRELLO (id_prodotto, versione_articolo, username, quan
 (4, 1,  'MATT DESTROYER', 5),
 (16, 1,  'MATT DESTROYER', 5),
 (47, 1,  'MATT DESTROYER', 5);
+
+INSERT INTO NOTIFICHE_ORDINI (username, lettoYN, data, tipologia, id_ordine) VALUES
+('BEG IL SUPREMO', 'N', '2024-12-23 10:27:36', 0, 5),
+('BEG IL SUPREMO', 'N', '2024-12-23 10:27:37', 1, 6);
+
+INSERT INTO NOTIFICHE_ARTICOLI (username, lettoYN, data, tipologia, id_prodotto, versione_articolo) VALUES
+('BEG IL SUPREMO', 'N', '2024-12-23 10:27:36', 0, 5, 1),
+('BEG IL SUPREMO', 'N', '2024-12-23 10:27:37', 1, 5, 2);

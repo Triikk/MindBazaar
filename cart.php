@@ -1,8 +1,6 @@
 <?php
 require_once 'bootstrap.php';
 
-$_SESSION["username"] = "MATT DESTROYER";
-
 if (!isset($_SESSION["username"])) {
     header("location: login.php");
 }

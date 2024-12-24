@@ -63,7 +63,10 @@ function logInUser($username) {
 }
 
 function logOutUser() {
-    unset($_SESSION["username"]);
+    if (isset($_SESSION["username"])) {
+        unset($_SESSION["username"]);
+    }
+    header("location: index.php");
 }
 
 function searchArticles($articoli, $searchKey) {
