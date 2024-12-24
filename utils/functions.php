@@ -80,3 +80,19 @@ function searchArticles($articoli, $searchKey) {
     }
     return $outArticoli;
 }
+
+function getOrderNotificationText($type) {
+    if ($type == 0) {
+        return "L'ordine è stato spedito";
+    } else if ($type == 1) {
+        return "L'ordine è stato consegnato";
+    }
+}
+
+function getArticleNotificationText($type) {
+    if ($type == 0) {
+        return "Questo articolo non è più disponibile";
+    } else if ($type == 1) {
+        return "Questo articolo è nuovamente disponibile";
+    }
+}

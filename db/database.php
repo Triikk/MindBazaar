@@ -46,25 +46,30 @@ class DatabaseHelper {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getProductNotificationsByUserId($userId) {
+    public function getArticleNotificationsByUserId($userId) {
         $stmt = $this->db->prepare(
-            "SELECT NA.* 
-            FROM NOTIFICHE_ARTICOLI NA, UTENTI U ON NA.username = U.username 
+            "SELECT NOR.*, P.*, A.*
+            FROM NOTIFICHE_ORDINI NOR JOIN UTENTI U ON NOR.username = U.username
+            JOIN RICHIESTE R ON NOR.id_ordine = R.id_ordine
+            JOIN ARTICOLI A ON A.id_prodotto = R.id_prodotto
+            JOIN PRODOTTI P ON P.id = A.id_prodotto
+            AND A.versione = R.versione_articolo
             WHERE U.username = ?
             ORDER BY data DESC "
         );
 
-        $stmt->bind_param("i", $userId);
+        $stmt->bind_param("s", $userId);
         $stmt->execute();
         $result = $stmt->get_result();
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getArticleNotificationsByUserId($userId) {
+    public function getOrderNotificationsByUserId($userId) {
         $stmt = $this->db->prepare(
-            "SELECT NU.* 
-            FROM NOTIFICHE_UTENTI NU, UTENTI U ON NU.username = U.username 
+            "SELECT NU.*, O.*
+            FROM NOTIFICHE_ORDINI NU JOIN UTENTI U ON NU.username = U.username
+            JOIN ORDINI O ON NU.id_ordine = O.id
             WHERE U.username = ?
             ORDER BY data DESC "
         );
