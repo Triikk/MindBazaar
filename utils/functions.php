@@ -65,3 +65,15 @@ function logInUser($username) {
 function logOutUser() {
     unset($_SESSION["username"]);
 }
+
+function searchArticles($articoli, $searchKey) {
+    $outArticoli = [];
+    foreach ($articoli as $articolo) {
+        if (strpos($articolo["nome"], $searchKey) !== false) {
+            $outArticoli[] = $articolo;
+        } else if (strpos($articolo["descrizione"], $searchKey) !== false) {
+            $outArticoli[] = $articolo;
+        }
+    }
+    return $outArticoli;
+}

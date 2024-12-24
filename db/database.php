@@ -167,13 +167,25 @@ class DatabaseHelper {
         $stmt->execute();
         $result = $stmt->get_result();
 
-        return $result->fetch_all(MYSQLI_ASSOC);
+        return $result->num_rows > 0;
+    }
+
+    public function checkUsername($username) {
+        $stmt = $this->db->prepare("SELECT * FROM UTENTI WHERE username = ?");
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->num_rows > 0;
     }
 
     public function registerUser($username, $nome, $cognome, $data_nascita, $password) {
-        $stmt = $this->db->prepare("INSERT INTO UTENTI (username, nome, cognome, data_nascita, password) VALUES (?, ?, ?, ?, ?)");
-        $stmt->bind_param("sssdsi", $username, $nome, $cognome, $data_nascita, $password, false);
-        $stmt->execute();
+        $admin = 0;
+        $stmt = $this->db->prepare("INSERT INTO UTENTI (username, nome, cognome, data_nascita, password, amministratore) VALUES (?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("sssssi", $username, $nome, $cognome, $data_nascita, $password, $admin);
+        $result = $stmt->execute();
+
+        return $result;
     }
 
     public function modifyAmount($id_prod, $quantita, $username, $versione_articolo) {

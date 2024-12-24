@@ -18,6 +18,7 @@ foreach ($templateParams["formati"] as $formato) {
 }
 $filterOrdinamento = "";
 $filterMinAge = 0;
+$searchKey = "";
 
 if (isset($_GET["ordinamento"])) {
     echo "ordinamento was set";
@@ -45,6 +46,17 @@ if (isset($_GET["formati"])) {
     $filterFormats = $_GET["formati"];
 }
 
-$templateParams["articoliVisualizzati"] = getFilteredArticles($templateParams["articoli"], $filterCategories, $filterMinPrice, $filterMaxPrice, $filterFormats, $filterOrdinamento);
+$articoliCercati = [];
+if (isset($_GET["ricerca"])) {
+    echo "riceca was set";
+    var_dump($_GET["ricerca"]);
+    $searchKey = $_GET["ricerca"];
+
+    $articoliCercati = searchArticles($templateParams["articoli"], $searchKey);
+} else {
+    $articoliCercati = $templateParams["articoli"];
+}
+
+$templateParams["articoliVisualizzati"] = getFilteredArticles($articoliCercati, $filterCategories, $filterMinPrice, $filterMaxPrice, $filterFormats, $filterOrdinamento);
 
 require 'template/base.php';
