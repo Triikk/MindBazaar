@@ -13,11 +13,9 @@
     <h2>Categories:</h2>
     <nav>
         <ul>
-            <?php foreach ($templateParams["categorie"] as $categoria): ?>
-                <li>
-                    <a href=" articles.php?category=<?php echo $categoria["nome"]; ?>">
-        <?php echo $categoria["nome"]; ?>
-        </a>
+        <?php foreach ($templateParams["categorie"] as $categoria): ?>
+        <li>
+            <a href=" articles.php?category=<?php echo $categoria["nome"]; ?>"><?php echo $categoria["nome"]; ?></a>
         </li>
     <?php endforeach; ?>
     </ul>

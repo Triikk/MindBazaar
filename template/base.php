@@ -18,7 +18,7 @@
             <ul>
                 <li><a href="lateralMenu.php">ILM</a></li>
                 <li><a href="index.php">
-                        <h1>Titolo: MindBazaar</h1>
+                        <h1>MindBazaar</h1>
                     </a></li>
                 <li><a href="searchMenu.php">ISM</a></li>
                 <li><a href="cart.php">ICM</a></li>
