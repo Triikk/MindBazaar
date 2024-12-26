@@ -15,7 +15,7 @@
         <ul>
         <?php foreach ($templateParams["categorie"] as $categoria): ?>
         <li>
-            <a href=" articles.php?category=<?php echo $categoria["nome"]; ?>"><?php echo $categoria["nome"]; ?></a>
+            <a href=" articles.php?categorie%5B%5D=<?php echo $categoria["nome"]; ?>"><?php echo $categoria["nome"]; ?></a>
         </li>
     <?php endforeach; ?>
     </ul>
