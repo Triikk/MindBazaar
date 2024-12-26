@@ -31,7 +31,7 @@
             require($templateParams["nome"]);
         }; ?>
     </main>
-    <footer>
+    <footer id="footer">
         <p>Contattaci: +39 686730535</p>
         <p>Indirizzo: Via dell'Università 50, Cesena</p>
         <p>&copy 2024 MindBazaar S.p.A.</p>
