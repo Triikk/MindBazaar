@@ -1,8 +1,6 @@
 function calculateTotal(articles) {
     let total = 0;
-    console.log(articles);
     for (let i = 0; i < articles.length; i++) {
-        console.log(articles[i]["prezzo"]);
         total += parseFloat(articles[i]["prezzo"]);
     }
     return total.toFixed(2);
@@ -29,7 +27,7 @@ function generateOrders(orders) {
             orderHTML += `
             <li>
             <h4>${article["nome"]}</h4>
-            <p>Categoria: ${article["categoria"]}</p>
+            <p>Categoria: ${article["nome_categoria"]}</p>
             <p>Quantita: ${article["quantita"]}</p>
             <p>Prezzo: ${article["prezzo"]}€</p>
             </li >
