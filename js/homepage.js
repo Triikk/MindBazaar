@@ -14,43 +14,93 @@ function generateBestsellers(bestsellers) {
         <h2>Best sellers:</h2>
         `;
     }
+    result += `
+    <ul>
+    `;
 
     for (let i = 0; i < numBS; i++) {
         // <img src="${bestsellers[i]["img"]}" alt="" />
         let bestseller = `
+        <li>
         <h3>${bestsellers[i]["nome"]}</h3>
         <p>${bestsellers[i]["descrizione"]}</p>
+        </li>
         `;
         result += bestseller;
     }
+    result += `
+    </ul>
+    `;
     return result;
 }
 
 async function getBestsellersData() {
-    const url = 'api/api-homepage.php';
+    const url = 'api/api-homepage.php?query=bestSellers';
     try {
         const response = await fetch(url);
         if (!response.ok) {
             throw new Error(`Response status: ${response.status}`);
         }
-        // const contentType = response.headers.get('Content-Type');
-        // if (contentType && contentType.includes('application/json')) {
         const json = await response.json();
-        //     console.log('JSON Response:', json);
-        //     return json;
-        // } else {
-        //     // Handle unexpected response types
-        //     const text = await response.text();
-        //     console.error('Unexpected Response:', text);
-        //     throw new Error('Invalid response type: Expected JSON');
-        // }
         console.log(json);
         const bestsellers = generateBestsellers(json);
-        const mainSection = document.querySelector('main section');
-        mainSection.innerHTML = bestsellers;
+        const BSSection = document.querySelector('main > :nth-child(1)');
+        BSSection.innerHTML = bestsellers;
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+
+function generateCategories(categories) {
+    let result = "";
+    let numC = categories.length;
+    if (numC === 0) {
+        result += `
+        <h2>No categories found</h2>
+        `;
+    } else if (numC === 1) {
+        result += `
+        <h2>Category:</h2>
+        `;
+    } else {
+        result += `
+        <h2>Categories:</h2>
+        `;
+    }
+    result += `
+    <ul>
+    `;
+
+    for (let i = 0; i < numC; i++) {
+        let category = `
+        <li>
+        <a href="../articles.php?categorie%5B%5D=${categories[i]["nome"]}">${categories[i]["nome"]}</a>
+        </li>
+        `;
+        result += category;
+    }
+    result += `
+    </ul>
+    `;
+    return result;
+}
+
+async function getCategoriesData() {
+    const url = 'api/api-homepage.php?query=categories';
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`);
+        }
+        const json = await response.json();
+        console.log(json);
+        const categories = generateCategories(json);
+        const CSection = document.querySelector('main > :nth-child(2)');
+        CSection.innerHTML = categories;
     } catch (error) {
         console.log(error.message);
     }
 }
 
 getBestsellersData();
+getCategoriesData();
