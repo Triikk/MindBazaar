@@ -13,8 +13,5 @@
         <li>
             <h3>Data di nascita: <?php echo $datiUtente["data_nascita"] ?></h3>
         </li>
-        <li>
-            <h3>Password: <input type="password" name="password" value="<?php echo $datiUtente["password"] ?>"></h3>
-        </li>
     </ul>
 </section>
