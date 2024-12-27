@@ -74,7 +74,7 @@ function generateCategories(categories) {
     for (let i = 0; i < numC; i++) {
         let category = `
         <li>
-        <a href="../articles.php?categorie%5B%5D=${categories[i]["nome"]}">${categories[i]["nome"]}</a>
+        <a href="articles.php?categorie%5B%5D=${categories[i]["nome"]}">${categories[i]["nome"]}</a>
         </li>
         `;
         result += category;
