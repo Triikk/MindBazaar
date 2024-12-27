@@ -1,6 +1,7 @@
 <?php
 require_once '../bootstrap.php';
 header('Content-Type: application/json');
+
 if (isset($_GET["query"]) && $_GET["query"] == "bestSellers") {
     $bestSellers = $dbh->getBestSellers(2);
     // for($i = 0; $i < count($articoli); $i++){

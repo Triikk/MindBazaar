@@ -34,7 +34,7 @@ function generateBestsellers(bestsellers) {
     return result;
 }
 
-async function getBestsellersData() {
+async function getBestsellers() {
     const url = 'api/api-homepage.php?query=bestSellers';
     try {
         const response = await fetch(url);
@@ -85,7 +85,7 @@ function generateCategories(categories) {
     return result;
 }
 
-async function getCategoriesData() {
+async function getCategories() {
     const url = 'api/api-homepage.php?query=categories';
     try {
         const response = await fetch(url);
@@ -102,5 +102,5 @@ async function getCategoriesData() {
     }
 }
 
-getBestsellersData();
-getCategoriesData();
+getBestsellers();
+getCategories();

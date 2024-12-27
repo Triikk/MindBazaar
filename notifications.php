@@ -7,8 +7,6 @@ if (!isset($_SESSION["username"])) {
 
 $templateParams["titolo"] = "MindBazaar - Notifiche";
 $templateParams["nome"] = "userNotifications.php";
-
-$templateParams["notificheArticoli"] = $dbh->getArticleNotificationsByUserId($_SESSION["username"]);
-$templateParams["notificheOrdini"] = $dbh->getOrderNotificationsByUserId($_SESSION["username"]);
+$templateParams["js"] = array("js/notifications.js");
 
 require 'template/base.php';
