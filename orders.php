@@ -11,19 +11,4 @@ $templateParams["titolo"] = "MindBazaar - Ordini";
 $templateParams["nome"] = "ordersList.php";
 $templateParams["js"] = array("js/orders.js");
 
-// $templateParams["ordini"] = $dbh->getOrdersByUsername($_SESSION["username"]);
-
-// $ordiniConListaArticoli = array();
-// $i = 0;
-// foreach ($templateParams["ordini"] as $ordine) {
-//     $listaArticoli = $dbh->getArticlesByOrderId($ordine["id"]);
-//     $articoliOrdini[$i] = $listaArticoli;
-//     $tuple = [$ordine, $listaArticoli];
-//     $ordiniConListaArticoli[$i] = $tuple;
-//     $i++;
-// }
-// $templateParams["ordiniConListaArticoli"] = $ordiniConListaArticoli;
-
-
-
 require 'template/base.php';
