@@ -198,12 +198,15 @@ class DatabaseHelper {
     }
 
     public function checkLogin($username, $password) {
-        $stmt = $this->db->prepare("SELECT * FROM UTENTI WHERE username = ? AND password = ?");
-        $stmt->bind_param("ss", $username, $password);
+        $stmt = $this->db->prepare("SELECT password FROM UTENTI WHERE username = ? LIMIT 1");
+        $stmt->bind_param("s", $username);
         $stmt->execute();
         $result = $stmt->get_result();
-
-        return $result->num_rows > 0;
+        if ($result->num_rows == 0) {
+            return false;
+        }
+        $storedPassword = $result->fetch_all(MYSQLI_ASSOC)[0]["password"];
+        return password_verify($password, $storedPassword);
     }
 
     public function checkUsername($username) {
