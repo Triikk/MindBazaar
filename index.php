@@ -5,7 +5,8 @@ require_once 'bootstrap.php';
 $templateParams["titolo"] = "MindBazaar";
 //Home Template
 $templateParams["nome"] = "homepage.php";
-$templateParams["bestSellers"] = $dbh->getBestSellers(1);
+
+$templateParams["js"] = array("js/homepage.js");
 
 $_SESSION["username"] = "BEG IL SUPREMO";
 

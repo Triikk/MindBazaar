@@ -37,5 +37,14 @@
         <p>&copy 2024 MindBazaar S.p.A.</p>
     </footer>
 </body>
+<?php
+if (isset($templateParams["js"])):
+    foreach ($templateParams["js"] as $script):
+?>
+        <script src="<?php echo $script; ?>"></script>
+<?php
+    endforeach;
+endif;
+?>
 
 </html>
