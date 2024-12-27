@@ -6,11 +6,11 @@
     <label for="prezzoAsc">Prezzo (crescente)</label>
     <input type="radio" name="ordinamento" value="prezzoAsc">
     <label for="prezzoMin">Prezzo minimo:</label>
-    <input type="range" name="prezzoMin" min="0" max="1000">
+    <input type="range" name="prezzoMin" min="0" max="1000" value="<?php echo $filterMinPrice; ?>">
     <label for="prezzoMax">Prezzo massimo:</label>
-    <input type="range" name="prezzoMax" min="0" max="1000">
+    <input type="range" name="prezzoMax" min="0" max="1000" value="<?php echo $filterMaxPrice; ?>">
     <label for="etaMinima">Età:</label>
-    <input type="range" name="etaMinima" min="14" max="99">
+    <input type="range" name="etaMinima" min="14" max="99" value="<?php echo $filterMinAge; ?>">
     <?php foreach ($templateParams["categorie"] as $categoria): ?>
         <label for="<?php echo $categoria["nome"]; ?>"><?php echo $categoria["nome"]; ?></label>
         <input type="checkbox" name="categorie[]" value="<?php echo $categoria["nome"]; ?>">
