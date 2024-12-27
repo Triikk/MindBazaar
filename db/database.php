@@ -248,4 +248,19 @@ class DatabaseHelper {
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function addToCart($username, $id_prodotto, $versione_articolo, $quantita) {
+        $stmt = $this->db->prepare("INSERT INTO ARTICOLI_IN_CARRELLO (username, id_prodotto, versione_articolo, quantita) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("siii", $username, $id_prodotto, $versione_articolo, $quantita);
+        $stmt->execute();
+    }
+
+    public function getArticleVersion($id_prodotto, $formato, $durata, $intensita) {
+        $stmt = $this->db->prepare("SELECT versione FROM ARTICOLI WHERE id_prodotto = ? AND formato = ? AND durata = ? AND intensita = ?");
+        $stmt->bind_param("isss", $id_prodotto, $formato, $durata, $intensita);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_assoc(); // first row only
+    }
 }
