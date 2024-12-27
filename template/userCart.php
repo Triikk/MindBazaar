@@ -7,7 +7,7 @@ if (isset($_POST["submit"]) && $_POST["submit"] == "modify-amount") {
     $quantita_articolo_in_carrello = $_POST["quantita_articolo_in_carrello"];
     $username_articolo_in_carrello = $_POST["username_articolo_in_carrello"];
     $versione_articolo_in_carrello = $_POST["versione_articolo_in_carrello"];
-    $dbh->modifyAmount($id_prod_articolo_in_carrello, $quantita_articolo_in_carrello, $username_articolo_in_carrello, $versione_articolo_in_carrello);
+    $dbh->modifyCartAmount($id_prod_articolo_in_carrello, $quantita_articolo_in_carrello, $username_articolo_in_carrello, $versione_articolo_in_carrello);
     $templateParams["articoliInCarrello"] = $dbh->getCartArticles($_SESSION["username"]);
 }
 
@@ -27,7 +27,7 @@ if (isset($_POST["submit"]) && $_POST["submit"] == "modify-amount") {
             <li>
                 <h3><?php echo $articoloInCarrello["nome"] ?></h3>
                 <p>Prezzo: <?php echo $articoloInCarrello["prezzo"] ?>€</p>
-                <p>Id_prodotto: <?php echo $articoloInCarrello["id_prodotto"] ?></p>
+                <p>Formato: <?php echo $articoloInCarrello["formato"] ?>, intensità: <?php echo $articoloInCarrello["intensita"] ?>, durata: <?php echo $articoloInCarrello["durata"] ?></p>
                 <p>Quantità: <?php echo $articoloInCarrello["quantita"] ?></p>
                 <p>Disponibilità: <?php echo showAvailability($articoloInCarrello["disponibilita"]) ?></p>
                 <form id="modify-amount-<?php echo $index; ?>" action="cart.php" method="post">

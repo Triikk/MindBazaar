@@ -72,3 +72,11 @@ function searchArticles($articoli, $searchKey) {
     }
     return $outArticoli;
 }
+
+function calculateTotal($articles) {
+    $total = 0;
+    foreach ($articles as $article) {
+        $total += $article["prezzo"];
+    }
+    return $total;
+}
