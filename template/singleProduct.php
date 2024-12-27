@@ -4,7 +4,8 @@
 <p><?php echo $articolo["formato"]; ?></p>
 <p><?php echo "Prezzo: " . $articolo["prezzo"]; ?></p>
 
-<form action="/product.php" method="GET">
+<form action="template/addToCart.php" method="POST">
+    <input type="hidden" name="id_prodotto" value="<?php echo $articolo["id_prodotto"]; ?>">
     <?php foreach ($formatiProdotto as $formato): ?>
         <label for="<?php echo $formato; ?>"><?php echo $formato; ?></label>
         <input type="radio" name="formato" value="<?php echo $formato; ?>">
@@ -19,5 +20,5 @@
     <?php endforeach; ?>
     <label for="quantita">Quantita:</label>
     <input type="number" name="quantita" min="1" max="10" value="1">
-    <button type="submit">Aggiungi al carrello</button>
+    <button type="submit" name="submit">Aggiungi al carrello</button>
 </form>

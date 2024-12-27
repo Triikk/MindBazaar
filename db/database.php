@@ -224,7 +224,7 @@ class DatabaseHelper {
         return $result;
     }
 
-    public function modifyAmount($id_prod, $quantita, $username, $versione_articolo) {
+    public function modifyCartAmount($id_prod, $quantita, $username, $versione_articolo) {
         $id_prod = (int)$id_prod;
         $quantita = (int)$quantita;
         $versione_articolo = (int)$versione_articolo;
@@ -247,5 +247,32 @@ class DatabaseHelper {
         $result = $stmt->get_result();
 
         return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function addToCart($username, $id_prodotto, $versione_articolo, $quantita) {
+        $stmt = $this->db->prepare("SELECT quantita FROM ARTICOLI_IN_CARRELLO WHERE username = ? AND id_prodotto = ? AND versione_articolo = ?");
+        $stmt->bind_param("sii", $username, $id_prodotto, $versione_articolo);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        // se l'articolo è già presente nel carrello, aggiorna la quantità
+        if ($result && $result->num_rows > 0) {
+            $quantita += $result->fetch_all(MYSQLI_ASSOC)[0]["quantita"];
+            $this->modifyCartAmount($id_prodotto, $quantita, $username, $versione_articolo);
+            return;
+        }
+
+        $stmt = $this->db->prepare("INSERT INTO ARTICOLI_IN_CARRELLO (username, id_prodotto, versione_articolo, quantita) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("siii", $username, $id_prodotto, $versione_articolo, $quantita);
+        $stmt->execute();
+    }
+
+    public function getArticleVersion($id_prodotto, $formato, $durata, $intensita) {
+        $stmt = $this->db->prepare("SELECT versione FROM ARTICOLI WHERE id_prodotto = ? AND formato = ? AND durata = ? AND intensita = ?");
+        $stmt->bind_param("issi", $id_prodotto, $formato, $durata, $intensita);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC)[0]["versione"];
     }
 }
