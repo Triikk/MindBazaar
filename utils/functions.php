@@ -50,14 +50,6 @@ function showAvailability($nItems) {
     }
 }
 
-function calculateTotal($articles) {
-    $total = 0;
-    foreach ($articles as $article) {
-        $total += $article["prezzo"];
-    }
-    return ($total);
-}
-
 function logInUser($username) {
     $_SESSION["username"] = $username;
 }

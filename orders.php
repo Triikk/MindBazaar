@@ -9,18 +9,20 @@ if (!isset($_SESSION["username"])) {
 $templateParams["titolo"] = "MindBazaar - Ordini";
 //Home Template
 $templateParams["nome"] = "ordersList.php";
-$templateParams["ordini"] = $dbh->getOrdersByUsername($_SESSION["username"]);
+$templateParams["js"] = array("js/orders.js");
 
-$ordiniConListaArticoli = array();
-$i = 0;
-foreach ($templateParams["ordini"] as $ordine) {
-    $listaArticoli = $dbh->getArticlesByOrderId($ordine["id"]);
-    $articoliOrdini[$i] = $listaArticoli;
-    $tuple = [$ordine, $listaArticoli];
-    $ordiniConListaArticoli[$i] = $tuple;
-    $i++;
-}
-$templateParams["ordiniConListaArticoli"] = $ordiniConListaArticoli;
+// $templateParams["ordini"] = $dbh->getOrdersByUsername($_SESSION["username"]);
+
+// $ordiniConListaArticoli = array();
+// $i = 0;
+// foreach ($templateParams["ordini"] as $ordine) {
+//     $listaArticoli = $dbh->getArticlesByOrderId($ordine["id"]);
+//     $articoliOrdini[$i] = $listaArticoli;
+//     $tuple = [$ordine, $listaArticoli];
+//     $ordiniConListaArticoli[$i] = $tuple;
+//     $i++;
+// }
+// $templateParams["ordiniConListaArticoli"] = $ordiniConListaArticoli;
 
 
 
