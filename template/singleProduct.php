@@ -5,6 +5,7 @@
 <p><?php echo "Prezzo: " . $articolo["prezzo"]; ?></p>
 
 <form action="template/addToCart.php" method="POST">
+    <input type="hidden" name="id_prodotto" value="<?php echo $articolo["id_prodotto"]; ?>">
     <?php foreach ($formatiProdotto as $formato): ?>
         <label for="<?php echo $formato; ?>"><?php echo $formato; ?></label>
         <input type="radio" name="formato" value="<?php echo $formato; ?>">
