@@ -2,6 +2,7 @@
 if (!isset($_SESSION["username"])) {
     header("location: login.php");
 }
+/*
 if (isset($_POST["submit"]) && $_POST["submit"] == "modify-amount") {
     $id_prod_articolo_in_carrello = $_POST["id_prod_articolo_in_carrello"];
     $quantita_articolo_in_carrello = $_POST["quantita_articolo_in_carrello"];
@@ -9,9 +10,10 @@ if (isset($_POST["submit"]) && $_POST["submit"] == "modify-amount") {
     echo "RESULT: " . $dbh->modifyCartAmount($id_prod_articolo_in_carrello, $quantita_articolo_in_carrello, $_SESSION["username"], $versione_articolo_in_carrello);
     $userParams["articoliInCarrello"] = $dbh->getCartArticles($_SESSION["username"]);
 }
-
+*/
 ?>
 
+<?php /*
 <section>
     <h2>Numero articoli presenti: <?php echo count($userParams["articoliInCarrello"]); ?></h2>
     <h2>Totale provvisorio: <?php echo calculateTotal($userParams["articoliInCarrello"]); ?>€</h2>
@@ -34,9 +36,23 @@ if (isset($_POST["submit"]) && $_POST["submit"] == "modify-amount") {
                     <input form="modify-amount-<?php echo $index; ?>" type="hidden" name="versione_articolo_in_carrello" value="<?php echo $articoloInCarrello["versione_articolo"] ?>">
                     <input form="modify-amount-<?php echo $index; ?>" type="number" name="quantita_articolo_in_carrello" value="<?php echo $articoloInCarrello["quantita"] ?>">
                     <input form="modify-amount-<?php echo $index; ?>" type="submit" name="submit" value="modify-amount">
+                    <input type="checkbox" form="modify-amount-<?php echo $index; ?>" name="include" value="false">
                 </form>
             </li>
             <?php $index++; ?>
         <?php endforeach; ?>
     </ul>
+    </section>
+*/
+?>
+
+<section>
+    <h2>Numero articoli presenti:</h2>
+    <h2>Totale provvisorio: </h2>
+    <form id="checkout-form" action="utils/checkout.php" method="post">
+        <input form="checkout-form" type="submit" name="submit" value="checkout">
+    </form>
+</section>
+<section>
+
 </section>
