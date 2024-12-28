@@ -85,7 +85,8 @@ class DatabaseHelper {
         $stmt = $this->db->prepare(
             "SELECT O.*
             FROM ORDINI O
-            WHERE O.username = ?"
+            WHERE O.username = ?
+            ORDER BY O.tempo_ordinazione DESC"
         );
 
         $stmt->bind_param("s", $username);
@@ -241,6 +242,26 @@ class DatabaseHelper {
         ");
         $stmt->bind_param("iiis", $quantita, $id_prod, $versione_articolo, $username);
         $stmt->execute();
+        if ($stmt->affected_rows <= 0) {
+            return false;
+        }
+        // select articles with quantity <= 0
+        $stmt = $this->db->prepare("SELECT * FROM ARTICOLI_IN_CARRELLO WHERE quantita <= 0");
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $articles = $result->fetch_all(MYSQLI_ASSOC);
+        if (count($articles) > 0) {
+            // delete articles with quantity <= 0
+            foreach ($articles as $article) {
+                $stmt = $this->db->prepare("DELETE FROM ARTICOLI_IN_CARRELLO WHERE id_prodotto = ? AND versione_articolo = ? AND username = ?");
+                $stmt->bind_param("iis", $article["id_prodotto"], $article["versione_articolo"], $article["username"]);
+                $stmt->execute();
+                if ($stmt->affected_rows === FALSE) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     public function getUserDataByUsername($username) {
@@ -277,5 +298,70 @@ class DatabaseHelper {
         $result = $stmt->get_result();
 
         return $result->fetch_all(MYSQLI_ASSOC)[0]["versione"];
+    }
+
+    public function checkout($username) {
+        // get user cart articles
+        $stmt = $this->db->prepare("SELECT * FROM ARTICOLI_IN_CARRELLO WHERE username = ?");
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $articles = $stmt->get_result();
+        $articles = $articles->fetch_all(MYSQLI_ASSOC);
+        if (count($articles) == 0) {
+            return false;
+        }
+        // check each products disponibility
+        $flag = true;
+        foreach ($articles as $article) {
+            $stmt = $this->db->prepare("SELECT disponibilita FROM ARTICOLI WHERE id_prodotto = ? AND versione = ?");
+            $stmt->bind_param("ii", $article["id_prodotto"], $article["versione_articolo"]);
+            $stmt->execute();
+            $flag = $stmt->get_result();
+            $flag = $flag->fetch_all(MYSQLI_ASSOC)[0]["disponibilita"] >= $article["quantita"];
+            if (!$flag) {
+                return false;
+            }
+        }
+        // update article disponibility
+        foreach ($articles as $article) {
+            $stmt = $this->db->prepare("UPDATE articoli SET disponibilita = disponibilita - ? WHERE id_prodotto = ? AND versione = ?");
+            $stmt->bind_param("iii", $article["quantita"], $article["id_prodotto"], $article["versione_articolo"]);
+            $stmt->execute();
+            if ($stmt->affected_rows <= 0) {
+                return false;
+            }
+        }
+        // update user cart
+        $stmt = $this->db->prepare("DELETE FROM ARTICOLI_IN_CARRELLO WHERE username = ?");
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        if ($stmt->affected_rows <= 0) {
+            return false;
+        }
+        // create order
+        $stmt = $this->db->prepare("INSERT INTO ORDINI (tempo_ordinazione, tempo_spedizione, tempo_consegna, username) VALUES (?, ?, ?, ?)");
+        $tempo_ordinazione = date("Y-m-d H:i:s");
+        $tempo_spedizione = date_format(date_add(date_create($tempo_ordinazione), date_interval_create_from_date_string("2 days")), "Y-m-d H:i:s");
+        $tempo_consegna = date_format(date_add(date_create($tempo_ordinazione), date_interval_create_from_date_string("7 days")), "Y-m-d H:i:s");
+        $stmt->bind_param("ssss", $tempo_ordinazione, $tempo_spedizione, $tempo_consegna, $username);
+        $stmt->execute();
+        if ($stmt->affected_rows <= 0) {
+            return false;
+        }
+        // get order id
+        $stmt = $this->db->prepare("SELECT id FROM ORDINI WHERE username = ? AND tempo_ordinazione = ?");
+        $stmt->bind_param("ss", $username, $tempo_ordinazione);
+        $stmt->execute();
+        $orderId = $stmt->get_result()->fetch_all(MYSQLI_ASSOC)[0]["id"];
+        // create order requests
+        foreach ($articles as $article) {
+            $stmt = $this->db->prepare("INSERT INTO RICHIESTE (id_ordine, id_prodotto, versione_articolo, quantita) VALUES (?, ?, ?, ?)");
+            $stmt->bind_param("iiii", $orderId, $article["id_prodotto"], $article["versione_articolo"], $article["quantita"]);
+            $stmt->execute();
+            if ($stmt->affected_rows <= 0) {
+                return false;
+            }
+        }
+        return true;
     }
 }

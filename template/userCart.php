@@ -6,7 +6,7 @@ if (isset($_POST["submit"]) && $_POST["submit"] == "modify-amount") {
     $id_prod_articolo_in_carrello = $_POST["id_prod_articolo_in_carrello"];
     $quantita_articolo_in_carrello = $_POST["quantita_articolo_in_carrello"];
     $versione_articolo_in_carrello = $_POST["versione_articolo_in_carrello"];
-    $dbh->modifyCartAmount($id_prod_articolo_in_carrello, $quantita_articolo_in_carrello, $_SESSION["username"], $versione_articolo_in_carrello);
+    echo "RESULT: " . $dbh->modifyCartAmount($id_prod_articolo_in_carrello, $quantita_articolo_in_carrello, $_SESSION["username"], $versione_articolo_in_carrello);
     $userParams["articoliInCarrello"] = $dbh->getCartArticles($_SESSION["username"]);
 }
 
@@ -17,7 +17,7 @@ if (isset($_POST["submit"]) && $_POST["submit"] == "modify-amount") {
     <h2>Totale provvisorio: <?php echo calculateTotal($userParams["articoliInCarrello"]); ?></h2>
 </section>
 <section>
-    <form id="checkout-form" action="checkout.php" method="post">
+    <form id="checkout-form" action="utils/checkout.php" method="post">
         <input form="checkout-form" type="submit" name="submit" value="checkout">
     </form>
     <ul>

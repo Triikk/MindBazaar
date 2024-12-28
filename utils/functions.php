@@ -42,9 +42,9 @@ function showAvailability($nItems) {
     if ($nItems > 20) {
         return "Disponibile";
     } else if ($nItems > 10) {
-        return "Ultimi pezzi";
-    } else if ($nItems > 0) {
-        return "Sta per terminare";
+        return "Ultimi pezzi: " . $nItems;
+        // } else if ($nItems > 0) {
+        //     return "Sta per terminare";
     } else {
         return "Non disponibile";
     }
