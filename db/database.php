@@ -300,6 +300,18 @@ class DatabaseHelper {
         return $result->fetch_all(MYSQLI_ASSOC)[0]["versione"];
     }
 
+    public function getArticleInfo($id_prodotto, $formato, $durata, $intensita) {
+        $stmt = $this->db->prepare("SELECT * FROM ARTICOLI WHERE id_prodotto = ? AND formato = ? AND durata = ? AND intensita = ?");
+        $stmt->bind_param("issi", $id_prodotto, $formato, $durata, $intensita);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($result->num_rows == 0) {
+            return false;
+        }
+
+        return $result->fetch_all(MYSQLI_ASSOC)[0];
+    }
+
     public function checkout($username) {
         // get user cart articles
         $stmt = $this->db->prepare("SELECT * FROM ARTICOLI_IN_CARRELLO WHERE username = ?");
