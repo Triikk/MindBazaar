@@ -1,11 +1,3 @@
-function calculateTotal(articles) {
-    let total = 0;
-    for (let i = 0; i < articles.length; i++) {
-        total += parseFloat(articles[i]["prezzo"]);
-    }
-    return total.toFixed(2);
-}
-
 function generateOrders(orders) {
     let result = "";
     let numOrders = orders.length;

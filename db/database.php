@@ -290,6 +290,12 @@ class DatabaseHelper {
         $stmt->execute();
     }
 
+    public function removeFromCart($username, $id_prodotto, $versione_articolo) {
+        $stmt = $this->db->prepare("DELETE FROM ARTICOLI_IN_CARRELLO WHERE username = ? AND id_prodotto = ? AND versione_articolo = ?");
+        $stmt->bind_param("sii", $username, $id_prodotto, $versione_articolo);
+        $stmt->execute();
+    }
+
     public function getArticleVersion($id_prodotto, $formato, $durata, $intensita) {
         $stmt = $this->db->prepare("SELECT versione FROM ARTICOLI WHERE id_prodotto = ? AND formato = ? AND durata = ? AND intensita = ?");
         $stmt->bind_param("issi", $id_prodotto, $formato, $durata, $intensita);
@@ -374,6 +380,15 @@ class DatabaseHelper {
             }
         }
         return true;
+    }
+
+    public function isAdmin($username) {
+        $stmt = $this->db->prepare("SELECT amministratore FROM UTENTI WHERE username = ?");
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC)[0]["amministratore"] == 1;
     }
 
     public function getUnreadANotificationsByUsername($username) {

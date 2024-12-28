@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const availabilityElement = document.getElementById('availability');
     const priceElement = document.getElementById('price');
+    const addToCartButton = document.getElementById('add-to-cart');
     const form = document.querySelector('form');
 
     // Async function to fetch the specific product manifestation
@@ -48,8 +49,14 @@ document.addEventListener('DOMContentLoaded', () => {
             availabilityElement.textContent = `Disponibilità: ${articleData["disponibilita"]}`;
             if (articleData["disponibilita"] == "Questo prodotto non è disponibile") {
                 priceElement.textContent = "Prezzo: -";
+                addToCartButton.setAttribute("disabled", "disabled");
             } else {
                 priceElement.textContent = `Prezzo: €${(articleData["prezzo"] * selectedFields["quantita"]).toFixed(2)}`;
+                if (selectedFields["quantita"] > articleData["disponibilita"]) {
+                    addToCartButton.setAttribute("disabled", "disabled");
+                } else {
+                    addToCartButton.removeAttribute("disabled");
+                }
             }
         } catch (error) {
             console.error("Error fetching article data:", error);

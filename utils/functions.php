@@ -81,7 +81,11 @@ function calculateTotal($articles) {
     return $total;
 }
 
-function getImagePathByCategory($category) {
+function getImagePath($category, $imageName) {
+    return getImageDir($category) . "/" . $imageName;
+}
+
+function getImageDir($category) {
     switch ($category) {
         case "Sogno":
             return DREAMS_DIR;
@@ -92,8 +96,25 @@ function getImagePathByCategory($category) {
         case "Nozione":
             return NOTIONS_DIR;
         default:
-            return "";
+            die("Categoria non valida");
     }
+}
+
+function getAdminImagePath($action) {
+    switch ($action) {
+        case "addArticle":
+            return ADMIN_DIR . "aggiungi-articolo.png";
+        default:
+            die("Azione non valida");
+    }
+}
+
+function API_checkUserLoggedIn() {
+    $ret = isset($_SESSION["username"]);
+    if (!$ret) {
+        echo json_encode(array("error" => "Not logged in"));
+    }
+    return $ret;
 }
 
 function getTimeInterval($type) {

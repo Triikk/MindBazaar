@@ -1,6 +1,7 @@
 <section>
     <?php $articolo = $userParams["articolo"]; ?>
     <h2><?php echo $articolo["nome"]; ?></h2>
+    <img src="<?php echo getImagePath($articolo["nome_categoria"], $articolo["immagine"]); ?>" alt="<?php echo $articolo["nome"]; ?>">
     <p><?php echo $articolo["descrizione"]; ?></p>
     <p id="availability"><?php echo "Disponibilità: " . showAvailability($articolo["disponibilita"]); ?></p>
     <p id="price"><?php echo "Prezzo: " . $articolo["prezzo"]; ?></p>
@@ -35,7 +36,7 @@
         <?php endforeach; ?>
 
         <label for="quantita">Quantita:</label>
-        <input type="number" name="quantita" min="1" max="10" value="1">
-        <button type="submit" name="submit">Aggiungi al carrello</button>
+        <input type="number" name="quantita" min="1" max="<?php echo $articolo["disponibilita"]; ?>" value="1">
+        <button type="submit" id="add-to-cart" name="submit">Aggiungi al carrello</button>
     </form>
 </section>

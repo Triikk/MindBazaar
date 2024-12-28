@@ -13,6 +13,10 @@ define("DREAMS_DIR", PRODUCTS_DIR . "sogni/");
 define("NOTIONS_DIR", PRODUCTS_DIR . "nozioni/");
 define("INSPIRATIONS_DIR", PRODUCTS_DIR . "ispirazioni/");
 define("EMOTIONS_DIR", PRODUCTS_DIR . "emozioni/");
+define("ICONS_DIR", UPLOAD_DIR . "icons/");
+define("ADMIN_DIR", ICONS_DIR . "admin/");
+define("LOGOS_DIR", ICONS_DIR . "logos/");
+define("FORMATS_DIR", ICONS_DIR . "formats/");
 
 require_once("utils/functions.php");
 require_once("db/database.php");
