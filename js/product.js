@@ -52,7 +52,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 addToCartButton.setAttribute("disabled", "disabled");
             } else {
                 priceElement.textContent = `Prezzo: €${(articleData["prezzo"] * selectedFields["quantita"]).toFixed(2)}`;
-                addToCartButton.removeAttribute("disabled");
+                if (selectedFields["quantita"] > articleData["disponibilita"]) {
+                    addToCartButton.setAttribute("disabled", "disabled");
+                } else {
+                    addToCartButton.removeAttribute("disabled");
+                }
             }
         } catch (error) {
             console.error("Error fetching article data:", error);

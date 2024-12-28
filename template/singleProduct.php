@@ -36,7 +36,7 @@
         <?php endforeach; ?>
 
         <label for="quantita">Quantita:</label>
-        <input type="number" name="quantita" min="1" max="10" value="1">
+        <input type="number" name="quantita" min="1" max="<?php echo $articolo["disponibilita"]; ?>" value="1">
         <button type="submit" id="add-to-cart" name="submit">Aggiungi al carrello</button>
     </form>
 </section>
