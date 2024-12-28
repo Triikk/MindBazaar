@@ -50,39 +50,41 @@ async function visualizeCart() {
 async function removeArticle(index) {
     let articolo = carrello[index];
     // rimuove articolo dal carrello
-    const url = `api/api-cart.php?query=removeFromCart&art_id_prod=${articolo["id_prodotto"]}&art_versione=${articolo["versione"]}`;
+    const url = `api/api-cart.php`;
     try {
-        const response = await fetch(url);
-        if (!response.ok) {
-            throw new Error(`Response status: ${response.status} `);
-        }
+        const xhttp = new XMLHttpRequest();
+        xhttp.open("POST", "api/api-cart.php", true);
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttp.onload = function() {
+            visualizeCart();
+        };
+        xhttp.send(`query=removeFromCart&art_id_prod=${articolo["id_prodotto"]}&art_versione=${articolo["versione"]}`);
     } catch (error) {
         console.log(error.message);
     }
-    // updates page
-    visualizeCart();
 }
 
 async function updateCart(index) {
     // legge quantità
-    // se 0 elimina l'articolo
     let articolo = carrello[index];
     let nuovaQuantita = document.forms["modify-amount-" + index]["quantita_articolo_in_carrello"].value;
+    // se <=0 elimina l'articolo
     if (nuovaQuantita <= 0) {
         removeArticle(index);
     } else {
-        const url = `api/api-cart.php?query=modifyArtAmount&art_id_prod=${articolo["id_prodotto"]}&art_versione=${articolo["versione"]}&art_quantita=${nuovaQuantita}`;
+        const url = `api/api-cart.php`;
         // aggiorna la quantità dell'articolo
         try {
-            const response = await fetch(url);
-            if (!response.ok) {
-                throw new Error(`Response status: ${response.status} `);
-            }
+            const xhttp = new XMLHttpRequest();
+            xhttp.open("POST", "api/api-cart.php", true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.onload = function() {
+                visualizeCart();
+            };
+            xhttp.send(`query=modifyArtAmount&art_id_prod=${articolo["id_prodotto"]}&art_versione=${articolo["versione"]}&art_quantita=${nuovaQuantita}`);
         } catch (error) {
             console.log(error.message);
         }
-        // updates page
-        visualizeCart();
     }
 }
 
