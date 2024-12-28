@@ -74,7 +74,7 @@ class DatabaseHelper {
             ORDER BY data DESC "
         );
 
-        $stmt->bind_param("i", $userId);
+        $stmt->bind_param("s", $userId);
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -190,7 +190,7 @@ class DatabaseHelper {
                 FROM ARTICOLI_IN_CARRELLO AC, PRODOTTI P, ARTICOLI A
                 WHERE AC.id_prodotto = P.id AND AC.username = ?
                 AND A.id_prodotto = P.id AND A.versione = AC.versione_articolo");
-        $stmt->bind_param("i", $userId);
+        $stmt->bind_param("s", $userId);
         $stmt->execute();
         $result = $stmt->get_result();
 
