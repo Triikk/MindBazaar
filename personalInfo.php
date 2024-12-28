@@ -9,6 +9,6 @@ if (!isset($_SESSION["username"])) {
 $templateParams["titolo"] = "MindBazaar - Informazioni personali";
 //Home Template
 $templateParams["nome"] = "userPersonalInfo.php";
-$templateParams["datiUtente"] = $dbh->getUserDataByUsername($_SESSION["username"]);
+$userParams["datiUtente"] = $dbh->getUserDataByUsername($_SESSION["username"]);
 
 require 'template/base.php';

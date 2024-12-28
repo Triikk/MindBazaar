@@ -8,7 +8,7 @@ if (!(isset($_GET["id_prodotto"]) && isset($_GET["versione"]))) {
 $templateParams["titolo"] = "MindBazaar - Prodotto";
 $templateParams["nome"] = "singleProduct.php";
 
-$templateParams["articolo"] = current(array_filter($templateParams["articoli"], function ($articolo) {
+$userParams["articolo"] = current(array_filter($userParams["articoli"], function ($articolo) {
     return $articolo["id_prodotto"] == $_GET["id_prodotto"] && $articolo["versione"] == $_GET["versione"];
 }));
 

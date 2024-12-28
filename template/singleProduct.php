@@ -1,4 +1,4 @@
-<?php $articolo = $templateParams["articolo"]; ?>
+<?php $articolo = $userParams["articolo"]; ?>
 <h2><?php echo $articolo["nome"]; ?></h2>
 <p><?php echo $articolo["descrizione"]; ?></p>
 <p><?php echo $articolo["formato"]; ?></p>

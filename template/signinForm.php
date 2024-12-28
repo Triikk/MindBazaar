@@ -1,7 +1,7 @@
 <form action="#" method="POST">
     <h2>Registrazione</h2>
-    <?php if (isset($templateParams["errore"])): ?>
-        <p><?php echo $templateParams["errore"]; ?></p>
+    <?php if (isset($userParams["errore"])): ?>
+        <p><?php echo $userParams["errore"]; ?></p>
     <?php endif; ?>
     <ul>
         <li>

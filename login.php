@@ -8,7 +8,7 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
     if ($dbh->checkLogin($_POST["username"], $_POST["password"])) {
         $_SESSION["username"] = $_POST["username"];
     } else {
-        $templateParams["errore"] = "Credenziali non corrette!";
+        $userParams["errore"] = "Credenziali non corrette!";
     }
 }
 

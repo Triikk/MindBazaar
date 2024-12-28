@@ -13,7 +13,7 @@ foreach ($templateParams["categorie"] as $categoria) {
 $filterMinPrice = 0;
 $filterMaxPrice = 1000;
 $filterFormats = [];
-foreach ($templateParams["formati"] as $formato) {
+foreach ($userParams["formati"] as $formato) {
     $filterFormats[] = $formato["formato"];
 }
 $filterOrdinamento = "";
@@ -52,12 +52,12 @@ if (isset($_GET["ricerca"])) {
     var_dump($_GET["ricerca"]);
     $searchKey = $_GET["ricerca"];
 
-    $articoliCercati = searchArticles($templateParams["articoli"], $searchKey);
+    $articoliCercati = searchArticles($userParams["articoli"], $searchKey);
 } else {
-    $articoliCercati = $templateParams["articoli"];
+    $articoliCercati = $userParams["articoli"];
 }
 
-$templateParams["articoliVisualizzati"] = getFilteredArticles($articoliCercati, $filterCategories, $filterMinPrice, $filterMaxPrice, $filterFormats, $filterOrdinamento);
+$userParams["articoliVisualizzati"] = getFilteredArticles($articoliCercati, $filterCategories, $filterMinPrice, $filterMaxPrice, $filterFormats, $filterOrdinamento);
 // $templateParams["js"] = array("js/articles.js");
 
 require 'template/base.php';

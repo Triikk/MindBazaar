@@ -12,7 +12,7 @@ if (isset($_POST["submit"])) {
     $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
 
     if ($dbh->checkUsername($username)) {
-        $templateParams["errore"] = "Username già in uso";
+        $userParams["errore"] = "Username già in uso";
     } else {
         echo $password;
         echo $dataNascita;

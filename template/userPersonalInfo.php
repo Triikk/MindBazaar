@@ -1,6 +1,6 @@
 <section>
     <ul>
-        <?php $datiUtente = $templateParams["datiUtente"][0]; ?>
+        <?php $datiUtente = $userParams["datiUtente"][0]; ?>
         <li>
             <h3>Username: <?php echo $datiUtente["username"] ?></h3>
         </li>

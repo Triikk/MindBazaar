@@ -15,7 +15,7 @@
         <label for="<?php echo $categoria["nome"]; ?>"><?php echo $categoria["nome"]; ?></label>
         <input type="checkbox" name="categorie[]" value="<?php echo $categoria["nome"]; ?>">
     <?php endforeach; ?>
-    <?php foreach ($templateParams["formati"] as $formato): ?>
+    <?php foreach ($userParams["formati"] as $formato): ?>
         <label for="<?php echo $formato["formato"]; ?>"><?php echo $formato["formato"]; ?></label>
         <input type="checkbox" name="formati[]" value="<?php echo $formato["formato"]; ?>">
     <?php endforeach; ?>
@@ -30,7 +30,7 @@
 </nav>
 <section>
     <ul>
-        <?php foreach ($templateParams["articoliVisualizzati"] as $articolo): ?>
+        <?php foreach ($userParams["articoliVisualizzati"] as $articolo): ?>
             <li>
                 <a href="product.php?id_prodotto=<?php echo $articolo["id_prodotto"]; ?>&versione=<?php echo $articolo["versione"]; ?>">
                     <h2><?php echo $articolo["nome"]; ?></h2>
