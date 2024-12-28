@@ -95,3 +95,14 @@ function getImagePathByCategory($category) {
             return "";
     }
 }
+
+function getTimeInterval($type) {
+    switch ($type) {
+        case "spedizione":
+            return "10 seconds";
+        case "consegna":
+            return "10 seconds";
+        default:
+            return "";
+    }
+}

@@ -9,6 +9,6 @@ if (!isset($_SESSION["username"])) {
 $templateParams["titolo"] = "MindBazaar - Ordini";
 //Home Template
 $templateParams["nome"] = "ordersList.php";
-$templateParams["js"] = array("js/orders.js");
+$templateParams["js"][] = "js/orders.js";
 
 require 'template/base.php';

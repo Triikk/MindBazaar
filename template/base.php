@@ -32,7 +32,7 @@
                     </a></li>
                 <li><a href="searchMenu.php">ISM</a></li>
                 <li><a href="cart.php">ICM</a></li>
-                <li><a href="notifications.php">INM</a></li>
+                <li><a href="notifications.php">Notifiche</a></li>
             </ul>
         </nav>
     </header>

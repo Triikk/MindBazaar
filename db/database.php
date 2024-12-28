@@ -48,13 +48,12 @@ class DatabaseHelper {
 
     public function getArticleNotificationsByUserId($userId) {
         $stmt = $this->db->prepare(
-            "SELECT NOR.*, P.*, A.*
-            FROM NOTIFICHE_ORDINI NOR JOIN UTENTI U ON NOR.username = U.username
-            JOIN RICHIESTE R ON NOR.id_ordine = R.id_ordine
-            JOIN ARTICOLI A ON A.id_prodotto = R.id_prodotto
-            JOIN PRODOTTI P ON P.id = A.id_prodotto
-            AND A.versione = R.versione_articolo
-            WHERE U.username = ?
+            "SELECT NA.*, P.*, A.*
+            FROM NOTIFICHE_ARTICOLI NA
+            JOIN ARTICOLI A ON A.versione = NA.versione_articolo
+            JOIN PRODOTTI P ON P.id = NA.id_prodotto
+            WHERE NA.username = ?
+            AND A.id_prodotto = P.id
             ORDER BY data DESC "
         );
 
@@ -353,8 +352,8 @@ class DatabaseHelper {
         // create order
         $stmt = $this->db->prepare("INSERT INTO ORDINI (tempo_ordinazione, tempo_spedizione, tempo_consegna, username) VALUES (?, ?, ?, ?)");
         $tempo_ordinazione = date("Y-m-d H:i:s");
-        $tempo_spedizione = date_format(date_add(date_create($tempo_ordinazione), date_interval_create_from_date_string("2 days")), "Y-m-d H:i:s");
-        $tempo_consegna = date_format(date_add(date_create($tempo_ordinazione), date_interval_create_from_date_string("7 days")), "Y-m-d H:i:s");
+        $tempo_spedizione = date_format(date_add(date_create($tempo_ordinazione), date_interval_create_from_date_string(getTimeInterval("spedizione"))), "Y-m-d H:i:s");
+        $tempo_consegna = date_format(date_add(date_create($tempo_ordinazione), date_interval_create_from_date_string(getTimeInterval("consegna"))), "Y-m-d H:i:s");
         $stmt->bind_param("ssss", $tempo_ordinazione, $tempo_spedizione, $tempo_consegna, $username);
         $stmt->execute();
         if ($stmt->affected_rows <= 0) {
@@ -375,5 +374,92 @@ class DatabaseHelper {
             }
         }
         return true;
+    }
+
+    public function getUnreadANotificationsByUsername($username) {
+        $stmt = $this->db->prepare("SELECT * FROM NOTIFICHE_ARTICOLI WHERE username = ? AND lettoYN = 'N'");
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+    public function getUnreadONotificationsByUsername($username) {
+        $stmt = $this->db->prepare("SELECT * FROM NOTIFICHE_ORDINI WHERE username = ? AND lettoYN = 'N'");
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function generateOrderNotifications($username) {
+        // generate orders notification of type 0: article is sent
+        $nNotifications = 0;
+        $stmt = $this->db->prepare("
+            SELECT *
+            FROM ORDINI O
+            WHERE O.id NOT IN (SELECT NO.id_ordine AS id FROM NOTIFICHE_ORDINI NO)
+            AND O.username = ?");
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $orders = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+        if (count($orders) > 0) {
+            foreach ($orders as $order) {
+                if ($order["tempo_spedizione"] <= date("Y-m-d H:i:s")) {
+                    $stmt = $this->db->prepare("INSERT INTO NOTIFICHE_ORDINI (id_ordine, username, data, lettoYN, tipologia) VALUES (?, ?, ?, 'N', 0)");
+                    $date = date("Y-m-d H:i:s");
+                    $stmt->bind_param("iss", $order["id"], $username, $date);
+                    $stmt->execute();
+                    if ($stmt->affected_rows <= 0) {
+                        return array("msg" => "Error while generating order notification of type 0", "nNotifications" => $nNotifications);
+                    } else {
+                        $nNotifications = $nNotifications + $stmt->affected_rows;
+                    }
+                }
+            }
+        }
+        // generate order notification of type 1: order has arrived
+        $stmt = $this->db->prepare("
+            SELECT *
+            FROM NOTIFICHE_ORDINI NO, ORDINI O
+            WHERE NO.username = ?
+            AND NO.id_ordine = O.id
+            AND NOT EXISTS (SELECT *
+	        FROM notifiche_ordini nord
+            WHERE nord.username = no.username
+            AND nord.id_ordine = no.id_ordine
+            AND nord.tipologia = 1);");
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $orders = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+        if (count($orders) > 0) {
+            foreach ($orders as $order) {
+                if ($order["tempo_consegna"] <= date("Y-m-d H:i:s")) {
+                    $stmt = $this->db->prepare("INSERT INTO NOTIFICHE_ORDINI (id_ordine, username, data, lettoYN, tipologia) VALUES (?, ?, ?, 'N', 1)");
+                    $date = date("Y-m-d H:i:s");
+                    $stmt->bind_param("iss", $order["id"], $username, $date);
+                    $stmt->execute();
+                    if ($stmt->affected_rows <= 0) {
+                        return array("msg" => "Error while generating order notification of type 1", "nNotifications" => $nNotifications);
+                    } else {
+                        $nNotifications = $nNotifications + $stmt->affected_rows;
+                    }
+                }
+            }
+        }
+        return array("msg" => "Notifications generated successfully", "nNotifications" => $nNotifications);
+    }
+
+    public function readUserNotifications($username) {
+        $stmt = $this->db->prepare("UPDATE NOTIFICHE_ORDINI SET lettoYN = 'Y' WHERE username = ?");
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $result = array("nReadONotifications" => $stmt->affected_rows);
+
+        $stmt = $this->db->prepare("UPDATE NOTIFICHE_ARTICOLI SET lettoYN = 'Y' WHERE username = ?");
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $result["nReadANotifications"] = $stmt->affected_rows;
+
+        return $result;
     }
 }
