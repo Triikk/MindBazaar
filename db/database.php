@@ -485,4 +485,12 @@ class DatabaseHelper {
 
         return $stmt->affected_rows > 0;
     }
+
+    public function isArticlePresent($id_prodotto, $versione) {
+        $stmt = $this->db->prepare("SELECT * FROM ARTICOLI WHERE id_prodotto = ? AND versione = ?");
+        $stmt->bind_param("ii", $id_prodotto,  $versione);
+        $stmt->execute();
+
+        return $stmt->get_result()->num_rows > 0;
+    }
 }

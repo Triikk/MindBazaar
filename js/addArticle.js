@@ -14,14 +14,7 @@ async function addArticle() {
         xhttp.open("POST", url, true);
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhttp.onload = function () {
-            console.log(params);
-            if (xhttp.status === 200) {
-                console.log(xhttp.responseText);
-                const response = JSON.parse(xhttp.responseText);
-                console.log("Article added successfully:", response);
-            } else {
-                console.log("Error adding article:", xhttp.responseText);
-            }
+            alert(JSON.parse(xhttp.responseText)["message"]);
         };
         xhttp.send(`query=addArticle&id_prodotto=${params["id_prodotto"]}&formato=${params["formato"]}&durata=${params["durata"]}&disponibilita=${params["disponibilita"]}&prezzo=${params["prezzo"]}&intensita=${params["intensita"]}&versione=${params["versione"]}`);
     } catch (error) {

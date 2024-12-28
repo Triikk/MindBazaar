@@ -10,7 +10,7 @@ if (isset($_REQUEST["query"])) {
     switch ($_REQUEST["query"]) {
         case "getProducts":
             $prodotti = $dbh->getProducts();
-            echo json_encode($prodotti);
+            echo jsonResponse(200, $prodotti);
             break;
         case "addArticle":
             if (isset($_REQUEST["id_prodotto"]) && isset($_REQUEST["formato"]) && isset($_REQUEST["durata"]) && isset($_REQUEST["prezzo"]) && isset($_REQUEST["intensita"]) && isset($_REQUEST["disponibilita"]) && isset($_REQUEST["versione"])) {
@@ -21,16 +21,20 @@ if (isset($_REQUEST["query"])) {
                 $intensita = $_REQUEST["intensita"];
                 $disponibilita = $_REQUEST["disponibilita"];
                 $versione = $_REQUEST["versione"];
-                $dbh->addArticle($id_prodotto, $formato, $durata, $intensita, $prezzo, $disponibilita, $versione);
-                echo json_encode(array("success" => "Article added successfully"));
+                if ($dbh->isArticlePresent($id_prodotto, $versione)) {
+                    echo jsonResponse(400, "Article already present");
+                } else {
+                    $dbh->addArticle($id_prodotto, $formato, $durata, $intensita, $prezzo, $disponibilita, $versione);
+                    echo jsonResponse(200, "Article added successfully");
+                }
             } else {
-                echo json_encode(array("error" => "Missing parameters"));
+                echo jsonResponse(400, "Missing parameters");
             }
             break;
         default:
-            echo json_encode(array("error" => "Invalid action"));
+            echo jsonResponse(400, "Invalid action");
             break;
     }
 } else {
-    echo json_encode(array("error" => "Query not set"));
+    echo jsonResponse(400, "`query` field not set");
 }
