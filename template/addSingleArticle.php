@@ -22,4 +22,17 @@
         <input type="number" name="versione" placeholder="Versione" value="0" min="0" required>
         <input type="button" onclick="addArticle()" value="Aggiungi articolo">
     </form>
+
+    <form action="#" id="add-product">
+        <label for="nome">Nome</label>
+        <input type="text" name="nome" placeholder="Nome" required>
+        <label for="descrizione">Descrizione</label>
+        <input type="text" name="descrizione" placeholder="Descrizione" required>
+        <label for="immagine">Immagine</label>
+        <input type="text" name="immagine" placeholder="Immagine" required>
+        <label for="nome_categoria">Categoria</label>
+        <input type="text" name="nome_categoria" placeholder="Categoria" required>
+        <label for="eta_minima">Eta minima</label>
+        <input type="number" name="eta_minima" placeholder="Eta minima" value="14" min="14" max="99" required>
+        <input type="button" onclick="addProduct()" value="Aggiungi prodotto">
 </section>
