@@ -81,6 +81,25 @@ function calculateTotal($articles) {
     return $total;
 }
 
+function getImagePath($category, $imageName) {
+    return getImageDir($category) . "/" . $imageName;
+}
+
+function getImageDir($category) {
+    switch ($category) {
+        case "Sogno":
+            return DREAMS_DIR;
+        case "Ispirazione":
+            return INSPIRATIONS_DIR;
+        case "Emozione":
+            return EMOTIONS_DIR;
+        case "Nozione":
+            return NOTIONS_DIR;
+        default:
+            die("Categoria non valida");
+    }
+}
+
 function API_checkUserLoggedIn() {
     $ret = isset($_SESSION["username"]);
     if (!$ret) {
