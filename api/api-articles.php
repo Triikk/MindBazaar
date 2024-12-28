@@ -28,7 +28,7 @@ if (isset($_REQUEST["query"])) {
             }
             break;
         default:
-            echo json_encode(array("error" => "Invalid action", "query" => $_REQUEST["query"]));
+            echo json_encode(array("error" => "Invalid action"));
             break;
     }
 } else {
