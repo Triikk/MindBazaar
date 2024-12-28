@@ -76,7 +76,7 @@ function searchArticles($articoli, $searchKey) {
 function calculateTotal($articles) {
     $total = 0;
     foreach ($articles as $article) {
-        $total += $article["prezzo"];
+        $total += $article["prezzo"] * $article["quantita"];
     }
     return $total;
 }

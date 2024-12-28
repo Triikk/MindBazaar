@@ -14,7 +14,7 @@ if (isset($_POST["submit"]) && $_POST["submit"] == "modify-amount") {
 
 <section>
     <h2>Numero articoli presenti: <?php echo count($userParams["articoliInCarrello"]); ?></h2>
-    <h2>Totale provvisorio: <?php echo calculateTotal($userParams["articoliInCarrello"]); ?></h2>
+    <h2>Totale provvisorio: <?php echo calculateTotal($userParams["articoliInCarrello"]); ?>€</h2>
 </section>
 <section>
     <form id="checkout-form" action="utils/checkout.php" method="post">
