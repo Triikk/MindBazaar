@@ -6,8 +6,8 @@ if (!isset($_SESSION["admin"]) || !$_SESSION["admin"]) {
     header("location: index.php");
 }
 
-$templateParams["titolo"] = "MindBazaar Admin - Aggiungi Prodotto";
-// $templateParams["nome"] = "addSingleProduct.php";
+$templateParams["titolo"] = "MindBazaar Admin - Aggiungi Articolo";
+$templateParams["nome"] = "addSingleArticle.php";
 
 $templateParams["js"] = array("js/addArticle.js");
 

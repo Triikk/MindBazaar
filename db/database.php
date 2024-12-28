@@ -477,4 +477,12 @@ class DatabaseHelper {
 
         return $result;
     }
+
+    public function addArticle($id_prodotto, $formato, $durata, $intensita, $prezzo, $disponibilita, $versione) {
+        $stmt = $this->db->prepare("INSERT INTO ARTICOLI (id_prodotto, formato, durata, intensita, prezzo, disponibilita, versione) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("issidi", $id_prodotto, $formato, $durata, $intensita, $prezzo, $disponibilita, $versione);
+        $stmt->execute();
+
+        return $stmt->affected_rows > 0;
+    }
 }
