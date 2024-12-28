@@ -23,6 +23,7 @@ function generateBestsellers(bestsellers) {
         let bestseller = `
         <li>
         <h3>${bestsellers[i]["nome"]}</h3>
+        <img src="${bestsellers[i]["percorso_immagine"]}" alt="${bestsellers[i]["descrizione"]}" />
         <p>${bestsellers[i]["descrizione"]}</p>
         </li>
         `;

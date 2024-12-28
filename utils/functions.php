@@ -81,7 +81,11 @@ function calculateTotal($articles) {
     return $total;
 }
 
-function getImagePathByCategory($category) {
+function getImagePath($category, $imageName) {
+    return getImageDir($category) . "/" . $imageName;
+}
+
+function getImageDir($category) {
     switch ($category) {
         case "Sogno":
             return DREAMS_DIR;
@@ -92,6 +96,6 @@ function getImagePathByCategory($category) {
         case "Nozione":
             return NOTIONS_DIR;
         default:
-            return "";
+            die("Categoria non valida");
     }
 }
