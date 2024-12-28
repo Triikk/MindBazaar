@@ -48,7 +48,6 @@ async function visualizeCart() {
 }
 
 async function removeArticle(index) {
-    // console.log("rimuovo articolo "+index);
     let articolo = carrello[index];
     // rimuove articolo dal carrello
     const url = `api/api-cart.php?query=removeFromCart&art_id_prod=${articolo["id_prodotto"]}&art_versione=${articolo["versione"]}`;
