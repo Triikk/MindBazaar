@@ -382,4 +382,13 @@ class DatabaseHelper {
         }
         return true;
     }
+
+    public function isAdmin($username) {
+        $stmt = $this->db->prepare("SELECT amministratore FROM UTENTI WHERE username = ?");
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC)[0]["amministratore"] == 1;
+    }
 }

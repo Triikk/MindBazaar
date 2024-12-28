@@ -100,6 +100,15 @@ function getImageDir($category) {
     }
 }
 
+function getAdminImagePath($action) {
+    switch ($action) {
+        case "addProduct":
+            return ADMIN_DIR . "aggiungi-prodotto.png";
+        default:
+            die("Azione non valida");
+    }
+}
+
 function API_checkUserLoggedIn() {
     $ret = isset($_SESSION["username"]);
     if (!$ret) {

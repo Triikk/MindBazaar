@@ -30,6 +30,16 @@
 </nav>
 <section>
     <ul>
+        <?php
+        if (isset($_SESSION["username"]) && isset($_SESSION["admin"])) {
+            $adminImagePath = getAdminImagePath("addProduct");
+            echo "<li>
+                <a href='addProduct.php'>
+                    <h2>Aggiungi prodotto</h2>
+                    <img src='" . getAdminImagePath("addProduct") . "' alt='Aggiungi prodotto'>
+                </a>
+            </li>";
+        } ?>
         <?php foreach ($userParams["articoliVisualizzati"] as $articolo): ?>
             <li>
                 <a href="product.php?id_prodotto=<?php echo $articolo["id_prodotto"]; ?>&versione=<?php echo $articolo["versione"]; ?>">
