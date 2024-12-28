@@ -1,6 +1,7 @@
 <section>
     <?php $articolo = $userParams["articolo"]; ?>
     <h2><?php echo $articolo["nome"]; ?></h2>
+    <img src="<?php echo getImagePathByCategory($articolo["nome_categoria"]) . $articolo["immagine"]; ?>" alt="<?php echo $articolo["nome"]; ?>">
     <p><?php echo $articolo["descrizione"]; ?></p>
     <p id="availability"><?php echo "Disponibilità: " . showAvailability($articolo["disponibilita"]); ?></p>
     <p id="price"><?php echo "Prezzo: " . $articolo["prezzo"]; ?></p>
