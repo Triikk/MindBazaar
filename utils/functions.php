@@ -102,8 +102,8 @@ function getImageDir($category) {
 
 function getAdminImagePath($action) {
     switch ($action) {
-        case "addProduct":
-            return ADMIN_DIR . "aggiungi-prodotto.png";
+        case "addArticle":
+            return ADMIN_DIR . "aggiungi-articolo.png";
         default:
             die("Azione non valida");
     }

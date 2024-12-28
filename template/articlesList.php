@@ -32,11 +32,10 @@
     <ul>
         <?php
         if (isset($_SESSION["username"]) && isset($_SESSION["admin"])) {
-            $adminImagePath = getAdminImagePath("addProduct");
             echo "<li>
-                <a href='addProduct.php'>
+                <a href='addArticle.php'>
                     <h2>Aggiungi prodotto</h2>
-                    <img src='" . getAdminImagePath("addProduct") . "' alt='Aggiungi prodotto'>
+                    <img src='" . getAdminImagePath("addArticle") . "' alt='Aggiungi prodotto'>
                 </a>
             </li>";
         } ?>
