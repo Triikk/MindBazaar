@@ -1,6 +1,7 @@
 <section>
     <form action="#" id="add-article">
         <?php $products = $dbh->getProducts(); ?>
+        <label for="id_prodotto>">Prodotto</label>
         <select name='id_prodotto' required>
             <?php
             foreach ($products as $product) {
@@ -31,8 +32,14 @@
         <label for="immagine">Immagine</label>
         <input type="text" name="immagine" placeholder="Immagine" required>
         <label for="nome_categoria">Categoria</label>
-        <input type="text" name="nome_categoria" placeholder="Categoria" required>
-        <label for="eta_minima">Eta minima</label>
-        <input type="number" name="eta_minima" placeholder="Eta minima" value="14" min="14" max="99" required>
-        <input type="button" onclick="addProduct()" value="Aggiungi prodotto">
+        <select name="nome_categoria" required>
+            <?php
+            $categories = $dbh->getCategories();
+            foreach ($categories as $category) {
+                echo "<option value='" . $category['nome'] . "'>" . $category['nome'] . "</option>";
+            }
+            ?>
+            <label for="eta_minima">Eta minima</label>
+            <input type="number" name="eta_minima" placeholder="Eta minima" value="14" min="14" max="99" required>
+            <input type="button" onclick="addProduct()" value="Aggiungi prodotto">
 </section>

@@ -31,6 +31,23 @@ if (isset($_REQUEST["query"])) {
                 echo jsonResponse(400, "Missing parameters");
             }
             break;
+        case "addProduct":
+            if (isset($_REQUEST["nome"]) && isset($_REQUEST["descrizione"]) && isset($_REQUEST["immagine"]) && isset($_REQUEST["nome_categoria"]) && isset($_REQUEST["eta_minima"])) {
+                $nome = $_REQUEST["nome"];
+                $descrizione = $_REQUEST["descrizione"];
+                $immagine = $_REQUEST["immagine"];
+                $nome_categoria = $_REQUEST["nome_categoria"];
+                $eta_minima = $_REQUEST["eta_minima"];
+                if ($dbh->isProductPresent($nome)) {
+                    echo jsonResponse(400, "Product already present");
+                } else {
+                    $dbh->addProduct($nome, $descrizione, $immagine, $nome_categoria, $eta_minima);
+                    echo jsonResponse(200, "Product added successfully");
+                }
+            } else {
+                echo jsonResponse(400, "Missing parameters");
+            }
+            break;
         default:
             echo jsonResponse(400, "Invalid action");
             break;

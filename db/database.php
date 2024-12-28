@@ -493,4 +493,20 @@ class DatabaseHelper {
 
         return $stmt->get_result()->num_rows > 0;
     }
+
+    public function addProduct($nome, $descrizione, $immagine, $nome_categoria, $eta_minima) {
+        $stmt = $this->db->prepare("INSERT INTO PRODOTTI (nome, descrizione, immagine, nome_categoria, eta_minima) VALUES (?, ?, ?, ?, ?)");
+        $stmt->bind_param("ssssi", $nome, $descrizione, $immagine, $nome_categoria, $eta_minima);
+        $stmt->execute();
+
+        return $stmt->affected_rows > 0;
+    }
+
+    public function isProductPresent($nome) {
+        $stmt = $this->db->prepare("SELECT * FROM PRODOTTI WHERE nome = ?");
+        $stmt->bind_param("s", $nome);
+        $stmt->execute();
+
+        return $stmt->get_result()->num_rows > 0;
+    }
 }
