@@ -80,3 +80,11 @@ function calculateTotal($articles) {
     }
     return $total;
 }
+
+function API_checkUserLoggedIn() {
+    $ret = isset($_SESSION["username"]);
+    if (!$ret) {
+        echo json_encode(array("error" => "Not logged in"));
+    }
+    return $ret;
+}
