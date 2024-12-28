@@ -80,3 +80,18 @@ function calculateTotal($articles) {
     }
     return $total;
 }
+
+function getImagePathByCategory($category) {
+    switch ($category) {
+        case "Sogno":
+            return DREAMS_DIR;
+        case "Ispirazione":
+            return INSPIRATIONS_DIR;
+        case "Emozione":
+            return EMOTIONS_DIR;
+        case "Nozione":
+            return NOTIONS_DIR;
+        default:
+            return "";
+    }
+}
