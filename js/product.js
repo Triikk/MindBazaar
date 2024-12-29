@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const articleData = await fetchArticleData(selectedFields);
             console.log("Article data:", articleData); // Debug: log article data
             // Update the availability and price in the DOM
-            availabilityElement.textContent = `Disponibilità: ${articleData["disponibilita"]}`;
+            availabilityElement.textContent = `Disponibilità: ${showAvailability(articleData["disponibilita"])}`;
             if (articleData["disponibilita"] == "Questo prodotto non è disponibile") {
                 priceElement.textContent = "Prezzo: -";
                 addToCartButton.setAttribute("disabled", "disabled");

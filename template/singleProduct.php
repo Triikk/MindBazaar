@@ -40,3 +40,26 @@
         <button type="submit" id="add-to-cart" name="submit">Aggiungi al carrello</button>
     </form>
 </section>
+<section>
+    <?php
+    if (isset($_SESSION["username"]) && isset($_SESSION["admin"])) {
+        echo "<ul>
+            <li>
+                <form action='modifyArticle.php' method='POST'>
+                    <input type='hidden' name='id_prodotto' value='" . $articolo["id_prodotto"] . "'>
+                    <input type='hidden' name='versione' value='" . $articolo["versione"] . "'>
+                    <input type='submit' value='Modifica'>
+                </form>
+                    <img src='" . getAdminImagePath("modifyArticle") . "' alt='Modifica articolo'>
+            </li>
+            <li>
+                <form action='deleteArticle.php' method='POST'>
+                    <input type='hidden' name='id_prodotto' value='" . $articolo["id_prodotto"] . "'>
+                    <input type='hidden' name='formato' value='" . $articolo["formato"] . "'>
+                    <input type='submit' value='Elimina'>
+                </form>
+                    <img src='" . getAdminImagePath("deleteArticle") . "' alt='Elimina articolo'>
+            </li>
+        </ul>";
+    } ?>
+</section>

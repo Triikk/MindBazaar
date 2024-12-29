@@ -30,3 +30,35 @@ function generateXHttpRequestFromForm(url, query, form) {
         console.log(error.message);
     }
 }
+
+/**
+ * Stabilisce se un ordine è in corso di spedizione o è stato consegnato
+ */
+function getOrderState(tempo_spedizione, tempo_consegna) {
+    const now = new Date();
+    const offsetDate = new Date(now.getTime() - now.getTimezoneOffset() * 60000); // Apply timezone offset
+    const data = new Date(offsetDate.toISOString().slice(0, 19));
+    tempo_spedizione = new Date(tempo_spedizione.replace(' ', 'T'));
+    tempo_consegna = new Date(tempo_consegna.replace(' ', 'T'));
+    result = "";
+    if (data < tempo_spedizione) {
+        result = "L'ordine è in fase di preparazione";
+    } else if (data < tempo_consegna) {
+        result = "L'ordine è in fase di spedizione";
+    } else {
+        result = "L'ordine è stato consegnato";
+    }
+    return result;
+}
+
+function showAvailability(nItems) {
+    if (nItems > 20) {
+        return "Disponibile";
+    } else if (nItems > 0) {
+        return "Ultimi pezzi: " + nItems;
+        // } else if ($nItems > 0) {
+        //     return "Sta per terminare";
+    } else {
+        return nItems;
+    }
+}
