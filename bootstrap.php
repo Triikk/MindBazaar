@@ -28,4 +28,4 @@ $templateParams["prodotti"] = $dbh->getProducts();
 $userParams["articoli"] = $dbh->getArticles();
 $templateParams["categorie"] = $dbh->getCategories();
 $userParams["formati"] = $dbh->getFormats();
-$templateParams["js"] = array("js/checkNotifications.js");
+$templateParams["js"] = array("js/checkNotifications.js","js/functions.js");
