@@ -41,7 +41,7 @@ function getFilteredArticles($articlesList, $categories, $minPrice, $maxPrice, $
 function showAvailability($nItems) {
     if ($nItems > 20) {
         return "Disponibile";
-    } else if ($nItems > 10) {
+    } else if ($nItems > 0) {
         return "Ultimi pezzi: " . $nItems;
         // } else if ($nItems > 0) {
         //     return "Sta per terminare";

@@ -317,6 +317,14 @@ class DatabaseHelper {
         return $result->fetch_all(MYSQLI_ASSOC)[0];
     }
 
+    public function getArticle($id_prodotto, $versione) {
+        $stmt = $this->db->prepare("SELECT * FROM ARTICOLI JOIN PRODOTTI WHERE id_prodotto = ? AND versione = ? AND id = id_prodotto");
+        $stmt->bind_param("ii", $id_prodotto, $versione);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC)[0];
+    }
+
     public function checkout($username) {
         // get user cart articles
         $stmt = $this->db->prepare("SELECT * FROM ARTICOLI_IN_CARRELLO WHERE username = ?");

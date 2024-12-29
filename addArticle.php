@@ -9,6 +9,6 @@ if (!isset($_SESSION["admin"]) || !$_SESSION["admin"]) {
 $templateParams["titolo"] = "MindBazaar Admin - Aggiungi Articolo";
 $templateParams["nome"] = "addSingleArticle.php";
 
-$templateParams["js"] = array("js/addArticle.js");
+$templateParams["js"][] = "js/addArticle.js";
 
 require 'template/base.php';

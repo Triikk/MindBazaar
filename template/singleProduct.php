@@ -45,16 +45,20 @@
     if (isset($_SESSION["username"]) && isset($_SESSION["admin"])) {
         echo "<ul>
             <li>
-                <a href='addArticle.php'>
-                    <h2>Modifica</h2>
+                <form action='modifyArticle.php' method='POST'>
+                    <input type='hidden' name='id_prodotto' value='" . $articolo["id_prodotto"] . "'>
+                    <input type='hidden' name='versione' value='" . $articolo["versione"] . "'>
+                    <input type='submit' value='Modifica'>
+                </form>
                     <img src='" . getAdminImagePath("modifyArticle") . "' alt='Modifica articolo'>
-                </a>
             </li>
             <li>
-                <a href='addArticle.php'>
-                    <h2>Cancella</h2>
-                    <img src='" . getAdminImagePath("deleteArticle") . "' alt='Cancella prodotto'>
-                </a>
+                <form action='deleteArticle.php' method='POST'>
+                    <input type='hidden' name='id_prodotto' value='" . $articolo["id_prodotto"] . "'>
+                    <input type='hidden' name='formato' value='" . $articolo["formato"] . "'>
+                    <input type='submit' value='Elimina'>
+                </form>
+                    <img src='" . getAdminImagePath("deleteArticle") . "' alt='Elimina articolo'>
             </li>
         </ul>";
     } ?>

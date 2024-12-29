@@ -50,3 +50,15 @@ function getOrderState(tempo_spedizione, tempo_consegna) {
     }
     return result;
 }
+
+function showAvailability(nItems) {
+    if (nItems > 20) {
+        return "Disponibile";
+    } else if (nItems > 0) {
+        return "Ultimi pezzi: " + nItems;
+        // } else if ($nItems > 0) {
+        //     return "Sta per terminare";
+    } else {
+        return nItems;
+    }
+}
