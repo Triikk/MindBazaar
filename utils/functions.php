@@ -104,6 +104,10 @@ function getAdminImagePath($action) {
     switch ($action) {
         case "addArticle":
             return ADMIN_DIR . "aggiungi-articolo.png";
+        case "modifyArticle":
+            return ADMIN_DIR . "modifica-articolo.png";
+        case "deleteArticle":
+            return ADMIN_DIR . "cancella-articolo.png";
         default:
             die("Azione non valida");
     }

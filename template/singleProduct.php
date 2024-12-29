@@ -40,3 +40,22 @@
         <button type="submit" id="add-to-cart" name="submit">Aggiungi al carrello</button>
     </form>
 </section>
+<section>
+    <?php
+    if (isset($_SESSION["username"]) && isset($_SESSION["admin"])) {
+        echo "<ul>
+            <li>
+                <a href='addArticle.php'>
+                    <h2>Modifica</h2>
+                    <img src='" . getAdminImagePath("modifyArticle") . "' alt='Modifica articolo'>
+                </a>
+            </li>
+            <li>
+                <a href='addArticle.php'>
+                    <h2>Cancella</h2>
+                    <img src='" . getAdminImagePath("deleteArticle") . "' alt='Cancella prodotto'>
+                </a>
+            </li>
+        </ul>";
+    } ?>
+</section>
