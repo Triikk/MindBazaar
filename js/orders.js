@@ -28,6 +28,7 @@ function generateOrders(orders) {
         orderHTML += `
         </ul>
         <p>Totale: ${calculateTotal(articleList)}€</p>
+        <p>Stato: ${getOrderState(order["tempo_spedizione"], order["tempo_consegna"])}</p>
         </li >
         `;
         result += orderHTML;

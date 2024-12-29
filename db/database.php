@@ -66,10 +66,10 @@ class DatabaseHelper {
 
     public function getOrderNotificationsByUserId($userId) {
         $stmt = $this->db->prepare(
-            "SELECT NU.*, O.*
-            FROM NOTIFICHE_ORDINI NU JOIN UTENTI U ON NU.username = U.username
-            JOIN ORDINI O ON NU.id_ordine = O.id
-            WHERE U.username = ?
+            "SELECT NO.*, O.*
+            FROM NOTIFICHE_ORDINI NO
+            JOIN ORDINI O ON NO.id_ordine = O.id
+            WHERE NO.username = ?
             ORDER BY data DESC "
         );
 
