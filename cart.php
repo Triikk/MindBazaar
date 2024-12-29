@@ -9,6 +9,6 @@ if (!isset($_SESSION["username"])) {
 $templateParams["titolo"] = "MindBazaar - Carrello";
 //Home Template
 $templateParams["nome"] = "userCart.php";
-$templateParams["js"] = array("js/cart.js");
+$templateParams["js"][] = "js/cart.js";
 
 require 'template/base.php';

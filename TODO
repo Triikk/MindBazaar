@@ -1,4 +1,4 @@
-- admin functionalities
-- automatic notifications system
-- js (articles filtering, article disponibility, popup menus)
+- admin functionalities (modifica, rimozione articoli)
+- automatic notifications system (notifiche_articoli)
+- js (articles filtering, article disponibility, popup menus, post requests)
 - css

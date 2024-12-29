@@ -465,15 +465,15 @@ class DatabaseHelper {
     }
 
     public function readUserNotifications($username) {
-        $stmt = $this->db->prepare("UPDATE NOTIFICHE_ORDINI SET lettoYN = 'Y' WHERE username = ?");
-        $stmt->bind_param("s", $username);
-        $stmt->execute();
-        $result = array("nReadONotifications" => $stmt->affected_rows);
-
         $stmt = $this->db->prepare("UPDATE NOTIFICHE_ARTICOLI SET lettoYN = 'Y' WHERE username = ?");
         $stmt->bind_param("s", $username);
         $stmt->execute();
         $result["nReadANotifications"] = $stmt->affected_rows;
+
+        $stmt = $this->db->prepare("UPDATE NOTIFICHE_ORDINI SET lettoYN = 'Y' WHERE username = ?");
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $result = array("nReadONotifications" => $stmt->affected_rows);
 
         return $result;
     }
