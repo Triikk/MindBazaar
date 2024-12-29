@@ -101,5 +101,20 @@ async function getArticleNotifications() {
     }
 }
 
+async function readNotifications() {
+    const url = 'api/api-notifications.php?query=readNotifications';
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`Response status: ${response.status} `);
+        }
+        const json = await response.json();
+        console.log(json);
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+
 getUserNotifications();
 getArticleNotifications();
+readNotifications();

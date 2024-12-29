@@ -20,6 +20,8 @@
     echo "<br>";
     echo "_GET: " . print_r($_GET, true);
     echo "<br>";
+    echo "_REQUEST: " . print_r($_REQUEST, true);
+    echo "<br>";
     // echo "templateParams: " . print_r($templateParams, true);
     ?>
 
@@ -32,7 +34,7 @@
                     </a></li>
                 <li><a href="searchMenu.php">ISM</a></li>
                 <li><a href="cart.php">ICM</a></li>
-                <li><a href="notifications.php">INM</a></li>
+                <li><a href="notifications.php">Notifiche</a></li>
             </ul>
         </nav>
     </header>
@@ -47,7 +49,7 @@
         <p>&copy 2024 MindBazaar S.p.A.</p>
     </footer>
 </body>
-        <script src="js/functions.js"></script>
+<script src="js/functions.js"></script>
 <?php
 if (isset($templateParams["js"])):
     foreach ($templateParams["js"] as $script):

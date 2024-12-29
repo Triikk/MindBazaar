@@ -45,19 +45,6 @@ async function getOrders() {
         if (!response.ok) {
             throw new Error(`Response status: ${response.status} `);
         }
-        // const contentType = response.headers.get('Content-Type');
-        // if (contentType && contentType.includes('application/json')) {
-        //     const text = await response.text();
-        //     console.log(text);
-        //     const json = await response.json();
-        //     console.log('JSON Response:', json);
-        //     return json;
-        // } else {
-        //     // Handle unexpected response types
-        //     const text = await response.text();
-        //     console.error('Unexpected Response:', text);
-        //     throw new Error('Invalid response type: Expected JSON');
-        // }
         const json = await response.json();
         console.log(json);
         const orders = generateOrders(json);
