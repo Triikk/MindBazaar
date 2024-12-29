@@ -88,9 +88,17 @@ async function updateCart(index) {
     }
 }
 
-function order() {
+function createOrder() {
     // legge le checkbox
-    // redirect al checkout trasmettendo i dati
+    let articoliSceltiDalCarrello = [];
+    for (let i = 0; i < carrello.length; i++) {
+        let form = document.forms["modify-amount-" + i];
+        let include = form["include"].checked;
+        if (include) {
+            articoliSceltiDalCarrello.push(carrello[i]);
+        }
+    }
+    document.forms["createOrder-form"]["orderedArticles"].value = JSON.stringify(articoliSceltiDalCarrello);
 }
 
 visualizeCart();

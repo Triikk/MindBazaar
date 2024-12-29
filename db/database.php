@@ -317,13 +317,15 @@ class DatabaseHelper {
         return $result->fetch_all(MYSQLI_ASSOC)[0];
     }
 
-    public function checkout($username) {
+    public function checkout($username, $articles) {
         // get user cart articles
+        /*
         $stmt = $this->db->prepare("SELECT * FROM ARTICOLI_IN_CARRELLO WHERE username = ?");
         $stmt->bind_param("s", $username);
         $stmt->execute();
         $articles = $stmt->get_result();
         $articles = $articles->fetch_all(MYSQLI_ASSOC);
+        */
         if (count($articles) == 0) {
             return false;
         }
@@ -349,11 +351,13 @@ class DatabaseHelper {
             }
         }
         // update user cart
-        $stmt = $this->db->prepare("DELETE FROM ARTICOLI_IN_CARRELLO WHERE username = ?");
-        $stmt->bind_param("s", $username);
-        $stmt->execute();
-        if ($stmt->affected_rows <= 0) {
-            return false;
+        foreach ($articles as $article) {
+            $stmt = $this->db->prepare("DELETE FROM ARTICOLI_IN_CARRELLO WHERE username = ? AND id_prodotto = ? AND versione_articolo = ?");
+            $stmt->bind_param("sii", $username, $article["id_prodotto"], $article["versione_articolo"]);
+            $stmt->execute();
+            if ($stmt->affected_rows <= 0) {
+                return false;
+            }
         }
         // create order
         $stmt = $this->db->prepare("INSERT INTO ORDINI (tempo_ordinazione, tempo_spedizione, tempo_consegna, username) VALUES (?, ?, ?, ?)");

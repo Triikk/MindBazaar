@@ -1,17 +1,19 @@
 <?php
 require_once './bootstrap.php';
+
 if (!isset($_SESSION["username"])) {
-    header("location: ./login.php");
+    header("location: login.php");
 }
-if (isset($_POST["submit"]) && $_POST["submit"] == "checkout") {
-    $result = $dbh->checkout($_SESSION["username"]);
-    header("location: ./index.php");
+
+if (isset($_REQUEST["submit"]) && $_REQUEST["submit"] == "ordina") {
+    $listaArticoli = json_decode($_REQUEST["orderedArticles"], true);
 }
 
 //Base Template
 $templateParams["titolo"] = "MindBazaar - Checkout";
 //Home Template
-// $templateParams["nome"] = "orderCheckout.php";
-// $templateParams["js"] = array("js/cart.js");
+$templateParams["nome"] = "orderCheckout.php";
+// $templateParams["js"] = array("js/checkout.js");
 
-// require 'template/base.php';
+
+require 'template/base.php';
