@@ -1,4 +1,10 @@
-- admin functionalities (modifica, rimozione articoli)
-- automatic notifications system (notifiche_articoli)
-- js (articles filtering, article disponibility, popup menus, post requests)
+Matthew:
+- admin functionalities (modifica (prezzo, disponibilità), rimozione articoli)
+- automatic notifications system (notifiche_articoli -> aggiornamenti database all'aggiornamento delle disponibilità)
+
+Bitta:
+- bestseller sono link
+- notifiche ordine cliccabili portano al link
+- js (refactoring-> post request, articles filtering ?, popup menus)
+
 - css
