@@ -48,6 +48,18 @@ if (isset($_REQUEST["query"])) {
                 echo jsonResponse(400, "Missing parameters");
             }
             break;
+        case "getArticleVersion":
+            if (isset($_REQUEST["id_prodotto"]) && isset($_REQUEST["formato"]) && isset($_REQUEST["durata"]) && isset($_REQUEST["intensita"])) {
+                $id_prodotto = $_REQUEST["id_prodotto"];
+                $formato = $_REQUEST["formato"];
+                $durata = $_REQUEST["durata"];
+                $intensita = $_REQUEST["intensita"];
+                $versione = $dbh->getArticleVersion($id_prodotto, $formato, $durata, $intensita);
+                echo jsonResponse(200, $versione);
+            } else {
+                echo jsonResponse(400, "Missing parameters");
+            }
+            break;
         default:
             echo jsonResponse(400, "Invalid action");
             break;

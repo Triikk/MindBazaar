@@ -521,4 +521,12 @@ class DatabaseHelper {
 
         return $stmt->get_result()->num_rows > 0;
     }
+
+    public function updateArticle($id_prodotto, $versione, $disponibilita, $prezzo) {
+        $stmt = $this->db->prepare("UPDATE ARTICOLI SET disponibilita = ?, prezzo = ? WHERE id_prodotto = ? AND versione = ?");
+        $stmt->bind_param("idii", $disponibilita, $prezzo, $id_prodotto, $versione);
+        $stmt->execute();
+
+        return $stmt->affected_rows > 0;
+    }
 }

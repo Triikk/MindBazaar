@@ -64,17 +64,3 @@ function showAvailability(nItems) {
         return nItems;
     }
 }
-
-/*
-document.addEventListener("DOMContentLoaded", function () {
-    const hash = window.location.hash;
-    console.log("DOM fully loaded and parsed" +  hash);
-    if (hash) {
-      const targetElement = document.getElementById(hash.substring(1, hash.length));
-      console.log("Target element:", targetElement);
-      if (targetElement) {
-        targetElement.scrollIntoView({ behavior: "smooth" }); // Smooth scrolling to the element
-      }
-    }
-});
-*/  
