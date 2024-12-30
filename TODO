@@ -3,7 +3,8 @@ Matthew:
 - automatic notifications system (notifiche_articoli -> aggiornamenti database all'aggiornamento delle disponibilità)
 
 Bitta:
-- modifyArticle
+- modifyArticle.js
+- product.js
 - js (articles filtering ?, rimuovi commenti, selezione tramite id?)
 
 Refactoring js:
