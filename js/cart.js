@@ -18,15 +18,11 @@ function generateArticle(articolo, index) {
 
 function generateCart(newCart) {
     carrello = newCart;
-    /*
+    
     let sezioni = document.querySelectorAll("main section");
     let cartInfo = sezioni[0].children;
     let articoli = sezioni[1];
-    */
-
-    let cartInfo = document.getElementById("cart-info").children;
-    let articoli = document.getElementById("cart-Articles");
-
+    
     cartInfo[0].innerHTML = `Numero articoli presenti: ${carrello.length}`;
     cartInfo[1].innerHTML = `Totale provvisorio: ${calculateTotal(carrello)}€`;
 
