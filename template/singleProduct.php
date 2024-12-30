@@ -31,12 +31,12 @@
             <?php if ($intensita == $articolo["intensita"]): ?>
                 <input type="radio" name="intensita" checked="true" value="<?php echo $intensita; ?>">
             <?php else: ?>
-                <input type="radio" id="quantita" name="intensita" value="<?php echo $intensita; ?>">
+                <input type="radio" name="intensita" value="<?php echo $intensita; ?>">
             <?php endif; ?>
         <?php endforeach; ?>
 
         <label for="quantita">Quantita:</label>
-        <input type="number" name="quantita" min="1" max="<?php echo $articolo["disponibilita"]; ?>" value="1">
+        <input type="number" id="quantity" name="quantita" min="1" max="<?php echo $articolo["disponibilita"]; ?>" value="1">
         <button type="submit" id="add-to-cart" name="submit">Aggiungi al carrello</button>
     </form>
 </section>

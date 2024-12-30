@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const availabilityElement = document.getElementById('availability');
+    const quantityElement = document.getElementById('quantity');
     const priceElement = document.getElementById('price');
     const addToCartButton = document.getElementById('add-to-cart');
     const form = document.querySelector('form');
@@ -50,12 +51,14 @@ document.addEventListener('DOMContentLoaded', () => {
             if (articleData["disponibilita"] == "Questo prodotto non è disponibile") {
                 priceElement.textContent = "Prezzo: -";
                 addToCartButton.setAttribute("disabled", "disabled");
+                quantityElement.setAttribute("max", 0);
             } else {
                 priceElement.textContent = `Prezzo: €${(articleData["prezzo"] * selectedFields["quantita"]).toFixed(2)}`;
                 if (selectedFields["quantita"] > articleData["disponibilita"]) {
                     addToCartButton.setAttribute("disabled", "disabled");
                 } else {
                     addToCartButton.removeAttribute("disabled");
+                    quantityElement.setAttribute("max", articleData["disponibilita"]);
                 }
             }
         } catch (error) {
