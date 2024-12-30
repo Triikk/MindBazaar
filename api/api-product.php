@@ -5,15 +5,15 @@ header('Content-Type: application/json');
 if (isset($_REQUEST["query"])) {
     switch ($_REQUEST["query"]) {
         case "getArticleInfo":
-            if (isset($_GET["id_prodotto"]) && isset($_GET["formato"]) && isset($_GET["durata"]) && isset($_GET["intensita"])) {
-                $formato = $_GET["formato"];
-                $durata = $_GET["durata"];
-                $intensita = $_GET["intensita"];
-                $id_prodotto = $_GET["id_prodotto"];
+            if (isset($_REQUEST["id_prodotto"]) && isset($_REQUEST["formato"]) && isset($_REQUEST["durata"]) && isset($_REQUEST["intensita"])) {
+                $formato = $_REQUEST["formato"];
+                $durata = $_REQUEST["durata"];
+                $intensita = $_REQUEST["intensita"];
+                $id_prodotto = $_REQUEST["id_prodotto"];
                 $articleInfo = $dbh->getArticleInfo($id_prodotto, $formato, $durata, $intensita);
                 if ($articleInfo == false) {
                     // TODO: cambiare "disponibilita" nel valore effettivo ed effettuare la conversione 0 -> "Questo prodotto non è disponibile" lato client
-                    echo json_encode(array("id_prodotto" => $id_prodotto, "formato" => $formato, "durata" => $durata, "intensita" => $intensita, "prezzo" => 0, "disponibilita" => "Questo prodotto non è disponibile"));
+                    echo jsonResponse(200, array("id_prodotto" => $id_prodotto, "formato" => $formato, "durata" => $durata, "intensita" => $intensita, "prezzo" => 0, "disponibilita" => "Questo prodotto non è disponibile"));
                     return;
                 }
                 echo jsonResponse(200, $articleInfo);
