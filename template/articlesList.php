@@ -45,7 +45,7 @@
                     <h2><?php echo $articolo["nome"]; ?></h2>
                     <p><?php echo $articolo["descrizione"]; ?></p>
                     <p><?php echo $articolo["formato"]; ?></p>
-                    <img src="<?php echo getImagePath($articolo["nome_categoria"], $articolo["immagine"]); ?>" alt="<?php echo $articolo["nome"]; ?>">
+                    <img src="<?php echo getImagePath($articolo["nome_categoria"], $articolo["immagine"]); ?>" alt="">
                 </a>
             </li>
         <?php endforeach; ?>
