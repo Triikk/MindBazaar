@@ -128,3 +128,4 @@ function checkOrderingAbility() {
 }
 
 visualizeCart();
+checkOrderingAbility();
