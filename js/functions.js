@@ -8,7 +8,7 @@ function calculateTotal(articles) {
 
 
 /**
- * Genera una richiesta HTTP POST
+ * Genera una richiesta HTTP POST - senza risposta
  */
 function generateXHttpRequestFromForm(url, query, form) {
     const formData = new FormData(form);
@@ -17,19 +17,43 @@ function generateXHttpRequestFromForm(url, query, form) {
         params[pair[0]] = pair[1];
     }
 
+    const queryString = new URLSearchParams(params).toString();
+    generateRequest(url, `query=${query}&${queryString}`, "POST");
+}
+
+/**
+ * Genera una richiesta HTTP POST - con risposta
+ */
+function generateRequest(url, content, method = "GET") {    
     try {
         const xhttp = new XMLHttpRequest();
-        xhttp.open("POST", url, true);
+        xhttp.open(method, url, true);
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhttp.onload = function () {
-            alert(JSON.parse(xhttp.responseText)["message"]);
+            if (xhttp.status === 200) {
+                return JSON.parse(xhttp.responseText)["message"];
+            } else {
+                throw new Error(`Response status: ${xhttp.status} `);
+            }
         };
-        const queryString = new URLSearchParams(params).toString();
-        xhttp.send(`query=${query}&${queryString}`);
+        xhttp.send(content);
     } catch (error) {
         console.log(error.message);
     }
 }
+
+function queryAPI(url, query, data, method = "GET") {
+    return generateRequest(url, `query=${query}&${data}`, method);
+}
+
+
+
+
+
+
+
+
+
 
 /**
  * Stabilisce se un ordine è in corso di spedizione o è stato consegnato
