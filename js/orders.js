@@ -49,7 +49,7 @@ async function getOrders() {
         const json = await response.json();
         console.log(json);
         const orders = generateOrders(json);
-        const section = document.querySelector('main section');
+        const section = document.getElementById("orders-list");
         section.innerHTML = orders;
     } catch (error) {
         console.log(error.message);
