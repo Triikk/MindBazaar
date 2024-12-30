@@ -19,15 +19,17 @@ function generateBestsellers(bestsellers) {
     `;
 
     for (let i = 0; i < numBS; i++) {
-        // <img src="${bestsellers[i]["img"]}" alt="" />
-        let bestseller = `
+        let bestseller = bestsellers[i];
+        let bestsellerInfo = `
         <li>
-        <h3>${bestsellers[i]["nome"]}</h3>
-        <img src="${bestsellers[i]["percorso_immagine"]}" alt="${bestsellers[i]["descrizione"]}" />
-        <p>${bestsellers[i]["descrizione"]}</p>
+        <h3>${bestseller["nome"]}</h3>
+        <a href="product.php?id_prodotto=${bestseller["id"]}&versione=1">
+            <img src="${bestseller["percorso_immagine"]}" alt="" />
+        </a>
+        <p>${bestseller["descrizione"]}</p>
         </li>
         `;
-        result += bestseller;
+        result += bestsellerInfo;
     }
     result += `
     </ul>
