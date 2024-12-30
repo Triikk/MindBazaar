@@ -10,7 +10,7 @@ function generateArticle(articolo, index) {
         <form id="modify-amount-${index}">
             <input onchange="updateCart(${index})" form="modify-amount-${index}" type="number" name="quantita_articolo_in_carrello" value="${articolo["quantita"]}">
             <input onclick="removeArticle(${index})" form="modify-amount-${index}" type="button" name="remove_from_cart" value="remove">
-            <input type="checkbox" form="modify-amount-${index}" name="include" value="false">
+            <input onchange="checkOrderingAbility()" type="checkbox" form="modify-amount-${index}" name="include" value="false">
         </form>
     </li>
     `
@@ -104,6 +104,27 @@ function createOrder() {
         }
     }
     document.forms["createOrder-form"]["orderedArticles"].value = JSON.stringify(articoliSceltiDalCarrello);
+}
+
+function atLeastOneArticleSelected() {
+    for (let i = 0; i < carrello.length; i++) {
+        let form = document.forms["modify-amount-" + i];
+        let include = form["include"].checked;
+        if (include) {
+            return true;
+        }
+    }
+    return false;
+}
+
+function checkOrderingAbility() {
+    let atLeastOne = atLeastOneArticleSelected();
+
+    if (atLeastOne) {
+        document.forms["createOrder-form"]["submit"].disabled = false;
+    } else {
+        document.forms["createOrder-form"]["submit"].disabled = true;
+    }
 }
 
 visualizeCart();
