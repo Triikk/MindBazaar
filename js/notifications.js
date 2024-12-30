@@ -14,7 +14,6 @@ function getArticleNotificationText(type) {
     }
 }
 
-
 function generateUserNotifications(UNotifications) {
     let result = "";
     let numUN = UNotifications.length;
@@ -24,11 +23,14 @@ function generateUserNotifications(UNotifications) {
     `;
 
     for (let i = 0; i < numUN; i++) {
+        let notification = UNotifications[i];
         let Unotification = `
         <li>
-        <h3>Notifica ordine n.${UNotifications[i]["id_ordine"]}</h3>
-        <p>Data: ${UNotifications[i]["data"]}</p>
-        <p>${getOrderNotificationText(UNotifications[i]["tipologia"])}</p>
+        <a href="orders.php#ord-${notification["id_ordine"]}">
+        <h3>Notifica ordine n.${notification["id_ordine"]}</h3>
+        <p>Data: ${notification["data"]}</p>
+        <p>${getOrderNotificationText(notification["tipologia"])}</p>
+        </a>
         </li >
             `;
         result += Unotification;
@@ -68,12 +70,14 @@ function generateArticleNotifications(ANotifications) {
     for (let i = 0; i < numAN; i++) {
         let Anotification = `
         <li>
+        <a href="product.php?id_prodotto=${ANotifications[i]["id_prodotto"]}&versione=${ANotifications[i]["versione"]}">
         <h3>Articolo: ${ANotifications[i]["nome"]}</h3>
         <p>Formato: ${ANotifications[i]["formato"]}</p>
         <p>Durata: ${ANotifications[i]["durata"]}</p>
         <p>Intensità: ${ANotifications[i]["intensita"]}</p>
         <p>Data: ${ANotifications[i]["data"]}</p>
         <p>${getArticleNotificationText(ANotifications[i]["tipologia"])}</p>
+        </a>
         </li >
             `;
         result += Anotification;

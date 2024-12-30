@@ -1,3 +1,4 @@
+/*
 function generateOrders(orders) {
     let result = "";
     let numOrders = orders.length;
@@ -11,6 +12,7 @@ function generateOrders(orders) {
         let articleList = orderListTuple[1];
         let orderHTML = `
         <li>
+        <a name="ord-${order["id"]}"></a>
         <h3>Ordine n.${order["id"]} del ${order["tempo_ordinazione"]}</h3>
         <ul>
         `;
@@ -57,3 +59,9 @@ async function getOrders() {
 }
 
 getOrders();
+*/
+
+
+
+
+

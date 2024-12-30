@@ -148,3 +148,28 @@ function jsonResponse($code, $message) {
         'message' => $message
     ));
 }
+
+function getOrderState($tempo_spedizione, $tempo_consegna) {
+    // Ottieni la data e ora attuale
+    $now = new DateTime();
+    $offset = $now->getOffset(); // Ottieni l'offset del fuso orario
+    $offsetDate = (clone $now)->modify("-$offset seconds"); // Applica l'offset
+    $data = new DateTime($offsetDate->format('Y-m-d H:i:s')); // Ottieni la data corretta
+
+    // Converte le date in oggetti DateTime
+    $tempo_spedizione = new DateTime(str_replace(' ', 'T', $tempo_spedizione));
+    $tempo_consegna = new DateTime(str_replace(' ', 'T', $tempo_consegna));
+
+    $result = "";
+
+    // Confronta le date
+    if ($data < $tempo_spedizione) {
+        $result = "L'ordine è in fase di preparazione";
+    } elseif ($data < $tempo_consegna) {
+        $result = "L'ordine è in fase di spedizione";
+    } else {
+        $result = "L'ordine è stato consegnato";
+    }
+
+    return $result;
+}

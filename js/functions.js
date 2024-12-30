@@ -34,6 +34,7 @@ function generateXHttpRequestFromForm(url, query, form) {
 /**
  * Stabilisce se un ordine è in corso di spedizione o è stato consegnato
  */
+/*
 function getOrderState(tempo_spedizione, tempo_consegna) {
     const now = new Date();
     const offsetDate = new Date(now.getTime() - now.getTimezoneOffset() * 60000); // Apply timezone offset
@@ -50,6 +51,7 @@ function getOrderState(tempo_spedizione, tempo_consegna) {
     }
     return result;
 }
+*/
 
 function showAvailability(nItems) {
     if (nItems > 20) {
@@ -62,3 +64,17 @@ function showAvailability(nItems) {
         return nItems;
     }
 }
+
+/*
+document.addEventListener("DOMContentLoaded", function () {
+    const hash = window.location.hash;
+    console.log("DOM fully loaded and parsed" +  hash);
+    if (hash) {
+      const targetElement = document.getElementById(hash.substring(1, hash.length));
+      console.log("Target element:", targetElement);
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: "smooth" }); // Smooth scrolling to the element
+      }
+    }
+});
+*/  
