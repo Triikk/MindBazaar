@@ -34,11 +34,16 @@ function generateBestsellers(bestsellers) {
     result += `
     </ul>
     `;
-    return result;
+    
+    const BSSection = document.querySelector('main > :nth-child(1)');
+    BSSection.innerHTML = result;
 }
 
 async function getBestsellers() {
-    const url = 'api/api-homepage.php?query=bestSellers';
+    const url = 'api/api-homepage.php';
+
+    queryAPI(url, "bestSellers", "", "GET", generateBestsellers);
+    /*
     try {
         const response = await fetch(url);
         if (!response.ok) {
@@ -52,6 +57,7 @@ async function getBestsellers() {
     } catch (error) {
         console.log(error.message);
     }
+    */
 }
 
 function generateCategories(categories) {
@@ -85,11 +91,16 @@ function generateCategories(categories) {
     result += `
     </ul>
     `;
-    return result;
+    
+    const CSection = document.querySelector('main > :nth-child(2)');
+    CSection.innerHTML = result;
 }
 
 async function getCategories() {
-    const url = 'api/api-homepage.php?query=categories';
+    const url = 'api/api-homepage.php';
+    
+    queryAPI(url, "categories", "", "GET", generateCategories);
+    /*
     try {
         const response = await fetch(url);
         if (!response.ok) {
@@ -103,6 +114,7 @@ async function getCategories() {
     } catch (error) {
         console.log(error.message);
     }
+    */
 }
 
 getBestsellers();

@@ -35,34 +35,15 @@ function generateCart(newCart) {
 }
 
 async function visualizeCart() {
-    const url = 'api/api-cart.php?query=getCartArticles';
-    try {
-        const response = await fetch(url);
-        if (!response.ok) {
-            throw new Error(`Response status: ${response.status} `);
-        }
-        const json = await response.json();
-        generateCart(json);
-    } catch (error) {
-        console.log(error.message);
-    }
+    const url = 'api/api-cart.php';
+    queryAPI(url, "getCartArticles", "", "GET", generateCart);
 }
 
 async function removeArticle(index) {
     let articolo = carrello[index];
     // rimuove articolo dal carrello
     const url = `api/api-cart.php`;
-    try {
-        const xhttp = new XMLHttpRequest();
-        xhttp.open("POST", "api/api-cart.php", true);
-        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xhttp.onload = function() {
-            visualizeCart();
-        };
-        xhttp.send(`query=removeFromCart&art_id_prod=${articolo["id_prodotto"]}&art_versione=${articolo["versione"]}`);
-    } catch (error) {
-        console.log(error.message);
-    }
+    queryAPI(url, "removeFromCart", `art_id_prod=${articolo["id_prodotto"]}&art_versione=${articolo["versione"]}`, "POST", visualizeCart);
 }
 
 async function updateCart(index) {
@@ -73,19 +54,9 @@ async function updateCart(index) {
     if (nuovaQuantita <= 0) {
         removeArticle(index);
     } else {
-        const url = `api/api-cart.php`;
         // aggiorna la quantità dell'articolo
-        try {
-            const xhttp = new XMLHttpRequest();
-            xhttp.open("POST", "api/api-cart.php", true);
-            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xhttp.onload = function() {
-                visualizeCart();
-            };
-            xhttp.send(`query=modifyArtAmount&art_id_prod=${articolo["id_prodotto"]}&art_versione=${articolo["versione"]}&art_quantita=${nuovaQuantita}`);
-        } catch (error) {
-            console.log(error.message);
-        }
+        const url = `api/api-cart.php`;
+        queryAPI(url,"modifyArtAmount", `art_id_prod=${articolo["id_prodotto"]}&art_versione=${articolo["versione"]}&art_quantita=${nuovaQuantita}`, "POST", visualizeCart);
     }
 }
 

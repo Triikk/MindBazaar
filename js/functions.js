@@ -7,8 +7,45 @@ function calculateTotal(articles) {
 }
 
 
+
 /**
- * Genera una richiesta HTTP POST - senza risposta
+ * Genera una richiesta HTTP generica
+*/
+function generateRequest(url, content, method = "GET", callback = null) {  
+    if (method === "GET") {
+        url += `?${content}`;
+        content = "";
+    }
+    const xhttp = new XMLHttpRequest();
+    try {
+        // console.log(`Sending ${method} request to ${url} with content: ${content}`);
+        // console.log(callback);
+        xhttp.open(method, url, true);
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttp.onload = function () {
+            let responseMessage = JSON.parse(xhttp.responseText)["message"];
+            if (xhttp.status === 200) {
+                if (callback !== null) {
+                    // console.log(responseMessage);
+                    callback(responseMessage);
+                }
+            } else {
+                let errorText = `ERRORE: REQUEST FAILED
+                Response status: ${xhttp.status}
+                Response message: "${responseMessage}"`;
+                console.log(errorText);
+                alert(errorText);
+            }
+        };
+        xhttp.send(content);
+    } catch (error) {
+        console.log(error.message);
+    }
+    return xhttp;
+}
+
+/**
+ * Genera una richiesta HTTP POST da un form
  */
 function generateXHttpRequestFromForm(url, query, form) {
     const formData = new FormData(form);
@@ -22,28 +59,14 @@ function generateXHttpRequestFromForm(url, query, form) {
 }
 
 /**
- * Genera una richiesta HTTP POST - con risposta
+ * Genera una domanda all'API 
  */
-function generateRequest(url, content, method = "GET") {    
-    try {
-        const xhttp = new XMLHttpRequest();
-        xhttp.open(method, url, true);
-        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xhttp.onload = function () {
-            if (xhttp.status === 200) {
-                return JSON.parse(xhttp.responseText)["message"];
-            } else {
-                throw new Error(`Response status: ${xhttp.status} `);
-            }
-        };
-        xhttp.send(content);
-    } catch (error) {
-        console.log(error.message);
+function queryAPI(url, query, data = "", method = "GET", callback = null) {
+    let content = `query=${query}`;
+    if (data !== "") {
+        content += `&${data}`;
     }
-}
-
-function queryAPI(url, query, data, method = "GET") {
-    return generateRequest(url, `query=${query}&${data}`, method);
+    return generateRequest(url, content, method, callback);
 }
 
 

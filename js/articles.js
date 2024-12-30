@@ -1,5 +1,3 @@
-
-
 function generateArticles(articles) {
     let result = "";
     let ordinamento = "vendite";
@@ -33,20 +31,8 @@ function generateArticles(articles) {
 }
 
 async function getArticles() {
-    const url = 'api/api-articles.php?query=getArticles';
-    try {
-        const response = await fetch(url);
-        if (!response.ok) {
-            throw new Error(`Response status: ${response.status} `);
-        }
-        const json = await response.json();
-        console.log(json);
-        const articles = generateArticles(json);
-        const main = document.querySelector('main');
-        main.innerHTML = articles;
-    } catch (error) {
-        console.error('Error:', error);
-    }
+    const url = 'api/api-articles.php';
+    queryAPI(url, "getArticles", "", "GET", generateArticles);
 }
 
 getArticles();

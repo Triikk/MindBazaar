@@ -38,11 +38,16 @@ function generateUserNotifications(UNotifications) {
     result += `
     </ul >
             `;
-    return result;
+    
+    const UNSection = document.querySelector('main > :nth-child(1)');
+    UNSection.innerHTML = result;
 }
 
 async function getUserNotifications() {
-    const url = 'api/api-notifications.php?query=orderNotifications';
+    const url = 'api/api-notifications.php';
+    
+    queryAPI(url, "orderNotifications", "", "GET", generateUserNotifications);
+    /*
     try {
         const response = await fetch(url);
         if (!response.ok) {
@@ -56,7 +61,7 @@ async function getUserNotifications() {
     } catch (error) {
         console.log(error.message);
     }
-
+    */
 }
 
 function generateArticleNotifications(ANotifications) {
@@ -85,11 +90,16 @@ function generateArticleNotifications(ANotifications) {
     result += `
     </ul >
             `;
-    return result;
+    
+    const ANSection = document.querySelector('main > :nth-child(2)');
+    ANSection.innerHTML = result;
 }
 
 async function getArticleNotifications() {
-    const url = 'api/api-notifications.php?query=articleNotifications';
+    const url = 'api/api-notifications.php';
+    
+    queryAPI(url, "articleNotifications", "", "GET", generateArticleNotifications);
+    /*
     try {
         const response = await fetch(url);
         if (!response.ok) {
@@ -103,10 +113,14 @@ async function getArticleNotifications() {
     } catch (error) {
         console.log(error.message);
     }
+    */
 }
 
 async function readNotifications() {
-    const url = 'api/api-notifications.php?query=readNotifications';
+    const url = 'api/api-notifications.php';
+
+    queryAPI(url, "readNotifications", "", "POST", (res)=>{console.log(res)});
+    /*
     try {
         const response = await fetch(url);
         if (!response.ok) {
@@ -116,7 +130,7 @@ async function readNotifications() {
         console.log(json);
     } catch (error) {
         console.log(error.message);
-    }
+    }*/
 }
 
 getUserNotifications();

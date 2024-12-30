@@ -7,8 +7,20 @@ function updateNotificatificationBadge(ANCount, ONCount, notificationBadge) {
 }
 
 async function checkNotifications() {
-    const ANUrl = 'api/api-notifications.php?query=unreadANotifications';
-    const ONUrl = 'api/api-notifications.php?query=unreadONotifications';
+    const ANUrl = 'api/api-notifications.php';
+    const ONUrl = 'api/api-notifications.php';
+
+    const ANResponse = queryAPI(ANUrl, "unreadANotifications");
+    const ONResponse = queryAPI(ONUrl, "unreadONotifications", "", "GET", function(res) {
+        if (ANResponse.status === 200 && ONResponse.status === 200) {
+            const ANotificationsJSON = JSON.parse(ANResponse.responseText);
+            const ONotificationsJSON = JSON.parse(ONResponse.responseText);
+            const notificationBadge = document.querySelector('body > header > nav > ul > li:nth-child(5) > a');
+            updateNotificatificationBadge(ANotificationsJSON.length, ONotificationsJSON.length, notificationBadge);
+        }
+    });
+
+    /*
     try {
         const ANResponse = await fetch(ANUrl);
         const ONResponse = await fetch(ONUrl);
@@ -23,11 +35,15 @@ async function checkNotifications() {
         updateNotificatificationBadge(ANotificationsJSON.length, ONotificationsJSON.length, notificationBadge);
     } catch (error) {
         console.log(error.message);
-    }
+    }*/
 }
 
 async function generateNotifications() {
-    const url = 'api/api-notifications.php?query=generateNotifications';
+    const url = 'api/api-notifications.php';
+
+    queryAPI(url, "generateNotifications", "", "POST", (res)=>{console.log(res)});
+
+    /*
     try {
         const response = await fetch(url);
         if (!response.ok) {
@@ -37,7 +53,7 @@ async function generateNotifications() {
         console.log(json);
     } catch (error) {
         console.log(error.message);
-    }
+    }*/
 }
 
 generateNotifications();

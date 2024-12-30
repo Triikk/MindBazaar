@@ -3,8 +3,12 @@ Matthew:
 - automatic notifications system (notifiche_articoli -> aggiornamenti database all'aggiornamento delle disponibilità)
 
 Bitta:
-- bestseller sono link
-- notifiche ordine cliccabili portano al link
-- js (refactoring-> post request, articles filtering ?, popup menus)
+- modifyArticle
+- js (articles filtering ?, rimuovi commenti, selezione tramite id?)
 
+Refactoring js:
+- document.addEventListener ?
+- selezione tramite id?
+
+- popup menus
 - css

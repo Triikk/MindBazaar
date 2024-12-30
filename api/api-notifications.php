@@ -3,8 +3,8 @@ require_once '../bootstrap.php';
 header('Content-Type: application/json');
 
 if (checkUserLoggedIn()) {
-    if (isset($_GET["query"])) {
-        switch ($_GET["query"]) {
+    if (isset($_REQUEST["query"])) {
+        switch ($_REQUEST["query"]) {
             case "orderNotifications":
                 $orderNotifications = $dbh->getOrderNotificationsByUserId($_SESSION["username"]);
                 echo jsonResponse(200, $orderNotifications);
