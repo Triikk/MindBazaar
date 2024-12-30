@@ -2,26 +2,40 @@
 require_once '../bootstrap.php';
 header('Content-Type: application/json');
 
-if (API_checkUserLoggedIn()) {
-    if (isset($_GET["query"]) && $_GET["query"] == "orderNotifications") {
-        $orderNotifications = $dbh->getOrderNotificationsByUserId($_SESSION["username"]);
-        echo json_encode($orderNotifications);
-    } else if (isset($_GET["query"]) && $_GET["query"] == "articleNotifications") {
-        $articleNotifications = $dbh->getArticleNotificationsByUserId($_SESSION["username"]);
-        echo json_encode($articleNotifications);
-    } else if (isset($_GET["query"]) && $_GET["query"] == "generateNotifications") {
-        $result = $dbh->generateOrderNotifications($_SESSION["username"]);
-        echo json_encode($result);
-    } else if (isset($_GET["query"]) && $_GET["query"] == "unreadANotifications") {
-        $unreadNotifications = $dbh->getUnreadANotificationsByUsername($_SESSION["username"]);
-        echo json_encode($unreadNotifications);
-    } else if (isset($_GET["query"]) && $_GET["query"] == "unreadONotifications") {
-        $unreadNotifications = $dbh->getUnreadONotificationsByUsername($_SESSION["username"]);
-        echo json_encode($unreadNotifications);
-    } else if (isset($_GET["query"]) && $_GET["query"] == "readNotifications") {
-        $result = $dbh->readUserNotifications($_SESSION["username"]);
-        echo json_encode($result);
+if (checkUserLoggedIn()) {
+    if (isset($_GET["query"])) {
+        switch ($_GET["query"]) {
+            case "orderNotifications":
+                $orderNotifications = $dbh->getOrderNotificationsByUserId($_SESSION["username"]);
+                echo jsonResponse(200, $orderNotifications);
+                break;
+            case "articleNotifications":
+                $articleNotifications = $dbh->getArticleNotificationsByUserId($_SESSION["username"]);
+                echo jsonResponse(200, $articleNotifications);
+                break;
+            case "generateNotifications":
+                $orderNotifications = $dbh->generateOrderNotifications($_SESSION["username"]);
+                echo jsonResponse(200, $orderNotifications);
+                break;
+            case "unreadANotifications":
+                $unreadNotifications = $dbh->getUnreadANotificationsByUsername($_SESSION["username"]);
+                echo jsonResponse(200, $unreadNotifications);
+                break;
+            case "unreadONotifications":
+                $unreadNotifications = $dbh->getUnreadONotificationsByUsername($_SESSION["username"]);
+                echo jsonResponse(200, $unreadNotifications);
+                break;
+            case "readNotifications":
+                $userNotifications = $dbh->readUserNotifications($_SESSION["username"]);
+                echo jsonResponse(200, $userNotifications);
+                break;
+            default:
+                echo jsonResponse(400, array("error" => "Invalid query"));
+                break;
+        }
     } else {
-        echo json_encode(array("error" => "Invalid query"));
+        echo jsonResponse(400, "`query` field not set");
     }
+} else {
+    echo jsonResponse(400, "User not logged in");
 }

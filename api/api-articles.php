@@ -22,10 +22,10 @@ if (isset($_REQUEST["query"])) {
                 $disponibilita = $_REQUEST["disponibilita"];
                 $versione = $_REQUEST["versione"];
                 if ($dbh->isArticlePresent($id_prodotto, $versione)) {
-                    echo jsonResponse(400, "Article already present");
+                    echo jsonResponse(400, "Articolo già presente");
                 } else {
                     $dbh->addArticle($id_prodotto, $formato, $durata, $intensita, $prezzo, $disponibilita, $versione);
-                    echo jsonResponse(200, "Article added successfully");
+                    echo jsonResponse(200, "Articolo aggiunto con successo");
                 }
             } else {
                 echo jsonResponse(400, "Missing parameters");
@@ -39,10 +39,10 @@ if (isset($_REQUEST["query"])) {
                 $nome_categoria = $_REQUEST["nome_categoria"];
                 $eta_minima = $_REQUEST["eta_minima"];
                 if ($dbh->isProductPresent($nome)) {
-                    echo jsonResponse(400, "Product already present");
+                    echo jsonResponse(400, "Prodotto già presente");
                 } else {
                     $dbh->addProduct($nome, $descrizione, $immagine, $nome_categoria, $eta_minima);
-                    echo jsonResponse(200, "Product added successfully");
+                    echo jsonResponse(200, "Prodotto aggiunto con successo");
                 }
             } else {
                 echo jsonResponse(400, "Missing parameters");
@@ -61,7 +61,7 @@ if (isset($_REQUEST["query"])) {
             }
             break;
         default:
-            echo jsonResponse(400, "Invalid action");
+            echo jsonResponse(400, "Invalid query");
             break;
     }
 } else {
