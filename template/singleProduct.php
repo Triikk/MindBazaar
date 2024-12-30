@@ -42,24 +42,24 @@
 </section>
 <section>
     <?php
-    if (isset($_SESSION["username"]) && isset($_SESSION["admin"])) {
-        echo "<ul>
+    if (isset($_SESSION["username"]) && isset($_SESSION["admin"])) { ?>
+        <ul>
             <li>
-                <form action='modifyArticle.php' method='POST'>
-                    <input type='hidden' name='id_prodotto' value='" . $articolo["id_prodotto"] . "'>
-                    <input type='hidden' name='versione' value='" . $articolo["versione"] . "'>
+                <form action='modifyArticle.php' id='modify-article' method='POST' onsubmit="adjustModifyArticleValues()">
+                    <input type='hidden' name='id_prodotto' value='<?php echo $articolo["id_prodotto"]; ?>'>
+                    <input type='hidden' name='versione' value='<?php echo $articolo["versione"]; ?>'>
                     <input type='submit' value='Modifica'>
                 </form>
-                    <img src='" . getAdminImagePath("modifyArticle") . "' alt='Modifica articolo'>
+                <img src='<?php echo getAdminImagePath("modifyArticle"); ?>' alt='Modifica articolo'>
             </li>
             <li>
-                <form action='deleteArticle.php' method='POST'>
-                    <input type='hidden' name='id_prodotto' value='" . $articolo["id_prodotto"] . "'>
-                    <input type='hidden' name='formato' value='" . $articolo["formato"] . "'>
+                <form action='deleteArticle.php' id='delete-article' method='POST' onsubmit="adjustDeleteArticleValues()">
+                    <input type='hidden' name='id_prodotto' value='<?php echo $articolo["id_prodotto"]; ?>'>
+                    <input type='hidden' name='versione' value='<?php echo $articolo["versione"]; ?>'>
                     <input type='submit' value='Elimina'>
                 </form>
-                    <img src='" . getAdminImagePath("deleteArticle") . "' alt='Elimina articolo'>
+                <img src='<?php echo getAdminImagePath("deleteArticle"); ?>' alt='Elimina articolo'>
             </li>
         </ul>";
-    } ?>
+    <?php } ?>
 </section>

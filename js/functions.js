@@ -62,3 +62,12 @@ function showAvailability(nItems) {
         return nItems;
     }
 }
+
+function getKeyValueFromForm(form){
+    const formData = new FormData(form);
+    const fields = {};
+    for (const [key, value] of formData.entries()) {
+        fields[key] = value;
+    }
+    return fields;
+}
