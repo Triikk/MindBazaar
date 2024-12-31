@@ -17,6 +17,7 @@ define("ICONS_DIR", UPLOAD_DIR . "icons/");
 define("ADMIN_DIR", ICONS_DIR . "admin/");
 define("LOGOS_DIR", ICONS_DIR . "logos/");
 define("FORMATS_DIR", ICONS_DIR . "formats/");
+define("SYMBOLS_DIR", ICONS_DIR . "symbols/");
 
 require_once("utils/functions.php");
 require_once("db/database.php");

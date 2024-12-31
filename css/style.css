@@ -1,5 +1,7 @@
-* {
-    font-family: Roboto, Arial
+body {
+    color: black;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 30px;
 }
 
 nav>ul {
@@ -23,4 +25,16 @@ header>nav>ul>li>a>h1 {
     line-height: inherit;
     /* display: inline-block;  */
     vertical-align: middle;
+}
+
+img {
+    max-height: 200px;
+}
+
+footer img {
+    max-height: 20px;
+}
+
+footer p {
+    margin: 0;
 }

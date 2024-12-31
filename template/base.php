@@ -34,9 +34,9 @@
                     </a></li>
             </ul>
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="searchMenu.php"> <img src="upload/icons/symbols/search.png" alt="Logo" width="30" height="24" class="d-inline"> </a></li>
-                <li class="nav-item"><a class="nav-link" href="cart.php"> <img src="upload/icons/symbols/cart.png" alt="Logo" width="30" height="24" class="d-inline"> </a></li>
-                <li class="nav-item"><a class="nav-link" href="notifications.php"> <img src="upload/icons/symbols/notification.png" alt="Logo" width="30" height="24" class="d-inline"> </a></li>
+                <li class="nav-item"><a class="nav-link" href="searchMenu.php"> <img src="<?php echo SYMBOLS_DIR . "search.png"; ?>" alt="Logo" width="30" height="24" class="d-inline"> </a></li>
+                <li class="nav-item"><a class="nav-link" href="cart.php"> <img src="<?php echo SYMBOLS_DIR . "cart.png"; ?>" alt="Logo" width="30" height="24" class="d-inline"> </a></li>
+                <li class="nav-item"><a class="nav-link" href="notifications.php"> <img src="<?php echo SYMBOLS_DIR . "notification.png"; ?>" alt="Logo" width="30" height="24" class="d-inline"> </a></li>
             </ul>
         </nav>
     </header>
@@ -45,10 +45,11 @@
             require($templateParams["nome"]);
         }; ?>
     </main>
-    <footer id="footer">
-        <p>Contattaci: +39 686730535</p>
-        <p>Indirizzo: Via dell'Università 50, Cesena</p>
-        <p>&copy 2024 MindBazaar S.p.A.</p>
+    <hr>
+    <footer class="text-center" id="footer">
+        <p>+39 686730535</p>
+        <p>Via dell'Università 50, Cesena</p>
+        <p>&copy 2024 MindBazaar Inc.</p>
     </footer>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
