@@ -26,16 +26,20 @@
     ?>
 
     <header>
-        <nav>
-            <ul>
-                <li><a href="lateralMenu.php">ILM</a></li>
-                <li><a href="index.php">
-                        <h1>MindBazaar</h1>
-                    </a></li>
-                <li><a href="searchMenu.php">ISM</a></li>
-                <li><a href="cart.php">ICM</a></li>
-                <li><a href="notifications.php">Notifiche</a></li>
-            </ul>
+        <nav class="navbar navbar-expand-lg">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="lateralMenu.php"> <img src="/upload/icons/symbols/menu.png" alt="Logo" width="30" height="24" class="d-inline"> </a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.php">
+                            <h1>MindBazaar</h1>
+                        </a></li>
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="searchMenu.php"> <img src="/upload/icons/symbols/search.png" alt="Logo" width="30" height="24" class="d-inline"> </a></li>
+                    <li class="nav-item"><a class="nav-link" href="cart.php"> <img src="/upload/icons/symbols/cart.png" alt="Logo" width="30" height="24" class="d-inline"> </a></li>
+                    <li class="nav-item"><a class="nav-link" href="notifications.php"> <img src="/upload/icons/symbols/notification.png" alt="Logo" width="30" height="24" class="d-inline"> </a></li>
+                </ul>
+            </div>
         </nav>
     </header>
     <main>
@@ -49,6 +53,10 @@
         <p>&copy 2024 MindBazaar S.p.A.</p>
     </footer>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin>
+</script>
 <?php
 if (isset($templateParams["js"])):
     foreach ($templateParams["js"] as $script):

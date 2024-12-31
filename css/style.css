@@ -1,7 +1,26 @@
-nav > ul {
+* {
+    font-family: Roboto, Arial
+}
+
+nav>ul {
     list-style: none;
 }
 
-header > nav > ul > li, header > nav > ul > li > a > h1{
-    display:inline;
+/* header>nav>ul>li,
+header>nav>ul>li>a>h1 {
+    display: inline;
+} */
+
+.navbar-nav {
+    align-items: center;
+    /* Add this line */
+}
+
+.navbar-nav h1,
+.navbar-nav h2 {
+    margin: 0;
+    padding: 0;
+    line-height: inherit;
+    /* display: inline-block;  */
+    vertical-align: middle;
 }
