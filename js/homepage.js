@@ -74,7 +74,7 @@ function generateBestsellers(bestsellers) {
                 <div class="carousel-caption d-none d-md-block">
                     <h5>${bestseller["nome"]}</h5>
                     <p>${bestseller["descrizione"]}</p>
-                    <a href="product.php?id_prodotto=${bestseller["id"]}&versione=1" class="btn btn-primary">View Product</a>
+                    <a href="product.php?id_prodotto=${bestseller["id"]}&versione=${bestseller["versione"]}" class="btn btn-primary">View Product</a>
                 </div>
             </div>
         `;
