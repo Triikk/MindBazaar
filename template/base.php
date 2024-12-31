@@ -26,20 +26,18 @@
     ?>
 
     <header>
-        <nav class="navbar navbar-expand-lg">
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="lateralMenu.php"> <img src="upload/icons/symbols/menu.png" alt="Logo" width="30" height="24" class="d-inline"> </a></li>
-                    <li class="nav-item"><a class="nav-link" href="index.php">
-                            <h1>MindBazaar</h1>
-                        </a></li>
-                </ul>
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="searchMenu.php"> <img src="upload/icons/symbols/search.png" alt="Logo" width="30" height="24" class="d-inline"> </a></li>
-                    <li class="nav-item"><a class="nav-link" href="cart.php"> <img src="upload/icons/symbols/cart.png" alt="Logo" width="30" height="24" class="d-inline"> </a></li>
-                    <li class="nav-item"><a class="nav-link" href="notifications.php"> <img src="upload/icons/symbols/notification.png" alt="Logo" width="30" height="24" class="d-inline"> </a></li>
-                </ul>
-            </div>
+        <nav class="navbar navbar-expand">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="lateralMenu.php"> <img src="upload/icons/symbols/menu.png" alt="Logo" width="30" height="24" class="d-inline"> </a></li>
+                <li class="nav-item"><a class="nav-link" href="index.php">
+                        <h1>MindBazaar</h1>
+                    </a></li>
+            </ul>
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="searchMenu.php"> <img src="upload/icons/symbols/search.png" alt="Logo" width="30" height="24" class="d-inline"> </a></li>
+                <li class="nav-item"><a class="nav-link" href="cart.php"> <img src="upload/icons/symbols/cart.png" alt="Logo" width="30" height="24" class="d-inline"> </a></li>
+                <li class="nav-item"><a class="nav-link" href="notifications.php"> <img src="upload/icons/symbols/notification.png" alt="Logo" width="30" height="24" class="d-inline"> </a></li>
+            </ul>
         </nav>
     </header>
     <main>
