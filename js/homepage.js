@@ -1,48 +1,107 @@
+// function generateBestsellers(bestsellers) {
+//     let result = "";
+//     let numBS = bestsellers.length;
+//     if (numBS === 0) {
+//         result += `
+//         <h2>No bestsellers found</h2>
+//         `;
+//     } else if (numBS === 1) {
+//         result += `
+//         <h2>Best seller:</h2>
+//         `;
+//     } else {
+//         result += `
+//         <h2>Best sellers:</h2>
+//         `;
+//     }
+//     result += `
+//     <ul>
+//     `;
+
+//     for (let i = 0; i < numBS; i++) {
+//         let bestseller = bestsellers[i];
+//         let bestsellerInfo = `
+//         <li>
+//         <h3>${bestseller["nome"]}</h3>
+//         <a href="product.php?id_prodotto=${bestseller["id"]}&versione=1">
+//             <img src="${bestseller["percorso_immagine"]}" alt="" />
+//         </a>
+//         <p>${bestseller["descrizione"]}</p>
+//         </li>
+//         `;
+//         result += bestsellerInfo;
+//     }
+//     result += `
+//     </ul>
+//     `;
+
+//     const BSSection = document.querySelector('main > :nth-child(1)');
+//     BSSection.innerHTML = result;
+// }
+
 function generateBestsellers(bestsellers) {
     let result = "";
     let numBS = bestsellers.length;
+
     if (numBS === 0) {
         result += `
         <h2>No bestsellers found</h2>
         `;
-    } else if (numBS === 1) {
+        return result;
+    }
+
+    result += `
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <ol class="carousel-indicators">
+    `;
+
+    for (let i = 0; i < numBS; i++) {
         result += `
-        <h2>Best seller:</h2>
-        `;
-    } else {
-        result += `
-        <h2>Best sellers:</h2>
+            <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="${i}" ${i === 0 ? 'class="active"' : ''}></li>
         `;
     }
+
     result += `
-    <ul>
+        </ol>
+        <div class="carousel-inner">
     `;
 
     for (let i = 0; i < numBS; i++) {
         let bestseller = bestsellers[i];
-        let bestsellerInfo = `
-        <li>
-        <h3>${bestseller["nome"]}</h3>
-        <a href="product.php?id_prodotto=${bestseller["id"]}&versione=1">
-            <img src="${bestseller["percorso_immagine"]}" alt="" />
-        </a>
-        <p>${bestseller["descrizione"]}</p>
-        </li>
+        result += `
+            <div class="carousel-item ${i === 0 ? 'active' : ''}">
+                <img class="d-block w-100" src="${bestseller["percorso_immagine"]}" alt="${bestseller["nome"]}">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>${bestseller["nome"]}</h5>
+                    <p>${bestseller["descrizione"]}</p>
+                    <a href="product.php?id_prodotto=${bestseller["id"]}&versione=1" class="btn btn-primary">View Product</a>
+                </div>
+            </div>
         `;
-        result += bestsellerInfo;
     }
+
     result += `
-    </ul>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
     `;
-    
+
     const BSSection = document.querySelector('main > :nth-child(1)');
     BSSection.innerHTML = result;
+    // return result;
 }
 
 async function getBestsellers() {
     const url = 'api/api-homepage.php';
 
-    queryAPI(url, "bestSellers", "", "GET", generateBestsellers);
+    queryAPI(url, "bestSellers", "numBestSellers=5", "GET", generateBestsellers);
     /*
     try {
         const response = await fetch(url);
@@ -91,14 +150,14 @@ function generateCategories(categories) {
     result += `
     </ul>
     `;
-    
+
     const CSection = document.querySelector('main > :nth-child(2)');
     CSection.innerHTML = result;
 }
 
 async function getCategories() {
     const url = 'api/api-homepage.php';
-    
+
     queryAPI(url, "categories", "", "GET", generateCategories);
     /*
     try {

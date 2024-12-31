@@ -14,14 +14,14 @@
 
 <body>
     <?php
-    echo "_SESSION: " . print_r($_SESSION, true);
-    echo "<br>";
-    echo "_POST: " . print_r($_POST, true);
-    echo "<br>";
-    echo "_GET: " . print_r($_GET, true);
-    echo "<br>";
-    echo "_REQUEST: " . print_r($_REQUEST, true);
-    echo "<br>";
+    // echo "_SESSION: " . print_r($_SESSION, true);
+    // echo "<br>";
+    // echo "_POST: " . print_r($_POST, true);
+    // echo "<br>";
+    // echo "_GET: " . print_r($_GET, true);
+    // echo "<br>";
+    // echo "_REQUEST: " . print_r($_REQUEST, true);
+    // echo "<br>";
     // echo "templateParams: " . print_r($templateParams, true);
     ?>
 
