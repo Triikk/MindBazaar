@@ -1,15 +1,14 @@
-Matthew:
-- admin functionalities (modifica (prezzo, disponibilità), rimozione articoli)
-- automatic notifications system (notifiche_articoli -> aggiornamenti database all'aggiornamento delle disponibilità)
-
-Bitta:
+Bitta (refactoring):
 - modifyArticle.js
 - product.js
-- js (articles filtering ?, rimuovi commenti, selezione tramite id?)
+- js (articles filtering ?)
+- document.addEventListener
+- selezione tramite id
+- rimuovi commenti
 
-Refactoring js:
-- document.addEventListener ?
-- selezione tramite id?
-
+- admin functionalities (modifica (prezzo, disponibilità), rimozione articoli)
+- automatic notifications system
+    - notifiche_articoli -> aggiornamenti database all'aggiornamento delle disponibilità
+    - notifiche dell'admin -> aggiornamenti alla creazione di un ordine?
 - popup menus
 - css
