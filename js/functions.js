@@ -111,3 +111,7 @@ function showAvailability(nItems) {
         return nItems;
     }
 }
+
+function isDefined(value) {
+    return typeof value !== 'undefined';
+}

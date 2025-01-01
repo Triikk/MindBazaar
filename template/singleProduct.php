@@ -45,18 +45,18 @@
     if (isset($_SESSION["username"]) && isset($_SESSION["admin"])) { ?>
         <ul>
             <li>
-                <form action='modifyArticle.php' id='modify-article' method='POST' onsubmit="adjustModifyArticleValues()">
+                <form action='modifyArticle.php' id='modify-article' method='POST'>
                     <input type='hidden' name='id_prodotto' value='<?php echo $articolo["id_prodotto"]; ?>'>
                     <input type='hidden' name='versione' value='<?php echo $articolo["versione"]; ?>'>
-                    <input type='submit' value='Modifica'>
+                    <input type='submit' name='submit' value='Modifica'>
                 </form>
                 <img src='<?php echo getAdminImagePath("modifyArticle"); ?>' alt='Modifica articolo'>
             </li>
             <li>
-                <form action='deleteArticle.php' id='delete-article' method='POST' onsubmit="adjustDeleteArticleValues()">
+                <form action='deleteArticle.php' id='delete-article' method='POST'>
                     <input type='hidden' name='id_prodotto' value='<?php echo $articolo["id_prodotto"]; ?>'>
                     <input type='hidden' name='versione' value='<?php echo $articolo["versione"]; ?>'>
-                    <input type='submit' value='Elimina'>
+                    <input type='submit' name='submit' value='Elimina'>
                 </form>
                 <img src='<?php echo getAdminImagePath("deleteArticle"); ?>' alt='Elimina articolo'>
             </li>
