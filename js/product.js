@@ -47,6 +47,10 @@ function updatePage(articleData) {
         }
     }
 
+    if (isDefined(articleData["versione"])) {
+        window.history.pushState({"html":document.body.innerHTML,"pageTitle":document.title},"", `product.php?id_prodotto=${selectedFields["id_prodotto"]}&versione=${articleData["versione"]}`);
+    }
+
     // Update version in the admin form
     let adminForms = [];
     let mod = document.forms["modify-article"];

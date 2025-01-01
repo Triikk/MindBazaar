@@ -1,10 +1,7 @@
 Bitta (refactoring):
 - js (articles filtering ?)
-- document.addEventListener
-- rimuovi commenti
 - selezione tramite id
-- navigare il sito e pulire la console dai debug rimasti
-- rimuovere gli async
+- cambia url in prodotto quando cambi la versione
 
 - admin functionalities (modifica (prezzo, disponibilità), rimozione articoli)
 - automatic notifications system
