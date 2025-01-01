@@ -6,8 +6,6 @@ function calculateTotal(articles) {
     return total.toFixed(2);
 }
 
-
-
 /**
  * Genera una richiesta HTTP generica
 */
@@ -53,7 +51,6 @@ function generateXHttpRequestFromForm(url, query, form) {
     for (const pair of formData.entries()) {
         params[pair[0]] = pair[1];
     }
-
     const queryString = new URLSearchParams(params).toString();
     generateRequest(url, `query=${query}&${queryString}`, "POST");
 }
@@ -69,18 +66,20 @@ function queryAPI(url, query, data = "", method = "GET", callback = null) {
     return generateRequest(url, content, method, callback);
 }
 
+function showAvailability(nItems) {
+    if (nItems > 20) {
+        return "Disponibile";
+    } else if (nItems > 0) {
+        return "Ultimi pezzi - " + nItems;
+    } else {
+        return nItems;
+    }
+}
 
+function isDefined(value) {
+    return typeof value !== 'undefined';
+}
 
-
-
-
-
-
-
-
-/**
- * Stabilisce se un ordine è in corso di spedizione o è stato consegnato
- */
 /*
 function getOrderState(tempo_spedizione, tempo_consegna) {
     const now = new Date();
@@ -99,19 +98,3 @@ function getOrderState(tempo_spedizione, tempo_consegna) {
     return result;
 }
 */
-
-function showAvailability(nItems) {
-    if (nItems > 20) {
-        return "Disponibile";
-    } else if (nItems > 0) {
-        return "Ultimi pezzi: " + nItems;
-        // } else if ($nItems > 0) {
-        //     return "Sta per terminare";
-    } else {
-        return nItems;
-    }
-}
-
-function isDefined(value) {
-    return typeof value !== 'undefined';
-}

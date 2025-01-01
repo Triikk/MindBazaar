@@ -43,25 +43,9 @@ function generateUserNotifications(UNotifications) {
     UNSection.innerHTML = result;
 }
 
-async function getUserNotifications() {
+function getUserNotifications() {
     const url = 'api/api-notifications.php';
-    
     queryAPI(url, "orderNotifications", "", "GET", generateUserNotifications);
-    /*
-    try {
-        const response = await fetch(url);
-        if (!response.ok) {
-            throw new Error(`Response status: ${response.status} `);
-        }
-        const json = await response.json();
-        console.log(json);
-        const UNotifications = generateUserNotifications(json);
-        const UNSection = document.querySelector('main > :nth-child(1)');
-        UNSection.innerHTML = UNotifications;
-    } catch (error) {
-        console.log(error.message);
-    }
-    */
 }
 
 function generateArticleNotifications(ANotifications) {
@@ -95,44 +79,18 @@ function generateArticleNotifications(ANotifications) {
     ANSection.innerHTML = result;
 }
 
-async function getArticleNotifications() {
+function getArticleNotifications() {
     const url = 'api/api-notifications.php';
-    
     queryAPI(url, "articleNotifications", "", "GET", generateArticleNotifications);
-    /*
-    try {
-        const response = await fetch(url);
-        if (!response.ok) {
-            throw new Error(`Response status: ${response.status} `);
-        }
-        const json = await response.json();
-        console.log(json);
-        const ANotifications = generateArticleNotifications(json);
-        const ANSection = document.querySelector('main > :nth-child(2)');
-        ANSection.innerHTML = ANotifications;
-    } catch (error) {
-        console.log(error.message);
-    }
-    */
 }
 
-async function readNotifications() {
+function readNotifications() {
     const url = 'api/api-notifications.php';
-
-    queryAPI(url, "readNotifications", "", "POST", (res)=>{console.log(res)});
-    /*
-    try {
-        const response = await fetch(url);
-        if (!response.ok) {
-            throw new Error(`Response status: ${response.status} `);
-        }
-        const json = await response.json();
-        console.log(json);
-    } catch (error) {
-        console.log(error.message);
-    }*/
+    queryAPI(url, "readNotifications", "", "POST"/*, (res)=>{console.log(res)}*/);
 }
 
-getUserNotifications();
-getArticleNotifications();
-readNotifications();
+document.addEventListener('DOMContentLoaded', () => {
+    getUserNotifications();
+    getArticleNotifications();
+    readNotifications();
+});

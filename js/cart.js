@@ -34,19 +34,19 @@ function generateCart(newCart) {
     articoli.innerHTML = elencoArticoli + "</ul>\n";
 }
 
-async function visualizeCart() {
+function visualizeCart() {
     const url = 'api/api-cart.php';
     queryAPI(url, "getCartArticles", "", "GET", generateCart);
 }
 
-async function removeArticle(index) {
+function removeArticle(index) {
     let articolo = carrello[index];
     // rimuove articolo dal carrello
     const url = `api/api-cart.php`;
     queryAPI(url, "removeFromCart", `art_id_prod=${articolo["id_prodotto"]}&art_versione=${articolo["versione"]}`, "POST", visualizeCart);
 }
 
-async function updateCart(index) {
+function updateCart(index) {
     // legge quantità
     let articolo = carrello[index];
     let nuovaQuantita = document.forms["modify-amount-" + index]["quantita_articolo_in_carrello"].value;
@@ -94,5 +94,7 @@ function checkOrderingAbility() {
     }
 }
 
-visualizeCart();
-checkOrderingAbility();
+document.addEventListener('DOMContentLoaded', () => {
+    visualizeCart();
+    checkOrderingAbility();
+});

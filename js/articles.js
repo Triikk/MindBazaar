@@ -26,13 +26,15 @@ function generateArticles(articles) {
     </ul>
     </section>
     `;
-    console.log(result);
+    // console.log(result);
     return result;
 }
 
-async function getArticles() {
+function getArticles() {
     const url = 'api/api-articles.php';
     queryAPI(url, "getArticles", "", "GET", generateArticles);
 }
 
-getArticles();
+document.addEventListener('DOMContentLoaded', () => {
+    getArticles();
+});

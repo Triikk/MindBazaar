@@ -39,68 +39,7 @@ function generateBestsellers(bestsellers) {
     BSSection.innerHTML = result;
 }
 
-// function generateBestsellers(bestsellers) {
-//     let result = "";
-//     let numBS = bestsellers.length;
-
-//     if (numBS === 0) {
-//         result += `
-//         <h2>No bestsellers found</h2>
-//         `;
-//     const BSSection = document.querySelector('main > :nth-child(1)');
-//     BSSection.innerHTML = result;
-//     // return;
-//     }
-
-//     result += `
-//     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-//         <ol class="carousel-indicators">
-//     `;
-
-//     for (let i = 0; i < numBS; i++) {
-//         result += `
-//             <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="${i}" ${i === 0 ? 'class="active"' : ''}></li>
-//         `;
-//     }
-
-//     result += `
-//         </ol>
-//         <div class="carousel-inner">
-//     `;
-
-//     for (let i = 0; i < numBS; i++) {
-//         let bestseller = bestsellers[i];
-//         result += `
-//             <div class="carousel-item ${i === 0 ? 'active' : ''}">
-//                 <img class="d-block w-100" src="${bestseller["percorso_immagine"]}" alt="${bestseller["nome"]}">
-//                 <div class="carousel-caption d-none d-md-block">
-//                     <h5>${bestseller["nome"]}</h5>
-//                     <p>${bestseller["descrizione"]}</p>
-//                     <a href="product.php?id_prodotto=${bestseller["id"]}&versione=${bestseller["versione"]}" class="btn btn-primary">View Product</a>
-//                 </div>
-//             </div>
-//         `;
-//     }
-
-//     result += `
-//         </div>
-//         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
-//             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-//             <span class="sr-only">Previous</span>
-//         </a>
-//         <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-bs-slide="next">
-//             <span class="carousel-control-next-icon" aria-hidden="true"></span>
-//             <span class="sr-only">Next</span>
-//         </a>
-//     </div>
-//     `;
-
-//     const BSSection = document.querySelector('main > :nth-child(1)');
-//     BSSection.innerHTML = result;
-//     // return result;
-// }
-
-async function getBestsellers() {
+function getBestsellers() {
     const url = 'api/api-homepage.php';
     queryAPI(url, "bestSellers", "numBestSellers=1", "GET", generateBestsellers);
 }
@@ -132,7 +71,7 @@ function generateCategories(categories) {
         <div class="carousel-inner">
     `;
 
-    console.log(categories);
+    // console.log(categories);
     for (let i = 0; i < numCategories; i++) {
         let category = categories[i];
         result += `
@@ -163,11 +102,12 @@ function generateCategories(categories) {
     categorySection.innerHTML = result;
 }
 
-async function getCategories() {
+function getCategories() {
     const url = 'api/api-homepage.php';
-
     queryAPI(url, "categories", "", "GET", generateCategories);
 }
 
-getBestsellers();
-getCategories();
+document.addEventListener('DOMContentLoaded', () => {
+    getBestsellers();
+    getCategories();
+});

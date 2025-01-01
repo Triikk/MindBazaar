@@ -1,9 +1,10 @@
 Bitta (refactoring):
-- modifications to article not applied
 - js (articles filtering ?)
 - document.addEventListener
-- selezione tramite id
 - rimuovi commenti
+- selezione tramite id
+- navigare il sito e pulire la console dai debug rimasti
+- rimuovere gli async
 
 - admin functionalities (modifica (prezzo, disponibilità), rimozione articoli)
 - automatic notifications system

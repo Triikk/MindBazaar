@@ -31,7 +31,7 @@ function updateProductDetails() {
 
 // update price, availability and version in DOM
 function updatePage(articleData) {
-    console.log(articleData);
+    // console.log(articleData);
     availabilityElement.textContent = `Disponibilità: ${showAvailability(articleData["disponibilita"])}`;
     if (articleData["disponibilita"] == "Questo prodotto non è disponibile") {
         priceElement.textContent = "Prezzo: -";
@@ -57,7 +57,6 @@ function updatePage(articleData) {
     if (isDefined(del)) {
         adminForms.push(del);
     }
-    console.log(adminForms);
     for (let i = 0; i < adminForms.length; i++) {
         adminForms[i]["versione"].value = articleData["versione"];
         if (!isDefined(articleData["versione"])) {
@@ -76,12 +75,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const form = document.querySelector('form');
     
     // Attach event listeners to all input fields
-    form.addEventListener('change', async () => {
-        await updateProductDetails();
+    form.addEventListener('change', () => {
+        updateProductDetails();
     });
     
-    form.addEventListener('input', async () => {
-        await updateProductDetails();
+    form.addEventListener('input', () => {
+        updateProductDetails();
     });
     
     // Initial update on page load
