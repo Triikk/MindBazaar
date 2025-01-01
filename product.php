@@ -10,7 +10,7 @@ $templateParams["nome"] = "singleProduct.php";
 $templateParams["js"][] = "js/product.js";
 
 $userParams["articolo"] = current(array_filter($userParams["articoli"], function ($articolo) {
-    return $articolo["id_prodotto"] == $_GET["id_prodotto"] && $articolo["versione"] == $_GET["versione"];
+    return $articolo["id_prodotto"] == $_REQUEST["id_prodotto"] && $articolo["versione"] == $_REQUEST["versione"];
 }));
 
 $articoliProdotto = $dbh->getArticlesByProductId($_GET["id_prodotto"]);

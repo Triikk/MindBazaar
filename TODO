@@ -1,6 +1,5 @@
 Bitta (refactoring):
-- modifyArticle.js
-- product.js
+- modifications to article not applied
 - js (articles filtering ?)
 - document.addEventListener
 - selezione tramite id

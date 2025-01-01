@@ -23,13 +23,13 @@ function getSelectedFields() {
     return selectedFields;
 }
 
-// function to update price and availability dynamically
+// function to update price, availability and version dinamically
 function updateProductDetails() {
     const selectedFields = getSelectedFields(); // Collect all selected values
     fetchArticleData(selectedFields);
 }
 
-// Update the availability and price in the DOM
+// update price, availability and version in DOM
 function updatePage(articleData) {
     console.log(articleData);
     availabilityElement.textContent = `Disponibilità: ${showAvailability(articleData["disponibilita"])}`;
