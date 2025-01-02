@@ -36,7 +36,7 @@
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item"><a class="nav-link" href="searchMenu.php"> <img src="<?php echo SYMBOLS_DIR . "search.png"; ?>" alt="Logo" width="30" height="24" class="d-inline"> </a></li>
                 <li class="nav-item"><a class="nav-link" href="cart.php"> <img src="<?php echo SYMBOLS_DIR . "cart.png"; ?>" alt="Logo" width="30" height="24" class="d-inline"> </a></li>
-                <li class="nav-item"><a class="nav-link" href="notifications.php"> <img src="<?php echo SYMBOLS_DIR . "notification.png"; ?>" alt="Logo" width="30" height="24" class="d-inline"> </a></li>
+                <li class="nav-item"><a class="nav-link" href="notifications.php" id="notification-badge"> <img id="notification-icon" src="<?php echo SYMBOLS_DIR . "notification.png"; ?>" alt="Logo" width="30" height="24" class="d-inline"> </a></li>
             </ul>
         </nav>
     </header>

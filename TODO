@@ -1,11 +1,7 @@
-Bitta (refactoring):
-- js (articles filtering ?)
-- selezione tramite id
-- cambia url in prodotto quando cambi la versione
-
 - admin functionalities (modifica (prezzo, disponibilità), rimozione articoli)
 - automatic notifications system
     - notifiche_articoli -> aggiornamenti database all'aggiornamento delle disponibilità
     - notifiche dell'admin -> aggiornamenti alla creazione di un ordine?
 - popup menus
+- icona notifica con nuove notifiche presenti (checkNotifications.js:20)
 - css

@@ -6,7 +6,7 @@
     <p id="availability"><?php echo "Disponibilità: " . showAvailability($articolo["disponibilita"]); ?></p>
     <p id="price"><?php echo "Prezzo: " . $articolo["prezzo"]; ?></p>
 
-    <form action="template/addToCart.php" id="form" method="POST">
+    <form action="template/addToCart.php" id="product-details-selection-form" method="POST" onchange="updateProductDetails()">
         <input type="hidden" name="id_prodotto" value="<?php echo $articolo["id_prodotto"]; ?>">
         <?php foreach ($formatiProdotto as $formato): ?>
             <label for="<?php echo $formato; ?>"><?php echo $formato; ?></label>

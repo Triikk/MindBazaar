@@ -18,7 +18,7 @@ function generateUserNotifications(UNotifications) {
     let result = "";
     let numUN = UNotifications.length;
     result += `
-    <h2>Notifiche utente:</h2>
+    <h2>Notifiche ordini:</h2>
     <ul>
     `;
 
@@ -39,7 +39,7 @@ function generateUserNotifications(UNotifications) {
     </ul >
             `;
     
-    const UNSection = document.querySelector('main > :nth-child(1)');
+    const UNSection = document.getElementById('ordersNotifications-section');
     UNSection.innerHTML = result;
 }
 
@@ -75,7 +75,7 @@ function generateArticleNotifications(ANotifications) {
     </ul >
             `;
     
-    const ANSection = document.querySelector('main > :nth-child(2)');
+    const ANSection = document.getElementById('articlesNotifications-section');
     ANSection.innerHTML = result;
 }
 

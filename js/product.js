@@ -1,8 +1,9 @@
-const selectedFields = {};
+let selectedFields = {};
 let availabilityElement = null;
 let quantityElement = null;
 let priceElement = null;
 let addToCartButton = null;
+let form = null;
 
 // function to fetch the specific product manifestation
 function fetchArticleData(selectedFields) {
@@ -76,16 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
     quantityElement = document.getElementById('quantity');
     priceElement = document.getElementById('price');
     addToCartButton = document.getElementById('add-to-cart');
-    const form = document.querySelector('form');
-    
-    // Attach event listeners to all input fields
-    form.addEventListener('change', () => {
-        updateProductDetails();
-    });
-    
-    form.addEventListener('input', () => {
-        updateProductDetails();
-    });
+    form = document.getElementById("product-details-selection-form");
     
     // Initial update on page load
     updateProductDetails();

@@ -15,7 +15,9 @@ function checkNotifications() {
         if (ANResponse.status === 200 && ONResponse.status === 200) {
             const ANotificationsJSON = JSON.parse(ANResponse.responseText);
             const ONotificationsJSON = JSON.parse(ONResponse.responseText);
-            const notificationBadge = document.querySelector('body > header > nav > ul > li:nth-child(5) > a');
+            const notificationBadge = document.getElementById('notification-badge');
+            // const notificationIcon = document.getElementById('notification-icon');
+            // DA IMPLEMENTARE L'AGGIORNAMENTO DELLA ICONA
             updateNotificatificationBadge(ANotificationsJSON.length, ONotificationsJSON.length, notificationBadge);
         }
     });

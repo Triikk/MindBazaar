@@ -1,8 +1,8 @@
 <!--bestseller-->
-<section>
+<section id="bestseller-section">
 </section>
 <!--categories-->
-<section>
+<section id="category-section">
 </section>
 <!--about us-->
 <section>

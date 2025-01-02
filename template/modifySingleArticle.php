@@ -3,7 +3,6 @@
     <?php $id_prodotto = $_REQUEST["id_prodotto"];
     $versione = $_REQUEST["versione"];
     $articolo = $dbh->getArticle($id_prodotto, $versione);
-    var_dump($_REQUEST);
     ?>
     <h2><?php echo $articolo["nome"]; ?></h2>
     <img src="<?php echo getImagePath($articolo["nome_categoria"], $articolo["immagine"]); ?>" alt="<?php echo $articolo["nome"]; ?>">

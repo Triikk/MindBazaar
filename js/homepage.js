@@ -35,7 +35,7 @@ function generateBestsellers(bestsellers) {
     </ul>
     `;
 
-    const BSSection = document.querySelector('main > :nth-child(1)');
+    const BSSection = document.getElementById('bestseller-section');
     BSSection.innerHTML = result;
 }
 
@@ -98,7 +98,7 @@ function generateCategories(categories) {
     </div>
     `;
 
-    const categorySection = document.querySelector('main > :nth-child(2)');
+    const categorySection = document.getElementById('category-section');
     categorySection.innerHTML = result;
 }
 

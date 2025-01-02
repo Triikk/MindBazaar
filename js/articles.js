@@ -1,3 +1,5 @@
+// NON USATO
+
 function generateArticles(articles) {
     let result = "";
     let ordinamento = "vendite";
@@ -26,8 +28,6 @@ function generateArticles(articles) {
     </ul>
     </section>
     `;
-    // console.log(result);
-    return result;
 }
 
 function getArticles() {

@@ -1,6 +1,6 @@
-<!-- Notifiche utente -->
-<section>
+<!-- Notifiche ordini -->
+<section id="ordersNotifications-section">
 </section>
 <!-- Notifiche articoli -->
-<section>
+<section id="articlesNotifications-section">
 </section>
