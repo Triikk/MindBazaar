@@ -58,6 +58,5 @@ if (isset($_GET["ricerca"])) {
 }
 
 $userParams["articoliVisualizzati"] = getFilteredArticles($articoliCercati, $filterCategories, $filterMinPrice, $filterMaxPrice, $filterFormats, $filterOrdinamento);
-// $templateParams["js"][] = "js/articles.js");
 
 require 'template/base.php';
