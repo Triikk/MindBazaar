@@ -21,26 +21,38 @@
     <?php endforeach; ?>
     <button type="submit" value="submit">Applica</button>
 </form>
-<section>
-    <ul>
+<section class="text-center container">
+    <div class="row g-4">
         <?php
+        // Add product button for admin users
         if (isset($_SESSION["username"]) && isset($_SESSION["admin"])) {
-            echo "<li>
-                <a href='addArticle.php'>
-                    <h2>Aggiungi prodotto</h2>
-                    <img src='" . getAdminImagePath("addArticle") . "' alt='Aggiungi prodotto'>
-                </a>
-            </li>";
-        } ?>
+            echo "
+                <div class='col-12 col-sm-6 col-md-4'>
+                    <a href='addArticle.php'>
+                        <div class='card h-100'>
+                            <img src='" . getAdminImagePath("addArticle") . "' class='card-img-top img-fluid' alt=''>
+                            <div class='card-body'>
+                                <h5 class='card-title'>Aggiungi prodotto</h5>
+                            </div>
+                        </div>
+                    </a>
+                </div>";
+        }
+        ?>
+
         <?php foreach ($userParams["articoliVisualizzati"] as $articolo): ?>
-            <li>
+            <div class="col-12 col-sm-6 col-md-4">
                 <a href="product.php?id_prodotto=<?php echo $articolo["id_prodotto"]; ?>&versione=<?php echo $articolo["versione"]; ?>">
-                    <h2><?php echo $articolo["nome"]; ?></h2>
-                    <p><?php echo $articolo["descrizione"]; ?></p>
-                    <p><?php echo $articolo["formato"]; ?></p>
-                    <img src="<?php echo getImagePath($articolo["nome_categoria"], $articolo["immagine"]); ?>" alt="">
+                    <div class="card h-100">
+                        <img src="<?php echo getImagePath($articolo["nome_categoria"], $articolo["immagine"]); ?>" class="card-img-top img-fluid product-image" alt="">
+                        <div class="card-body">
+                            <h5 class="card-title"><?php echo $articolo["nome"]; ?></h5>
+                            <p class="card-text"><?php echo $articolo["descrizione"]; ?></p>
+                            <p class="card-text"><small><?php echo $articolo["formato"]; ?></small></p>
+                        </div>
+                    </div>
                 </a>
-            </li>
+            </div>
         <?php endforeach; ?>
-    </ul>
+    </div>
 </section>
