@@ -16,17 +16,17 @@ function getFilteredArticles($articlesList, $categories, $minPrice, $maxPrice, $
     }
 
     switch ($ordinamento) {
-        case 'venduti':
+        case 'vendite':
             usort($filteredArticles, function ($a, $b) {
-                return $b['vendite'] - $a['vendite'];
+                return intval($b['vendite']) - intval($a['vendite']);
             });
             break;
-        case 'asc':
+        case 'prezzoAsc':
             usort($filteredArticles, function ($a, $b) {
                 return $a['prezzo'] - $b['prezzo'];
             });
             break;
-        case 'disc':
+        case 'prezzoDesc':
             usort($filteredArticles, function ($a, $b) {
                 return $b['prezzo'] - $a['prezzo'];
             });
@@ -110,6 +110,21 @@ function getAdminImagePath($action) {
             return ADMIN_DIR . "cancella-articolo.png";
         default:
             die("Azione non valida");
+    }
+}
+
+function getCategoryImagePath($category) {
+    switch ($category) {
+        case "Sogno":
+            return DREAMS_DIR . "/" . "sogno.png";
+        case "Ispirazione":
+            return INSPIRATIONS_DIR . "/" . "ispirazione.png";
+        case "Emozione":
+            return EMOTIONS_DIR . "/" . "emozione.png";
+        case "Nozione":
+            return NOTIONS_DIR . "/" . "nozione.png";
+        default:
+            die("Categoria non valida");
     }
 }
 
