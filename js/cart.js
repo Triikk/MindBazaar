@@ -9,7 +9,7 @@ function dispToNumber(disp) {
 }
 
 function generateArticle(articolo, index) {
-    let maxQuantity = dispToNumber(articolo["disponibilita"]);
+    const maxQuantity = dispToNumber(articolo["disponibilita"]);
     return `<li>
         <h3>${articolo["nome"]}</h3>
         <p>Prezzo: ${articolo["prezzo"]}€</p>
