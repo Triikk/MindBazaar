@@ -10,6 +10,9 @@ function dispToNumber(disp) {
 
 function generateArticle(articolo, index) {
     const maxQuantity = dispToNumber(articolo["disponibilita"]);
+    let articleImgPath = "";
+    queryAPI("api/api-functions.php", "getImagePath", `category=${articolo["nome_categoria"]}&image=${articolo["immagine"]}`, "GET", (response => articleImgPath = response));
+    console.log(articleImgPath);
     return `
         <div class="col-12 col-md-8 mb-4 mx-auto">
             <div class="card d-flex flex-column position-relative">
@@ -21,7 +24,7 @@ function generateArticle(articolo, index) {
                 <div class="card-body d-flex">
                     <!-- Article Image -->
                     <div class="me-3">
-                        <img src="upload/products/${articolo["nome_categoria"]}/${articolo["immagine"]}" alt="${articolo["nome"]}" class="img-fluid" style="height: 200px; object-fit: cover;">
+                        <img src="${articleImgPath}" alt="${articolo["nome"]}" class="img-fluid" style="height: 200px; object-fit: cover;">
                     </div>
 
                     <!-- Article Info -->
