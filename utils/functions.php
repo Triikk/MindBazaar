@@ -113,6 +113,21 @@ function getAdminImagePath($action) {
     }
 }
 
+function getCategoryImagePath($category) {
+    switch ($category) {
+        case "Sogno":
+            return DREAMS_DIR . "/" . "sogno.png";
+        case "Ispirazione":
+            return INSPIRATIONS_DIR . "/" . "ispirazione.png";
+        case "Emozione":
+            return EMOTIONS_DIR . "/" . "emozione.png";
+        case "Nozione":
+            return NOTIONS_DIR . "/" . "nozione.png";
+        default:
+            die("Categoria non valida");
+    }
+}
+
 function checkUserLoggedIn() {
     $ret = isset($_SESSION["username"]);
     if (!$ret) {
