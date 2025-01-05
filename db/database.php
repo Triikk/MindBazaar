@@ -451,10 +451,10 @@ class DatabaseHelper {
             WHERE NO.username = ?
             AND NO.id_ordine = O.id
             AND NOT EXISTS (SELECT *
-	        FROM notifiche_ordini nord
-            WHERE nord.username = no.username
-            AND nord.id_ordine = no.id_ordine
-            AND nord.tipologia = 1);");
+	        FROM NOTIFICHE_ORDINI NORD
+            WHERE NORD.username = NO.username
+            AND NORD.id_ordine = NO.id_ordine
+            AND NORD.tipologia = 1);");
         $stmt->bind_param("s", $username);
         $stmt->execute();
         $orders = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
@@ -493,6 +493,14 @@ class DatabaseHelper {
     public function addArticle($id_prodotto, $formato, $durata, $intensita, $prezzo, $disponibilita, $versione) {
         $stmt = $this->db->prepare("INSERT INTO ARTICOLI (id_prodotto, formato, durata, intensita, prezzo, disponibilita, versione) VALUES (?, ?, ?, ?, ?, ?, ?)");
         $stmt->bind_param("issidii", $id_prodotto, $formato, $durata, $intensita, $prezzo, $disponibilita, $versione);
+        $stmt->execute();
+
+        return $stmt->affected_rows > 0;
+    }
+
+    public function deleteArticle($id_prodotto, $versione) {
+        $stmt = $this->db->prepare("DELETE FROM ARTICOLI WHERE id_prodotto = ? AND versione = ?");
+        $stmt->bind_param("ii", $id_prodotto, $versione);
         $stmt->execute();
 
         return $stmt->affected_rows > 0;
