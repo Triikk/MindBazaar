@@ -24,20 +24,21 @@ function generateBestsellers(bestsellers) {
         let bestseller = bestsellers[i];
         let bestsellerInfo = `
         <div class="col-12 col-md-6 mb-4 d-flex justify-content-center">
+        <a href="product.php?id_prodotto=${bestseller["id"]}&versione=1">    
             <div class="card h-100">
                 <div class="row g-0">
                     <div class="col-md-4">
                         <img src="${bestseller["percorso_immagine"]}" class="img-fluid rounded-start bestseller-image" alt="${bestseller["nome"]}">
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-md-8 d-flex align-items-center">
                         <div class="card-body">
                             <h5 class="card-title">${bestseller["nome"]}</h5>
                             <p class="card-text">${bestseller["descrizione"]}</p>
-                            <a href="product.php?id_prodotto=${bestseller["id"]}&versione=1" class="btn btn-primary">Vai al bestseller</a>
                         </div>
                     </div>
                 </div>
             </div>
+            </a>
         </div>
         `;
         result += bestsellerInfo;
