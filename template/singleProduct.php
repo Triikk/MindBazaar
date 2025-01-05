@@ -53,7 +53,7 @@
                 <img src='<?php echo getAdminImagePath("modifyArticle"); ?>' alt='Modifica articolo'>
             </li>
             <li>
-                <form action='deleteArticle.php' id='delete-article' method='POST' onsubmit="updateProductDetails()">
+                <form action='modifyArticle.php' id='delete-article' method='POST' onsubmit="updateProductDetails()">
                     <input type='hidden' name='id_prodotto' value='<?php echo $articolo["id_prodotto"]; ?>'>
                     <input type='hidden' name='versione' value='<?php echo $articolo["versione"]; ?>'>
                     <input type='submit' name='submit' value='Elimina'>

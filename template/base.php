@@ -9,10 +9,22 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="./css/style.css" />
 
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&display=swap" rel="stylesheet"> -->
+
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Titan+One&display=swap" rel="stylesheet"> -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap" rel="stylesheet">
+
     <title><?php echo $templateParams["titolo"]; ?></title>
 </head>
 
-<body>
+<body class="bg-light">
     <?php
     // echo "_SESSION: " . print_r($_SESSION, true);
     // echo "<br>";
@@ -40,16 +52,17 @@
             </ul>
         </nav>
     </header>
-    <main>
+    <main class="flex-grow-1">
         <?php if (isset($templateParams["nome"])) {
             require($templateParams["nome"]);
         }; ?>
     </main>
-    <hr>
-    <footer class="text-center" id="footer">
-        <p>+39 686730535</p>
-        <p>Via dell'Università 50, Cesena</p>
-        <p>&copy 2024 MindBazaar Inc.</p>
+    <footer id="footer" class="bg-dark text-white">
+        <div class="text-center p-3">
+            <p>+39 686730535</p>
+            <p>Via dell'Università 50, Cesena</p>
+            <p>&copy 2024 MindBazaar Inc.</p>
+        </div>
     </footer>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
