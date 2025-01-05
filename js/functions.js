@@ -9,7 +9,7 @@ function calculateTotal(articles) {
 /**
  * Genera una richiesta HTTP generica
 */
-function generateRequest(url, content, method = "GET", callback = null) {  
+function generateRequest(url, content, method = "GET", callback = null) {
     if (method === "GET") {
         url += `?${content}`;
         content = "";
@@ -59,6 +59,7 @@ function generateXHttpRequestFromForm(url, query, form) {
  * Genera una domanda all'API 
  */
 function queryAPI(url, query, data = "", method = "GET", callback = null) {
+    console.log(`URL: ${url}, query: ${query}, data: ${data}, method: ${method}`);
     let content = `query=${query}`;
     if (data !== "") {
         content += `&${data}`;

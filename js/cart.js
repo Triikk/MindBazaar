@@ -10,28 +10,55 @@ function dispToNumber(disp) {
 
 function generateArticle(articolo, index) {
     const maxQuantity = dispToNumber(articolo["disponibilita"]);
-    return `<li>
-        <h3>${articolo["nome"]}</h3>
-        <p>Prezzo: ${articolo["prezzo"]}€</p>
-        <p>Formato: ${articolo["formato"]}, intensità: ${articolo["intensita"]}, durata: ${articolo["durata"]}</p>
-        <p>Quantità: ${articolo["quantita"]}</p>
-        <p>Disponibilità: ${articolo["disponibilita"]}</p>
-        <form id="modify-amount-${index}">
-            <input onchange="updateCart(${index})" form="modify-amount-${index}" type="number" min="0" max="${maxQuantity}" name="quantita_articolo_in_carrello" value="${articolo["quantita"]}">
-            <input onclick="removeArticle(${index})" form="modify-amount-${index}" type="button" name="remove_from_cart" value="remove">
-            <input onchange="checkOrderingAbility()" type="checkbox" form="modify-amount-${index}" name="include" value="false">
-        </form>
-    </li>
-    `
+    return `
+        <div class="col-12 col-md-8 mb-4 mx-auto">
+            <div class="card d-flex flex-column position-relative">
+                <!-- Product Selection Checkbox (Top Right) -->
+                <div class="position-absolute top-0 end-0 p-2">
+                    <input onchange="checkOrderingAbility()" type="checkbox" form="modify-amount-${index}" name="include" value="false" class="form-check-input">
+                </div>
+
+                <div class="card-body d-flex">
+                    <!-- Article Image -->
+                    <div class="me-3">
+                        <img src="upload/products/${articolo["nome_categoria"]}/${articolo["immagine"]}" alt="${articolo["nome"]}" class="img-fluid" style="height: 200px; object-fit: cover;">
+                    </div>
+
+                    <!-- Article Info -->
+                    <div class="d-flex flex-column justify-content-between">
+                        <h3 class="card-title">${articolo["nome"]}</h3>
+                        <p><strong>Prezzo:</strong> ${articolo["prezzo"]}€</p>
+                        <p><strong>Formato:</strong> ${articolo["formato"]}, <strong>Intensità:</strong> ${articolo["intensita"]}, <strong>Durata:</strong> ${articolo["durata"]}</p>
+                        <p><strong>Disponibilità:</strong> ${articolo["disponibilita"]}</p>
+
+                        <!-- Modify quantity form -->
+                        <form id="modify-amount-${index}">
+                            <div class="mb-3 d-flex align-items-center">
+                                <label for="quantita_articolo_in_carrello-${index}" class="form-label me-2" style="line-height: 2.5;">Quantità</label>
+                                <input onchange="updateCart(${index})" form="modify-amount-${index}" type="number" min="0" max="${maxQuantity}" name="quantita_articolo_in_carrello" value="${articolo["quantita"]}" class="form-control form-control-sm" id="quantita_articolo_in_carrello-${index}" style="width: 80px; font-size: 1.2rem; height: auto;">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Footer buttons section -->
+                <div class="card-footer d-flex flex-column align-items-center">
+                    <!-- Rimuovi (remove) button -->
+                    <button onclick="removeArticle(${index})" form="modify-amount-${index}" type="button" class="btn btn-danger btn-lg mb-2" style="width: 120px;">Rimuovi</button>
+                </div>
+            </div>
+        </div>
+    `;
 }
+
 
 function generateCart(newCart) {
     carrello = newCart;
-    
+
     let sezioni = document.querySelectorAll("main section");
     let cartInfo = sezioni[0].children;
     let articoli = sezioni[1];
-    
+
     cartInfo[0].innerHTML = `Numero articoli presenti: ${carrello.length}`;
     cartInfo[1].innerHTML = `Totale provvisorio: ${calculateTotal(carrello)}€`;
 
@@ -70,7 +97,7 @@ function updateCart(index) {
             nuovaQuantita = max;
         }
         const url = `api/api-cart.php`;
-        queryAPI(url,"modifyArtAmount", `art_id_prod=${articolo["id_prodotto"]}&art_versione=${articolo["versione"]}&art_quantita=${nuovaQuantita}`, "POST", visualizeCart);
+        queryAPI(url, "modifyArtAmount", `art_id_prod=${articolo["id_prodotto"]}&art_versione=${articolo["versione"]}&art_quantita=${nuovaQuantita}`, "POST", visualizeCart);
     }
     checkOrderingAbility();
 }
