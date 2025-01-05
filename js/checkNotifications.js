@@ -1,3 +1,4 @@
+/*
 function updateNotificatificationBadge(ANCount, ONCount, notificationBadge) {
     if (ONCount + ANCount > 0) {
         notificationBadge.innerHTML = `Notifiche (${ONCount}) + (${ANCount})`;
@@ -5,22 +6,44 @@ function updateNotificatificationBadge(ANCount, ONCount, notificationBadge) {
         notificationBadge.innerHTML = `Notifiche`;
     }
 }
+*/
+let unreadAN = 0;
+let unreadON = 0;
+let ANready = false;
+let ONready = false;
+
+function updateNotificatificationBadge() {
+    if (!ANready || !ONready) {
+        return;
+    }
+    const notificationIcon = document.getElementById('notification-icon');
+    if (unreadAN + unreadON > 0) {
+        notificationIcon["src"] = "./upload/icons/symbols/notificationFull.png";
+    } else {
+        notificationIcon["src"] = "./upload/icons/symbols/notificationEmpty.png";
+    }
+    ANready = false;
+    ONready = false;
+}
 
 function checkNotifications() {
     const ANUrl = 'api/api-notifications.php';
     const ONUrl = 'api/api-notifications.php';
 
-    const ANResponse = queryAPI(ANUrl, "unreadANotifications");
-    const ONResponse = queryAPI(ONUrl, "unreadONotifications", "", "GET", function(res) {
-        if (ANResponse.status === 200 && ONResponse.status === 200) {
-            const ANotificationsJSON = JSON.parse(ANResponse.responseText);
-            const ONotificationsJSON = JSON.parse(ONResponse.responseText);
-            const notificationBadge = document.getElementById('notification-badge');
-            // const notificationIcon = document.getElementById('notification-icon');
-            // DA IMPLEMENTARE L'AGGIORNAMENTO DELLA ICONA
-            updateNotificatificationBadge(ANotificationsJSON.length, ONotificationsJSON.length, notificationBadge);
-        }
-    });
+    const ANResponse = queryAPI(ANUrl, "unreadANotifications", "", "GET", updateUnreadAN);
+    const ONResponse = queryAPI(ONUrl, "unreadONotifications", "", "GET", updateUnreadON);
+}
+
+function updateUnreadAN(ANresponse) {
+    unreadAN = ANresponse["length"];
+    ANready = true;
+    updateNotificatificationBadge();
+}
+
+function updateUnreadON(ONresponse) {
+    unreadAN = ONresponse["length"];
+    ONready = true;
+    updateNotificatificationBadge();
 }
 
 function generateNotifications() {
