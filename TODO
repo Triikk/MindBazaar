@@ -1,7 +1,3 @@
-- admin functionalities (modifica (prezzo, disponibilità), rimozione articoli)
-- automatic notifications system
-    - notifiche_articoli -> aggiornamenti database all'aggiornamento delle disponibilità
-    - notifiche dell'admin -> aggiornamenti alla creazione di un ordine?
+- admin functionalities (rimozione articoli)
 - popup menus
-- icona notifica con nuove notifiche presenti (checkNotifications.js:20)
 - css

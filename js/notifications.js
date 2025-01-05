@@ -3,6 +3,8 @@ function getOrderNotificationText(type) {
         return "L'ordine è stato spedito";
     } else if (type === 1) {
         return "L'ordine è stato consegnato";
+    } else if (type === 3) {
+        return "E' stato aggiunto un nuovo ordine";
     }
 }
 

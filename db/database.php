@@ -325,6 +325,27 @@ class DatabaseHelper {
         return $result->fetch_all(MYSQLI_ASSOC)[0];
     }
 
+    public function getUsersWithArticleInCart($id_prodotto, $versione) {
+        $stmt = $this->db->prepare("SELECT username FROM ARTICOLI_IN_CARRELLO WHERE id_prodotto = ? AND versione_articolo = ?");
+        $stmt->bind_param("ii", $id_prodotto, $versione);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $users = $result->fetch_all(MYSQLI_ASSOC);
+        return array_filter(array_column($users, 'username'), function ($username) {
+            return !empty($username);
+        });
+    }
+
+    public function getAdmins() {
+        $stmt = $this->db->prepare("SELECT username FROM UTENTI WHERE amministratore = 'Y' || amministratore = 1");
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $users = $result->fetch_all(MYSQLI_ASSOC);
+        return array_filter(array_column($users, 'username'), function ($username) {
+            return !empty($username);
+        });
+    }
+
     public function checkout($username, $articles) {
         // get user cart articles
         /*
@@ -337,6 +358,7 @@ class DatabaseHelper {
         if (count($articles) == 0) {
             return false;
         }
+        $admins = $this->getAdmins();
         // check each products disponibility
         $flag = true;
         foreach ($articles as $article) {
@@ -356,6 +378,18 @@ class DatabaseHelper {
             $stmt->execute();
             if ($stmt->affected_rows <= 0) {
                 return false;
+            }
+
+            // check disponibility and create notification
+            $articleInfo = $this->getArticleInfo($article["id_prodotto"], $article["formato"], $article["durata"], $article["intensita"]);
+            if ($articleInfo["disponibilita"] <= 0) {
+                $users = $this->getUsersWithArticleInCart($articleInfo["id_prodotto"], $articleInfo["versione"]);
+                var_dump($users);
+                array_merge($users, $admins);
+                var_dump($users);
+                array_unique($users);
+                var_dump($users);
+                $this->generateArticleNotificationOnCartTo($articleInfo["id_prodotto"], $articleInfo["versione"], 0, $users);
             }
         }
         // update user cart
@@ -390,6 +424,13 @@ class DatabaseHelper {
             if ($stmt->affected_rows <= 0) {
                 return false;
             }
+        }
+        // create admin order notification
+        foreach ($admins as $user) {
+            $stmt = $this->db->prepare("INSERT INTO NOTIFICHE_ORDINI (id_ordine, username, data, lettoYN, tipologia) VALUES (?, ?, ?, 'N', 3)");
+            $date = date("Y-m-d H:i:s");
+            $stmt->bind_param("iss", $orderId, $user, $date);
+            $stmt->execute();
         }
         return true;
     }
@@ -531,10 +572,41 @@ class DatabaseHelper {
     }
 
     public function updateArticle($id_prodotto, $versione, $disponibilita, $prezzo) {
+        // looks if the article is not available
+        $articleInfo = $this->getArticle($id_prodotto, $versione);
+        $unavailable = false;
+        if ($articleInfo["disponibilita"] <= 0) {
+            $unavailable = true;
+        }
+
         $stmt = $this->db->prepare("UPDATE ARTICOLI SET disponibilita = ?, prezzo = ? WHERE id_prodotto = ? AND versione = ?");
         $stmt->bind_param("idii", $disponibilita, $prezzo, $id_prodotto, $versione);
         $stmt->execute();
 
+        // if it wasn't available and now it is, create a notification
+        if ($unavailable && $disponibilita > 0) {
+            $this->generateArticleNotificationOnCart($id_prodotto, $versione, 1);
+        } else if (!$unavailable && $disponibilita <= 0) {
+            $this->generateArticleNotificationOnCart($id_prodotto, $versione, 0);
+        }
+
         return $stmt->affected_rows > 0;
+    }
+    
+    public function generateArticleNotificationOnCartTo($id_prodotto, $versione, $tipologia, $users) {
+        array_filter($users, function ($username) {
+            return !empty($username) || $username != "";
+        });
+        foreach ($users as $user) {
+            $stmt = $this->db->prepare("INSERT INTO NOTIFICHE_ARTICOLI (id_prodotto, versione_articolo, username, data, lettoYN, tipologia) VALUES (?, ?, ?, ?, 'N', ?)");
+            $date = date("Y-m-d H:i:s");
+            $stmt->bind_param("iissi", $id_prodotto, $versione, $user, $date, $tipologia);
+            $stmt->execute();
+        }
+    }
+
+    public function generateArticleNotificationOnCart($id_prodotto, $versione, $tipologia) {
+        $users = $this->getUsersWithArticleInCart($id_prodotto, $versione);
+        $this->generateArticleNotificationOnCartTo($id_prodotto, $versione, $tipologia, $users);
     }
 }
