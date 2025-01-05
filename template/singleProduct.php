@@ -1,65 +1,126 @@
-<section>
+<section class="container-fluid my-4">
     <?php $articolo = $userParams["articolo"]; ?>
-    <h2><?php echo $articolo["nome"]; ?></h2>
-    <img src="<?php echo getImagePath($articolo["nome_categoria"], $articolo["immagine"]); ?>" alt="<?php echo $articolo["nome"]; ?>">
-    <p><?php echo $articolo["descrizione"]; ?></p>
-    <p id="availability"><?php echo "Disponibilità: " . showAvailability($articolo["disponibilita"]); ?></p>
-    <p id="price"><?php echo "Prezzo: " . $articolo["prezzo"]; ?></p>
+    <div class="card mx-auto p-4" style="width: 100%; max-width: 800px;">
+        <div class="row">
+            <!-- Image Section -->
+            <div class="col-12 col-md-4 d-flex justify-content-center">
+                <img src="<?php echo getImagePath($articolo["nome_categoria"], $articolo["immagine"]); ?>"
+                    alt="<?php echo $articolo["nome"]; ?>"
+                    class="img-fluid singleProduct-image" />
+            </div>
+            <!-- Article Details Section -->
+            <div class="col-12 col-md-8">
+                <h2><?php echo $articolo["nome"]; ?></h2>
+                <p id="availability"><strong>Disponibilità:</strong> <?php echo showAvailability($articolo["disponibilita"]); ?></p>
+                <p id="price"><strong>Prezzo:</strong> <?php echo "€" . $articolo["prezzo"]; ?></p>
+            </div>
+        </div>
 
-    <form action="template/addToCart.php" id="product-details-selection-form" method="POST" onchange="updateProductDetails()">
-        <input type="hidden" name="id_prodotto" value="<?php echo $articolo["id_prodotto"]; ?>">
-        <?php foreach ($formatiProdotto as $formato): ?>
-            <label for="<?php echo $formato; ?>"><?php echo $formato; ?></label>
-            <?php if ($formato == $articolo["formato"]): ?>
-                <input type="radio" name="formato" checked="true" value="<?php echo $formato; ?>">
-            <?php else: ?>
-                <input type="radio" name="formato" value="<?php echo $formato; ?>">
-            <?php endif; ?>
-        <?php endforeach; ?>
+        <!-- Description Section -->
+        <div class="mt-3">
+            <p><?php echo $articolo["descrizione"]; ?></p>
+        </div>
 
-        <?php foreach ($durateProdotto as $durata): ?>
-            <label for="<?php echo $durata; ?>"><?php echo $durata; ?></label>
-            <?php if ($durata == $articolo["durata"]): ?>
-                <input type="radio" name="durata" checked="true" value="<?php echo $durata; ?>">
-            <?php else: ?>
-                <input type="radio" name="durata" value="<?php echo $durata; ?>">
-            <?php endif; ?>
-        <?php endforeach; ?>
+        <!-- Form Section -->
+        <form action="template/addToCart.php" id="product-details-selection-form" method="POST" onchange="updateProductDetails()">
+            <input type="hidden" name="id_prodotto" value="<?php echo $articolo["id_prodotto"]; ?>">
 
-        <?php foreach ($intensitaProdotto as $intensita): ?>
-            <label for="<?php echo $intensita; ?>"><?php echo $intensita; ?></label>
-            <?php if ($intensita == $articolo["intensita"]): ?>
-                <input type="radio" name="intensita" checked="true" value="<?php echo $intensita; ?>">
-            <?php else: ?>
-                <input type="radio" name="intensita" value="<?php echo $intensita; ?>">
-            <?php endif; ?>
-        <?php endforeach; ?>
+            <!-- Formato Picker -->
+            <div class="mb-3 row">
+                <label for="formato" class="col-12 col-md-4 col-form-label">Formato:</label>
+                <div class="col-12 col-md-8">
+                    <div class="d-flex flex-wrap">
+                        <?php foreach ($formatiProdotto as $formato): ?>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="formato"
+                                    id="formato_<?php echo $formato; ?>" value="<?php echo $formato; ?>"
+                                    <?php if ($formato == $articolo["formato"]) echo "checked"; ?>>
+                                <label class="form-check-label" for="formato_<?php echo $formato; ?>">
+                                    <?php echo $formato; ?>
+                                </label>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            </div>
 
-        <label for="quantita">Quantita:</label>
-        <input type="number" id="quantity" name="quantita" min="1" max="<?php echo $articolo["disponibilita"]; ?>" value="1">
-        <button type="submit" id="add-to-cart" name="submit">Aggiungi al carrello</button>
-    </form>
-</section>
-<section>
-    <?php
-    if (isset($_SESSION["username"]) && isset($_SESSION["admin"])) { ?>
-        <ul>
-            <li>
-                <form action='modifyArticle.php' id='modify-article' method='POST' onsubmit="updateProductDetails()">
-                    <input type='hidden' name='id_prodotto' value='<?php echo $articolo["id_prodotto"]; ?>'>
-                    <input type='hidden' name='versione' value='<?php echo $articolo["versione"]; ?>'>
-                    <input type='submit' name='submit' value='Modifica'>
-                </form>
-                <img src='<?php echo getAdminImagePath("modifyArticle"); ?>' alt='Modifica articolo'>
-            </li>
-            <li>
-                <form action='modifyArticle.php' id='delete-article' method='POST' onsubmit="updateProductDetails()">
-                    <input type='hidden' name='id_prodotto' value='<?php echo $articolo["id_prodotto"]; ?>'>
-                    <input type='hidden' name='versione' value='<?php echo $articolo["versione"]; ?>'>
-                    <input type='submit' name='submit' value='Elimina'>
-                </form>
-                <img src='<?php echo getAdminImagePath("deleteArticle"); ?>' alt='Elimina articolo'>
-            </li>
-        </ul>";
-    <?php } ?>
+            <!-- Durata Picker -->
+            <div class="mb-3 row">
+                <label for="durata" class="col-12 col-md-4 col-form-label">Durata:</label>
+                <div class="col-12 col-md-8">
+                    <div class="d-flex flex-wrap">
+                        <?php foreach ($durateProdotto as $durata): ?>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="durata"
+                                    id="durata_<?php echo $durata; ?>" value="<?php echo $durata; ?>"
+                                    <?php if ($durata == $articolo["durata"]) echo "checked"; ?>>
+                                <label class="form-check-label" for="durata_<?php echo $durata; ?>">
+                                    <?php echo $durata; ?>
+                                </label>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Intensita Picker -->
+            <div class="mb-3 row">
+                <label for="intensita" class="col-12 col-md-4 col-form-label">Intensità:</label>
+                <div class="col-12 col-md-8">
+                    <div class="d-flex flex-wrap">
+                        <?php foreach ($intensitaProdotto as $intensita): ?>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="intensita"
+                                    id="intensita_<?php echo $intensita; ?>" value="<?php echo $intensita; ?>"
+                                    <?php if ($intensita == $articolo["intensita"]) echo "checked"; ?>>
+                                <label class="form-check-label" for="intensita_<?php echo $intensita; ?>">
+                                    <?php echo $intensita; ?>
+                                </label>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quantità Picker -->
+            <div class="mb-3 row">
+                <label for="quantita" class="col-12 col-md-4 col-form-label">Quantità:</label>
+                <div class="col-12 col-md-8">
+                    <input type="number" id="quantity" name="quantita" min="1" max="<?php echo $articolo["disponibilita"]; ?>"
+                        class="form-control" value="1" aria-label="Quantity Picker">
+                </div>
+            </div>
+
+            <!-- Aggiungi al carrello Button -->
+            <div class="text-center mt-4">
+                <button type="submit" id="add-to-cart" name="submit" class="btn btn-primary btn-lg w-100 w-md-75">
+                    Aggiungi al carrello
+                </button>
+            </div>
+        </form>
+
+        <!-- Admin Controls Section (Visible for Admins only) -->
+        <?php if (isset($_SESSION["username"]) && isset($_SESSION["admin"])): ?>
+            <div class="mt-4">
+                <ul class="list-unstyled row">
+                    <li class="col-12 col-md-6 text-center mb-3">
+                        <img src='<?php echo getAdminImagePath("modifyArticle"); ?>' alt='Modifica articolo' class="img-fluid p-1" style="max-width: 100px;">
+                        <form action='modifyArticle.php' id='modify-article' method='POST'>
+                            <input type='hidden' name='id_prodotto' value='<?php echo $articolo["id_prodotto"]; ?>'>
+                            <input type='hidden' name='versione' value='<?php echo $articolo["versione"]; ?>'>
+                            <input type='submit' name='submit' class="btn btn-warning" value='Modifica'>
+                        </form>
+                    </li>
+                    <li class="col-12 col-md-6 text-center">
+                        <img src='<?php echo getAdminImagePath("deleteArticle"); ?>' alt='Elimina articolo' class="img-fluid p-1" style="max-width: 100px;">
+                        <form action='modifyArticle.php' id='delete-article' method='POST'>
+                            <input type='hidden' name='id_prodotto' value='<?php echo $articolo["id_prodotto"]; ?>'>
+                            <input type='hidden' name='versione' value='<?php echo $articolo["versione"]; ?>'>
+                            <input type='submit' name='submit' class="btn btn-danger" value='Elimina'>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        <?php endif; ?>
+    </div>
 </section>
