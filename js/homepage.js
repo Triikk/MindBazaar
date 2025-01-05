@@ -22,10 +22,10 @@ function generateBestsellers(bestsellers) {
         let bestseller = bestsellers[i];
         let bestsellerInfo = `
         <li>
-        <h3>${bestseller["nome"]}</h3>
         <a href="product.php?id_prodotto=${bestseller["id"]}&versione=1">
-            <img src="${bestseller["percorso_immagine"]}" alt="" />
+        <img src="${bestseller["percorso_immagine"]}" alt="" />
         </a>
+        <h3>${bestseller["nome"]}</h3>
         <p>${bestseller["descrizione"]}</p>
         </li>
         `;
@@ -75,14 +75,15 @@ function generateCategories(categories) {
     for (let i = 0; i < numCategories; i++) {
         let category = categories[i];
         result += `
-            <div class="carousel-item ${i === 0 ? 'active' : ''}">
-                <img class="d-block w-100 img-fluid" src="upload/categories/${category["immagine"]}">
-                <div class="carousel-caption d-none d-md-block">
-                    <h3>${category["nome"]}</h3>
-                    <a href="articles.php?categorie%5B%5D=${category["nome"]}" class="btn btn-primary">View Category</a>
-                </div>
+        <div class="carousel-item ${i === 0 ? 'active' : ''}">
+            <img class="d-block img-fluid category-image" src="upload/categories/${category["immagine"]}">
+            <div class="carousel-caption d-none d-md-block">
+                <h3>${category["nome"]}</h3>
+                <a href="articles.php?categorie%5B%5D=${category["nome"]}" class="btn btn-primary">View Category</a>
+            </div>
             </div>
         `;
+
     }
 
     result += `

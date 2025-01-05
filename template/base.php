@@ -12,7 +12,7 @@
     <title><?php echo $templateParams["titolo"]; ?></title>
 </head>
 
-<body>
+<body class="bg-light">
     <?php
     // echo "_SESSION: " . print_r($_SESSION, true);
     // echo "<br>";
@@ -40,16 +40,17 @@
             </ul>
         </nav>
     </header>
-    <main>
+    <main class="flex-grow-1">
         <?php if (isset($templateParams["nome"])) {
             require($templateParams["nome"]);
         }; ?>
     </main>
-    <hr>
-    <footer class="text-center" id="footer">
-        <p>+39 686730535</p>
-        <p>Via dell'Università 50, Cesena</p>
-        <p>&copy 2024 MindBazaar Inc.</p>
+    <footer id="footer" class="bg-dark text-white">
+        <div class="text-center p-3">
+            <p>+39 686730535</p>
+            <p>Via dell'Università 50, Cesena</p>
+            <p>&copy 2024 MindBazaar Inc.</p>
+        </div>
     </footer>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

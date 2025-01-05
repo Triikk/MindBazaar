@@ -21,13 +21,6 @@
     <?php endforeach; ?>
     <button type="submit" value="submit">Applica</button>
 </form>
-<nav>
-    <ul>
-        <li>Filtri</li>
-        <li>IC1</li>
-        <li>IC2</li>
-    </ul>
-</nav>
 <section>
     <ul>
         <?php

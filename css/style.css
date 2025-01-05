@@ -2,6 +2,9 @@ body {
     color: black;
     font-family: 'Times New Roman', Times, serif;
     font-size: 30px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 nav>ul {
@@ -36,10 +39,13 @@ header>nav>ul>li>a>h1 {
     max-height: 400px;
 } */
 
-footer img {
-    max-height: 20px;
-}
-
-footer p {
-    margin: 0;
+.category-image {
+    width: 300px;
+    /* Set the desired width */
+    height: 200px;
+    /* Set the desired height */
+    object-fit: cover;
+    /* Crop the image to fit within the box */
+    margin: 0 auto;
+    /* Center the image horizontally */
 }
