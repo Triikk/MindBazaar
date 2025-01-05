@@ -105,7 +105,7 @@ alter table ARTICOLI_IN_CARRELLO add constraint FKpossiede_FK
 
 alter table ARTICOLI_IN_CARRELLO add constraint FKdesiderato
      foreign key (id_prodotto, versione_articolo)
-     references ARTICOLI (id_prodotto, versione);
+     references ARTICOLI (id_prodotto, versione) ON DELETE CASCADE;
 
 alter table NOTIFICHE_ARTICOLI add constraint FKricevimento_notifica_articolo
      foreign key (username)
@@ -113,7 +113,7 @@ alter table NOTIFICHE_ARTICOLI add constraint FKricevimento_notifica_articolo
 
 alter table NOTIFICHE_ARTICOLI add constraint FKnotifica_articolo_FK
      foreign key (id_prodotto, versione_articolo)
-     references ARTICOLI (id_prodotto, versione);
+     references ARTICOLI (id_prodotto, versione) ON DELETE CASCADE;
 
 alter table NOTIFICHE_ORDINI add constraint FKricevimento_notifica_ordine
      foreign key (username)
