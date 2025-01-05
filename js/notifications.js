@@ -19,31 +19,53 @@ function getArticleNotificationText(type) {
 function generateUserNotifications(UNotifications) {
     let result = "";
     let numUN = UNotifications.length;
+
+    // Add title and button to show the notifications list
     result += `
-    <h2>Notifiche ordini:</h2>
-    <ul>
+    <div class="container">
+        <button class="btn btn-secondary w-100 w-lg-80 py-3 fs-4" type="button" data-bs-toggle="collapse" data-bs-target="#notificationsList" aria-expanded="false" aria-controls="notificationsList">
+            Notifiche ordini
+        </button>
     `;
 
-    for (let i = 0; i < numUN; i++) {
-        let notification = UNotifications[i];
-        let Unotification = `
-        <li>
-        <a href="orders.php#ord-${notification["id_ordine"]}">
-        <h3>Notifica ordine n.${notification["id_ordine"]}</h3>
-        <p>Data: ${notification["data"]}</p>
-        <p>${getOrderNotificationText(notification["tipologia"])}</p>
-        </a>
-        </li >
+    if (numUN === 0) {
+        result += `
+        <h3>Non ci sono notifiche</h3>
+        </div>
+        `;
+    } else {
+        // Generate the notifications list
+        let notificationList = "";
+        for (let i = 0; i < numUN; i++) {
+            let notification = UNotifications[i];
+            notificationList += `
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Notifica ordine n.${notification["id_ordine"]}</h5>
+                    <p class="card-text"><strong>Data:</strong> ${notification["data"]}</p>
+                    <p class="card-text">${getOrderNotificationText(notification["tipologia"])}</p>
+                    <a href="orders.php#ord-${notification["id_ordine"]}" class="btn btn-primary">Vedi ordine</a>
+                </div>
+            </div>
             `;
-        result += Unotification;
+        }
+
+        // Add the collapsible section for notifications
+        result += `
+        <div class="collapse" id="notificationsList">
+            <div class="mt-3">
+                ${notificationList}
+            </div>
+        </div>
+        </div>
+        `;
     }
-    result += `
-    </ul >
-            `;
-    
+
+    // Insert the generated content into the section
     const UNSection = document.getElementById('ordersNotifications-section');
     UNSection.innerHTML = result;
 }
+
 
 function getUserNotifications() {
     const url = 'api/api-notifications.php';
@@ -53,33 +75,56 @@ function getUserNotifications() {
 function generateArticleNotifications(ANotifications) {
     let result = "";
     let numAN = ANotifications.length;
+
+    // Add title and button to show the notifications list
     result += `
-    <h2>Notifiche articoli:</h2>
-    <ul>
+    <div class="container">
+        <button class="btn btn-secondary w-100 w-lg-80 py-3 fs-4" type="button" data-bs-toggle="collapse" data-bs-target="#articleNotificationsList" aria-expanded="false" aria-controls="articleNotificationsList">
+            Notifiche articoli
+        </button>
     `;
 
-    for (let i = 0; i < numAN; i++) {
-        let Anotification = `
-        <li>
-        <a href="product.php?id_prodotto=${ANotifications[i]["id_prodotto"]}&versione=${ANotifications[i]["versione"]}">
-        <h3>Articolo: ${ANotifications[i]["nome"]}</h3>
-        <p>Formato: ${ANotifications[i]["formato"]}</p>
-        <p>Durata: ${ANotifications[i]["durata"]}</p>
-        <p>Intensità: ${ANotifications[i]["intensita"]}</p>
-        <p>Data: ${ANotifications[i]["data"]}</p>
-        <p>${getArticleNotificationText(ANotifications[i]["tipologia"])}</p>
-        </a>
-        </li >
+    if (numAN === 0) {
+        result += `
+        <h3>Non ci sono notifiche</h3>
+        </div>
+        `;
+    } else {
+        // Generate the notifications list
+        let notificationList = "";
+        for (let i = 0; i < numAN; i++) {
+            let notification = ANotifications[i];
+            notificationList += `
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Articolo: ${notification["nome"]}</h5>
+                    <p class="card-text"><strong>Formato:</strong> ${notification["formato"]}</p>
+                    <p class="card-text"><strong>Durata:</strong> ${notification["durata"]}</p>
+                    <p class="card-text"><strong>Intensità:</strong> ${notification["intensita"]}</p>
+                    <p class="card-text"><strong>Data:</strong> ${notification["data"]}</p>
+                    <p class="card-text">${getArticleNotificationText(notification["tipologia"])}</p>
+                    <a href="product.php?id_prodotto=${notification["id_prodotto"]}&versione=${notification["versione"]}" class="btn btn-primary">Vedi articolo</a>
+                </div>
+            </div>
             `;
-        result += Anotification;
+        }
+
+        // Add the collapsible section for notifications
+        result += `
+        <div class="collapse" id="articleNotificationsList">
+            <div class="mt-3">
+                ${notificationList}
+            </div>
+        </div>
+        </div>
+        `;
     }
-    result += `
-    </ul >
-            `;
-    
+
+    // Insert the generated content into the section
     const ANSection = document.getElementById('articlesNotifications-section');
     ANSection.innerHTML = result;
 }
+
 
 function getArticleNotifications() {
     const url = 'api/api-notifications.php';

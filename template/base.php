@@ -37,21 +37,41 @@
     // echo "templateParams: " . print_r($templateParams, true);
     ?>
 
-    <header>
+    <header class="fixed-top">
         <nav class="navbar navbar-expand">
             <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link" href="lateralMenu.php"> <img src="upload/icons/symbols/menu.png" alt="Logo" width="30" height="24" class="d-inline"> </a></li>
-                <li class="nav-item"><a class="nav-link" href="index.php">
-                        <h1>MindBazaar</h1>
-                    </a></li>
+                <li class="nav-item">
+                    <a class="nav-link" href="lateralMenu.php">
+                        <img src="upload/icons/symbols/menu.png" alt="Menu" width="30" height="24" class="d-inline">
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.php">
+                        <h1 class="m-0">MindBazaar</h1>
+                    </a>
+                </li>
             </ul>
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="searchMenu.php"> <img src="<?php echo SYMBOLS_DIR . "search.png"; ?>" alt="Logo" width="30" height="24" class="d-inline"> </a></li>
-                <li class="nav-item"><a class="nav-link" href="cart.php"> <img src="<?php echo SYMBOLS_DIR . "cart.png"; ?>" alt="Logo" width="30" height="24" class="d-inline"> </a></li>
-                <li class="nav-item"><a class="nav-link" href="notifications.php" id="notification-badge"> <img id="notification-icon" src="<?php echo SYMBOLS_DIR . "notificationEmpty.png"; ?>" alt="Logo" width="30" height="24" class="d-inline"> </a></li>
+                <li class="nav-item">
+                    <a class="nav-link" href="searchMenu.php">
+                        <img src="<?php echo SYMBOLS_DIR . 'search.png'; ?>" alt="Search" width="30" height="24" class="d-inline">
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="cart.php">
+                        <img src="<?php echo SYMBOLS_DIR . 'cart.png'; ?>" alt="Cart" width="30" height="24" class="d-inline">
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="notifications.php" id="notification-badge">
+                        <img id="notification-icon" src="<?php echo SYMBOLS_DIR . 'notificationEmpty.png'; ?>" alt="Notifications" width="30" height="24" class="d-inline">
+                    </a>
+                </li>
             </ul>
         </nav>
     </header>
+
+
     <main class="flex-grow-1">
         <?php if (isset($templateParams["nome"])) {
             require($templateParams["nome"]);

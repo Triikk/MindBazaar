@@ -10,12 +10,16 @@ body {
     flex-direction: column;
 }
 
-a {
-    text-decoration: none;
+body>header {
+    background-color: #777877;
 }
 
-nav>ul {
-    list-style: none;
+body>main {
+    padding: 100px !important;
+}
+
+a {
+    text-decoration: none;
 }
 
 ol,
