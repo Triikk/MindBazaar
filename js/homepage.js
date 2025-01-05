@@ -89,25 +89,25 @@ function generateCategories(categories) {
         let category = categories[i];
         result += `
         <div class="carousel-item ${i === 0 ? 'active' : ''}">
-            <img class="d-block img-fluid homepage-category-image" src="upload/categories/${category["immagine"]}">
-            <div class="carousel-caption d-none d-md-block">
-                <h3>${category["nome"]}</h3>
-                <a href="articles.php?categorie%5B%5D=${category["nome"]}" class="btn btn-primary">View Category</a>
-            </div>
-            </div>
+            <a href="articles.php?categorie%5B%5D=${category["nome"]}" class="d-block text-decoration-none text-dark">
+                <div class="d-flex justify-content-center">
+                    <img class="d-block img-fluid homepage-category-image" src="upload/categories/${category["immagine"]}">
+                </div>
+                </a>
+                <div class="text-center mt-2">
+                    <h3>${category["nome"]}</h3>
+                </div>
+        </div>
         `;
-
     }
 
     result += `
         </div>
         <a class="carousel-control-prev" href="#carouselCategories" role="button" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
         </a>
         <a class="carousel-control-next" href="#carouselCategories" role="button" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
         </a>
     </div>
     `;
