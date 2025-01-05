@@ -5,7 +5,7 @@
     </button>
 
     <!-- Filter Menu -->
-    <div class="collapse mt-3" id="filterMenu">
+    <div class="collapse mt-3 mb-4" id="filterMenu">
         <form action="articles.php" method="GET" class="bg-light p-4 rounded">
             <!-- Sort Options -->
             <div class="mb-3">
@@ -94,7 +94,7 @@
             <div class="col-12 col-sm-6 col-md-4">
                 <a href="product.php?id_prodotto=<?php echo $articolo["id_prodotto"]; ?>&versione=<?php echo $articolo["versione"]; ?>">
                     <div class="card h-100">
-                        <img src="<?php echo getImagePath($articolo["nome_categoria"], $articolo["immagine"]); ?>" class="card-img-top img-fluid product-image" alt="">
+                        <img src="<?php echo getImagePath($articolo["nome_categoria"], $articolo["immagine"]); ?>" class="card-img-top img-fluid article-image" alt="">
                         <div class="card-body">
                             <h5 class="card-title"><?php echo $articolo["nome"]; ?></h5>
                             <p class="card-text"><?php echo $articolo["descrizione"]; ?></p>
