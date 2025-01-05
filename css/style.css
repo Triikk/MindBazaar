@@ -1,10 +1,17 @@
 body {
     color: black;
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 30px;
+    /* font-family: 'DynaPuff'; */
+    /* font-family: 'Titan One'; */
+    font-family: 'Roboto Condensed';
+    font-weight: 300;
+    font-size: 20px;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+}
+
+a {
+    text-decoration: none;
 }
 
 nav>ul {
