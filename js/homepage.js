@@ -1,6 +1,7 @@
 function generateBestsellers(bestsellers) {
     let result = "";
     let numBS = bestsellers.length;
+
     if (numBS === 0) {
         result += `
         <h2>No bestsellers found</h2>
@@ -14,25 +15,36 @@ function generateBestsellers(bestsellers) {
         <h2>Best sellers:</h2>
         `;
     }
+
     result += `
-    <ul>
+    <div class="d-flex justify-content-center align-items-center flex-wrap">
     `;
 
     for (let i = 0; i < numBS; i++) {
         let bestseller = bestsellers[i];
         let bestsellerInfo = `
-        <li>
-        <a href="product.php?id_prodotto=${bestseller["id"]}&versione=1">
-        <img src="${bestseller["percorso_immagine"]}" alt="" />
-        </a>
-        <h3>${bestseller["nome"]}</h3>
-        <p>${bestseller["descrizione"]}</p>
-        </li>
+        <div class="col-12 col-md-6 mb-4 d-flex justify-content-center">
+            <div class="card h-100">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="${bestseller["percorso_immagine"]}" class="img-fluid rounded-start bestseller-image" alt="${bestseller["nome"]}">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">${bestseller["nome"]}</h5>
+                            <p class="card-text">${bestseller["descrizione"]}</p>
+                            <a href="product.php?id_prodotto=${bestseller["id"]}&versione=1" class="btn btn-primary">Vai al bestseller</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         `;
         result += bestsellerInfo;
     }
+
     result += `
-    </ul>
+    </div>
     `;
 
     const BSSection = document.getElementById('bestseller-section');
