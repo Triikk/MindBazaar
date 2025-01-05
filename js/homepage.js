@@ -1,6 +1,7 @@
 function generateBestsellers(bestsellers) {
     let result = "";
     let numBS = bestsellers.length;
+
     if (numBS === 0) {
         result += `
         <h2>No bestsellers found</h2>
@@ -14,25 +15,37 @@ function generateBestsellers(bestsellers) {
         <h2>Best sellers:</h2>
         `;
     }
+
     result += `
-    <ul>
+    <div class="d-flex justify-content-center align-items-center flex-wrap">
     `;
 
     for (let i = 0; i < numBS; i++) {
         let bestseller = bestsellers[i];
         let bestsellerInfo = `
-        <li>
-        <a href="product.php?id_prodotto=${bestseller["id"]}&versione=1">
-        <img src="${bestseller["percorso_immagine"]}" alt="" />
-        </a>
-        <h3>${bestseller["nome"]}</h3>
-        <p>${bestseller["descrizione"]}</p>
-        </li>
+        <div class="col-12 col-md-6 mb-4 d-flex justify-content-center">
+        <a href="product.php?id_prodotto=${bestseller["id"]}&versione=1">    
+            <div class="card h-100">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="${bestseller["percorso_immagine"]}" class="img-fluid rounded-start bestseller-image" alt="${bestseller["nome"]}">
+                    </div>
+                    <div class="col-md-8 d-flex align-items-center">
+                        <div class="card-body">
+                            <h5 class="card-title">${bestseller["nome"]}</h5>
+                            <p class="card-text">${bestseller["descrizione"]}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </a>
+        </div>
         `;
         result += bestsellerInfo;
     }
+
     result += `
-    </ul>
+    </div>
     `;
 
     const BSSection = document.getElementById('bestseller-section');
@@ -76,25 +89,25 @@ function generateCategories(categories) {
         let category = categories[i];
         result += `
         <div class="carousel-item ${i === 0 ? 'active' : ''}">
-            <img class="d-block img-fluid homepage-category-image" src="upload/categories/${category["immagine"]}">
-            <div class="carousel-caption d-none d-md-block">
-                <h3>${category["nome"]}</h3>
-                <a href="articles.php?categorie%5B%5D=${category["nome"]}" class="btn btn-primary">View Category</a>
-            </div>
-            </div>
+            <a href="articles.php?categorie%5B%5D=${category["nome"]}" class="d-block text-decoration-none text-dark">
+                <div class="d-flex justify-content-center">
+                    <img class="d-block img-fluid homepage-category-image" src="upload/categories/${category["immagine"]}">
+                </div>
+                </a>
+                <div class="text-center mt-2">
+                    <h3>${category["nome"]}</h3>
+                </div>
+        </div>
         `;
-
     }
 
     result += `
         </div>
         <a class="carousel-control-prev" href="#carouselCategories" role="button" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
         </a>
         <a class="carousel-control-next" href="#carouselCategories" role="button" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
         </a>
     </div>
     `;
