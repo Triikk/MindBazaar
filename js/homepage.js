@@ -76,7 +76,7 @@ function generateCategories(categories) {
         let category = categories[i];
         result += `
         <div class="carousel-item ${i === 0 ? 'active' : ''}">
-            <img class="d-block img-fluid category-image" src="upload/categories/${category["immagine"]}">
+            <img class="d-block img-fluid homepage-category-image" src="upload/categories/${category["immagine"]}">
             <div class="carousel-caption d-none d-md-block">
                 <h3>${category["nome"]}</h3>
                 <a href="articles.php?categorie%5B%5D=${category["nome"]}" class="btn btn-primary">View Category</a>
