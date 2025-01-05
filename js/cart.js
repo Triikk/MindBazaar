@@ -1,6 +1,15 @@
 carrello = [];
 
+function dispToNumber(disp) {
+    const numb = parseInt(disp);
+    if (isNaN(numb)) {
+        return 0;
+    }
+    return numb;
+}
+
 function generateArticle(articolo, index) {
+    let maxQuantity = dispToNumber(articolo["disponibilita"]);
     return `<li>
         <h3>${articolo["nome"]}</h3>
         <p>Prezzo: ${articolo["prezzo"]}€</p>
@@ -8,7 +17,7 @@ function generateArticle(articolo, index) {
         <p>Quantità: ${articolo["quantita"]}</p>
         <p>Disponibilità: ${articolo["disponibilita"]}</p>
         <form id="modify-amount-${index}">
-            <input onchange="updateCart(${index})" form="modify-amount-${index}" type="number" name="quantita_articolo_in_carrello" value="${articolo["quantita"]}">
+            <input onchange="updateCart(${index})" form="modify-amount-${index}" type="number" min="0" max="${maxQuantity}" name="quantita_articolo_in_carrello" value="${articolo["quantita"]}">
             <input onclick="removeArticle(${index})" form="modify-amount-${index}" type="button" name="remove_from_cart" value="remove">
             <input onchange="checkOrderingAbility()" type="checkbox" form="modify-amount-${index}" name="include" value="false">
         </form>
@@ -32,6 +41,7 @@ function generateCart(newCart) {
         elencoArticoli += generateArticle(carrello[i], i);
     }
     articoli.innerHTML = elencoArticoli + "</ul>\n";
+    checkOrderingAbility();
 }
 
 function visualizeCart() {
@@ -48,16 +58,21 @@ function removeArticle(index) {
 
 function updateCart(index) {
     // legge quantità
-    let articolo = carrello[index];
+    const articolo = carrello[index];
     let nuovaQuantita = document.forms["modify-amount-" + index]["quantita_articolo_in_carrello"].value;
+    const max = dispToNumber(articolo["disponibilita"]);
     // se <=0 elimina l'articolo
     if (nuovaQuantita <= 0) {
         removeArticle(index);
     } else {
         // aggiorna la quantità dell'articolo
+        if (nuovaQuantita > max) {
+            nuovaQuantita = max;
+        }
         const url = `api/api-cart.php`;
         queryAPI(url,"modifyArtAmount", `art_id_prod=${articolo["id_prodotto"]}&art_versione=${articolo["versione"]}&art_quantita=${nuovaQuantita}`, "POST", visualizeCart);
     }
+    checkOrderingAbility();
 }
 
 function createOrder() {
@@ -96,5 +111,4 @@ function checkOrderingAbility() {
 
 document.addEventListener('DOMContentLoaded', () => {
     visualizeCart();
-    checkOrderingAbility();
 });
