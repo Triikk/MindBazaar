@@ -1,4 +1,5 @@
 <form action="articles.php" method="GET">
-    <label for="riceca">Cerca</label>
-    <input type="search" name="ricerca" value="Pittura">
+    <label for="riceca"></label>
+    <input type="search" name="ricerca" value="Cerca...">
+    <button type="submit">Search</button>
 </form>

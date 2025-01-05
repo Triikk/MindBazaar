@@ -99,3 +99,24 @@ function getOrderState(tempo_spedizione, tempo_consegna) {
     return result;
 }
 */
+
+/* Set the width of the side navigation to 260px */
+function openNav() {
+    closeSearchBar();
+    document.getElementById("mySidenav").style.width = "260px";
+}
+
+/* Set the width of the side navigation to 0 */
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+}
+
+function openSearchBar() {
+    closeNav();
+    document.getElementById("mySearchBar").style.height = "60px";
+    // document.body.marginTop = "50px";
+}
+
+function closeSearchBar() {
+    document.getElementById("mySearchBar").style.height = "0";
+}

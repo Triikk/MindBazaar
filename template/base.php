@@ -22,6 +22,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap" rel="stylesheet">
 
     <title><?php echo $templateParams["titolo"]; ?></title>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin>
+    </script>
+    <?php
+    if (isset($templateParams["js"])):
+        foreach ($templateParams["js"] as $script):
+    ?>
+            <script src="<?php echo $script; ?>"></script>
+    <?php
+        endforeach;
+    endif;
+    ?>
 </head>
 
 <body class="bg-light">
@@ -36,17 +50,26 @@
     // echo "<br>";
     // echo "templateParams: " . print_r($templateParams, true);
     ?>
-
     <header>
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <?php require("lateral.php")?>
+        </div>
+
+        <div id="mySearchBar" class="searchBar">
+            <?php require("search.php")?>
+            <a href="javascript:void(0)" class="closebtn" onclick="closeSearchBar()">&times;</a>
+        </div>
+
         <nav class="navbar navbar-expand">
             <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link" href="lateralMenu.php"> <img src="upload/icons/symbols/menu.png" alt="Logo" width="30" height="24" class="d-inline"> </a></li>
+                <li class="nav-item"><img class="clickable" onclick="openNav()" src="upload/icons/symbols/menu.png" alt="Logo" width="30" height="24" class="d-inline"></li>
                 <li class="nav-item"><a class="nav-link" href="index.php">
                         <h1>MindBazaar</h1>
                     </a></li>
             </ul>
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="searchMenu.php"> <img src="<?php echo SYMBOLS_DIR . "search.png"; ?>" alt="Logo" width="30" height="24" class="d-inline"> </a></li>
+                <li class="nav-item"><!--<a class="nav-link" href="searchMenu.php">--> <img class="clickable" onclick="openSearchBar()" src="<?php echo SYMBOLS_DIR . "search.png"; ?>" alt="Logo" width="30" height="24" class="d-inline"> <!-- </a> --></li>
                 <li class="nav-item"><a class="nav-link" href="cart.php"> <img src="<?php echo SYMBOLS_DIR . "cart.png"; ?>" alt="Logo" width="30" height="24" class="d-inline"> </a></li>
                 <li class="nav-item"><a class="nav-link" href="notifications.php" id="notification-badge"> <img id="notification-icon" src="<?php echo SYMBOLS_DIR . "notificationEmpty.png"; ?>" alt="Logo" width="30" height="24" class="d-inline"> </a></li>
             </ul>
@@ -65,18 +88,4 @@
         </div>
     </footer>
 </body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-    crossorigin>
-</script>
-<?php
-if (isset($templateParams["js"])):
-    foreach ($templateParams["js"] as $script):
-?>
-        <script src="<?php echo $script; ?>"></script>
-<?php
-    endforeach;
-endif;
-?>
-
 </html>
