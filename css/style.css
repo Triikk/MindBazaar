@@ -94,3 +94,20 @@ ul {
     object-fit: cover;
     /* Ensure the image covers the area without stretching */
 }
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(1);
+}
+
+@media screen and (min-width: 768px) {
+
+    .carousel-control-prev {
+        left: 20%;
+    }
+
+    .carousel-control-next {
+        right: 20%;
+    }
+
+}
