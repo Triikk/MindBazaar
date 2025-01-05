@@ -16,17 +16,17 @@ function getFilteredArticles($articlesList, $categories, $minPrice, $maxPrice, $
     }
 
     switch ($ordinamento) {
-        case 'venduti':
+        case 'vendite':
             usort($filteredArticles, function ($a, $b) {
-                return $b['vendite'] - $a['vendite'];
+                return intval($b['vendite']) - intval($a['vendite']);
             });
             break;
-        case 'asc':
+        case 'prezzoAsc':
             usort($filteredArticles, function ($a, $b) {
                 return $a['prezzo'] - $b['prezzo'];
             });
             break;
-        case 'disc':
+        case 'prezzoDesc':
             usort($filteredArticles, function ($a, $b) {
                 return $b['prezzo'] - $a['prezzo'];
             });
