@@ -6,7 +6,7 @@ if (!isset($_SESSION["admin"]) || !$_SESSION["admin"] || !isset($_REQUEST["id_pr
     header("location: index.php");
 }
 
-if (isset($_REQUEST["submit"]) && $_REQUEST["submit"] == "applica") {
+if (isset($_REQUEST["submit"]) && $_REQUEST["submit"] == "Applica Modifiche") {
     $dbh->updateArticle($_REQUEST["id_prodotto"], $_REQUEST["versione"], $_REQUEST["disponibilita"], $_REQUEST["prezzo"]);
     header("location: product.php?id_prodotto=" . $_REQUEST["id_prodotto"] . "&versione=" . $_REQUEST["versione"]);
 }

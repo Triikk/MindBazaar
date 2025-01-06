@@ -1,23 +1,48 @@
-<section>
-    <h2>dump: </h2>
-    <?php $id_prodotto = $_REQUEST["id_prodotto"];
+<section class="container my-4">
+    <?php
+    $id_prodotto = $_REQUEST["id_prodotto"];
     $versione = $_REQUEST["versione"];
     $articolo = $dbh->getArticle($id_prodotto, $versione);
     ?>
-    <h2><?php echo $articolo["nome"]; ?></h2>
-    <img src="<?php echo getImagePath($articolo["nome_categoria"], $articolo["immagine"]); ?>" alt="<?php echo $articolo["nome"]; ?>">
-    <p><?php echo $articolo["descrizione"]; ?></p>
-    <p><?php echo "Formato: " . $articolo["formato"]; ?></p>
-    <p><?php echo "Intensita: " . $articolo["intensita"]; ?></p>
-    <p><?php echo "Durata: " . $articolo["durata"]; ?></p>
 
-    <form action="modifyArticle.php" id="form" method="POST">
-        <label for="disponibilita">Disponibilità</label>
-        <input type="number" name="disponibilita" value="<?php echo $articolo["disponibilita"]; ?>" min=" 0" required>
-        <label for="prezzo">Prezzo</label>
-        <input type="number" name="prezzo" value="<?php echo $articolo["prezzo"]; ?>" min=" 0" step="0.01" required>
-        <input type="hidden" name="id_prodotto" value="<?php echo $articolo["id_prodotto"]; ?>">
-        <input type="hidden" name="versione" value="<?php echo $articolo["versione"]; ?>">
-        <input type="submit" id="modify" name="submit" value="applica">
-    </form>
+    <div class="card mx-auto" style="max-width: 800px;">
+        <div class="card-body">
+            <h2 class="card-title text-center mb-4"><?php echo $articolo["nome"]; ?></h2>
+            <div class="row mb-3">
+                <div class="col-12 col-md-4 text-center">
+                    <img src="<?php echo getImagePath($articolo["nome_categoria"], $articolo["immagine"]); ?>"
+                        alt="<?php echo $articolo["nome"]; ?>"
+                        class="img-fluid singleProduct-image" style="max-width: 200px; border-radius: 8px;">
+                </div>
+                <div class="col-12 col-md-8">
+                    <p class="card-text"><strong>Descrizione:</strong> <?php echo $articolo["descrizione"]; ?></p>
+                    <p class="card-text"><strong>Formato:</strong> <?php echo $articolo["formato"]; ?></p>
+                    <p class="card-text"><strong>Intensità:</strong> <?php echo $articolo["intensita"]; ?></p>
+                    <p class="card-text"><strong>Durata:</strong> <?php echo $articolo["durata"]; ?></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modify Form Section -->
+    <div class="card mx-auto mt-4" style="max-width: 800px;">
+        <div class="card-body">
+            <h3 class="card-title text-center mb-4">Modifica Articolo</h3>
+            <form action="modifyArticle.php" id="form" method="POST">
+                <div class="mb-3">
+                    <label for="disponibilita" class="form-label">Disponibilità</label>
+                    <input type="number" name="disponibilita" value="<?php echo $articolo["disponibilita"]; ?>" min="0" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="prezzo" class="form-label">Prezzo</label>
+                    <input type="number" name="prezzo" value="<?php echo $articolo["prezzo"]; ?>" min="0" step="0.01" class="form-control" required>
+                </div>
+                <input type="hidden" name="id_prodotto" value="<?php echo $articolo["id_prodotto"]; ?>">
+                <input type="hidden" name="versione" value="<?php echo $articolo["versione"]; ?>">
+                <div class="text-center">
+                    <input type="submit" id="modify" name="submit" value="Applica Modifiche" class="w-100 btn btn-secondary">
+                </div>
+            </form>
+        </div>
+    </div>
 </section>
