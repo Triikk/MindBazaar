@@ -15,7 +15,10 @@ body>header {
 }
 
 body>main {
-    padding: 100px !important;
+    padding-top: 100px !important;
+    padding-bottom: 100px !important;
+    padding-right: 5% !important;
+    padding-left: 5% !important;
 }
 
 a {
@@ -95,7 +98,6 @@ ul {
     /* Ensure the image covers the area without stretching */
     border-radius: 8px;
     /* Optional: rounded corners */
-    border: 2px solid #1e2949;
     /* Optional: border around the image */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
