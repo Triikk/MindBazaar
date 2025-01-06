@@ -8,10 +8,15 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    background-color: #cdddec;
+    background-image: linear-gradient(120deg, rgba(207, 208, 209, 0.274), rgb(93, 102, 110, .8));
 }
 
 body>header {
-    background-color: #777877;
+    background-color: #696c7d;
+    background-image: linear-gradient(140deg, rgba(116, 157, 184, 0.479), rgba(47, 47, 80, 0.7));
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
 }
 
 body>main {
@@ -19,6 +24,13 @@ body>main {
     padding-bottom: 100px !important;
     padding-right: 5% !important;
     padding-left: 5% !important;
+}
+
+body>footer {
+    background-color: rgb(65, 71, 77);
+    background-image: linear-gradient(110deg, rgba(86, 116, 136, 0.479), rgba(33, 33, 56, 0.7));
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
 }
 
 a {
@@ -92,7 +104,8 @@ ul {
 }
 
 .bestseller-image {
-    height: 33vh;
+    height: 100% !important;
+    width: auto;
     /* Set the height to one-third of the viewport height */
     object-fit: cover;
     /* Ensure the image covers the area without stretching */

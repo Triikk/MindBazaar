@@ -38,7 +38,7 @@
     ?>
 </head>
 
-<body class="bg-light">
+<body>
     <?php
     // echo "_SESSION: " . print_r($_SESSION, true);
     // echo "<br>";
@@ -53,11 +53,11 @@
     <header class="fixed-top">
         <div id="mySidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            <?php require("lateral.php")?>
+            <?php require("lateral.php") ?>
         </div>
 
         <div id="mySearchBar" class="searchBar">
-            <?php require("search.php")?>
+            <?php require("search.php") ?>
             <a href="javascript:void(0)" class="closebtn" onclick="closeSearchBar()">&times;</a>
         </div>
 
@@ -100,7 +100,7 @@
             require($templateParams["nome"]);
         }; ?>
     </main>
-    <footer id="footer" class="bg-dark text-white">
+    <footer id="footer" class="text-white">
         <div class="text-center p-3">
             <p>+39 686730535</p>
             <p>Via dell'Università 50, Cesena</p>
@@ -108,4 +108,5 @@
         </div>
     </footer>
 </body>
+
 </html>

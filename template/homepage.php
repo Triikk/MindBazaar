@@ -4,6 +4,3 @@
 <!--categories-->
 <section id="category-section">
 </section>
-<!--about us-->
-<section>
-</section>
