@@ -102,7 +102,9 @@ function getOrderState(tempo_spedizione, tempo_consegna) {
 
 /* Set the width of the side navigation to 260px */
 function openNav() {
-    closeSearchBar();
+    if (toggleSearch.searchState) {
+        toggleSearch();
+    }
     document.getElementById("mySidenav").style.width = "260px";
 }
 
@@ -114,22 +116,54 @@ function closeNav() {
 function toggleNav() {
     if (typeof toggleNav.navState == 'undefined') {
         toggleNav.navState = true;
+        openNav();
     }
     if (toggleNav.navState) {
-        openNav();
+        closeNav();
         toggleNav.navState = false;
     } else {
-        closeNav();
+        openNav();
         toggleNav.navState = true;
     }
 }
 
+function toggleSearch() {
+    if (typeof toggleSearch.searchState == 'undefined') {
+        toggleSearch.searchState = true;
+        openSearchBar();
+    }
+    if (toggleSearch.searchState) {
+        closeSearchBar();
+        toggleSearch.searchState = false;
+    } else {
+        openSearchBar();
+        toggleSearch.searchState = true;
+    }
+}
+
+function setSearchBarTop() {
+    const navbarHeight = document.querySelector('.navbar').offsetHeight;
+    document.getElementById('mySearchBar').style.top = `${navbarHeight}px`;
+}
+
 function openSearchBar() {
-    closeNav();
+    if (toggleNav.navState) {
+        toggleNav();
+    }
+    setSearchBarTop();
     document.getElementById("mySearchBar").style.height = "60px";
-    // document.body.marginTop = "50px";
 }
 
 function closeSearchBar() {
     document.getElementById("mySearchBar").style.height = "0";
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    toggleNav.navState = false;
+    toggleSearch.searchState = false;
+    setSearchBarTop();
+});
+
+document.addEventListener('resize', () => {
+    setSearchBarTop();
+});

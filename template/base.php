@@ -52,11 +52,6 @@
     ?>
     <header class="fixed-top">
 
-        <div id="mySearchBar" class="searchBar">
-            <?php require("search.php") ?>
-            <a href="javascript:void(0)" class="closebtn" onclick="closeSearchBar()">&times;</a>
-        </div>
-
         <nav class="navbar navbar-expand">
             <ul class="navbar-nav">
                 <li class="nav-item">
@@ -72,7 +67,7 @@
             </ul>
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="javascript:void(0)" onclick="openSearchBar()">
+                    <a class="nav-link" href="javascript:void(0)" onclick="toggleSearch()">
                         <img src="<?php echo SYMBOLS_DIR . 'search.png'; ?>" alt="Search" width="30" height="24" class="d-inline">
                     </a>
                 </li>
@@ -88,6 +83,10 @@
                 </li>
             </ul>
         </nav>
+
+        <div id="mySearchBar" class="searchBar">
+            <?php require("search.php") ?>
+        </div>
     </header>
 
 
