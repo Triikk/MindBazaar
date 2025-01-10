@@ -1,8 +1,11 @@
-- admin functionalities (rimozione articoli)
-- popup menus
-- css
 - modifiche mobile
-- stile menu animati
+- stile menu ricerca
 - rimuovere pagine searchMenu.php e lateralMenu.php
 - chiudere i tag singoli
 - rimuovere alt immagini
+- immagine nel carrello
+- limita altezza immagini ordini
+- rimuovi style inline negli attributi HTML
+- sistema immagini nel carrello
+- esegui i check di validazione
+- aggiungi i meta tag
