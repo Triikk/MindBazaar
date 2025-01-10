@@ -106,9 +106,22 @@ function openNav() {
     document.getElementById("mySidenav").style.width = "260px";
 }
 
-/* Set the width of the side navigation to 0 */
 function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
+}
+
+/* Set the width of the side navigation to 0 */
+function toggleNav() {
+    if (typeof toggleNav.navState == 'undefined') {
+        toggleNav.navState = true;
+    }
+    if (toggleNav.navState) {
+        openNav();
+        toggleNav.navState = false;
+    } else {
+        closeNav();
+        toggleNav.navState = true;
+    }
 }
 
 function openSearchBar() {

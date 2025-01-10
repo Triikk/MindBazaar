@@ -31,6 +31,7 @@ body>footer {
     background-image: linear-gradient(110deg, rgba(86, 116, 136, 0.479), rgba(33, 33, 56, 0.7));
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
+    z-index: 4;
 }
 
 a {
@@ -123,19 +124,21 @@ ul {
     /* 0 width - change this with JavaScript */
     position: fixed;
     /* Stay in place */
-    z-index: 2;
+    z-index: 3;
     /* Stay on top */
     top: 0;
     /* Stay at the top */
     left: 0;
-    background-color: #1e2949;
+    background-color: rgba(125, 137, 148, 0.98);
+    background-image: linear-gradient(140deg, rgba(183, 212, 231, 0.4), rgba(47, 47, 80, 0.4));
     /* Black*/
     overflow-x: hidden;
     /* Disable horizontal scroll */
-    padding-top: 60px;
-    /* Place content 60px from the top */
+    padding-top: 120px !important;
     transition: 0.5s;
     /* 0.5 second transition effect to slide in the sidenav */
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
 }
 
 .searchBar {
@@ -147,7 +150,7 @@ ul {
     /* Stay on top */
     top: 0;
     /* Stay at the top */
-    background-color: #1e2949;
+    background-color: rgba(93, 102, 110, .8);
     /* Black*/
     overflow-y: hidden;
     /* Disable horizontal scroll */
@@ -162,7 +165,7 @@ ul {
     padding: 8px 2px 8px 32px;
     text-decoration: none;
     font-size: 25px;
-    color: #818181;
+    color: black;
     display: block;
     transition: 0.3s;
 }
@@ -177,15 +180,6 @@ ul {
 /* When you mouse over the navigation links, change their color */
 .sidenav a:hover {
     color: #f1f1f1;
-}
-
-/* Position and style the close button (top right corner) */
-.sidenav .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
 }
 
 .searchBar .closebtn {
@@ -220,6 +214,8 @@ ul {
 .card img {
     max-width: 100%;
     height: auto;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .carousel-control-prev-icon,

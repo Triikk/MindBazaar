@@ -33,7 +33,6 @@ if (isset($_GET["etaMinima"])) {
     $filterMinAge = $_GET["etaMinima"];
 }
 if (isset($_GET["categorie"])) {
-    var_dump($_GET["categorie"]);
     $filterCategories = $_GET["categorie"];
 }
 if (isset($_GET["formati"])) {
@@ -42,7 +41,6 @@ if (isset($_GET["formati"])) {
 
 $articoliCercati = [];
 if (isset($_GET["ricerca"])) {
-    var_dump($_GET["ricerca"]);
     $searchKey = $_GET["ricerca"];
 
     $articoliCercati = searchArticles($userParams["articoli"], $searchKey);

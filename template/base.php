@@ -51,10 +51,6 @@
     // echo "templateParams: " . print_r($templateParams, true);
     ?>
     <header class="fixed-top">
-        <div id="mySidenav" class="sidenav">
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            <?php require("lateral.php") ?>
-        </div>
 
         <div id="mySearchBar" class="searchBar">
             <?php require("search.php") ?>
@@ -64,7 +60,7 @@
         <nav class="navbar navbar-expand">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="javascript:void(0)" onclick="openNav()">
+                    <a class="nav-link" href="javascript:void(0)" onclick="toggleNav()">
                         <img src="upload/icons/symbols/menu.png" alt="Menu" width="30" height="24" class="d-inline">
                     </a>
                 </li>
@@ -96,6 +92,10 @@
 
 
     <main class="flex-grow-1">
+        <div id="mySidenav" class="sidenav">
+            <?php require("lateral.php") ?>
+        </div>
+
         <?php if (isset($templateParams["nome"])) {
             require($templateParams["nome"]);
         }; ?>
