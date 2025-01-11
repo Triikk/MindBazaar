@@ -1,10 +1,12 @@
-- modifiche mobile
-- colore menu ricerca
-- chiudere i tag singoli
-- rimuovere alt immagini
-- immagine nel carrello
-- limita altezza immagini ordini
-- rimuovi style inline negli attributi HTML
+Todo List, in ordine di priorità:
+- stile checkout
+- stile area personale (?)
 - sistema immagini nel carrello
+- colore menu ricerca
+- implementare modifiche per mobile
+- chiudere i tag singoli
+- rimuovere alt immagini in quelle in cui non serve (per tutti gli articoli tanto c'è scritto affianco in un h2 il nome del prodotto)
+- rimuovi style inline negli attributi HTML
 - esegui i check di validazione
 - aggiungi i meta tag
+- sistema prototipi balsamiq
