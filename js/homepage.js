@@ -4,7 +4,7 @@ function generateBestsellers(bestsellers) {
 
     if (numBS === 0) {
         result += `
-        <h2>No bestsellers found</h2>
+        <h2>Impossibile caricare i best seller</h2>
         `;
     } else if (numBS === 1) {
         result += `
@@ -63,9 +63,13 @@ function generateCategories(categories) {
 
     if (numCategories === 0) {
         result += `
-        <h2>No categories found</h2>
+        <h2>Impossibile caricare le categorie</h2>
         `;
         return result;
+    } else {
+        result += `
+        <h2>Le nostre categorie di prodotti:</h2>
+        `;
     }
 
     result += `
@@ -94,7 +98,7 @@ function generateCategories(categories) {
                     <img class="d-block img-fluid homepage-category-image" src="upload/categories/${category["immagine"]}">
                 </div>
                 </a>
-                <div class="text-center mt-2">
+                <div class="text-center mt-2 mb-2">
                     <h3>${category["nome"]}</h3>
                 </div>
         </div>

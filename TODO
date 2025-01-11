@@ -5,6 +5,12 @@ Todo List, in ordine di priorità:
 - implementare modifiche per mobile
 - chiudere i tag singoli
 - rimuovere alt immagini in quelle in cui non serve (per tutti gli articoli tanto c'è scritto affianco in un h2 il nome del prodotto)
+  - carrello
+  - modify article
+  - ordini
+  - articles
+  - product
+  - homepage (bestSeller, categorie)
 - rimuovi style inline negli attributi HTML
 - esegui i check di validazione
 - aggiungi i meta tag
