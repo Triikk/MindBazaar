@@ -26,7 +26,6 @@
 
             <!-- Price Range Filters -->
             <div class="mb-3">
-                <h5>Prezzo</h5>
                 <label for="prezzoMin" class="form-label">Prezzo minimo:</label>
                 <input type="range" class="form-range" name="prezzoMin" min="0" max="1000" value="<?php echo $filterMinPrice; ?>" id="prezzoMin" />
                 <label for="prezzoMax" class="form-label">Prezzo massimo:</label>
@@ -35,7 +34,6 @@
 
             <!-- Age Filter -->
             <div class="mb-3">
-                <h5>Età</h5>
                 <label for="etaMinima" class="form-label">Età minima:</label>
                 <input type="range" class="form-range" name="etaMinima" min="14" max="99" value="<?php echo $filterMinAge; ?>" id="etaMinima" />
             </div>
@@ -98,7 +96,7 @@
                         <div class="card-body">
                             <h5 class="card-title"><?php echo $articolo["nome"]; ?></h5>
                             <p class="card-text"><?php echo $articolo["descrizione"]; ?></p>
-                            <p class="card-text"><small><?php echo $articolo["formato"]; ?></small></p>
+                            <p class="card-text">Formato: <?php echo $articolo["formato"]; ?></p>
                         </div>
                     </div>
                 </a>

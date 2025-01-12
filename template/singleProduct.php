@@ -112,7 +112,7 @@
                         </form>
                     </li>
                     <li class="col-12 col-md-6 text-center">
-                        <img src='<?php echo getAdminImagePath("deleteArticle"); ?>' class="img-fluid p-1"alt="" />
+                        <img src='<?php echo getAdminImagePath("deleteArticle"); ?>' class="img-fluid p-1" alt="" />
                         <form action='modifyArticle.php' id='delete-article' method='POST'>
                             <input type='hidden' name='id_prodotto' value='<?php echo $articolo["id_prodotto"]; ?>' />
                             <input type='hidden' name='versione' value='<?php echo $articolo["versione"]; ?>' />

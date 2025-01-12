@@ -540,6 +540,11 @@ class DatabaseHelper {
     }
 
     public function deleteArticle($id_prodotto, $versione) {
+
+        $stmt = $this->db->prepare("DELETE FROM RICHIESTE WHERE id_prodotto = ? AND versione_articolo = ?");
+        $stmt->bind_param("ii", $id_prodotto, $versione);
+        $stmt->execute();
+
         $stmt = $this->db->prepare("DELETE FROM ARTICOLI WHERE id_prodotto = ? AND versione = ?");
         $stmt->bind_param("ii", $id_prodotto, $versione);
         $stmt->execute();
@@ -592,7 +597,7 @@ class DatabaseHelper {
 
         return $stmt->affected_rows > 0;
     }
-    
+
     public function generateArticleNotificationOnCartTo($id_prodotto, $versione, $tipologia, $users) {
         array_filter($users, function ($username) {
             return !empty($username) || $username != "";
