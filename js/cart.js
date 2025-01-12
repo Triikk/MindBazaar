@@ -20,6 +20,7 @@ function generateArticle(articolo, index) {
             <div class="card d-flex flex-column position-relative cartArticleCard">
                 <!-- Product Selection Checkbox (Top Right) -->
                 <div class="position-absolute top-0 end-0 p-2">
+                    <label for="include" class="form-label me-2">Includi nell'ordine</label>
                     <input onchange="checkOrderingAbility()" type="checkbox" form="modify-amount-${index}" name="include" value="false" class="form-check-input" />
                 </div>
 
