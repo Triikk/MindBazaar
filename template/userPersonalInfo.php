@@ -1,6 +1,6 @@
 <?php $datiUtente = $userParams["datiUtente"][0]; ?>
 <section class="container my-4">
-    <div class="card mx-auto" style="max-width: 600px;">
+    <div class="card mx-auto userInfoContainer">
         <div class="card-body">
             <h2 class="card-title text-center mb-4">Dati Utente</h2>
             <div class="row mb-3">

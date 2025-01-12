@@ -234,6 +234,7 @@ ul {
     /* Keep the aspect ratio */
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 100%;
 }
 
 .card img {
@@ -251,6 +252,61 @@ ul {
 .carousel-indicators {
     bottom: -30px;
 }
+
+
+
+.adminArticleActions img {
+    max-width: 100px;
+}
+
+.articlePageDescContainer {
+    width: 100%; max-width: 800px;
+}
+
+.modifyArticleSection {
+    max-width: 800px;
+}
+
+.modifyArticleSection img {
+    max-width: 200px; border-radius: 8px;
+}
+
+.cartDescription form {
+    max-width: 500px;
+}
+
+.deliveryInfoContainer {
+    width: 100%;
+    max-width: 80%;
+}
+
+.userInfoContainer {
+    max-width: 600px;
+}
+
+.aboutUsContainer {
+    width: 100%; max-width: 100%;
+}
+
+.cartArticleCard img{
+    height: 200px;
+    object-fit: cover;
+}
+
+.cartArticleCard label {
+    line-height: 2.5;
+}
+
+.cartArticleCard button {
+    width: 120px;
+}
+
+.cartArticleCard form input {
+    width: 80px;
+    font-size: 1.2rem;
+    height: auto;
+}
+
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {

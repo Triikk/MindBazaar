@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="card mx-auto my-4" style="width: 100%; max-width: 80%;">
+    <div class="card mx-auto my-4 deliveryInfoContainer">
         <div class="card-body">
             <section>
                 <h1>Punto di Consegna</h1>

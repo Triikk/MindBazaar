@@ -4,7 +4,8 @@ Todo List, in ordine di priorità:
 - colore menu ricerca
 - implementare modifiche per mobile
 - label nei form
-- rimuovi style inline negli attributi HTML
+- aboutUsContent.php -> tre div uno dentro l'altro senza contenuti tra loro
+  - e altri simili in giro, è corretto? Non lo so, ve lo chiedo (bitta)
 - esegui i check di validazione
 - aggiungi i meta tag
 - sistema prototipi balsamiq

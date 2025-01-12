@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="card mx-auto my-4" style="width: 100%; max-width: 100%;">
+    <div class="card mx-auto my-4 aboutUsContainer">
         <div class="card-body">
             <section>
                 <h1>Chi Siamo</h1>

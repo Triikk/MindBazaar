@@ -25,8 +25,7 @@
                                             <div class="col-12 col-md-4 text-center mb-3 mb-md-0">
                                                 <img src="<?php echo getImagePath($article["nome_categoria"], $article["immagine"]); ?>"
                                                     alt=""
-                                                    class="img-fluid singleProduct-image"
-                                                    style="max-width: 100%; height: auto;" />
+                                                    class="img-fluid singleProduct-image"/>
                                             </div>
 
                                             <!-- Article Details -->

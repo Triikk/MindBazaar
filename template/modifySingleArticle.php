@@ -5,14 +5,14 @@
     $articolo = $dbh->getArticle($id_prodotto, $versione);
     ?>
 
-    <div class="card mx-auto" style="max-width: 800px;">
+    <div class="card mx-auto modifyArticleSection">
         <div class="card-body">
             <h2 class="card-title text-center mb-4"><?php echo $articolo["nome"]; ?></h2>
             <div class="row mb-3">
                 <div class="col-12 col-md-4 text-center">
                     <img src="<?php echo getImagePath($articolo["nome_categoria"], $articolo["immagine"]); ?>"
                         alt=""
-                        class="img-fluid singleProduct-image" style="max-width: 200px; border-radius: 8px;" />
+                        class="img-fluid singleProduct-image" />
                 </div>
                 <div class="col-12 col-md-8">
                     <p class="card-text"><strong>Descrizione:</strong> <?php echo $articolo["descrizione"]; ?></p>
@@ -25,7 +25,7 @@
     </div>
 
     <!-- Modify Form Section -->
-    <div class="card mx-auto mt-4" style="max-width: 800px;">
+    <div class="card mx-auto mt-4 modifyArticleSection">
         <div class="card-body">
             <h3 class="card-title text-center mb-4">Modifica Articolo</h3>
             <form action="modifyArticle.php" id="form" method="POST">

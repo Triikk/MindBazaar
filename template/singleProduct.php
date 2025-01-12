@@ -1,6 +1,6 @@
 <section class="container-fluid my-4">
     <?php $articolo = $userParams["articolo"]; ?>
-    <div class="card mx-auto p-4" style="width: 100%; max-width: 800px;">
+    <div class="card mx-auto p-4 articlePageDescContainer">
         <div class="row">
             <!-- Image Section -->
             <div class="col-12 col-md-4 d-flex justify-content-center">
@@ -101,10 +101,10 @@
 
         <!-- Admin Controls Section (Visible for Admins only) -->
         <?php if (isset($_SESSION["username"]) && isset($_SESSION["admin"])): ?>
-            <div class="mt-4">
+            <div class="mt-4 adminArticleActions">
                 <ul class="list-unstyled row">
                     <li class="col-12 col-md-6 text-center mb-3">
-                        <img src='<?php echo getAdminImagePath("modifyArticle"); ?>' class="img-fluid p-1" style="max-width: 100px;" alt="" />
+                        <img src='<?php echo getAdminImagePath("modifyArticle"); ?>' class="img-fluid p-1" alt="" />
                         <form action='modifyArticle.php' id='modify-article' method='POST'>
                             <input type='hidden' name='id_prodotto' value='<?php echo $articolo["id_prodotto"]; ?>' />
                             <input type='hidden' name='versione' value='<?php echo $articolo["versione"]; ?>' />
@@ -112,7 +112,7 @@
                         </form>
                     </li>
                     <li class="col-12 col-md-6 text-center">
-                        <img src='<?php echo getAdminImagePath("deleteArticle"); ?>' class="img-fluid p-1" style="max-width: 100px;" alt="" />
+                        <img src='<?php echo getAdminImagePath("deleteArticle"); ?>' class="img-fluid p-1"alt="" />
                         <form action='modifyArticle.php' id='delete-article' method='POST'>
                             <input type='hidden' name='id_prodotto' value='<?php echo $articolo["id_prodotto"]; ?>' />
                             <input type='hidden' name='versione' value='<?php echo $articolo["versione"]; ?>' />
