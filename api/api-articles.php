@@ -34,11 +34,28 @@ if (isset($_REQUEST["query"])) {
         case "addProduct":
             if (isset($_FILES["immagine"]) && isset($_REQUEST["nome_categoria"])) {
                 $uploadPath = "../" . getCategoryImageDir($_REQUEST["nome_categoria"]);
-                $imageName = $_FILES["immagine"]["name"];
+                $imageName = basename($_FILES["immagine"]["name"]);
                 $tmpName = $_FILES["immagine"]["tmp_name"];
+
+                $maxMB = 8;
+                $imageSize = getimagesize($tmpName);
+                if ($imageSize === false) {
+                    echo jsonResponse(400, "File non valido (non è un'immagine)");
+                    return;
+                }
+                if ($_FILES["immagine"]["size"] > $maxMB * 1024 * 1024) {
+                    echo jsonResponse(400, "File di dimensione superata a quella massima consentita ($maxMB MB)");
+                    return;
+                }
+                $acceptedExtensions = array("jpg", "jpeg", "png", "gif");
+                $imageFileType = strtolower(pathinfo($fullPath, PATHINFO_EXTENSION));
+                if (!in_array($imageFileType, $acceptedExtensions)) {
+                    echo jsonResponse(400, "L'estensione dell'immagine non è tra quelle consentite: " . implode(",", $acceptedExtensions));
+                }
                 if (!is_dir($uploadPath)) {
                     mkdir($uploadPath, 0755, true);
                 }
+
                 if (move_uploaded_file($tmpName, $uploadPath . $imageName)) {
                     echo jsonResponse(200, "Immagine salvata con successo");
                 } else {
