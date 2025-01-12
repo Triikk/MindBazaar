@@ -17,7 +17,7 @@ $filterFormats = [];
 foreach ($templateParams["formati"] as $formato) {
     $filterFormats[] = $formato["formato"];
 }
-$filterOrdinamento = "";
+$filterOrdinamento = "casuale";
 $filterMinAge = 0;
 $searchKey = "";
 

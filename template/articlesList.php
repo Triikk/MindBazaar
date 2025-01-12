@@ -11,6 +11,10 @@
             <div class="mb-3">
                 <h5>Ordinamento</h5>
                 <div class="form-check">
+                    <label class="form-check-label" for="casuale">Casuale</label>
+                    <input class="form-check-input" type="radio" name="ordinamento" value="casuale" id="casuale" />
+                </div>
+                <div class="form-check">
                     <label class="form-check-label" for="vendite">Piu venduto</label>
                     <input class="form-check-input" type="radio" name="ordinamento" value="vendite" id="vendite" />
                 </div>
