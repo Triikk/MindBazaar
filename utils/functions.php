@@ -63,10 +63,11 @@ function logOutUser() {
 
 function searchArticles($articoli, $searchKey) {
     $outArticoli = [];
+    $searchKey = strtolower($searchKey);
     foreach ($articoli as $articolo) {
-        if (strpos($articolo["nome"], $searchKey) !== false) {
+        if (strpos(strtolower($articolo["nome"]), $searchKey) !== false) {
             $outArticoli[] = $articolo;
-        } else if (strpos($articolo["descrizione"], $searchKey) !== false) {
+        } else if (strpos(strtolower($articolo["descrizione"]), $searchKey) !== false) {
             $outArticoli[] = $articolo;
         }
     }
