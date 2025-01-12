@@ -294,7 +294,6 @@ ul {
 
 .deliveryInfoContainer {
     width: 100%;
-    max-width: 80%;
 }
 
 .userInfoContainer {
@@ -323,6 +322,10 @@ ul {
     width: 80px;
     font-size: 1.2rem;
     height: auto;
+}
+
+.articlesInCart {
+    padding-left: 0;
 }
 
 .nav-link img {
@@ -359,6 +362,32 @@ ul {
     }
 }
 
+@media screen and (max-width: 768px) {
+    body {
+        font-size: 97%;
+    }
+
+    h2 {
+        font-size: calc(1rem + .9vw);
+    }
+
+    .card-title {
+        font-size: 1.75rem;
+    }
+
+    .card-text {
+        font-size: 90%;
+    }
+
+    .adminArticleActions li {
+        width: 50%;
+    }
+
+    .col-12 {
+        width: 50%;
+    }
+}
+
 @media screen and (min-width: 768px) {
 
     .carousel-control-prev {
@@ -368,4 +397,5 @@ ul {
     .carousel-control-next {
         right: 20%;
     }
+
 }
