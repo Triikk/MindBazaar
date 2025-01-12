@@ -163,6 +163,10 @@ function getFormatLogoPath($format) {
     }
 }
 
+function getWebsiteLogo() {
+    return LOGOS_DIR . "MindBazaarLogoNoScritta.png";
+}
+
 function getNotificationImagePath() {
     $not = array(
         "notFull" => SYMBOLS_DIR . "notificationFull.png",
