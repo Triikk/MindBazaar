@@ -51,7 +51,14 @@ function generateXHttpRequestFromForm(url, query, form) {
     for (const pair of formData.entries()) {
         params[pair[0]] = pair[1];
     }
-    const queryString = new URLSearchParams(params).toString();
+    generateXHttpRequestFromEntries(url, query, params);
+}
+
+/**
+ * Genera una richiesta HTTP POST da un insieme di coppie chiave-valore
+ */
+function generateXHttpRequestFromEntries(url, query, entries) {
+    const queryString = new URLSearchParams(entries).toString();
     generateRequest(url, `query=${query}&${queryString}`, "POST");
 }
 

@@ -86,7 +86,10 @@
                     </div>
                 </form>
             </div>
-
+        </div>
+    </div>
+    <div class="card mx-auto p-4 mt-4">
+        <div class="row">
             <!-- Add Product Form -->
             <div class="col-12 mt-5">
                 <h2>Aggiungi Prodotto</h2>
@@ -111,7 +114,7 @@
                     <div class="mb-3 row">
                         <label for="immagine" class="col-12 col-md-4 col-form-label">Immagine:</label>
                         <div class="col-12 col-md-8">
-                            <input type="text" name="immagine" class="form-control" placeholder="Immagine" required />
+                            <input type="file" name="immagine" class="form-control" placeholder="Immagine" required />
                         </div>
                     </div>
 

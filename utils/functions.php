@@ -129,6 +129,21 @@ function getCategoryImagePath($category) {
     }
 }
 
+function getCategoryImageDir($category) {
+    switch ($category) {
+        case "Sogno":
+            return DREAMS_DIR;
+        case "Ispirazione":
+            return INSPIRATIONS_DIR;
+        case "Emozione":
+            return EMOTIONS_DIR;
+        case "Nozione":
+            return NOTIONS_DIR;
+        default:
+            die("Categoria non valida");
+    }
+}
+
 function getNotificationImagePath() {
     $not = array(
         "notFull" => SYMBOLS_DIR . "notificationFull.png",

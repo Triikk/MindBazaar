@@ -32,14 +32,27 @@ if (isset($_REQUEST["query"])) {
             }
             break;
         case "addProduct":
-            if (isset($_REQUEST["nome"]) && isset($_REQUEST["descrizione"]) && isset($_REQUEST["immagine"]) && isset($_REQUEST["nome_categoria"]) && isset($_REQUEST["eta_minima"])) {
+            if (isset($_FILES["immagine"]) && isset($_REQUEST["nome_categoria"])) {
+                $uploadPath = "../" . getCategoryImageDir($_REQUEST["nome_categoria"]);
+                $imageName = $_FILES["immagine"]["name"];
+                $tmpName = $_FILES["immagine"]["tmp_name"];
+                if (!is_dir($uploadPath)) {
+                    mkdir($uploadPath, 0755, true);
+                }
+                if (move_uploaded_file($tmpName, $uploadPath . $imageName)) {
+                    echo jsonResponse(200, "Immagine salvata con successo");
+                } else {
+                    echo jsonResponse(400, "Errore durante il salvataggio dell'immagine");
+                }
+            } else if (isset($_REQUEST["nome"]) && isset($_REQUEST["descrizione"]) && isset($_REQUEST["immagine"]) && isset($_REQUEST["nome_categoria"]) && isset($_REQUEST["eta_minima"])) {
                 $nome = $_REQUEST["nome"];
                 $descrizione = $_REQUEST["descrizione"];
                 $immagine = $_REQUEST["immagine"];
                 $nome_categoria = $_REQUEST["nome_categoria"];
                 $eta_minima = $_REQUEST["eta_minima"];
                 if ($dbh->isProductPresent($nome)) {
-                    echo jsonResponse(400, "Prodotto già presente");
+                    echo jsonResponse(400, "Prodotto già presente " . " nome: " . $nome);
+                    // TODO cancellare l'immagine se presente (non lo faro')
                 } else {
                     $dbh->addProduct($nome, $descrizione, $immagine, $nome_categoria, $eta_minima);
                     echo jsonResponse(200, "Prodotto aggiunto con successo");
