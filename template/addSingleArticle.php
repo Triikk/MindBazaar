@@ -10,7 +10,14 @@
             ?>
         </select>
         <label for="formato">Formato</label>
-        <input type="text" name="formato" placeholder="Formato" required />
+        <select name="formato" required>
+            <?php
+            foreach ($templateParams["formati"] as $format) {
+                echo "<option value='" . $format['formato'] . "'>" . $format['formato'] . "</option>";
+            }
+            ?>
+        </select>
+        <!-- <input type="text" name="formato" placeholder="Formato" required /> -->
         <label for="prezzo">Prezzo</label>
         <input type="number" name="prezzo" placeholder="Prezzo" step="0.01" value="0" min="0" required />
         <label for="durata">Durata</label>

@@ -13,7 +13,7 @@ foreach ($templateParams["categorie"] as $categoria) {
 $filterMinPrice = 0;
 $filterMaxPrice = 1000;
 $filterFormats = [];
-foreach ($userParams["formati"] as $formato) {
+foreach ($templateParams["formati"] as $formato) {
     $filterFormats[] = $formato["formato"];
 }
 $filterOrdinamento = "";
