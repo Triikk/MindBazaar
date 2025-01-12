@@ -51,7 +51,7 @@ function generateXHttpRequestFromForm(url, query, form) {
     for (const pair of formData.entries()) {
         params[pair[0]] = pair[1];
     }
-    generateXHttpRequestFromEntries(url, query, params);
+    return generateXHttpRequestFromEntries(url, query, params);
 }
 
 /**
@@ -59,7 +59,7 @@ function generateXHttpRequestFromForm(url, query, form) {
  */
 function generateXHttpRequestFromEntries(url, query, entries) {
     const queryString = new URLSearchParams(entries).toString();
-    generateRequest(url, `query=${query}&${queryString}`, "POST");
+    return generateRequest(url, `query=${query}&${queryString}`, "POST");
 }
 
 /**
