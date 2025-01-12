@@ -56,7 +56,7 @@
             <!-- Formats -->
             <div class="mb-3">
                 <h5>Formati</h5>
-                <?php foreach ($userParams["formati"] as $formato): ?>
+                <?php foreach ($templateParams["formati"] as $formato): ?>
                     <div class="form-check">
                         <label class="form-check-label" for="<?php echo $formato["formato"]; ?>">
                             <?php echo $formato["formato"]; ?>
