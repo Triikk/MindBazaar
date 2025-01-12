@@ -1,6 +1,6 @@
 <div class="container mt-3">
     <!-- Trigger Button -->
-    <button class="btn btn-secondary w-100" type="button" data-bs-toggle="collapse" data-bs-target="#filterMenu" aria-expanded="false" aria-controls="filterMenu">
+    <button class="btn btn-secondary w-100 clickable" type="button" data-bs-toggle="collapse" data-bs-target="#filterMenu" aria-expanded="false" aria-controls="filterMenu">
         FILTRI
     </button>
 
@@ -65,7 +65,7 @@
             </div>
 
             <!-- Submit Button -->
-            <button type="submit" class="btn btn-secondary w-100">Applica</button>
+            <button type="submit" class="btn btn-secondary w-100 clickable">Applica</button>
         </form>
     </div>
 </div>

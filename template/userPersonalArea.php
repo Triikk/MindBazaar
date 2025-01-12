@@ -1,8 +1,8 @@
 <div class="container text-center">
-    <div class="card mx-auto my-4 personalInfo">
+    <div class="card mx-auto my-4">
         <div class="card-body">
             <section>
-                <ul class="list-unstyled">
+                <ul>
                     <li class="mb-4">
                         <a href="orders.php">I miei ordini</a>
                     </li>

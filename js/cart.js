@@ -51,7 +51,7 @@ function generateArticle(articolo, index) {
                 <!-- Footer buttons section -->
                 <div class="card-footer d-flex flex-column align-items-center">
                     <!-- Rimuovi (remove) button -->
-                    <button onclick="removeArticle(${index})" form="modify-amount-${index}" type="button" class="btn btn-danger btn-lg mb-2">Rimuovi</button>
+                    <button onclick="removeArticle(${index})" form="modify-amount-${index}" type="button" class="btn btn-lg mb-2 clickable">Rimuovi</button>
                 </div>
             </div>
         </div>

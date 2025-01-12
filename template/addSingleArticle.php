@@ -80,7 +80,7 @@
 
                     <!-- Submit Button -->
                     <div class="text-center mt-4">
-                        <button type="button" onclick="addArticle()" class="btn btn-primary btn-lg w-100 w-md-75">
+                        <button type="button" onclick="addArticle()" class="btn clickable btn-secondary btn-lg w-100 w-md-75">
                             Aggiungi articolo
                         </button>
                     </div>
@@ -144,7 +144,7 @@
 
                     <!-- Submit Button -->
                     <div class="text-center mt-4">
-                        <button type="button" onclick="addProduct()" class="btn btn-primary btn-lg w-100 w-md-75">
+                        <button type="button" onclick="addProduct()" class="btn btn-secondary clickable btn-lg w-100 w-md-75">
                             Aggiungi prodotto
                         </button>
                     </div>

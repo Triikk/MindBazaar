@@ -187,14 +187,46 @@ ul {
     border-radius: 8px;
     border: 2px solid hsl(246, 17%, 50%);
     transition-duration: 0.4s;
-    background-color: white;
     color: black;
     font-family: inherit;
     font-size: 16px;
 }
 
+.clickable {
+    background-color: rgb(110, 106, 149) !important;
+    color: rgb(218, 218, 230) !important;
+}
+
+.clickable:hover {
+    background-color: rgb(208, 208, 226) !important;
+    color: rgb(55, 52, 71) !important;
+    transition-duration: 0.3s;
+}
+
+input[type=radio],
+input[type=checkbox] {
+    background-color: rgb(232, 232, 241) !important;
+    border-color: rgb(110, 106, 149) !important;
+}
+
+input[type=radio]:checked,
+input[type=checkbox]:checked {
+    background-color: rgb(110, 106, 149) !important;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    background-color: rgb(110, 106, 149) !important;
+}
+
+input[type=range]::-moz-range-thumb {
+    background-color: rgb(110, 106, 149) !important;
+}
+
+input[type=range]::-ms-range-thumb {
+    background-color: rgb(110, 106, 149) !important;
+}
+
 .searchBar button:hover {
-    background-color: hsl(246, 17%, 50%);
     color: white;
 }
 

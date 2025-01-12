@@ -23,7 +23,7 @@ function generateUserNotifications(UNotifications) {
     // Add title and button to show the notifications list
     result += `
     <div class="container">
-        <button class="btn btn-secondary w-100 w-lg-80 py-3 fs-4" type="button" data-bs-toggle="collapse" data-bs-target="#notificationsList" aria-expanded="false" aria-controls="notificationsList">
+        <button class="btn btn-secondary w-100 w-lg-80 py-3 fs-4 clickable" type="button" data-bs-toggle="collapse" data-bs-target="#notificationsList" aria-expanded="false" aria-controls="notificationsList">
             Notifiche ordini
         </button>
     `;
@@ -44,7 +44,7 @@ function generateUserNotifications(UNotifications) {
                     <h5 class="card-title">Notifica ordine n.${notification["id_ordine"]}</h5>
                     <p class="card-text"><strong>Data:</strong> ${notification["data"]}</p>
                     <p class="card-text">${getOrderNotificationText(notification["tipologia"])}</p>
-                    <a href="orders.php#ord-${notification["id_ordine"]}" class="btn btn-primary">Vedi ordine</a>
+                    <a href="orders.php#ord-${notification["id_ordine"]}" class="btn btn-secondary">Vedi ordine</a>
                 </div>
             </div>
             `;
@@ -79,7 +79,7 @@ function generateArticleNotifications(ANotifications) {
     // Add title and button to show the notifications list
     result += `
     <div class="container">
-        <button class="btn btn-secondary w-100 w-lg-80 py-3 fs-4" type="button" data-bs-toggle="collapse" data-bs-target="#articleNotificationsList" aria-expanded="false" aria-controls="articleNotificationsList">
+        <button class="btn btn-secondary w-100 w-lg-80 py-3 fs-4 clickable" type="button" data-bs-toggle="collapse" data-bs-target="#articleNotificationsList" aria-expanded="false" aria-controls="articleNotificationsList">
             Notifiche articoli
         </button>
     `;
@@ -103,7 +103,7 @@ function generateArticleNotifications(ANotifications) {
                     <p class="card-text"><strong>Intensità:</strong> ${notification["intensita"]}</p>
                     <p class="card-text"><strong>Data:</strong> ${notification["data"]}</p>
                     <p class="card-text">${getArticleNotificationText(notification["tipologia"])}</p>
-                    <a href="product.php?id_prodotto=${notification["id_prodotto"]}&versione=${notification["versione"]}" class="btn btn-primary">Vedi articolo</a>
+                    <a href="product.php?id_prodotto=${notification["id_prodotto"]}&versione=${notification["versione"]}" class="btn btn-secondary">Vedi articolo</a>
                 </div>
             </div>
             `;

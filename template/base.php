@@ -23,7 +23,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="icon" href="<?php echo getWebsiteLogo(); ?>" type="image/x-icon">
+    <link rel="icon" href="<?php echo getWebsiteLogo(); ?>" type="image/x-icon" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap" rel="stylesheet" />
 
     <title><?php echo $templateParams["titolo"]; ?></title>

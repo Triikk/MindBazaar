@@ -93,7 +93,7 @@
 
             <!-- Aggiungi al carrello Button -->
             <div class="text-center mt-4">
-                <button type="submit" id="add-to-cart" name="submit" class="btn btn-primary btn-lg w-100 w-md-75">
+                <button type="submit" id="add-to-cart" name="submit" class="btn btn-secondary btn-lg w-100 w-md-75 clickable">
                     Aggiungi al carrello
                 </button>
             </div>

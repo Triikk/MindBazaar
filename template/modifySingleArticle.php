@@ -40,7 +40,7 @@
                 <input type="hidden" name="id_prodotto" value="<?php echo $articolo["id_prodotto"]; ?>" />
                 <input type="hidden" name="versione" value="<?php echo $articolo["versione"]; ?>" />
                 <div class="text-center">
-                    <input type="submit" id="modify" name="submit" value="Applica Modifiche" class="w-100 btn btn-secondary" />
+                    <input type="submit" id="modify" name="submit" value="Applica Modifiche" class="w-100 btn btn-secondary clickable" />
                 </div>
             </form>
         </div>

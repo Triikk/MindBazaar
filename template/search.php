@@ -6,5 +6,5 @@
         id="ricerca"
         placeholder="Cerca..."
         class="form-control" />
-    <button type="submit" class="btn">Search</button>
+    <button type="submit" class="btn clickable">Search</button>
 </form>
