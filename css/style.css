@@ -307,6 +307,28 @@ ul {
     height: auto;
 }
 
+.nav-link img {
+    width: 30px;
+    height: 24px;
+    display: inline;
+    transition-duration: 0.4s;
+}
+
+.nav-link img:nth-child(2) {
+    display: none; 
+}
+
+.nav-link:hover {
+    color: white;
+}
+
+.nav-link:hover img:nth-child(1) {
+    display: none;
+}
+
+.nav-link:hover img:nth-child(2) {
+    display: block;
+}
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {

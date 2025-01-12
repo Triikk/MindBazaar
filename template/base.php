@@ -56,7 +56,8 @@
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" href="javascript:void(0)" onclick="toggleNav()">
-                        <img src="upload/icons/symbols/menu.png" alt="Menu" width="30" height="24" class="d-inline" />
+                        <img src="<?php echo SYMBOLS_DIR . 'menu.png'; ?>" alt="Menu" />
+                        <img src="<?php echo SYMBOLS_DIR . 'menuHover.png'; ?>" alt="Menu" />
                     </a>
                 </li>
                 <li class="nav-item">
@@ -68,17 +69,20 @@
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="javascript:void(0)" onclick="toggleSearch()">
-                        <img src="<?php echo SYMBOLS_DIR . 'search.png'; ?>" alt="Search" width="30" height="24" class="d-inline" />
+                        <img src="<?php echo SYMBOLS_DIR . 'search.png'; ?>" alt="Search" />
+                        <img src="<?php echo SYMBOLS_DIR . 'searchHover.png'; ?>" alt="Search" />
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="cart.php">
-                        <img src="<?php echo SYMBOLS_DIR . 'cart.png'; ?>" alt="Cart" width="30" height="24" class="d-inline" />
+                        <img src="<?php echo SYMBOLS_DIR . 'shopping-cart.png'; ?>" alt="Cart" />
+                        <img src="<?php echo SYMBOLS_DIR . 'shopping-cartHover.png'; ?>" alt="Cart" />
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="notifications.php" id="notification-badge">
-                        <img id="notification-icon" src="<?php echo SYMBOLS_DIR . 'notificationEmpty.png'; ?>" alt="Notifications" width="30" height="24" class="d-inline" />
+                        <img id="notification-icon-0" src="<?php echo SYMBOLS_DIR . 'notificationEmpty.png'; ?>" alt="Notifications" />
+                        <img id="notification-icon-1" src="<?php echo SYMBOLS_DIR . 'notificationEmptyHover.png'; ?>" alt="Notifications" />
                     </a>
                 </li>
             </ul>

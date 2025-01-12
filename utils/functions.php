@@ -129,6 +129,16 @@ function getCategoryImagePath($category) {
     }
 }
 
+function getNotificationImagePath() {
+    $not = array(
+        "notFull" => SYMBOLS_DIR . "notificationFull.png",
+        "notEmpty" => SYMBOLS_DIR . "notificationEmpty.png",
+        "notFullHover" => SYMBOLS_DIR . "notificationFullHover.png",
+        "notEmptyHover" => SYMBOLS_DIR . "notificationEmptyHover.png"
+    );
+    return $not;
+}
+
 function checkUserLoggedIn() {
     $ret = isset($_SESSION["username"]);
     if (!$ret) {
