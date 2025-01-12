@@ -6,20 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
     <link rel="stylesheet" type="text/css" href="./css/style.css" />
 
     <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&display=swap" rel="stylesheet"> -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&display=swap" rel="stylesheet" /> -->
 
     <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Titan+One&display=swap" rel="stylesheet"> -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Titan+One&display=swap" rel="stylesheet" /> -->
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap" rel="stylesheet" />
 
     <title><?php echo $templateParams["titolo"]; ?></title>
 
@@ -56,7 +56,7 @@
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" href="javascript:void(0)" onclick="toggleNav()">
-                        <img src="upload/icons/symbols/menu.png" alt="Menu" width="30" height="24" class="d-inline">
+                        <img src="upload/icons/symbols/menu.png" alt="Menu" width="30" height="24" class="d-inline" />
                     </a>
                 </li>
                 <li class="nav-item">
@@ -68,17 +68,17 @@
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="javascript:void(0)" onclick="toggleSearch()">
-                        <img src="<?php echo SYMBOLS_DIR . 'search.png'; ?>" alt="Search" width="30" height="24" class="d-inline">
+                        <img src="<?php echo SYMBOLS_DIR . 'search.png'; ?>" alt="Search" width="30" height="24" class="d-inline" />
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="cart.php">
-                        <img src="<?php echo SYMBOLS_DIR . 'cart.png'; ?>" alt="Cart" width="30" height="24" class="d-inline">
+                        <img src="<?php echo SYMBOLS_DIR . 'cart.png'; ?>" alt="Cart" width="30" height="24" class="d-inline" />
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="notifications.php" id="notification-badge">
-                        <img id="notification-icon" src="<?php echo SYMBOLS_DIR . 'notificationEmpty.png'; ?>" alt="Notifications" width="30" height="24" class="d-inline">
+                        <img id="notification-icon" src="<?php echo SYMBOLS_DIR . 'notificationEmpty.png'; ?>" alt="Notifications" width="30" height="24" class="d-inline" />
                     </a>
                 </li>
             </ul>

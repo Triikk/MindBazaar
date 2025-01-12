@@ -35,5 +35,3 @@ $templateParams["titolo"] = "MindBazaar - Checkout";
 $templateParams["nome"] = "orderCheckout.php";
 
 require 'template/base.php';
-
-?>

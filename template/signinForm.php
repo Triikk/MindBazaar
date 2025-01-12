@@ -6,26 +6,26 @@
     <ul>
         <li>
             <label for="username">Username:</label>
-            <input type="text" name="username">
+            <input type="text" name="username" />
         </li>
         <li>
             <label for="nome">Nome:</label>
-            <input type="text" name="nome">
+            <input type="text" name="nome" />
         </li>
         <li>
             <label for="cognome">Cognome:</label>
-            <input type="text" name="cognome">
+            <input type="text" name="cognome" />
         </li>
         <li>
             <label for="dataNascita">Data di nascita:</label>
-            <input type="date" name="dataNascita">
+            <input type="date" name="dataNascita" />
         </li>
         <li>
             <label for="password">Password:</label>
-            <input type="password" name="password">
+            <input type="password" name="password" />
         </li>
         <li>
-            <input type="submit" name="submit" value="Invia">
+            <input type="submit" name="submit" value="Invia" />
         </li>
     </ul>
 </form>

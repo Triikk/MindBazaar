@@ -6,11 +6,11 @@
     <ul>
         <li>
             <label for="username">Username:</label>
-            <input type="text" name="username">
+            <input type="text" name="username" />
         </li>
         <li>
             <label for="password">Password:</label>
-            <input type="password" name="password">
+            <input type="password" name="password" />
         </li>
         <li>
             <input type="submit" name="submit" value="Invia" />

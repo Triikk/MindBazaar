@@ -28,7 +28,7 @@ function generateBestsellers(bestsellers) {
             <div class="card h-100">
                 <div class="row g-0">
                     <div class="col-md-4">
-                        <img src="${bestseller["percorso_immagine"]}" class="img-fluid bestseller-image" alt="">
+                        <img src="${bestseller["percorso_immagine"]}" class="img-fluid bestseller-image" alt="" />
                     </div>
                     <div class="col-md-8 d-flex align-items-center">
                         <div class="card-body">
@@ -95,7 +95,7 @@ function generateCategories(categories) {
         <div class="carousel-item ${i === 0 ? 'active' : ''}">
             <a href="articles.php?categorie%5B%5D=${category["nome"]}" class="d-block text-decoration-none text-dark">
                 <div class="d-flex justify-content-center">
-                    <img class="d-block img-fluid homepage-category-image" src="upload/categories/${category["immagine"]}">
+                    <img class="d-block img-fluid homepage-category-image" src="upload/categories/${category["immagine"]}" />
                 </div>
                 </a>
                 <div class="text-center mt-2 mb-2">

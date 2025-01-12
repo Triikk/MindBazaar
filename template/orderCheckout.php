@@ -10,7 +10,7 @@
 <section>
     <h2>Totale: <?php echo(calculateTotal($listaArticoli)) ?>€</h2>
     <form id="checkout-form" action="checkout.php" method="post" onsubmit='checkout()'>
-        <input form="checkout-form" type="submit" name="submit" value="checkout">
-        <input form="checkout-form" type="hidden" name="boughtArticles" value='<?php echo(json_encode($listaArticoli, JSON_HEX_APOS | JSON_HEX_QUOT)) ?>'>
+        <input form="checkout-form" type="submit" name="submit" value="checkout" />
+        <input form="checkout-form" type="hidden" name="boughtArticles" value='<?php echo(json_encode($listaArticoli, JSON_HEX_APOS | JSON_HEX_QUOT)) ?>' />
     </form>
 </section>

@@ -26,7 +26,7 @@
                                                 <img src="<?php echo getImagePath($article["nome_categoria"], $article["immagine"]); ?>"
                                                     alt=""
                                                     class="img-fluid singleProduct-image"
-                                                    style="max-width: 100%; height: auto;">
+                                                    style="max-width: 100%; height: auto;" />
                                             </div>
 
                                             <!-- Article Details -->

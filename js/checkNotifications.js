@@ -1,12 +1,3 @@
-/*
-function updateNotificatificationBadge(ANCount, ONCount, notificationBadge) {
-    if (ONCount + ANCount > 0) {
-        notificationBadge.innerHTML = `Notifiche (${ONCount}) + (${ANCount})`;
-    } else {
-        notificationBadge.innerHTML = `Notifiche`;
-    }
-}
-*/
 let unreadAN = 0;
 let unreadON = 0;
 let ANready = false;

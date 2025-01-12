@@ -20,13 +20,13 @@ function generateArticle(articolo, index) {
             <div class="card d-flex flex-column position-relative">
                 <!-- Product Selection Checkbox (Top Right) -->
                 <div class="position-absolute top-0 end-0 p-2">
-                    <input onchange="checkOrderingAbility()" type="checkbox" form="modify-amount-${index}" name="include" value="false" class="form-check-input">
+                    <input onchange="checkOrderingAbility()" type="checkbox" form="modify-amount-${index}" name="include" value="false" class="form-check-input" />
                 </div>
 
                 <div class="card-body d-flex">
                     <!-- Article Image -->
                     <div class="me-3">
-                        <img id="articleIMG-${index}" src="${articleImgPath}" alt="" class="img-fluid" style="height: 200px; object-fit: cover;">
+                        <img id="articleIMG-${index}" src="${articleImgPath}" alt="" class="img-fluid" style="height: 200px; object-fit: cover;" />
                     </div>
 
                     <!-- Article Info -->
@@ -40,7 +40,7 @@ function generateArticle(articolo, index) {
                         <form id="modify-amount-${index}">
                             <div class="mb-3 d-flex align-items-center">
                                 <label for="quantita_articolo_in_carrello-${index}" class="form-label me-2" style="line-height: 2.5;">Quantità</label>
-                                <input onchange="updateCart(${index})" form="modify-amount-${index}" type="number" min="0" max="${maxQuantity}" name="quantita_articolo_in_carrello" value="${articolo["quantita"]}" class="form-control form-control-sm" id="quantita_articolo_in_carrello-${index}" style="width: 80px; font-size: 1.2rem; height: auto;">
+                                <input onchange="updateCart(${index})" form="modify-amount-${index}" type="number" min="0" max="${maxQuantity}" name="quantita_articolo_in_carrello" value="${articolo["quantita"]}" class="form-control form-control-sm" id="quantita_articolo_in_carrello-${index}" style="width: 80px; font-size: 1.2rem; height: auto;" />
                             </div>
                         </form>
                     </div>
