@@ -1,5 +1,10 @@
 <form action="articles.php" method="GET">
-    <label for="ricerca"></label>
-    <input type="search" name="ricerca" placeholder="Cerca..." />
-    <button type="submit">Search</button>
+    <label for="ricerca" class="visually-hidden">Search</label>
+    <input
+        type="search"
+        name="ricerca"
+        id="ricerca"
+        placeholder="Cerca..."
+        class="form-control" />
+    <button type="submit" class="btn">Search</button>
 </form>
