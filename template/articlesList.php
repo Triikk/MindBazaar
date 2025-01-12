@@ -26,16 +26,16 @@
 
             <!-- Price Range Filters -->
             <div class="mb-3">
-                <label for="prezzoMin" class="form-label">Prezzo minimo:</label>
-                <input type="range" class="form-range" name="prezzoMin" min="0" max="1000" value="<?php echo $filterMinPrice; ?>" id="prezzoMin" />
-                <label for="prezzoMax" class="form-label">Prezzo massimo:</label>
-                <input type="range" class="form-range" name="prezzoMax" min="0" max="1000" value="<?php echo $filterMaxPrice; ?>" id="prezzoMax" />
+                <label for="prezzoMin" class="form-label">Prezzo minimo: <span id="prezzoMinValue"><?php echo $filterMinPrice; ?></span></label>
+                <input type="range" class="form-range" name="prezzoMin" min="0" max="1000" value="<?php echo $filterMinPrice; ?>" id="prezzoMin" oninput="updateRangeValue('prezzoMin')" />
+                <label for="prezzoMax" class="form-label">Prezzo massimo: <span id="prezzoMaxValue"><?php echo $filterMaxPrice; ?></span></label>
+                <input type="range" class="form-range" name="prezzoMax" min="0" max="1000" value="<?php echo $filterMaxPrice; ?>" id="prezzoMax" oninput="updateRangeValue('prezzoMax')" />
             </div>
 
             <!-- Age Filter -->
             <div class="mb-3">
-                <label for="etaMinima" class="form-label">Età minima:</label>
-                <input type="range" class="form-range" name="etaMinima" min="14" max="99" value="<?php echo $filterMinAge; ?>" id="etaMinima" />
+                <label for="etaMinima" class="form-label">Età minima: <span id="etaMinimaValue"><?php echo $filterMinAge; ?></span></label>
+                <input type="range" class="form-range" name="etaMinima" min="14" max="99" value="<?php echo $filterMinAge; ?>" id="etaMinima" oninput="updateRangeValue('etaMinima')" />
             </div>
 
             <!-- Categories -->
