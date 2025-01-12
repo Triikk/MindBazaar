@@ -4,7 +4,6 @@ Todo List, in ordine di priorità:
 - stile addArticle
 - colore menu ricerca
 - implementare modifiche per mobile
-- label nei form
 - aboutUsContent.php -> tre div uno dentro l'altro senza contenuti tra loro
   - e altri simili in giro, è corretto? Non lo so, ve lo chiedo (bitta)
 - esegui i check di validazione
