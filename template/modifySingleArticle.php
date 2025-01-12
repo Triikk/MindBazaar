@@ -11,7 +11,7 @@
             <div class="row mb-3">
                 <div class="col-12 col-md-4 text-center">
                     <img src="<?php echo getImagePath($articolo["nome_categoria"], $articolo["immagine"]); ?>"
-                        alt="<?php echo $articolo["nome"]; ?>"
+                        alt=""
                         class="img-fluid singleProduct-image" style="max-width: 200px; border-radius: 8px;">
                 </div>
                 <div class="col-12 col-md-8">

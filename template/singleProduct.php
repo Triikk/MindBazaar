@@ -5,7 +5,7 @@
             <!-- Image Section -->
             <div class="col-12 col-md-4 d-flex justify-content-center">
                 <img src="<?php echo getImagePath($articolo["nome_categoria"], $articolo["immagine"]); ?>"
-                    alt="<?php echo $articolo["nome"]; ?>"
+                    alt=""
                     class="img-fluid singleProduct-image" />
             </div>
             <!-- Article Details Section -->
@@ -104,7 +104,7 @@
             <div class="mt-4">
                 <ul class="list-unstyled row">
                     <li class="col-12 col-md-6 text-center mb-3">
-                        <img src='<?php echo getAdminImagePath("modifyArticle"); ?>' alt='Modifica articolo' class="img-fluid p-1" style="max-width: 100px;">
+                        <img src='<?php echo getAdminImagePath("modifyArticle"); ?>' class="img-fluid p-1" style="max-width: 100px;" alt="">
                         <form action='modifyArticle.php' id='modify-article' method='POST'>
                             <input type='hidden' name='id_prodotto' value='<?php echo $articolo["id_prodotto"]; ?>'>
                             <input type='hidden' name='versione' value='<?php echo $articolo["versione"]; ?>'>
@@ -112,7 +112,7 @@
                         </form>
                     </li>
                     <li class="col-12 col-md-6 text-center">
-                        <img src='<?php echo getAdminImagePath("deleteArticle"); ?>' alt='Elimina articolo' class="img-fluid p-1" style="max-width: 100px;">
+                        <img src='<?php echo getAdminImagePath("deleteArticle"); ?>' class="img-fluid p-1" style="max-width: 100px;" alt="">
                         <form action='modifyArticle.php' id='delete-article' method='POST'>
                             <input type='hidden' name='id_prodotto' value='<?php echo $articolo["id_prodotto"]; ?>'>
                             <input type='hidden' name='versione' value='<?php echo $articolo["versione"]; ?>'>

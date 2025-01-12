@@ -28,7 +28,7 @@ function generateBestsellers(bestsellers) {
             <div class="card h-100">
                 <div class="row g-0">
                     <div class="col-md-4">
-                        <img src="${bestseller["percorso_immagine"]}" class="img-fluid bestseller-image" alt="${bestseller["nome"]}">
+                        <img src="${bestseller["percorso_immagine"]}" class="img-fluid bestseller-image" alt="">
                     </div>
                     <div class="col-md-8 d-flex align-items-center">
                         <div class="card-body">

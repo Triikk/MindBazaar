@@ -26,7 +26,7 @@ function generateArticle(articolo, index) {
                 <div class="card-body d-flex">
                     <!-- Article Image -->
                     <div class="me-3">
-                        <img id="articleIMG-${index}" src="${articleImgPath}" alt="${articolo["nome"]}" class="img-fluid" style="height: 200px; object-fit: cover;">
+                        <img id="articleIMG-${index}" src="${articleImgPath}" alt="" class="img-fluid" style="height: 200px; object-fit: cover;">
                     </div>
 
                     <!-- Article Info -->
