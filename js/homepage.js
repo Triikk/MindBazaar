@@ -93,14 +93,14 @@ function generateCategories(categories) {
         let category = categories[i];
         result += `
         <div class="carousel-item ${i === 0 ? 'active' : ''}">
-            <a href="articles.php?categorie%5B%5D=${category["nome"]}" class="d-block text-decoration-none text-dark">
-                <div class="d-flex justify-content-center">
+            <div class="d-flex justify-content-center">
+                <a href="articles.php?categorie%5B%5D=${category["nome"]}" class="d-block text-decoration-none text-dark">
                     <img class="d-block img-fluid homepage-category-image" src="upload/categories/${category["immagine"]}" />
-                </div>
                 </a>
-                <div class="text-center mt-2 mb-2">
-                    <h3>${category["nome"]}</h3>
-                </div>
+            </div>
+            <div class="text-center mt-2 mb-2">
+                <h3>${category["nome"]}</h3>
+            </div>
         </div>
         `;
     }

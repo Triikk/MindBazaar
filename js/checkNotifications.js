@@ -2,16 +2,23 @@ let unreadAN = 0;
 let unreadON = 0;
 let ANready = false;
 let ONready = false;
+let notFull = "";
+let notFullHover = "";
+let notEmpty = "";
+let notEmptyHover = "";
 
 function updateNotificatificationBadge() {
     if (!ANready || !ONready) {
         return;
     }
-    const notificationIcon = document.getElementById('notification-icon');
+    const notificationIcon0 = document.getElementById('notification-icon-0');
+    const notificationIcon1 = document.getElementById('notification-icon-1');
     if (unreadAN + unreadON > 0) {
-        notificationIcon["src"] = "./upload/icons/symbols/notificationFull.png";
+        notificationIcon0["src"] = notFull;
+        notificationIcon1["src"] = notFullHover;
     } else {
-        notificationIcon["src"] = "./upload/icons/symbols/notificationEmpty.png";
+        notificationIcon0["src"] = notEmpty;
+        notificationIcon1["src"] = notEmptyHover;
     }
     ANready = false;
     ONready = false;
@@ -39,10 +46,19 @@ function updateUnreadON(ONresponse) {
 
 function generateNotifications() {
     const url = 'api/api-notifications.php';
-    queryAPI(url, "generateNotifications", "", "POST"/*, (res)=>{console.log(res)}*/);
+    queryAPI(url, "generateNotifications", "", "POST");
+}
+
+function initNotificationImagePath(res) {
+    notFull = res["notFull"];
+    notFullHover = res["notFullHover"];
+    notEmpty = res["notEmpty"];
+    notEmptyHover = res["notEmptyHover"];
+    console.log(res);
+    generateNotifications();
+    checkNotifications();
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    generateNotifications();
-    checkNotifications();
+    queryAPI('api/api-functions.php', "getNotificationImagePath", "", "GET", (res) => {initNotificationImagePath(res)});
 });

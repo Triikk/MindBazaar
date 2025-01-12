@@ -32,7 +32,7 @@
                     <h5>Data di nascita:</h5>
                 </div>
                 <div class="col-8">
-                    <p class="card-text"><?php echo $datiUtente["data_nascita"]; ?></p>
+                    <p class="card-text"><?php echo DateTime::createFromFormat("Y-m-d H:i:s", $datiUtente["data_nascita"])->format("Y-m-d"); ?></p>
                 </div>
             </div>
         </div>

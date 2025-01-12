@@ -15,6 +15,9 @@ if (isset($_REQUEST["query"])) {
         case "getCategoryImagePath":
             echo jsonResponse(200, getCategoryImagePath($_REQUEST["category"]));
             break;
+        case "getNotificationImagePath":
+            echo jsonResponse(200, getNotificationImagePath());
+            break;
         default:
             echo jsonResponse(400, "Invalid query");
     }
