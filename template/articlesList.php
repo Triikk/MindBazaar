@@ -91,16 +91,28 @@
         <?php foreach ($userParams["articoliVisualizzati"] as $articolo): ?>
             <div class="col-12 col-sm-6 col-md-4">
                 <a href="product.php?id_prodotto=<?php echo $articolo["id_prodotto"]; ?>&versione=<?php echo $articolo["versione"]; ?>">
-                    <div class="card h-100">
+                    <div class="card h-100 d-flex flex-column">
+                        <!-- Article Image -->
                         <img src="<?php echo getImagePath($articolo["nome_categoria"], $articolo["immagine"]); ?>" class="card-img-top img-fluid article-image" alt="" />
-                        <div class="card-body">
+
+                        <!-- Card Body -->
+                        <div class="card-body flex-grow-1">
                             <h5 class="card-title"><?php echo $articolo["nome"]; ?></h5>
                             <p class="card-text"><?php echo $articolo["descrizione"]; ?></p>
-                            <p class="card-text">Formato: <?php echo $articolo["formato"]; ?></p>
+                        </div>
+
+                        <!-- Dedicated Logo Row -->
+                        <div class="card-footer">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <span class="card-text mb-0">Formato:</> <?php echo $articolo["formato"]; ?></span>
+                                <img src="<?php echo getFormatLogoPath($articolo["formato"]); ?>" class="logo-image"" />
+                            </div>
                         </div>
                     </div>
                 </a>
             </div>
+
+
         <?php endforeach; ?>
     </div>
 </section>

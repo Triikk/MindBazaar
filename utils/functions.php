@@ -144,6 +144,25 @@ function getCategoryImageDir($category) {
     }
 }
 
+function getFormatLogoPath($format) {
+    switch ($format) {
+        case "marmellata":
+            return FORMATS_DIR . "/" . "jam.png";
+        case "olio essenziale":
+            return FORMATS_DIR . "/" . "essential-oil.png";
+        case "caramella":
+            return FORMATS_DIR . "/" . "candy.png";
+        case "incenso":
+            return FORMATS_DIR . "/" . "incense.png";
+        case "lattina":
+            return FORMATS_DIR . "/" . "soda-can.png";
+        case "miele":
+            return FORMATS_DIR . "/" . "honey.png";
+        default:
+            die("Formato non valido");
+    }
+}
+
 function getNotificationImagePath() {
     $not = array(
         "notFull" => SYMBOLS_DIR . "notificationFull.png",
