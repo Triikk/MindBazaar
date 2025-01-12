@@ -66,7 +66,7 @@ function generateCart(newCart) {
     let articoli = sezioni[1];
 
     let elencoArticoli = "";
-    elencoArticoli += "<ul>\n";
+    elencoArticoli += "<ul class='articlesInCart'>\n";
     for (let i = 0; i < carrello.length; i++) {
         elencoArticoli += generateArticle(carrello[i], i);
     }
