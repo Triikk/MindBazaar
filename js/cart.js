@@ -19,12 +19,13 @@ function generateArticle(articolo, index) {
         <div class="col-12 col-md-8 mb-4 mx-auto">
             <div class="card d-flex flex-column position-relative cartArticleCard">
                 <!-- Product Selection Checkbox (Top Right) -->
-                <div class="position-absolute top-0 end-0 p-2">
-                    <label for="include" class="form-label me-2">Includi nell'ordine</label>
-                    <input onchange="checkOrderingAbility()" type="checkbox" form="modify-amount-${index}" name="include" value="false" class="form-check-input" />
+                <div class="d-flex position-absolute top-0 end-0 p-2 align-items-center">
+                    <label for="include-${index}" class="form-label me-2 mb-0">Includi nell'ordine</label>
+                    <input onchange="checkOrderingAbility()" type="checkbox" form="modify-amount-${index}" name="include" value="false" id="include-${index}" class="form-check-input" />
                 </div>
 
-                <div class="card-body d-flex">
+                <!-- Card Body -->
+                <div class="card-body d-flex pt-5">
                     <!-- Article Image -->
                     <div class="me-3">
                         <img id="articleIMG-${index}" src="${articleImgPath}" alt="" class="img-fluid" />
@@ -54,6 +55,7 @@ function generateArticle(articolo, index) {
                 </div>
             </div>
         </div>
+
     `;
 }
 
