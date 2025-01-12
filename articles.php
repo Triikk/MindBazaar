@@ -5,6 +5,7 @@ require_once 'bootstrap.php';
 $templateParams["titolo"] = "MindBazaar - Articoli";
 //Home Template
 $templateParams["nome"] = "articlesList.php";
+$templateParams["js"][] = "js/articles.js";
 
 $filterCategories = [];
 foreach ($templateParams["categorie"] as $categoria) {
@@ -16,7 +17,7 @@ $filterFormats = [];
 foreach ($templateParams["formati"] as $formato) {
     $filterFormats[] = $formato["formato"];
 }
-$filterOrdinamento = "";
+$filterOrdinamento = "casuale";
 $filterMinAge = 0;
 $searchKey = "";
 

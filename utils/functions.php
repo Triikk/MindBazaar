@@ -16,6 +16,9 @@ function getFilteredArticles($articlesList, $categories, $minPrice, $maxPrice, $
     }
 
     switch ($ordinamento) {
+        case 'casuale':
+            shuffle($filteredArticles);
+            break;
         case 'vendite':
             usort($filteredArticles, function ($a, $b) {
                 return intval($b['vendite']) - intval($a['vendite']);
