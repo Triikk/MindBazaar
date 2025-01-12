@@ -59,16 +59,11 @@ function generateArticle(articolo, index) {
     `;
 }
 
-
 function generateCart(newCart) {
     carrello = newCart;
 
     let sezioni = document.querySelectorAll("main section");
-    let cartInfo = sezioni[0].children;
     let articoli = sezioni[1];
-
-    cartInfo[0].innerHTML = `Numero articoli presenti: ${carrello.length}`;
-    cartInfo[1].innerHTML = `Totale provvisorio: ${calculateTotal(carrello)}€`;
 
     let elencoArticoli = "";
     elencoArticoli += "<ul>\n";
@@ -77,6 +72,24 @@ function generateCart(newCart) {
     }
     articoli.innerHTML = elencoArticoli + "</ul>\n";
     checkOrderingAbility();
+}
+
+function updateCartInfo() {
+    let sezioni = document.querySelectorAll("main section");
+    let cartInfo = sezioni[0].children;
+    let articoliSelezionati = [];
+
+    for (let i = 0; i < carrello.length; i++) {
+        console.log(i)
+        let form = document.forms["modify-amount-" + i];
+        let include = form["include"].checked;
+        if (include) {
+            articoliSelezionati.push(carrello[i]);
+        }
+    }
+
+    cartInfo[0].innerHTML = `Numero articoli selezionati: ${articoliSelezionati.length}`;
+    cartInfo[1].innerHTML = `Totale provvisorio: ${calculateTotal(articoliSelezionati)}€`;
 }
 
 function visualizeCart() {
@@ -136,7 +149,7 @@ function atLeastOneArticleSelected() {
 
 function checkOrderingAbility() {
     let atLeastOne = atLeastOneArticleSelected();
-
+    updateCartInfo();
     if (atLeastOne) {
         document.forms["createOrder-form"]["submit"].disabled = false;
     } else {
