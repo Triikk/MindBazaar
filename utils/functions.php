@@ -182,9 +182,9 @@ function checkUserLoggedIn() {
 function getTimeInterval($type) {
     switch ($type) {
         case "spedizione":
-            return "10 seconds";
+            return "15 seconds";
         case "consegna":
-            return "20 seconds";
+            return "30 seconds";
         default:
             return "";
     }

@@ -398,7 +398,9 @@ class DatabaseHelper {
         }
         // create user order notification "spedizione"
         $stmt = $this->db->prepare("INSERT INTO NOTIFICHE_ORDINI (id_ordine, username, data, lettoYN, tipologia) VALUES (?, ?, ?, 'N', 0)");
-        $date = date("Y-m-d H:i:s");
+        $date = new DateTime();
+        $date->modify('+' . getTimeInterval("spedizione"));
+        $date = $date->format("Y-m-d H:i:s");
         $stmt->bind_param("iss", $orderId, $username, $date);
         $stmt->execute();
         if ($stmt->affected_rows <= 0) {
@@ -406,7 +408,7 @@ class DatabaseHelper {
         }
         // create user order notification "consegna"
         $newDate = new DateTime();
-        $newDate->modify('+10 seconds');
+        $newDate->modify('+' . getTimeInterval("consegna"));
         $date = $newDate->format('Y-m-d H:i:s');
         $stmt = $this->db->prepare("INSERT INTO NOTIFICHE_ORDINI (id_ordine, username, data, lettoYN, tipologia) VALUES (?, ?, ?, 'N', 1)");
         $stmt->bind_param("iss", $orderId, $username, $date);
@@ -443,6 +445,7 @@ class DatabaseHelper {
 
     public function generateOrderNotifications($username) {
         // generate orders notification of type 0: article is sent
+        $data = new DateTime("now");
         $nNotifications = 0;
         $stmt = $this->db->prepare("
             SELECT *
@@ -454,7 +457,8 @@ class DatabaseHelper {
         $orders = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
         if (count($orders) > 0) {
             foreach ($orders as $order) {
-                if ($order["tempo_spedizione"] <= date("Y-m-d H:i:s")) {
+                $tempo_spedizione = new DateTime(str_replace(' ', 'T', $order["tempo_spedizione"]));
+                if ($tempo_spedizione <= $data) {
                     $stmt = $this->db->prepare("INSERT INTO NOTIFICHE_ORDINI (id_ordine, username, data, lettoYN, tipologia) VALUES (?, ?, ?, 'N', 0)");
                     $date = date("Y-m-d H:i:s");
                     $stmt->bind_param("iss", $order["id"], $username, $date);
@@ -483,7 +487,8 @@ class DatabaseHelper {
         $orders = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
         if (count($orders) > 0) {
             foreach ($orders as $order) {
-                if ($order["tempo_consegna"] <= date("Y-m-d H:i:s")) {
+                $tempo_consegna = new DateTime(str_replace(' ', 'T', $order["tempo_consegna"]));
+                if ($tempo_consegna <= $data) {
                     $stmt = $this->db->prepare("INSERT INTO NOTIFICHE_ORDINI (id_ordine, username, data, lettoYN, tipologia) VALUES (?, ?, ?, 'N', 1)");
                     $date = date("Y-m-d H:i:s");
                     $stmt->bind_param("iss", $order["id"], $username, $date);
