@@ -1,13 +1,13 @@
 use MindBazaar;
 
 INSERT INTO UTENTI (username, nome, cognome, data_nascita, password, amministratore) VALUES
-('MATT DESTROYER', 'Mattia', 'Ronchi', '2003-11-14', 'ARDUINO', 'Y'), -- Amministratore
-('BEG IL SUPREMO', 'Lorenzo', 'Bergami', '2003-08-24', ':D:D:D', 'Y'),
-('MEGA FRANCI', 'Francesco', 'Bittasi', '2003-12-05', 'bittone', 'Y'),
-('sbaracchino', 'Pietro', 'Sbaraccani', '2003-07-28', 'mypassword789', 'N'),
-('monkey03', 'Andrea', 'Monaco', '1993-04-18', 'passMarco2024', 'N'),
-('alexBan', 'Alex', 'Guerrini', '1988-01-25', 'elenaPass99', 'N'),
-('bigDave', 'Davide', 'Bartoli', '1985-06-30', 'googleSlave', 'N');
+    ('MATTHEW',         'Mattia',     'Ronchi',     '2003-11-14', '$2y$10$6RkXAlMODJ4I6adXMDLtS.D0W/JxPtaxoXiriens6xH7aatGu4bna', 'Y'),
+    ('BEG',             'Lorenzo',    'Bergami',    '2003-08-24', '$2y$10$AMBVEe6uJ/13hf6tMhOJsOdQ9M4fnnLccLmSy.KiTTV09ElCGxIo.', 'Y'),
+    ('MEGA FRANCI',     'Francesco',  'Bittasi',    '2003-12-05', '$2y$10$UDDJ7vFJVrJ9r4aI8i8nZe9g4ZGO842qz5QcmA.UV0FrfjrDPheJ.', 'Y'),
+    ('monkey03',        'Andrea',     'Monaco',     '1993-04-18', '$2y$10$C1vNoTXUd37zZD0LGyTRAO8xMJLSn0dD5c4s27MIiSa/8ihk.zYi6', 'N'),
+    ('sbaracchino',     'Pietro',     'Sbaraccani', '2003-07-28', '$2y$10$6RkXAlMODJ4I6adXMDLtS.D0W/JxPtaxoXiriens6xH7aatGu4bna', 'N'),
+    ('alexBan',         'Alex',       'Guerrini',   '1988-01-25', '$2y$10$6RkXAlMODJ4I6adXMDLtS.D0W/JxPtaxoXiriens6xH7aatGu4bna', 'N'),
+    ('bigDave',         'Davide',     'Bartoli',    '1985-06-30', '$2y$10$6RkXAlMODJ4I6adXMDLtS.D0W/JxPtaxoXiriens6xH7aatGu4bna', 'N');
 
 INSERT INTO CATEGORIE (nome, immagine) VALUES
 ('Sogno','sogno.png'),
@@ -197,16 +197,16 @@ INSERT INTO ORDINI (tempo_ordinazione, tempo_spedizione, tempo_consegna, usernam
 ('2024-12-15 3:10:34', '2024-12-15 6:10:34', '2024-12-20 15:37:41', "alexBan"),
 ('2024-8-4 12:43:21', '2024-8-4 16:43:21', '2024-8-9 17:36:33', "alexBan"),
 ('2024-11-13 0:45:36', '2024-11-13 2:45:36', '2024-11-18 14:45:47', "alexBan"),
-('2024-7-23 12:56:26', '2024-7-23 15:56:26', '2024-7-29 13:23:29', "BEG IL SUPREMO"),
-('2024-10-21 13:24:6', '2024-10-21 17:24:6', '2024-10-26 13:21:37', "BEG IL SUPREMO"),
-('2024-8-9 3:0:31', '2024-8-9 6:0:31', '2024-8-16 15:6:39', "BEG IL SUPREMO"),
-('2024-7-27 6:16:51', '2024-7-27 10:16:51', '2024-7-30 11:48:57', "BEG IL SUPREMO"),
+('2024-7-23 12:56:26', '2024-7-23 15:56:26', '2024-7-29 13:23:29', "BEG"),
+('2024-10-21 13:24:6', '2024-10-21 17:24:6', '2024-10-26 13:21:37', "BEG"),
+('2024-8-9 3:0:31', '2024-8-9 6:0:31', '2024-8-16 15:6:39', "BEG"),
+('2024-7-27 6:16:51', '2024-7-27 10:16:51', '2024-7-30 11:48:57', "BEG"),
 ('2024-9-11 23:45:32', '2024-9-12 8:45:32', '2024-9-15 13:30:3', "bigDave"),
 ('2024-12-24 20:50:15', '2024-12-25 10:50:15', '2024-12-28 12:40:35', "bigDave"),
 ('2024-12-2 16:26:38', '2024-12-3 12:26:38', '2024-12-7 17:9:24', "bigDave"),
 ('2024-8-2 15:9:33', '2024-8-3 12:9:33', '2024-8-9 16:20:51', "bigDave"),
-('2024-12-30 23:57:11', '2025-1-1 9:57:11', '2025-1-5 11:1:46', "MATT DESTROYER"),
-('2024-12-23 10:27:36', '2024-12-23 14:27:36', '2024-12-30 12:18:40', "MATT DESTROYER");
+('2024-12-30 23:57:11', '2025-1-1 9:57:11', '2025-1-5 11:1:46', "MATTHEW"),
+('2024-12-23 10:27:36', '2024-12-23 14:27:36', '2024-12-30 12:18:40', "MATTHEW");
 
 INSERT INTO RICHIESTE (id_ordine, id_prodotto, versione_articolo, quantita) VALUES
 (1, 18, 1, 1),
@@ -241,15 +241,15 @@ INSERT INTO RICHIESTE (id_ordine, id_prodotto, versione_articolo, quantita) VALU
 (14, 18, 1, 12);
 
 INSERT INTO ARTICOLI_IN_CARRELLO (id_prodotto, versione_articolo, username, quantita) VALUES
-(1, 1,  'MATT DESTROYER', 5),
-(4, 1,  'MATT DESTROYER', 5),
-(16, 1,  'MATT DESTROYER', 5),
-(43, 1,  'MATT DESTROYER', 5);
+(1, 1,  'MATTHEW', 5),
+(4, 1,  'MATTHEW', 5),
+(16, 1,  'MATTHEW', 5),
+(43, 1,  'MATTHEW', 5);
 
 INSERT INTO NOTIFICHE_ORDINI (username, lettoYN, data, tipologia, id_ordine) VALUES
-('BEG IL SUPREMO', 'N', '2024-12-23 10:27:36', 0, 5),
-('BEG IL SUPREMO', 'N', '2024-12-23 10:27:37', 1, 6);
+('BEG', 'N', '2024-12-23 10:27:36', 0, 5),
+('BEG', 'N', '2024-12-23 10:27:37', 1, 6);
 
 INSERT INTO NOTIFICHE_ARTICOLI (username, lettoYN, data, tipologia, id_prodotto, versione_articolo) VALUES
-('BEG IL SUPREMO', 'N', '2024-12-23 10:27:36', 0, 5, 1),
-('BEG IL SUPREMO', 'N', '2024-12-23 10:27:37', 1, 5, 2);
+('BEG', 'N', '2024-12-23 10:27:36', 0, 5, 1),
+('BEG', 'N', '2024-12-23 10:27:37', 1, 5, 2);

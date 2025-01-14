@@ -9,7 +9,7 @@ function calculateTotal(articles) {
 /**
  * Genera una richiesta HTTP generica
 */
-function generateRequest(url, content, method = "GET", callback = null) {
+function generateRequest(url, content, method = "GET", callback = null, displayError = true) {
     if (method === "GET") {
         url += `?${content}`;
         content = "";
@@ -28,16 +28,18 @@ function generateRequest(url, content, method = "GET", callback = null) {
                     callback(responseMessage);
                 }
             } else {
-                let errorText = `ERRORE: REQUEST FAILED
-                Response status: ${xhttp.status}
-                Response message: "${responseMessage}"`;
-                console.log(errorText);
-                alert(errorText);
+                if (displayError) {
+                    let errorText = `ERRORE: REQUEST FAILED
+                    Response status: ${xhttp.status}
+                    Response message: "${responseMessage}"`;
+                    // console.log(errorText);
+                    alert(errorText);
+                }
             }
         };
         xhttp.send(content);
     } catch (error) {
-        console.log(error.message);
+        // console.log(error.message);
     }
     return xhttp;
 }
@@ -69,13 +71,13 @@ function generateXHttpRequestFromEntries(url, query, entries) {
 /**
  * Genera una domanda all'API 
  */
-function queryAPI(url, query, data = "", method = "GET", callback = null) {
-    console.log(`URL: ${url}, query: ${query}, data: ${data}, method: ${method}`);
+function queryAPI(url, query, data = "", method = "GET", callback = null, displayError = true) {
+    // console.log(`URL: ${url}, query: ${query}, data: ${data}, method: ${method}`);
     let content = `query=${query}`;
     if (data !== "") {
         content += `&${data}`;
     }
-    return generateRequest(url, content, method, callback);
+    return generateRequest(url, content, method, callback, displayError);
 }
 
 function showAvailability(nItems) {

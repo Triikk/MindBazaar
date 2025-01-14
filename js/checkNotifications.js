@@ -1,3 +1,4 @@
+const NOTIFICATIONS_URL = 'api/api-notifications.php';
 let unreadAN = 0;
 let unreadON = 0;
 let ANready = false;
@@ -25,11 +26,8 @@ function updateNotificatificationBadge() {
 }
 
 function checkNotifications() {
-    const ANUrl = 'api/api-notifications.php';
-    const ONUrl = 'api/api-notifications.php';
-
-    const ANResponse = queryAPI(ANUrl, "unreadANotifications", "", "GET", updateUnreadAN);
-    const ONResponse = queryAPI(ONUrl, "unreadONotifications", "", "GET", updateUnreadON);
+    const ANResponse = queryAPI(NOTIFICATIONS_URL, "unreadANotifications", "", "GET", updateUnreadAN, false);
+    const ONResponse = queryAPI(NOTIFICATIONS_URL, "unreadONotifications", "", "GET", updateUnreadON, false);
 }
 
 function updateUnreadAN(ANresponse) {
@@ -56,11 +54,11 @@ function initNotificationImagePath(res) {
     notFullHover = res["notFullHover"];
     notEmpty = res["notEmpty"];
     notEmptyHover = res["notEmptyHover"];
-    console.log(res);
+    // console.log(res);
     // generateNotifications();
     checkNotifications();
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    queryAPI('api/api-functions.php', "getNotificationImagePath", "", "GET", (res) => {initNotificationImagePath(res)});
+    queryAPI('api/api-functions.php', "getNotificationImagePath", "", "GET", (res) => { initNotificationImagePath(res) });
 });
