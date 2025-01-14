@@ -30,11 +30,11 @@
             <form action="modifyArticle.php" id="form" method="POST">
                 <div class="mb-3">
                     <label for="disponibilita" class="form-label">Disponibilità</label>
-                    <input type="number" name="disponibilita" value="<?php echo $articolo["disponibilita"]; ?>" min="0" class="form-control" required />
+                    <input type="number" id="disponibilita" name="disponibilita" value="<?php echo $articolo["disponibilita"]; ?>" min="0" class="form-control" required />
                 </div>
                 <div class="mb-3">
                     <label for="prezzo" class="form-label">Prezzo</label>
-                    <input type="number" name="prezzo" value="<?php echo $articolo["prezzo"]; ?>" min="0" step="0.01" class="form-control" required />
+                    <input type="number" id="prezzo" name="prezzo" value="<?php echo $articolo["prezzo"]; ?>" min="0" step="0.01" class="form-control" required />
                 </div>
                 <input type="hidden" name="id_prodotto" value="<?php echo $articolo["id_prodotto"]; ?>" />
                 <input type="hidden" name="versione" value="<?php echo $articolo["versione"]; ?>" />

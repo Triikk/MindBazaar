@@ -103,7 +103,7 @@
 
                         <div class="card-footer">
                             <div class="d-flex align-items-center justify-content-between">
-                                <span class="card-text mb-0">Formato:</> <?php echo $articolo["formato"]; ?></span>
+                                <span class="card-text mb-0">Formato: <?php echo $articolo["formato"]; ?></span>
                                 <img src="<?php echo getFormatLogoPath($articolo["formato"]); ?>" class="logo-image" alt="" />
                             </div>
                         </div>

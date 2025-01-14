@@ -63,7 +63,7 @@
 
             <div class="mb-3 row">
                 <fieldset>
-                    <legend class="col-12 col-md-4 col-form-label">Intensità:</lege>
+                    <legend class="col-12 col-md-4 col-form-label">Intensità:</legend>
                     <div class="col-12 col-md-8">
                         <div class="d-flex flex-wrap">
                             <?php foreach ($intensitaProdotto as $intensita): ?>
