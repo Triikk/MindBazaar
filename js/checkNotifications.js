@@ -54,11 +54,11 @@ function initNotificationImagePath(res) {
     notFullHover = res["notFullHover"];
     notEmpty = res["notEmpty"];
     notEmptyHover = res["notEmptyHover"];
-    console.log(res);
+    // console.log(res);
     // generateNotifications();
     checkNotifications();
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    queryAPI('api/api-functions.php', "getNotificationImagePath", "", "GET", (res) => {initNotificationImagePath(res)});
+    queryAPI('api/api-functions.php', "getNotificationImagePath", "", "GET", (res) => { initNotificationImagePath(res) });
 });

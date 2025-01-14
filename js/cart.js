@@ -77,7 +77,7 @@ function updateCartInfo() {
     let articoliSelezionati = [];
 
     for (let i = 0; i < carrello.length; i++) {
-        console.log(i)
+        // console.log(i);
         let form = document.forms["modify-amount-" + i];
         let include = form["include"].checked;
         if (include) {

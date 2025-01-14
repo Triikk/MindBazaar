@@ -32,14 +32,14 @@ function generateRequest(url, content, method = "GET", callback = null, displayE
                     let errorText = `ERRORE: REQUEST FAILED
                     Response status: ${xhttp.status}
                     Response message: "${responseMessage}"`;
-                    console.log(errorText);
+                    // console.log(errorText);
                     alert(errorText);
                 }
             }
         };
         xhttp.send(content);
     } catch (error) {
-        console.log(error.message);
+        // console.log(error.message);
     }
     return xhttp;
 }
@@ -72,7 +72,7 @@ function generateXHttpRequestFromEntries(url, query, entries) {
  * Genera una domanda all'API 
  */
 function queryAPI(url, query, data = "", method = "GET", callback = null, displayError = true) {
-    console.log(`URL: ${url}, query: ${query}, data: ${data}, method: ${method}`);
+    // console.log(`URL: ${url}, query: ${query}, data: ${data}, method: ${method}`);
     let content = `query=${query}`;
     if (data !== "") {
         content += `&${data}`;
