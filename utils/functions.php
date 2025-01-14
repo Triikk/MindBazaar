@@ -224,7 +224,7 @@ function getOrderState($tempo_spedizione, $tempo_consegna) {
     if ($data < $tempo_spedizione) {
         $result = "L'ordine è in fase di preparazione";
     } elseif ($data < $tempo_consegna) {
-        $result = "L'ordine è in fase di spedizione";
+        $result = "L'ordine è stato spedito";
     } else {
         $result = "L'ordine è stato consegnato";
     }

@@ -5,7 +5,7 @@ header('Content-Type: application/json');
 if (isset($_REQUEST["query"])) {
     switch ($_REQUEST["query"]) {
         case "bestSellers":
-            $numBestSellers = 2;
+            $numBestSellers = 1;
             if (isset($_REQUEST["numBestSellers"])) {
                 $numBestSellers = $_REQUEST["numBestSellers"];
             }

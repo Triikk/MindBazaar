@@ -25,7 +25,7 @@ class DatabaseHelper {
             "SELECT nome, descrizione, eta_minima, immagine, nome_categoria, id, SUM(quantita) AS numVendite
                     FROM PRODOTTI JOIN RICHIESTE ON id_prodotto = id 
                     GROUP BY id 
-                    ORDER BY numVendite 
+                    ORDER BY numVendite DESC
                     LIMIT ? "
         );
 
