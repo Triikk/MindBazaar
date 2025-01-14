@@ -77,7 +77,7 @@
     <div class="row g-4">
         <?php
         // Add product button for admin users
-        if (isset($_SESSION["username"]) && isset($_SESSION["admin"])) {
+        if (isset($_SESSION["username"]) && isset($_SESSION["admin"]) && $_SESSION["admin"]) {
             echo "
                 <div class='col-12 col-sm-6 col-md-4'>
                     <a href='addArticle.php'>

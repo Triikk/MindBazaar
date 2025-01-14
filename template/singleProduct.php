@@ -100,7 +100,7 @@
         </form>
 
         <!-- Admin Controls Section (Visible for Admins only) -->
-        <?php if (isset($_SESSION["username"]) && isset($_SESSION["admin"])): ?>
+        <?php if (isset($_SESSION["username"]) && isset($_SESSION["admin"]) && $_SESSION["admin"]): ?>
             <div class="mt-4 adminArticleActions">
                 <ul class="list-unstyled row">
                     <li class="col-12 col-md-6 text-center mb-3">
