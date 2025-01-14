@@ -172,11 +172,7 @@ function getNotificationImagePath() {
 }
 
 function checkUserLoggedIn() {
-    $ret = isset($_SESSION["username"]);
-    if (!$ret) {
-        echo json_encode(array("error" => "Not logged in"));
-    }
-    return $ret;
+    return isset($_SESSION["username"]);
 }
 
 function getTimeInterval($type) {
