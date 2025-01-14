@@ -39,7 +39,7 @@ function generateUserNotifications(UNotifications) {
             notificationList += `
             <div class="card mb-3">
                 <div class="card-body">
-                    <h5 class="card-title">Notifica ordine n.${notification["id_ordine"]}</h5>
+                    <h3 class="card-title">Notifica ordine n.${notification["id_ordine"]}</h3>
                     <p class="card-text"><strong>Data:</strong> ${notification["data"]}</p>
                     <p class="card-text">${getOrderNotificationText(notification["tipologia"])}</p>
                     <a href="orders.php#ord-${notification["id_ordine"]}" class="btn btn-secondary">Vedi ordine</a>
@@ -91,7 +91,7 @@ function generateArticleNotifications(ANotifications) {
             notificationList += `
             <div class="card mb-3">
                 <div class="card-body">
-                    <h5 class="card-title">Articolo: ${notification["nome"]}</h5>
+                    <h3 class="card-title">Articolo: ${notification["nome"]}</h3>
                     <p class="card-text"><strong>Formato:</strong> ${notification["formato"]}</p>
                     <p class="card-text"><strong>Durata:</strong> ${notification["durata"]}</p>
                     <p class="card-text"><strong>Intensità:</strong> ${notification["intensita"]}</p>

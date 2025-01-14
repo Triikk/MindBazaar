@@ -9,7 +9,7 @@
                                                                                             } else {
                                                                                                 echo ("o");
                                                                                             } ?> nell'ordine</p>
-                <p><b>Totale: <?php echo (calculateTotal($listaArticoli)) ?>€</b></p>
+                <p><strong>Totale: <?php echo (calculateTotal($listaArticoli)) ?>€</strong></p>
                 <form id="checkout-form" action="checkout.php" method="post" onsubmit='checkout()'>
                     <input form="checkout-form" type="submit" name="submit" value="checkout" class="btn btn-success btn-lg btn-block w-100 clickable" />
                     <input form="checkout-form" type="hidden" name="boughtArticles" value='<?php echo (json_encode($listaArticoli, JSON_HEX_APOS | JSON_HEX_QUOT)) ?>' />

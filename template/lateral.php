@@ -1,14 +1,14 @@
 <ul>
     <li>
-        <h2><a href="articles.php">Tutti i prodotti</a></h2>
+        <a href="articles.php"><h2>Tutti i prodotti</h2></a>
     </li>
     <li>
-        <h2><a href="delivery.php">Punto di consegna</a></h2>
+        <a href="delivery.php"><h2>Punto di consegna</h2></a>
     </li>
     <li>
-        <h2><a href="personalArea.php">Area personale</a></h2>
+        <a href="personalArea.php"><h2>Area personale</h2></a>
     </li>
     <li>
-        <h2><a href="aboutUs.php">About us</a></h2>
+        <a href="aboutUs.php"><h2>About us</h2></a>
     </li>
 </ul>

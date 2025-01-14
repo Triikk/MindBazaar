@@ -6,23 +6,25 @@
     <div class="collapse mt-3 mb-4" id="filterMenu">
         <form action="articles.php" method="GET" class="bg-light p-4 rounded">
             <div class="mb-3">
-                <h5>Ordinamento</h5>
-                <div class="form-check">
-                    <label class="form-check-label" for="casuale">Casuale</label>
-                    <input class="form-check-input" type="radio" name="ordinamento" value="casuale" id="casuale" />
-                </div>
-                <div class="form-check">
-                    <label class="form-check-label" for="vendite">Piu venduto</label>
-                    <input class="form-check-input" type="radio" name="ordinamento" value="vendite" id="vendite" />
-                </div>
-                <div class="form-check">
-                    <label class="form-check-label" for="prezzoDesc">Prezzo (decrescente)</label>
-                    <input class="form-check-input" type="radio" name="ordinamento" value="prezzoDesc" id="prezzoDesc" />
-                </div>
-                <div class="form-check">
-                    <label class="form-check-label" for="prezzoAsc">Prezzo (crescente)</label>
-                    <input class="form-check-input" type="radio" name="ordinamento" value="prezzoAsc" id="prezzoAsc" />
-                </div>
+                <fieldset>
+                    <legend>Ordinamento</legend>
+                    <div class="form-check">
+                        <label class="form-check-label" for="casuale">Casuale</label>
+                        <input class="form-check-input" type="radio" name="ordinamento" value="casuale" id="casuale" />
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label" for="vendite">Piu venduto</label>
+                        <input class="form-check-input" type="radio" name="ordinamento" value="vendite" id="vendite" />
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label" for="prezzoDesc">Prezzo (decrescente)</label>
+                        <input class="form-check-input" type="radio" name="ordinamento" value="prezzoDesc" id="prezzoDesc" />
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label" for="prezzoAsc">Prezzo (crescente)</label>
+                        <input class="form-check-input" type="radio" name="ordinamento" value="prezzoAsc" id="prezzoAsc" />
+                    </div>
+                </fieldset>
             </div>
 
             <div class="mb-3">
@@ -38,27 +40,31 @@
             </div>
 
             <div class="mb-3">
-                <h5>Categorie</h5>
-                <?php foreach ($templateParams["categorie"] as $categoria): ?>
-                    <div class="form-check">
-                        <label class="form-check-label" for="<?php echo $categoria["nome"]; ?>">
-                            <?php echo $categoria["nome"]; ?>
-                        </label>
-                        <input class="form-check-input" type="checkbox" name="categorie[]" value="<?php echo $categoria["nome"]; ?>" id="<?php echo $categoria["nome"]; ?>" />
-                    </div>
-                <?php endforeach; ?>
+                <fieldset>
+                    <legend>Categorie</legend>
+                    <?php foreach ($templateParams["categorie"] as $categoria): ?>
+                        <div class="form-check">
+                            <label class="form-check-label" for="<?php echo $categoria["nome"]; ?>">
+                                <?php echo $categoria["nome"]; ?>
+                            </label>
+                            <input class="form-check-input" type="checkbox" name="categorie[]" value="<?php echo $categoria["nome"]; ?>" id="<?php echo $categoria["nome"]; ?>" />
+                        </div>
+                    <?php endforeach; ?>
+                </fieldset>
             </div>
 
             <div class="mb-3">
-                <h5>Formati</h5>
-                <?php foreach ($templateParams["formati"] as $formato): ?>
-                    <div class="form-check">
-                        <label class="form-check-label" for="<?php echo str_replace(' ', '-', $formato["formato"]); ?>">
-                            <?php echo $formato["formato"]; ?>
-                        </label>
-                        <input class="form-check-input" type="checkbox" name="formati[]" value="<?php echo $formato["formato"]; ?>" id="<?php echo str_replace(' ', '-', $formato["formato"]); ?>" />
-                    </div>
-                <?php endforeach; ?>
+                <fieldset>
+                    <legend>Formati</legend>
+                    <?php foreach ($templateParams["formati"] as $formato): ?>
+                        <div class="form-check">
+                            <label class="form-check-label" for="<?php echo str_replace(' ', '-', $formato["formato"]); ?>">
+                                <?php echo $formato["formato"]; ?>
+                            </label>
+                            <input class="form-check-input" type="checkbox" name="formati[]" value="<?php echo $formato["formato"]; ?>" id="<?php echo str_replace(' ', '-', $formato["formato"]); ?>" />
+                        </div>
+                    <?php endforeach; ?>
+                </fieldset>
             </div>
 
             <button type="submit" class="btn btn-secondary w-100 clickable">Applica</button>
@@ -76,7 +82,7 @@
                         <div class='card h-100'>
                             <img src='" . getAdminImagePath("addArticle") . "' class='card-img-top img-fluid' alt='' />
                             <div class='card-body'>
-                                <h5 class='card-title'>Aggiungi prodotto</h5>
+                                <h3 class='card-title'>Aggiungi prodotto</h3>
                             </div>
                         </div>
                     </a>
@@ -91,7 +97,7 @@
                         <img src="<?php echo getImagePath($articolo["nome_categoria"], $articolo["immagine"]); ?>" class="card-img-top img-fluid article-image" alt="" />
 
                         <div class="card-body flex-grow-1">
-                            <h5 class="card-title"><?php echo $articolo["nome"]; ?></h5>
+                            <h3 class="card-title"><?php echo $articolo["nome"]; ?></h3>
                             <p class="card-text"><?php echo $articolo["descrizione"]; ?></p>
                         </div>
 

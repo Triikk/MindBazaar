@@ -172,22 +172,22 @@ ul {
 }
 
 .sidenav a {
-    padding: 8px 2px 8px 32px;
+    padding: 8px 2px 8px 8px;
     text-decoration: none;
-    font-size: 25px;
     color: black;
     display: block;
     transition: 0.3s;
+    white-space: nowrap;
+    margin-left: 0;
+    padding-left: 0;
 }
 
 .sidenav a:hover {
     color: #f1f1f1;
 }
 
-.sidenav h2 a {
-    white-space: nowrap;
-    margin-left: 0;
-    padding-left: 0;
+.sidenav h2 {
+    font-size: 25px;
 }
 
 
@@ -341,7 +341,7 @@ input[type=range]::-ms-range-thumb {
         padding-top: 15px;
     }
 
-    .sidenav a {
+    .sidenav h2 {
         font-size: 18px;
     }
 }

@@ -32,7 +32,7 @@ function generateBestsellers(bestsellers) {
                     </div>
                     <div class="col-md-8 d-flex align-items-center">
                         <div class="card-body">
-                            <h5 class="card-title">${bestseller["nome"]}</h5>
+                            <h3 class="card-title">${bestseller["nome"]}</h3>
                             <p class="card-text">${bestseller["descrizione"]}</p>
                         </div>
                     </div>
@@ -94,11 +94,11 @@ function generateCategories(categories) {
         <div class="carousel-item ${i === 0 ? 'active' : ''}">
             <div class="d-flex justify-content-center">
                 <a href="articles.php?categorie%5B%5D=${category["nome"]}" class="d-block text-decoration-none text-dark">
-                    <img class="d-block img-fluid homepage-category-image" src="upload/categories/${category["immagine"]}" alt="" />
+                    <div class="text-center mt-2 mb-2">
+                        <img class="d-block img-fluid homepage-category-image" src="upload/categories/${category["immagine"]}" alt="" />
+                        <h3>${category["nome"]}</h3>
+                    </div>
                 </a>
-            </div>
-            <div class="text-center mt-2 mb-2">
-                <h3>${category["nome"]}</h3>
             </div>
         </div>
         `;
@@ -106,10 +106,10 @@ function generateCategories(categories) {
 
     result += `
         </div>
-        <a class="carousel-control-prev" href="#carouselCategories" role="button" data-bs-slide="prev">
+        <a title="previous" class="carousel-control-prev" href="#carouselCategories" role="button" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         </a>
-        <a class="carousel-control-next" href="#carouselCategories" role="button" data-bs-slide="next">
+        <a title="next" class="carousel-control-next" href="#carouselCategories" role="button" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
         </a>
     </div>
