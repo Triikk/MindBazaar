@@ -55,7 +55,7 @@ function initNotificationImagePath(res) {
     notEmpty = res["notEmpty"];
     notEmptyHover = res["notEmptyHover"];
     console.log(res);
-    generateNotifications();
+    // generateNotifications();
     checkNotifications();
 }
 

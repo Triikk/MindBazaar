@@ -70,6 +70,7 @@ class DatabaseHelper {
             FROM NOTIFICHE_ORDINI NO
             JOIN ORDINI O ON NO.id_ordine = O.id
             WHERE NO.username = ?
+                AND NO.data < NOW()
             ORDER BY data DESC "
         );
 
@@ -432,6 +433,24 @@ class DatabaseHelper {
             $stmt->bind_param("iss", $orderId, $user, $date);
             $stmt->execute();
         }
+        // create user order notification "spedizione"
+        $stmt = $this->db->prepare("INSERT INTO NOTIFICHE_ORDINI (id_ordine, username, data, lettoYN, tipologia) VALUES (?, ?, ?, 'N', 0)");
+        $date = date("Y-m-d H:i:s");
+        $stmt->bind_param("iss", $orderId, $username, $date);
+        $stmt->execute();
+        if ($stmt->affected_rows <= 0) {
+            return array("msg" => "Error while generating order notification of type 0");
+        }
+        // create user order notification "consegna"
+        $newDate = new DateTime();
+        $newDate->modify('+10 seconds');
+        $date = $newDate->format('Y-m-d H:i:s');
+        $stmt = $this->db->prepare("INSERT INTO NOTIFICHE_ORDINI (id_ordine, username, data, lettoYN, tipologia) VALUES (?, ?, ?, 'N', 1)");
+        $stmt->bind_param("iss", $orderId, $username, $date);
+        $stmt->execute();
+        if ($stmt->affected_rows <= 0) {
+            return array("msg" => "Error while generating order notification of type 1");
+        }
         return true;
     }
 
@@ -445,14 +464,14 @@ class DatabaseHelper {
     }
 
     public function getUnreadANotificationsByUsername($username) {
-        $stmt = $this->db->prepare("SELECT * FROM NOTIFICHE_ARTICOLI WHERE username = ? AND lettoYN = 'N'");
+        $stmt = $this->db->prepare("SELECT * FROM NOTIFICHE_ARTICOLI WHERE username = ? AND lettoYN = 'N' AND data < NOW()");
         $stmt->bind_param("s", $username);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
     public function getUnreadONotificationsByUsername($username) {
-        $stmt = $this->db->prepare("SELECT * FROM NOTIFICHE_ORDINI WHERE username = ? AND lettoYN = 'N'");
+        $stmt = $this->db->prepare("SELECT * FROM NOTIFICHE_ORDINI WHERE username = ? AND lettoYN = 'N' AND data < NOW()");
         $stmt->bind_param("s", $username);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -518,12 +537,12 @@ class DatabaseHelper {
     }
 
     public function readUserNotifications($username) {
-        $stmt = $this->db->prepare("UPDATE NOTIFICHE_ARTICOLI SET lettoYN = 'Y' WHERE username = ?");
+        $stmt = $this->db->prepare("UPDATE NOTIFICHE_ARTICOLI SET lettoYN = 'Y' WHERE username = ? AND data < NOW()");
         $stmt->bind_param("s", $username);
         $stmt->execute();
         $result["nReadANotifications"] = $stmt->affected_rows;
 
-        $stmt = $this->db->prepare("UPDATE NOTIFICHE_ORDINI SET lettoYN = 'Y' WHERE username = ?");
+        $stmt = $this->db->prepare("UPDATE NOTIFICHE_ORDINI SET lettoYN = 'Y' WHERE username = ? AND data < NOW()");
         $stmt->bind_param("s", $username);
         $stmt->execute();
         $result = array("nReadONotifications" => $stmt->affected_rows);
