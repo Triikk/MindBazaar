@@ -184,7 +184,7 @@ function getTimeInterval($type) {
         case "spedizione":
             return "10 seconds";
         case "consegna":
-            return "10 seconds";
+            return "20 seconds";
         default:
             return "";
     }
@@ -208,12 +208,7 @@ function jsonResponse($code, $message) {
 }
 
 function getOrderState($tempo_spedizione, $tempo_consegna) {
-    // Ottieni la data e ora attuale
-    $now = new DateTime();
-    $offset = $now->getOffset(); // Ottieni l'offset del fuso orario
-    $offsetDate = (clone $now)->modify("-$offset seconds"); // Applica l'offset
-    $data = new DateTime($offsetDate->format('Y-m-d H:i:s')); // Ottieni la data corretta
-
+    $data = new Datetime("now");
     // Converte le date in oggetti DateTime
     $tempo_spedizione = new DateTime(str_replace(' ', 'T', $tempo_spedizione));
     $tempo_consegna = new DateTime(str_replace(' ', 'T', $tempo_consegna));
