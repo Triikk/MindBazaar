@@ -1,8 +1,8 @@
 use MindBazaar;
 
 INSERT INTO UTENTI (username, nome, cognome, data_nascita, password, amministratore) VALUES
-    ('MATTHEW',  'Mattia',     'Ronchi',     '2003-11-14', '$2y$10$6RkXAlMODJ4I6adXMDLtS.D0W/JxPtaxoXiriens6xH7aatGu4bna', 'Y'), -- Amministratore
-    ('BEG',  'Lorenzo',    'Bergami',    '2003-08-24', '$2y$10$AMBVEe6uJ/13hf6tMhOJsOdQ9M4fnnLccLmSy.KiTTV09ElCGxIo.', 'Y'),
+    ('MATTHEW',         'Mattia',     'Ronchi',     '2003-11-14', '$2y$10$6RkXAlMODJ4I6adXMDLtS.D0W/JxPtaxoXiriens6xH7aatGu4bna', 'Y'),
+    ('BEG',             'Lorenzo',    'Bergami',    '2003-08-24', '$2y$10$AMBVEe6uJ/13hf6tMhOJsOdQ9M4fnnLccLmSy.KiTTV09ElCGxIo.', 'Y'),
     ('MEGA FRANCI',     'Francesco',  'Bittasi',    '2003-12-05', '$2y$10$UDDJ7vFJVrJ9r4aI8i8nZe9g4ZGO842qz5QcmA.UV0FrfjrDPheJ.', 'Y'),
     ('monkey03',        'Andrea',     'Monaco',     '1993-04-18', '$2y$10$C1vNoTXUd37zZD0LGyTRAO8xMJLSn0dD5c4s27MIiSa/8ihk.zYi6', 'N'),
     ('sbaracchino',     'Pietro',     'Sbaraccani', '2003-07-28', '$2y$10$6RkXAlMODJ4I6adXMDLtS.D0W/JxPtaxoXiriens6xH7aatGu4bna', 'N'),
