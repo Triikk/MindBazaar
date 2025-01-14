@@ -88,25 +88,6 @@ function isDefined(value) {
     return typeof value !== 'undefined';
 }
 
-/*
-function getOrderState(tempo_spedizione, tempo_consegna) {
-    const now = new Date();
-    const offsetDate = new Date(now.getTime() - now.getTimezoneOffset() * 60000); // Apply timezone offset
-    const data = new Date(offsetDate.toISOString().slice(0, 19));
-    tempo_spedizione = new Date(tempo_spedizione.replace(' ', 'T'));
-    tempo_consegna = new Date(tempo_consegna.replace(' ', 'T'));
-    result = "";
-    if (data < tempo_spedizione) {
-        result = "L'ordine è in fase di preparazione";
-    } else if (data < tempo_consegna) {
-        result = "L'ordine è in fase di spedizione";
-    } else {
-        result = "L'ordine è stato consegnato";
-    }
-    return result;
-}
-*/
-
 /* Set the width of the side navigation to 260px */
 function openNav() {
     if (toggleSearch.searchState) {

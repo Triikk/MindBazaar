@@ -1,7 +1,6 @@
+/* General page style */
 body {
     color: black;
-    /* font-family: 'DynaPuff'; */
-    /* font-family: 'Titan One'; */
     font-family: 'Roboto Condensed';
     font-weight: 300;
     font-size: 20px;
@@ -43,9 +42,9 @@ ul {
     list-style: none;
 }
 
+/* Navbar */
 .navbar-nav {
     align-items: center;
-    /* Add this line */
 }
 
 .navbar-nav h1,
@@ -53,110 +52,156 @@ ul {
     margin: 0;
     padding: 0;
     line-height: inherit;
-    /* display: inline-block;  */
     vertical-align: middle;
 }
 
+.nav-link img {
+    width: 30px;
+    height: 24px;
+    display: inline;
+    transition-duration: 0.4s;
+}
+
+.nav-link img:nth-child(2) {
+    display: none;
+}
+
+.nav-link:hover {
+    color: white;
+}
+
+.nav-link:hover img:nth-child(1) {
+    display: none;
+}
+
+.nav-link:hover img:nth-child(2) {
+    display: block;
+}
+
+.clickable {
+    background-color: rgb(110, 106, 149) !important;
+    color: rgb(218, 218, 230) !important;
+    cursor: pointer;
+}
+
+.clickable:hover {
+    background-color: rgb(208, 208, 226) !important;
+    color: rgb(55, 52, 71) !important;
+    transition-duration: 0.3s;
+}
+
+/* Homepage */
 .homepage-category-image {
     width: 300px;
-    /* Set the desired width */
-    /* height: 200px; */
-    /* Set the desired height */
     object-fit: cover;
-    /* Crop the image to fit within the box */
     margin: 0 auto;
-    /* Center the image horizontally */
-}
-
-.article-image {
-    width: 100%;
-    /* Ensure images take up the full width of the card */
-    height: 300px;
-    /* Fixed height */
-    object-fit: cover;
-    /* Crops the image to fit within the width and height */
-}
-
-.card {
-    border-radius: 10px;
-    /* Rounded corners for the card */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    /* Adding a subtle shadow */
-}
-
-.card-title {
-    font-size: 2.5rem;
-    /* Increase size of the order title */
-}
-
-.card-body {
-    display: flex;
-    flex-direction: column;
-    /* Stack items vertically */
-}
-
-.list-group-item {
-    display: flex;
-    /* Flex layout for image and text */
-    align-items: center;
-    /* Center vertically */
-    padding: 15px;
-    /* Add some padding */
 }
 
 .bestseller-image {
     height: 100% !important;
     width: auto;
-    /* Set the height to one-third of the viewport height */
     object-fit: cover;
-    /* Ensure the image covers the area without stretching */
     border-radius: 8px;
-    /* Optional: rounded corners */
-    /* Optional: border around the image */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* The side navigation menu */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(1);
+}
+
+.carousel-indicators {
+    bottom: -30px;
+}
+
+/* Cards style */
+.card {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+    font-size: 2.5rem;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.article-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.list-group-item {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+}
+
+.logo-image {
+    width: 50px;
+    height: 50px;
+    box-shadow: none !important;
+}
+
+/* Side-navigation menu */
 .sidenav {
     height: 100%;
-    /* 100% Full-height */
     width: 0;
-    /* 0 width - change this with JavaScript */
     position: fixed;
-    /* Stay in place */
     z-index: 3;
-    /* Stay on top */
     top: 0;
-    /* Stay at the top */
     left: 0;
     background-color: #dadff7;
     background-image: linear-gradient(178deg, #b1c1d8, #86809c);
-    /* Black*/
     overflow-x: hidden;
-    /* Disable horizontal scroll */
     padding-top: 120px !important;
     transition: 0.5s;
-    /* 0.5 second transition effect to slide in the sidenav */
     border-top-right-radius: 120px;
     border-bottom-right-radius: 20px;
 }
 
+.sidenav a {
+    padding: 8px 2px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: black;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.sidenav h2 a {
+    white-space: nowrap;
+    margin-left: 0;
+    padding-left: 0;
+}
+
+
+/* Top Search bar */
 .searchBar {
     width: 100%;
     height: 0;
     position: fixed;
-    /* Stay in place */
     z-index: 3;
-    /* Stay on top */
     top: 0px;
-    /* Stay at the top */
     background-color: #dadff7;
     background-image: linear-gradient(178deg, #c3bfd1, #c4c0f0);
-    /* Black*/
     overflow-y: hidden;
-    /* Disable horizontal scroll */
     transition: 0.5s;
-    /* 0.5 second transition effect to slide in the sidenav */
     border-bottom-right-radius: 18px;
     border-bottom-left-radius: 18px;
     align-items: center;
@@ -192,17 +237,11 @@ ul {
     font-size: 16px;
 }
 
-.clickable {
-    background-color: rgb(110, 106, 149) !important;
-    color: rgb(218, 218, 230) !important;
+.searchBar button:hover {
+    color: white;
 }
 
-.clickable:hover {
-    background-color: rgb(208, 208, 226) !important;
-    color: rgb(55, 52, 71) !important;
-    transition-duration: 0.3s;
-}
-
+/* Forms */
 input[type=radio],
 input[type=checkbox] {
     background-color: rgb(232, 232, 241) !important;
@@ -226,87 +265,15 @@ input[type=range]::-ms-range-thumb {
     background-color: rgb(110, 106, 149) !important;
 }
 
-.searchBar button:hover {
-    color: white;
-}
-
-/* The navigation menu links */
-.sidenav a {
-    padding: 8px 2px 8px 32px;
-    text-decoration: none;
-    font-size: 25px;
-    color: black;
-    display: block;
-    transition: 0.3s;
-}
-
-/*
-.searchBar form,
-.searchBar a {
-    margin-top: 5px;
-    color: #818181;
-    transition: 0.3s;
-}
-*/
-
-/* When you mouse over the navigation links, change their color */
-.sidenav a:hover {
-    color: #f1f1f1;
-}
-
-.searchBar .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-}
-
-.clickable {
-    cursor: pointer;
-}
-
-.sidenav h2 a {
-    white-space: nowrap;
-    margin-left: 0;
-    padding-left: 0;
-}
-
-
+/* Single product page */
 .singleProduct-image {
     width: 100%;
-    /* Image takes full width of its container */
     max-width: 300px;
-    /* You can increase this value to make the image larger */
     height: auto;
-    /* Keep the aspect ratio */
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     max-width: 100%;
 }
-
-.logo-image {
-    width: 50px;
-    height: 50px;
-    box-shadow: none !important;
-}
-
-.card img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 4px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-    filter: invert(1);
-}
-
-.carousel-indicators {
-    bottom: -30px;
-}
-
-
 
 .adminArticleActions img {
     max-width: 100px;
@@ -326,6 +293,7 @@ input[type=range]::-ms-range-thumb {
     border-radius: 8px;
 }
 
+/* Single elements in the webpage */
 .cartDescription form {
     max-width: 500px;
 }
@@ -343,6 +311,7 @@ input[type=range]::-ms-range-thumb {
     max-width: 100%;
 }
 
+/* cart page */
 .cartArticleCard img {
     height: 200px;
     object-fit: cover;
@@ -366,29 +335,6 @@ input[type=range]::-ms-range-thumb {
     padding-left: 0;
 }
 
-.nav-link img {
-    width: 30px;
-    height: 24px;
-    display: inline;
-    transition-duration: 0.4s;
-}
-
-.nav-link img:nth-child(2) {
-    display: none;
-}
-
-.nav-link:hover {
-    color: white;
-}
-
-.nav-link:hover img:nth-child(1) {
-    display: none;
-}
-
-.nav-link:hover img:nth-child(2) {
-    display: block;
-}
-
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
     .sidenav {
@@ -400,6 +346,7 @@ input[type=range]::-ms-range-thumb {
     }
 }
 
+/* Changes to be applied to smartphones */
 @media screen and (max-width: 768px) {
     body {
         font-size: 97%;
@@ -426,8 +373,8 @@ input[type=range]::-ms-range-thumb {
     }
 }
 
+/* Style of carousel for bigger screens */
 @media screen and (min-width: 768px) {
-
     .carousel-control-prev {
         left: 20%;
     }

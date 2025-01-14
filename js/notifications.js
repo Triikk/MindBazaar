@@ -20,7 +20,6 @@ function generateUserNotifications(UNotifications) {
     let result = "";
     let numUN = UNotifications.length;
 
-    // Add title and button to show the notifications list
     result += `
     <div class="container">
         <button class="btn btn-secondary w-100 w-lg-80 py-3 fs-4 clickable" type="button" data-bs-toggle="collapse" data-bs-target="#notificationsList" aria-expanded="false" aria-controls="notificationsList">
@@ -34,7 +33,6 @@ function generateUserNotifications(UNotifications) {
         </div>
         `;
     } else {
-        // Generate the notifications list
         let notificationList = "";
         for (let i = 0; i < numUN; i++) {
             let notification = UNotifications[i];
@@ -50,7 +48,6 @@ function generateUserNotifications(UNotifications) {
             `;
         }
 
-        // Add the collapsible section for notifications
         result += `
         <div class="collapse" id="notificationsList">
             <div class="mt-3">
@@ -61,7 +58,6 @@ function generateUserNotifications(UNotifications) {
         `;
     }
 
-    // Insert the generated content into the section
     const UNSection = document.getElementById('ordersNotifications-section');
     UNSection.innerHTML = result;
 }
@@ -76,7 +72,6 @@ function generateArticleNotifications(ANotifications) {
     let result = "";
     let numAN = ANotifications.length;
 
-    // Add title and button to show the notifications list
     result += `
     <div class="container">
         <button class="btn btn-secondary w-100 w-lg-80 py-3 fs-4 clickable" type="button" data-bs-toggle="collapse" data-bs-target="#articleNotificationsList" aria-expanded="false" aria-controls="articleNotificationsList">
@@ -90,7 +85,6 @@ function generateArticleNotifications(ANotifications) {
         </div>
         `;
     } else {
-        // Generate the notifications list
         let notificationList = "";
         for (let i = 0; i < numAN; i++) {
             let notification = ANotifications[i];
@@ -109,7 +103,6 @@ function generateArticleNotifications(ANotifications) {
             `;
         }
 
-        // Add the collapsible section for notifications
         result += `
         <div class="collapse" id="articleNotificationsList">
             <div class="mt-3">
@@ -120,7 +113,6 @@ function generateArticleNotifications(ANotifications) {
         `;
     }
 
-    // Insert the generated content into the section
     const ANSection = document.getElementById('articlesNotifications-section');
     ANSection.innerHTML = result;
 }
@@ -133,7 +125,7 @@ function getArticleNotifications() {
 
 function readNotifications() {
     const url = 'api/api-notifications.php';
-    queryAPI(url, "readNotifications", "", "POST"/*, (res)=>{console.log(res)}*/);
+    queryAPI(url, "readNotifications", "", "POST");
 }
 
 document.addEventListener('DOMContentLoaded', () => {

@@ -11,8 +11,3 @@ if (!isset($_SESSION["username"])) {
 } else {
     header("location: ../articles.php");
 }
-
-// if (isset($_POST["submit"])) {
-// }
-
-// echo 'A';

@@ -44,10 +44,12 @@ function updateUnreadON(ONresponse) {
     updateNotificatificationBadge();
 }
 
+/*
 function generateNotifications() {
     const url = 'api/api-notifications.php';
     queryAPI(url, "generateNotifications", "", "POST");
 }
+*/
 
 function initNotificationImagePath(res) {
     notFull = res["notFull"];

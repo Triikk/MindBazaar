@@ -5,7 +5,7 @@ let priceElement = null;
 let addToCartButton = null;
 let form = null;
 
-// function to fetch the specific product manifestation
+// function to fetch the specific product
 function fetchArticleData(selectedFields) {
     id_prodotto = selectedFields["id_prodotto"];
     formato = encodeURIComponent(selectedFields["formato"]);
@@ -32,7 +32,6 @@ function updateProductDetails() {
 
 // update price, availability and version in DOM
 function updatePage(articleData) {
-    // console.log(articleData);
     availabilityElement.textContent = `Disponibilità: ${showAvailability(articleData["disponibilita"])}`;
     if (articleData["disponibilita"] == "Questo prodotto non è disponibile") {
         priceElement.textContent = "Prezzo: -";

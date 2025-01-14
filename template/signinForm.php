@@ -2,14 +2,12 @@
     <div class="card shadow-sm p-4 w-100 mx-auto register-card">
         <h2 class="text-center mb-3">Registrazione</h2>
 
-        <!-- Error message -->
         <?php if (isset($userParams["errore"])): ?>
             <div class="alert alert-danger text-center" role="alert">
                 <?php echo $userParams["errore"]; ?>
             </div>
         <?php endif; ?>
 
-        <!-- Registration Form -->
         <form action="#" method="POST">
             <div class="mb-3">
                 <label for="username" class="form-label">Username:</label>
@@ -36,7 +34,6 @@
             </div>
         </form>
 
-        <!-- Login Link -->
         <p class="text-center mt-3">
             Ti sei già registrato? <a href="login.php" class="text-decoration-none">Login</a>.
         </p>

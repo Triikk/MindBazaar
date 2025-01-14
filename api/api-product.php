@@ -12,7 +12,6 @@ if (isset($_REQUEST["query"])) {
                 $id_prodotto = $_REQUEST["id_prodotto"];
                 $articleInfo = $dbh->getArticleInfo($id_prodotto, $formato, $durata, $intensita);
                 if ($articleInfo == false) {
-                    // TODO: cambiare "disponibilita" nel valore effettivo ed effettuare la conversione 0 -> "Questo prodotto non è disponibile" lato client
                     echo jsonResponse(200, array("id_prodotto" => $id_prodotto, "formato" => $formato, "durata" => $durata, "intensita" => $intensita, "prezzo" => 0, "disponibilita" => "Questo prodotto non è disponibile"));
                     return;
                 }

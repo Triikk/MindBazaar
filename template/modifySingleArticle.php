@@ -24,7 +24,6 @@
         </div>
     </div>
 
-    <!-- Modify Form Section -->
     <div class="card mx-auto mt-4 modifyArticleSection">
         <div class="card-body">
             <h3 class="card-title text-center mb-4">Modifica Articolo</h3>

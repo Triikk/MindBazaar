@@ -2,17 +2,10 @@
 function getFilteredArticles($articlesList, $categories, $minPrice, $maxPrice, $formats, $ordinamento) {
     $filteredArticles = [];
 
-
     foreach ($articlesList as $article) {
         if (in_array($article['nome_categoria'], $categories) && $article['prezzo'] >= $minPrice && $article['prezzo'] <= $maxPrice && in_array($article['formato'], $formats)) {
             $filteredArticles[] = $article;
         }
-        // echo "article_cat: " . $article['nome_categoria'];
-        // var_dump($categories);
-
-        // if (in_array($article['nome_categoria'], $categories)) {
-        //     $filteredArticles[] = $article;
-        // }
     }
 
     switch ($ordinamento) {
@@ -46,8 +39,6 @@ function showAvailability($nItems) {
         return "Disponibile";
     } else if ($nItems > 0) {
         return "Ultimi pezzi: " . $nItems;
-        // } else if ($nItems > 0) {
-        //     return "Sta per terminare";
     } else {
         return "Non disponibile";
     }

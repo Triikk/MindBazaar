@@ -87,8 +87,7 @@ function generateCategories(categories) {
         </ol>
         <div class="carousel-inner">
     `;
-
-    // console.log(categories);
+    
     for (let i = 0; i < numCategories; i++) {
         let category = categories[i];
         result += `

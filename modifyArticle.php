@@ -18,7 +18,6 @@ if (isset($_REQUEST["submit"]) && $_REQUEST["submit"] == "Elimina") {
 
 $templateParams["titolo"] = "MindBazaar Admin - Modifica Articolo";
 $templateParams["nome"] = "modifySingleArticle.php";
-
 $templateParams["js"][] = "js/modifyArticle.js";
 
 require 'template/base.php';

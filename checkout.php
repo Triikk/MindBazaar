@@ -29,9 +29,7 @@ if (isset($_REQUEST["submit"]) && $_REQUEST["submit"] == "ordina") {
     <?php endif; 
 }
 
-//Base Template
 $templateParams["titolo"] = "MindBazaar - Checkout";
-//Home Template
 $templateParams["nome"] = "orderCheckout.php";
 
 require 'template/base.php';
