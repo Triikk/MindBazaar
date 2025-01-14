@@ -2,7 +2,7 @@
     <div class="card mx-auto my-4 deliveryInfoContainer">
         <div class="card-body">
             <section>
-                <h1>Punto di Consegna</h1>
+                <h2>Punto di Consegna</h2>
                 <p>
                     <strong>MindBazaar</strong> è pensato su misura per la comunità del campus universitario di Cesena. Dopotutto, dove potrebbe esserci una mente più aperta, curiosa e affamata di emozioni, ispirazioni e nozioni?
                 </p>

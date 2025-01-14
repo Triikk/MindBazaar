@@ -2,7 +2,7 @@
     <div class="card mx-auto my-4 aboutUsContainer">
         <div class="card-body">
             <section>
-                <h1>Chi Siamo</h1>
+                <h2>Chi Siamo</h2>
                 <p>
                     Benvenuti su <strong>MindBazaar</strong>, il primo marketplace dedicato a emozioni, sogni, ispirazioni e nozioni! Siamo un'azienda che mette il benessere mentale e la crescita personale dei nostri utenti al centro di tutto ciò che facciamo.
                 </p>

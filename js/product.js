@@ -35,12 +35,14 @@ function updatePage(articleData) {
     availabilityElement.textContent = `Disponibilità: ${showAvailability(articleData["disponibilita"])}`;
     if (articleData["disponibilita"] == "Questo prodotto non è disponibile") {
         priceElement.textContent = "Prezzo: -";
-        addToCartButton.setAttribute("disabled", true);
+        //addToCartButton.setAttribute("disabled", true);
+        addToCartButton.setAttribute("disabled","");
         quantityElement.setAttribute("max", 0);
     } else {
         priceElement.textContent = `Prezzo: €${(articleData["prezzo"] * selectedFields["quantita"]).toFixed(2)}`;
         if (selectedFields["quantita"] > articleData["disponibilita"]) {
-            addToCartButton.setAttribute("disabled", true);
+           //addToCartButton.setAttribute("disabled", true);
+           addToCartButton.setAttribute("disabled", "");
         } else {
             addToCartButton.removeAttribute("disabled");
             quantityElement.setAttribute("max", articleData["disponibilita"]);
@@ -64,9 +66,11 @@ function updatePage(articleData) {
     for (let i = 0; i < adminForms.length; i++) {
         adminForms[i]["versione"].value = articleData["versione"];
         if (!isDefined(articleData["versione"])) {
-            adminForms[i]["submit"].disabled = true;
+            //adminForms[i]["submit"].disabled = true;
+            adminForms[i]["submit"].setAttribute("disabled", "");
         } else {
-            adminForms[i]["submit"].disabled = false;
+            //adminForms[i]["submit"].disabled = false;
+            adminForms[i]["submit"].removeAttribute("disabled");
         }
     }
 }

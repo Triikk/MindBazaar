@@ -16,8 +16,7 @@ function generateArticle(articolo, index) {
         document.getElementById(`articleIMG-${index}`).src = articleImgPath;
     });
     return `
-        <div class="col-12 col-md-8 mb-4 mx-auto">
-            <div class="card d-flex flex-column position-relative cartArticleCard">
+            <div class="mb-3 card d-flex flex-column position-relative pd-4 cartArticleCard">
                 <!-- Product Selection Checkbox (Top Right) -->
                 <div class="d-flex position-absolute top-0 end-0 p-2 align-items-center">
                     <label for="include-${index}" class="form-label me-2 mb-0">Includi nell'ordine</label>
@@ -54,8 +53,6 @@ function generateArticle(articolo, index) {
                     <button onclick="removeArticle(${index})" form="modify-amount-${index}" type="button" class="btn btn-lg mb-2 clickable">Rimuovi</button>
                 </div>
             </div>
-        </div>
-
     `;
 }
 
@@ -65,12 +62,12 @@ function generateCart(newCart) {
     let sezioni = document.querySelectorAll("main section");
     let articoli = sezioni[1];
 
-    let elencoArticoli = "";
-    elencoArticoli += "<ul class='articlesInCart'>\n";
+    let elencoArticoli = '<div class="col-12 col-md-8 mb-4 mx-auto articlesInCart">\n<h2>Articoli in carrello:</h2>\n';
+    //elencoArticoli += "<ul class='articlesInCart'>\n";
     for (let i = 0; i < carrello.length; i++) {
         elencoArticoli += generateArticle(carrello[i], i);
     }
-    articoli.innerHTML = elencoArticoli + "</ul>\n";
+    articoli.innerHTML = elencoArticoli + "</div>\n"; // </ul>\n
     checkOrderingAbility();
 }
 

@@ -22,16 +22,16 @@
             <input type="hidden" name="id_prodotto" value="<?php echo $articolo["id_prodotto"]; ?>" />
 
             <div class="mb-3 row">
-                <label for="formato" class="col-12 col-md-4 col-form-label">Formato:</label>
+                <label class="col-12 col-md-4 col-form-label">Formato:</label>
                 <div class="col-12 col-md-8">
                     <div class="d-flex flex-wrap">
                         <?php foreach ($formatiProdotto as $formato): ?>
                             <div class="form-check form-check-inline">
-                                <label class="form-check-label" for="formato_<?php echo $formato; ?>">
+                                <label class="form-check-label" for="formato_<?php echo str_replace(' ', '-', $formato); ?>">
                                     <?php echo $formato; ?>
                                 </label>
                                 <input class="form-check-input" type="radio" name="formato"
-                                    id="formato_<?php echo $formato; ?>" value="<?php echo $formato; ?>"
+                                    id="formato_<?php echo str_replace(' ', '-', $formato); ?>" value="<?php echo $formato; ?>"
                                     <?php if ($formato == $articolo["formato"]) echo "checked"; ?> />
                             </div>
                         <?php endforeach; ?>
@@ -40,16 +40,16 @@
             </div>
 
             <div class="mb-3 row">
-                <label for="durata" class="col-12 col-md-4 col-form-label">Durata:</label>
+                <label class="col-12 col-md-4 col-form-label">Durata:</label>
                 <div class="col-12 col-md-8">
                     <div class="d-flex flex-wrap">
                         <?php foreach ($durateProdotto as $durata): ?>
                             <div class="form-check form-check-inline">
-                                <label class="form-check-label" for="durata_<?php echo $durata; ?>">
+                                <label class="form-check-label" for="durata_<?php echo str_replace(' ', '-', $durata); ?>">
                                     <?php echo $durata; ?>
                                 </label>
                                 <input class="form-check-input" type="radio" name="durata"
-                                    id="durata_<?php echo $durata; ?>" value="<?php echo $durata; ?>"
+                                    id="durata_<?php echo str_replace(' ', '-', $durata); ?>" value="<?php echo $durata; ?>"
                                     <?php if ($durata == $articolo["durata"]) echo "checked"; ?> />
                             </div>
                         <?php endforeach; ?>
@@ -58,7 +58,7 @@
             </div>
 
             <div class="mb-3 row">
-                <label for="intensita" class="col-12 col-md-4 col-form-label">Intensità:</label>
+                <label class="col-12 col-md-4 col-form-label">Intensità:</label>
                 <div class="col-12 col-md-8">
                     <div class="d-flex flex-wrap">
                         <?php foreach ($intensitaProdotto as $intensita): ?>
@@ -76,7 +76,7 @@
             </div>
 
             <div class="mb-3 row">
-                <label for="quantita" class="col-12 col-md-4 col-form-label">Quantità:</label>
+                <label for="quantity" class="col-12 col-md-4 col-form-label">Quantità:</label>
                 <div class="col-12 col-md-8">
                     <input type="number" id="quantity" name="quantita" min="1" max="<?php echo $articolo["disponibilita"]; ?>"
                         class="form-control" value="1" aria-label="Quantity Picker" />

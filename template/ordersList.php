@@ -5,8 +5,7 @@
     <div class="container mt-5">
         <div class="row">
             <?php foreach ($orders as $order): ?>
-                <a name="ord-<?php echo ($order["id"]) ?>"></a>
-                <div class="col-12 mb-4">
+                <div id="ord-<?php echo ($order["id"]) ?>" class="col-12 mb-4">
                     <div class="card">
                         <div class="card-body">
                             <h3 class="card-title text-center">

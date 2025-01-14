@@ -53,10 +53,10 @@
                 <h5>Formati</h5>
                 <?php foreach ($templateParams["formati"] as $formato): ?>
                     <div class="form-check">
-                        <label class="form-check-label" for="<?php echo $formato["formato"]; ?>">
+                        <label class="form-check-label" for="<?php echo str_replace(' ', '-', $formato["formato"]); ?>">
                             <?php echo $formato["formato"]; ?>
                         </label>
-                        <input class="form-check-input" type="checkbox" name="formati[]" value="<?php echo $formato["formato"]; ?>" id="<?php echo $formato["formato"]; ?>" />
+                        <input class="form-check-input" type="checkbox" name="formati[]" value="<?php echo $formato["formato"]; ?>" id="<?php echo str_replace(' ', '-', $formato["formato"]); ?>" />
                     </div>
                 <?php endforeach; ?>
             </div>
@@ -98,7 +98,7 @@
                         <div class="card-footer">
                             <div class="d-flex align-items-center justify-content-between">
                                 <span class="card-text mb-0">Formato:</> <?php echo $articolo["formato"]; ?></span>
-                                <img src="<?php echo getFormatLogoPath($articolo["formato"]); ?>" class="logo-image"" />
+                                <img src="<?php echo getFormatLogoPath($articolo["formato"]); ?>" class="logo-image" alt="" />
                             </div>
                         </div>
                     </div>

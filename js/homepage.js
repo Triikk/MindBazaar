@@ -94,7 +94,7 @@ function generateCategories(categories) {
         <div class="carousel-item ${i === 0 ? 'active' : ''}">
             <div class="d-flex justify-content-center">
                 <a href="articles.php?categorie%5B%5D=${category["nome"]}" class="d-block text-decoration-none text-dark">
-                    <img class="d-block img-fluid homepage-category-image" src="upload/categories/${category["immagine"]}" />
+                    <img class="d-block img-fluid homepage-category-image" src="upload/categories/${category["immagine"]}" alt="" />
                 </a>
             </div>
             <div class="text-center mt-2 mb-2">
