@@ -115,7 +115,7 @@ function updateCart(index) {
             nuovaQuantita = max;
         }
         const url = `api/api-cart.php`;
-        queryAPI(url, "modifyArtAmount", `art_id_prod=${articolo["id_prodotto"]}&art_versione=${articolo["versione"]}&art_quantita=${nuovaQuantita}`, "POST", visualizeCart);
+        queryAPI(url, "modifyCartAmount", `art_id_prod=${articolo["id_prodotto"]}&art_versione=${articolo["versione"]}&art_quantita=${nuovaQuantita}`, "POST", visualizeCart);
     }
     checkOrderingAbility();
 }

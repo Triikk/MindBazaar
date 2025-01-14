@@ -16,7 +16,7 @@ if (isset($_REQUEST["query"])) {
                 echo jsonResponse(200, array("message" => "Articolo rimosso dal carrello"));
             }
             break;
-        case "modifyArtAmount":
+        case "modifyCartAmount":
             if (checkUserLoggedIn()) {
                 $dbh->modifyCartAmount($_REQUEST["art_id_prod"], $_REQUEST["art_quantita"], $_SESSION["username"], $_REQUEST["art_versione"]);
                 echo jsonResponse(200, array("message" => "Quantità nel carrello modificata"));
