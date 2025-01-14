@@ -42,16 +42,20 @@ function generateRequest(url, content, method = "GET", callback = null) {
     return xhttp;
 }
 
-/**
- * Genera una richiesta HTTP POST da un form
- */
-function generateXHttpRequestFromForm(url, query, form) {
+function getEntriesFromForm(form) {
     const formData = new FormData(form);
     const params = {};
     for (const pair of formData.entries()) {
         params[pair[0]] = pair[1];
     }
-    return generateXHttpRequestFromEntries(url, query, params);
+    return params;
+}
+
+/**
+ * Genera una richiesta HTTP POST da un form
+ */
+function generateXHttpRequestFromForm(url, query, form) {
+    return generateXHttpRequestFromEntries(url, query, getEntriesFromForm(form));
 }
 
 /**
