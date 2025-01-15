@@ -8,7 +8,7 @@
                         <label for="id_prodotto" class="col-12 col-md-4 col-form-label">Prodotto:</label>
                         <div class="col-12 col-md-8">
                             <select id="id_prodotto" name="id_prodotto" class="form-select" required>
-                            <option value="" disabled selected>Seleziona un prodotto</option>
+                                <option value="" disabled selected>Seleziona un prodotto</option>
                                 <?php
                                 $products = $dbh->getProducts();
                                 foreach ($products as $product) {
@@ -23,7 +23,7 @@
                         <label for="formato" class="col-12 col-md-4 col-form-label">Formato:</label>
                         <div class="col-12 col-md-8">
                             <select id="formato" name="formato" class="form-select" required>
-                            <option value="" disabled selected>Seleziona un formato</option>
+                                <option value="" disabled selected>Seleziona un formato</option>
                                 <?php
                                 foreach ($templateParams["formati"] as $format) {
                                     echo "<option value='" . $format['formato'] . "' label='" . $format['formato'] . "'></option>";
@@ -51,7 +51,7 @@
                     <div class="mb-3 row">
                         <label for="intensita" class="col-12 col-md-4 col-form-label">Intensità:</label>
                         <div class="col-12 col-md-8">
-                            <input type="number" id="intensita"  name="intensita" class="form-control" placeholder="Intensità"
+                            <input type="number" id="intensita" name="intensita" class="form-control" placeholder="Intensità"
                                 value="0" min="0" required />
                         </div>
                     </div>
@@ -68,7 +68,7 @@
                         <label for="versione" class="col-12 col-md-4 col-form-label">Versione:</label>
                         <div class="col-12 col-md-8">
                             <input type="number" id="versione" name="versione" class="form-control" placeholder="Versione"
-                                value="0" min="0" required />
+                                value="1" min="1" required />
                         </div>
                     </div>
 
@@ -111,7 +111,7 @@
                         <label for="nome_categoria" class="col-12 col-md-4 col-form-label">Categoria:</label>
                         <div class="col-12 col-md-8">
                             <select id="nome_categoria" name="nome_categoria" class="form-select" required>
-                            <option value="" disabled selected>Seleziona una categoria</option>
+                                <option value="" disabled selected>Seleziona una categoria</option>
                                 <?php
                                 $categories = $dbh->getCategories();
                                 foreach ($categories as $category) {

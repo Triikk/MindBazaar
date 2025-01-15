@@ -9,7 +9,7 @@ function calculateTotal(articles) {
 /**
  * Genera una richiesta HTTP generica
 */
-function generateRequest(url, content, method = "GET", callback = null, displayError = true) {
+function generateRequest(url, content, method = "GET", callback = null, displayError = true, displayMessage = false) {
     if (method === "GET") {
         url += `?${content}`;
         content = "";
@@ -26,6 +26,9 @@ function generateRequest(url, content, method = "GET", callback = null, displayE
                 if (callback !== null) {
                     // console.log(responseMessage);
                     callback(responseMessage);
+                }
+                if (displayMessage) {
+                    alert(responseMessage);
                 }
             } else {
                 if (displayError) {
@@ -56,28 +59,28 @@ function getEntriesFromForm(form) {
 /**
  * Genera una richiesta HTTP POST da un form
  */
-function generateXHttpRequestFromForm(url, query, form) {
-    return generateXHttpRequestFromEntries(url, query, getEntriesFromForm(form));
+function generateXHttpRequestFromForm(url, query, form, displayError = true, displayMessage = false) {
+    return generateXHttpRequestFromEntries(url, query, getEntriesFromForm(form), displayError, displayMessage);
 }
 
 /**
  * Genera una richiesta HTTP POST da un insieme di coppie chiave-valore
  */
-function generateXHttpRequestFromEntries(url, query, entries) {
+function generateXHttpRequestFromEntries(url, query, entries, displayError = true, displayMessage = false) {
     const queryString = new URLSearchParams(entries).toString();
-    return generateRequest(url, `query=${query}&${queryString}`, "POST");
+    return generateRequest(url, `query=${query}&${queryString}`, "POST", null, displayError, displayMessage);
 }
 
 /**
  * Genera una domanda all'API 
  */
-function queryAPI(url, query, data = "", method = "GET", callback = null, displayError = true) {
+function queryAPI(url, query, data = "", method = "GET", callback = null, displayError = true, displayMessage = false) {
     // console.log(`URL: ${url}, query: ${query}, data: ${data}, method: ${method}`);
     let content = `query=${query}`;
     if (data !== "") {
         content += `&${data}`;
     }
-    return generateRequest(url, content, method, callback, displayError);
+    return generateRequest(url, content, method, callback, displayError, displayMessage);
 }
 
 function showAvailability(nItems) {
