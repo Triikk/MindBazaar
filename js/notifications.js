@@ -16,6 +16,28 @@ function getArticleNotificationText(type) {
     }
 }
 
+function orderDetails(articlesList) {
+    let result = "";
+    result +=`
+    <div class="d-flex flex-column">
+    `;
+    for (let i = 0; i < articlesList.length; i++) {
+        let article = articlesList[i];
+        result += `
+        <div class="d-flex flex-row justify-content-center flex-wrap">
+            <p class="card-text p-2">${article["nome"]}</h4>
+            <p class="card-text p-2"><strong>Articolo:</strong> ${article["id_prodotto"]}.${article["versione_articolo"]}</p>
+            <p class="card-text p-2"><strong>x</strong> ${article["quantita"]}</p>
+        </div>
+        `;
+    }
+    result += `
+        <p class"card-text"><strong>Totale:</strong> ${calculateTotal(articlesList)}€</p>
+    </div>
+    `;
+    return result;
+}
+
 function generateUserNotifications(UNotifications) {
     let result = "";
     let numUN = UNotifications.length;
@@ -39,10 +61,29 @@ function generateUserNotifications(UNotifications) {
             notificationList += `
             <div class="card mb-3">
                 <div class="card-body">
-                    <h3 class="card-title">Notifica ordine n.${notification["id_ordine"]}</h3>
+                    <h3 class="card-title">Notifica ordine n.${notification["id_ordine"]}`;
+            if (notification["tipologia"] === 3) {
+                notificationList += ` di ${notification["username"]}`;
+            }
+            
+            notificationList += `</h3>
                     <p class="card-text"><strong>Data:</strong> ${notification["data"]}</p>
                     <p class="card-text">${getOrderNotificationText(notification["tipologia"])}</p>
+            `;
+            if (notification["tipologia"] !== 3) {
+                notificationList += `
                     <a href="orders.php#ord-${notification["id_ordine"]}" class="btn btn-secondary">Vedi ordine</a>
+                `;
+            } else {
+                notificationList += `
+                    <p class="card-text"><strong>Utente:</strong> ${notification["username"]}</p>
+                    <div id="order-${notification["id_ordine"]}"></div>
+                `;
+                queryAPI('api/api-orders.php', "getOrderArticles", `id_ordine=${notification["id_ordine"]}`, "POST", (res) => {
+                    document.getElementById(`order-${notification["id_ordine"]}`).innerHTML = orderDetails(res);
+                });
+            }
+            notificationList += `
                 </div>
             </div>
             `;
