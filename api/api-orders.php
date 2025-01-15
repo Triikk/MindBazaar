@@ -16,6 +16,14 @@ if (checkUserLoggedIn()) {
                 }
                 echo jsonResponse(200, $ordiniConListaArticoli);
                 break;
+            case "getOrderArticles":
+                if ($dbh->isAdmin($_SESSION["username"])) {
+                    $listaArticoli = $dbh->getArticlesByOrderId($_REQUEST["id_ordine"]);
+                    echo jsonResponse(200, $listaArticoli);
+                } else {
+                    echo jsonResponse(400,"You don't have the permission to access this resource");
+                }
+                break;
             default:
                 echo jsonResponse(400, array("error" => "Invalid query"));
                 break;
