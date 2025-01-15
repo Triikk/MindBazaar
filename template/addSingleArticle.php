@@ -123,9 +123,9 @@
                     </div>
 
                     <div class="mb-3 row">
-                        <label for="eta_minima" class="col-12 col-md-4 col-form-label">Età minima:</label>
+                        <label for="eta_minima" class="col-12 col-md-4 col-form-label">Età consigliata:</label>
                         <div class="col-12 col-md-8">
-                            <input type="number" id="eta_minima" name="eta_minima" class="form-control" placeholder="Età minima"
+                            <input type="number" id="eta_minima" name="eta_minima" class="form-control" placeholder="Età consigliata"
                                 value="14" min="14" max="99" required />
                         </div>
                     </div>

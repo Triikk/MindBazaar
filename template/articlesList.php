@@ -35,7 +35,7 @@
             </div>
 
             <div class="mb-3">
-                <label for="etaMinima" class="form-label">Età minima: <span id="etaMinimaValue"><?php echo $filterMinAge; ?></span></label>
+                <label for="etaMinima" class="form-label">Età consigliata: <span id="etaMinimaValue"><?php echo $filterMinAge; ?></span></label>
                 <input type="range" class="form-range" name="etaMinima" min="14" max="99" value="<?php echo $filterMinAge; ?>" id="etaMinima" oninput="updateRangeValue('etaMinima')" />
             </div>
 
