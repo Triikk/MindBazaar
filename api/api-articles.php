@@ -35,6 +35,7 @@ if (isset($_REQUEST["query"])) {
             if (isset($_FILES["immagine"]) && isset($_REQUEST["nome_categoria"])) {
                 $uploadPath = "../" . getCategoryImageDir($_REQUEST["nome_categoria"]);
                 $imageName = basename($_FILES["immagine"]["name"]);
+                $fullPath = $uploadPath . $imageName;
                 $tmpName = $_FILES["immagine"]["tmp_name"];
 
                 $maxMB = 8;
@@ -51,9 +52,7 @@ if (isset($_REQUEST["query"])) {
                 $imageFileType = strtolower(pathinfo($fullPath, PATHINFO_EXTENSION));
                 if (!in_array($imageFileType, $acceptedExtensions)) {
                     echo jsonResponse(400, "L'estensione dell'immagine non è tra quelle consentite: " . implode(",", $acceptedExtensions));
-                }
-                if (!is_dir($uploadPath)) {
-                    mkdir($uploadPath, 0755, true);
+                    return;
                 }
 
                 if (move_uploaded_file($tmpName, $uploadPath . $imageName)) {
