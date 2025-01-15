@@ -93,7 +93,7 @@
         <div class="text-center p-3">
             <p>+39 686730535</p>
             <p>Via dell'Università 50, Cesena</p>
-            <p>&copy 2024 MindBazaar Inc.</p>
+            <p>&copy; 2024 MindBazaar Inc.</p>
         </div>
     </footer>
 </body>
