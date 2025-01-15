@@ -1,7 +1,7 @@
 const API_URL = "api/api-articles.php";
 
 function addArticle() {
-    generateXHttpRequestFromForm(API_URL, "addArticle", document.forms["add-article"]);
+    generateXHttpRequestFromForm(API_URL, "addArticle", document.forms["add-article"], true, true);
 }
 
 function addProduct() {
@@ -24,7 +24,7 @@ function addProduct() {
                     params[pair[0]] = pair[1];
                 }
                 params["immagine"] = form.immagine.files[0].name;
-                generateXHttpRequestFromEntries(API_URL, "addProduct", params);
+                generateXHttpRequestFromEntries(API_URL, "addProduct", params, true, true);
             }
             else {
                 alert("Errore durante il caricamento del file: " + data.message);
